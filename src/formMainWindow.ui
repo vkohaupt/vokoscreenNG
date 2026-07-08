@@ -2613,8 +2613,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>24</width>
-                   <height>100</height>
+                   <width>405</width>
+                   <height>418</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -7178,66 +7178,114 @@
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>Seite</string>
+        <string notr="true">Seite</string>
        </attribute>
-       <widget class="QWidget" name="widget_2" native="true">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>260</y>
-          <width>676</width>
-          <height>37</height>
-         </rect>
+       <layout class="QVBoxLayout" name="verticalLayout_21">
+        <property name="spacing">
+         <number>0</number>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_74">
-         <item>
-          <spacer name="horizontalSpacer_47">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="checkBox_Camera_OnOff">
-           <property name="text">
-            <string>Camera</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="checkBox_Frame_OnOff">
-           <property name="toolTip">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <widget class="QWidget" name="tab_4">
+           <attribute name="icon">
+            <iconset resource="screencast.qrc">
+             <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
+           </attribute>
+           <attribute name="title">
             <string notr="true"/>
-           </property>
-           <property name="text">
-            <string notr="true">Frame On/Off</string>
-           </property>
-           <property name="shortcut">
-            <string notr="true"/>
-           </property>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <item>
+             <widget class="QWidget" name="widget_2" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_74">
+               <item>
+                <spacer name="horizontalSpacer_47">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="checkBox_Camera_OnOff">
+                 <property name="text">
+                  <string>Camera</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="checkBox_Frame_OnOff">
+                 <property name="toolTip">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string notr="true">Frame On/Off</string>
+                 </property>
+                 <property name="shortcut">
+                  <string notr="true"/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_45">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_45">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
