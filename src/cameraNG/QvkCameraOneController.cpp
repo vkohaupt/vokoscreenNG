@@ -30,7 +30,7 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) :
             if (vkCameraNG == NULL){
                 vkCameraNG = new QvkCameraNG(this);
                 vkCameraNG->show();
-                vkCameraNG->move(400, 400);
+                vkCameraNG->move(200, 200);
             }
         }else{
             if (vkCameraNG != NULL){
