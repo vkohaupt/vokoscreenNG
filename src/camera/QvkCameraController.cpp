@@ -84,8 +84,8 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     }
 
     // Am Ende ein spaceritem einfügen
-    QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
-    layoutAllCameras->addItem( spacerItem );
+    QSpacerItem *spacerItem = new QSpacerItem(30,30, QSizePolicy::Expanding, QSizePolicy::Expanding);
+    layoutAllCameras->addItem(spacerItem);
 
     // Dann ein Label für den Kameratext hinzufügen
     labelCurrentCamera->setObjectName( "labelCurrentCamera" );

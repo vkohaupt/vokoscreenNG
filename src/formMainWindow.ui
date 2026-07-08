@@ -324,7 +324,7 @@
        <enum>QTabWidget::TabPosition::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -371,7 +371,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
