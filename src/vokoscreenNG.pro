@@ -109,7 +109,7 @@ include(countdown/countdown.pri)
 
 # camera
 include(camera/camera.pri)
-include(cameraNG/cameraNG.pri)
+include(cameraOne/cameraOne.pri)
 
 # audio linux
 unix:include(audio/linux/audioLinux.pri)

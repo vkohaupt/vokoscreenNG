@@ -27,17 +27,17 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) :
     // Camera ON/Off
     connect(checkBox_Camera_OnOff,&QCheckBox::clicked, this, [=](bool value){
         if (value == true){
-            if (vkCameraNG == NULL){
-                vkCameraNG = new QvkCameraNG(this);
-                vkCameraNG->show();
-                vkCameraNG->move(200, 200);
+            if (vkCameraOneWindow == NULL){
+                vkCameraOneWindow = new QvkCameraOneWindow(this);
+                vkCameraOneWindow->show();
+                vkCameraOneWindow->move(200, 200);
             }
         }else{
-            if (vkCameraNG != NULL){
+            if (vkCameraOneWindow != NULL){
                 // Kein deletelater verwenden da die Fenster versetzt angezeigt werden
                 // wenn checkBox_Frame_OnOff getätigt wird
-                delete vkCameraNG;
-                vkCameraNG = NULL;
+                delete vkCameraOneWindow;
+                vkCameraOneWindow = NULL;
             }
         }
     });
@@ -48,12 +48,12 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) :
             ::clicked,
             this, [=](){
         if(checkBox_Camera_OnOff->isChecked() == true){
-            if (vkCameraNG != NULL){
-                cameraNG_X = vkCameraNG->get_camera_window_x();
-                cameraNG_Y = vkCameraNG->get_camera_window_y();
+            if (vkCameraOneWindow != NULL){
+                cameraNG_X = vkCameraOneWindow->get_camera_window_x();
+                cameraNG_Y = vkCameraOneWindow->get_camera_window_y();
                 checkBox_Camera_OnOff->click(); // Erster Klick zum entfernen des Fensters
                 checkBox_Camera_OnOff->click(); // Zweiter Klick zum anzeigen des Fensters
-                vkCameraNG->move(cameraNG_X, cameraNG_Y);
+                vkCameraOneWindow->move(cameraNG_X, cameraNG_Y);
             }
         }
     });

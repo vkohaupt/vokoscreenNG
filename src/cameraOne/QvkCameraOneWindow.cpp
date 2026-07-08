@@ -1,14 +1,15 @@
-#include "QvkCameraNG.h"
-#include "ui_QvkCameraNG.h"
+#include "QvkCameraOneWindow.h"
+#include "ui_QvkCameraOneWindow.h"
 
 #include <QWidget>
 #include <QCheckBox>
 #include <QList>
 
-QvkCameraNG::QvkCameraNG(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::QvkCameraNG)
-{
+QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent) :
+        QWidget(parent),
+        ui(new Ui::QvkCameraOneWindow)
+    {
+        ui->setupUi(this);
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     m_parent = parent;
@@ -37,19 +38,20 @@ QvkCameraNG::QvkCameraNG(QWidget *parent) :
     }
 }
 
-QvkCameraNG::~QvkCameraNG()
+QvkCameraOneWindow::~QvkCameraOneWindow()
 {
     delete ui;
 }
 
+
 #ifdef Q_OS_UNIX
-int QvkCameraNG::get_camera_window_x()
+int QvkCameraOneWindow::get_camera_window_x()
 {
     int x = geometry().x();
     return x;
 }
 
-int QvkCameraNG::get_camera_window_y()
+int QvkCameraOneWindow::get_camera_window_y()
 {
     int y = geometry().y();
     return y;
@@ -58,13 +60,13 @@ int QvkCameraNG::get_camera_window_y()
 
 
 #ifdef Q_OS_WIN
-int QvkCameraNG::get_camera_window_x()
+int QvkCameraOneWindow::get_camera_window_x()
 {
     int x = geometry().x();
     return x;
 }
 
-int QvkCameraNG::get_camera_window_y()
+int QvkCameraOneWindow::get_camera_window_y()
 {
     int y = 0;
     // Rahmen wird entfernt
