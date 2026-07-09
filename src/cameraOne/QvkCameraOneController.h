@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QCheckBox>
 
-#include "QvkCameraOneWindow.h"
+#include "QvkCameraOneSingle.h"
 
 class QvkCameraOneController : public QWidget
 {
@@ -13,12 +13,7 @@ class QvkCameraOneController : public QWidget
 public:
     explicit QvkCameraOneController(QWidget *parent = nullptr);
     ~QvkCameraOneController();
-    QvkCameraOneWindow *vkCameraOneWindow = NULL;
-    int cameraOneWindow_X = 200;
-    int cameraOneWindow_Y = 200;
-    QCheckBox *checkBox_Camera_OnOff;
-    QCheckBox *checkBox_Frame_OnOff;
-
+    QvkCameraOneSingle *vkCameraOneSingle;
 
 private:
 

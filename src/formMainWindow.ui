@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>839</width>
-    <height>562</height>
+    <height>580</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -617,7 +617,7 @@
                        <x>0</x>
                        <y>0</y>
                        <width>398</width>
-                       <height>107</height>
+                       <height>125</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -2613,8 +2613,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>405</width>
-                   <height>418</height>
+                   <width>24</width>
+                   <height>100</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -7217,28 +7217,46 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_11">
             <item>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <property name="verticalSpacing">
+               <number>0</number>
+              </property>
+              <item row="1" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_71">
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignTop">
+               <widget class="QToolButton" name="help_camera_camera_2">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <layout class="QVBoxLayout" name="verticalLayout_28">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
              <widget class="QWidget" name="widget_2" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_74">
-               <item>
-                <spacer name="horizontalSpacer_47">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QCheckBox" name="checkBox_Camera_OnOff">
-                 <property name="text">
-                  <string>Camera</string>
-                 </property>
-                </widget>
-               </item>
                <item>
                 <widget class="QCheckBox" name="checkBox_Frame_OnOff">
                  <property name="toolTip">
