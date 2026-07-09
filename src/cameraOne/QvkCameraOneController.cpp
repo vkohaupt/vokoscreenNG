@@ -30,7 +30,7 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) :
             if (vkCameraOneWindow == NULL){
                 vkCameraOneWindow = new QvkCameraOneWindow(this);
                 vkCameraOneWindow->show();
-                vkCameraOneWindow->move(200, 200);
+                vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
             }
         }else{
             if (vkCameraOneWindow != NULL){
@@ -49,11 +49,11 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) :
             this, [=](){
         if(checkBox_Camera_OnOff->isChecked() == true){
             if (vkCameraOneWindow != NULL){
-                cameraNG_X = vkCameraOneWindow->get_camera_window_x();
-                cameraNG_Y = vkCameraOneWindow->get_camera_window_y();
+                cameraOneWindow_X = vkCameraOneWindow->get_camera_window_x();
+                cameraOneWindow_Y = vkCameraOneWindow->get_camera_window_y();
                 checkBox_Camera_OnOff->click(); // Erster Klick zum entfernen des Fensters
                 checkBox_Camera_OnOff->click(); // Zweiter Klick zum anzeigen des Fensters
-                vkCameraOneWindow->move(cameraNG_X, cameraNG_Y);
+                vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
             }
         }
     });

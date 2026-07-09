@@ -9,7 +9,6 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent) :
         QWidget(parent),
         ui(new Ui::QvkCameraOneWindow)
     {
-        ui->setupUi(this);
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     m_parent = parent;
