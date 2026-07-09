@@ -165,8 +165,8 @@ void QvkPulseAudioWatcher::slot_update()
                         qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << checkBox->objectName() << checkBox->accessibleName();
                         qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << vkLevelMeterController->objectName();
 
-                        // Beim ausgestecken eines Gerätes führt dies zum Absturtz
-                        // und wird daher vorerst deaktiviert.
+                        // Beim ausstecken eines Gerätes führt dies zum Absturtz
+                        // und wird daher deaktiviert.
                         // Das ganze Audiomodul muß neu geschrieben werden.
                         //vkLevelMeterController->vkLevelMeter->stop();
                         //vkLevelMeterController->remove_LineEdit( index);
