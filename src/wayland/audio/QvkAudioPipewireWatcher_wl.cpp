@@ -47,17 +47,25 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
         GstDevice *gstDevice;
         gst_message_parse_device_added( message, &gstDevice );
         GstStructure *structure = gst_device_get_properties( gstDevice );
-        QString api = QString( gst_structure_get_string( structure, "device.api" ) );
-        if ( api == "alsa" ) {
+        QString mediaClass = QString( gst_structure_get_string( structure, "media.class" ) );
+        // Accept real hardware nodes (Audio/Source, Audio/Sink) and PipeWire virtual
+        // nodes, but skip internal Stream/* followers (e.g. capture.* filter-chain
+        // nodes) that would otherwise duplicate their parent source. Before 4.10.0
+        // the PulseAudio path listed every source; the GstDeviceMonitor migration
+        // narrowed this to device.api == "alsa" and dropped virtual microphones.
+        if ( mediaClass == "Audio/Source" or mediaClass == "Audio/Sink" ) {
             QString deviceID = QString( gst_structure_get_string( structure, "object.serial" ) );
             QString description = QString( gst_structure_get_string( structure, "node.description" ) );
             QString capture = QString( gst_structure_get_string( structure, "api.alsa.pcm.stream" ) );
             QString type;
             if( capture == "capture" ) {
                 type = "Source";
+            } else if ( mediaClass == "Audio/Source" ) {
+                type = "Source";
             } else {
                 type = "Playback";
             }
+            QString api = QString( gst_structure_get_string( structure, "device.api" ) );
             QString action = "[Audio-device-added]";
             QString device = QString( gst_structure_get_string( structure, "node.name" ) );
             global::lineEditAudioPipewireWatcher_wl->setText( deviceID + ":::" +
@@ -79,8 +87,11 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
         QString deviceID = QString( gst_structure_get_string( structure, "object.serial" ) );
         QString description = QString( gst_structure_get_string( structure, "node.description" ) );
         QString capture = QString( gst_structure_get_string( structure, "api.alsa.pcm.stream" ) );
+        QString mediaClass = QString( gst_structure_get_string( structure, "media.class" ) );
         QString type;
         if( capture == "capture" ) {
+            type = "Source";
+        } else if ( mediaClass == "Audio/Source" ) {
             type = "Source";
         } else {
             type = "Playback";
