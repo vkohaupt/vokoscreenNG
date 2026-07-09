@@ -5,6 +5,7 @@
 #include <QCheckBox>
 
 #include "QvkCameraOneWindow.h"
+#include "ui_QvkCameraOneSingle.h"
 
 namespace Ui {
 class QvkCameraOneSingle;
@@ -20,7 +21,6 @@ public:
     QvkCameraOneWindow *vkCameraOneWindow = NULL;
     int cameraOneWindow_X = 200;
     int cameraOneWindow_Y = 200;
-    QCheckBox *checkBox_Camera_OnOff;
     QCheckBox *checkBox_Frame_OnOff;
     Ui::QvkCameraOneSingle *ui;
 
