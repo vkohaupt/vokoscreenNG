@@ -12,7 +12,7 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent
     QvkCameraOneWatcher *vkCameraOneWatcher = new QvkCameraOneWatcher;
 
     // Varibale device enthält zum Beispiel folgenden Inhalt
-    // "/dev/video1:::UVC Camera (046d:0809):::added"  or removed
+    // "/dev/video1:::UVC Camera (046d:0809):::added" or removed
     connect(vkCameraOneWatcher,
             &QvkCameraOneWatcher::signal_cameraChanged,
             this,
