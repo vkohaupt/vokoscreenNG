@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QCheckBox>
+#include <QButtonGroup>
 
 #include "QvkCameraOneSingle.h"
 
@@ -14,6 +15,7 @@ public:
     explicit QvkCameraOneController(QWidget *parent = nullptr);
     ~QvkCameraOneController();
     QvkCameraOneSingle *vkCameraOneSingle;
+    QButtonGroup *buttonGroup = new QButtonGroup;
 
 private:
 
