@@ -7,15 +7,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent) :
     ui(new Ui::QvkCameraOneSingle)
 {
     ui->setupUi(this);
-
-    QList<QCheckBox *> listCheckBox = parent->topLevelWidget()->findChildren<QCheckBox *>();
-    for (int i = 0; i < listCheckBox.count(); i++){
-        QCheckBox *checkBox = listCheckBox.at(i);
-        if (checkBox->objectName() == "checkBox_Frame_OnOff"){
-            checkBox_Frame_OnOff = checkBox;
-            break;
-        }
-    }
+    checkBox_Frame_OnOff = parent->topLevelWidget()->findChild<QCheckBox *>("checkBox_Frame_OnOff");
 
     // Window ON/Off
     connect(ui->checkBoxCameraOneOnOff,&QCheckBox::clicked, this, [=](bool value){
