@@ -1,7 +1,8 @@
 
 #include <QWidget>
+#include <QString>
 #include <QCheckBox>
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 #include "QvkCameraOneSingle.h"
 #include "QvkCameraOneWindow.h"

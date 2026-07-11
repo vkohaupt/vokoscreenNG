@@ -27,6 +27,7 @@
 #include <QCameraDevice>
 #include <QMediaDevices>
 #include <QList>
+#include <QString>
 #include <QStringList>
 
 QvkCameraOneWatcher::QvkCameraOneWatcher()
