@@ -14,9 +14,11 @@ class QvkCameraOneOptions : public QWidget
 public:
     explicit QvkCameraOneOptions(QWidget *parent = nullptr);
     ~QvkCameraOneOptions();
+    Ui::QvkCameraOneOptions *ui;
 
 private:
-    Ui::QvkCameraOneOptions *ui;
+
+
 };
 
 #endif // QVKCAMERAONEOPTIONS_H

@@ -19,11 +19,7 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent
             [=](QString device){
         if (device.section(":::", 2, 2) == "added"){
             QVBoxLayout *layoutForCameras = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_28");
-            vkCameraOneSingle = new QvkCameraOneSingle(this);
-            vkCameraOneSingle->setObjectName(vkCameraOneSingle->objectName() + "_" + device.section(":::", 0, 0));
-            vkCameraOneSingle->ui->checkBoxCameraOneOnOff->setText(device.section(":::", 1, 1));
-            QString name = vkCameraOneSingle->ui->radioButton->objectName() + "_" + device.section(":::", 0, 0);
-            vkCameraOneSingle->ui->radioButton->setObjectName(name);
+            vkCameraOneSingle = new QvkCameraOneSingle(this, device);
             buttonGroup->addButton(vkCameraOneSingle->ui->radioButton);
             layoutForCameras->addWidget(vkCameraOneSingle);
         }

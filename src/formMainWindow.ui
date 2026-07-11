@@ -2613,7 +2613,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>24</width>
+                   <width>100</width>
                    <height>100</height>
                   </rect>
                  </property>
@@ -7275,19 +7275,6 @@
              <widget class="QWidget" name="widget_2" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_74">
                <item>
-                <widget class="QCheckBox" name="checkBox_Frame_OnOff">
-                 <property name="toolTip">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string notr="true">Frame On/Off</string>
-                 </property>
-                 <property name="shortcut">
-                  <string notr="true"/>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <spacer name="horizontalSpacer_45">
                  <property name="orientation">
                   <enum>Qt::Orientation::Horizontal</enum>
@@ -7364,7 +7351,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

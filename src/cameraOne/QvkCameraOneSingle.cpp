@@ -1,19 +1,43 @@
+
+#include <QWidget>
+#include <QCheckBox>
+#include <QHBoxLayout>
+
 #include "QvkCameraOneSingle.h"
 #include "QvkCameraOneWindow.h"
-#include "ui_QvkCameraOneSingle.h"
+#include "QvkCameraOneOptions.h"
 
-QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent) :
+#include "ui_QvkCameraOneSingle.h"
+#include "ui_QvkCameraOneOptions.h"
+
+// Varibale device enthält zum Beispiel folgenden Inhalt
+// "/dev/video1:::UVC Camera (046d:0809):::added" or removed
+QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     QWidget(parent),
     ui(new Ui::QvkCameraOneSingle)
 {
     ui->setupUi(this);
-    checkBox_Frame_OnOff = parent->topLevelWidget()->findChild<QCheckBox *>("checkBox_Frame_OnOff");
+
+    setObjectName(objectName() + "_" + device.section(":::", 0, 0));
+    ui->checkBoxCameraOneOnOff->setText(device.section(":::", 1, 1));
+    ui->radioButton->setObjectName(ui->radioButton->objectName() + "_" + device.section(":::", 0, 0));
+
+    QvkCameraOneOptions *vkCameraOneOptions = new QvkCameraOneOptions(this);
+    vkCameraOneOptions->setObjectName( vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0));
+    QVBoxLayout *layout = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
+
+    QString m_objectName = vkCameraOneOptions->ui->checkBox_Frame_OnOff->objectName() + "_" + device.section(":::", 0, 0);
+    vkCameraOneOptions->ui->checkBox_Frame_OnOff->setObjectName(m_objectName);
+
+    layout->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
     connect(ui->checkBoxCameraOneOnOff,&QCheckBox::clicked, this, [=](bool value){
         if (value == true){
             if (vkCameraOneWindow == NULL){
-                vkCameraOneWindow = new QvkCameraOneWindow(this);
+                // deviceName ist z.b "/dev/video0"
+                QString deviceName = objectName().section("_", 1, 1);
+                vkCameraOneWindow = new QvkCameraOneWindow(this, deviceName);
                 vkCameraOneWindow->show();
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
             }
@@ -30,7 +54,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent) :
     });
 
     // Frame On/Off
-    connect(checkBox_Frame_OnOff,
+    connect(vkCameraOneOptions->ui->checkBox_Frame_OnOff,
             &QCheckBox
             ::clicked,
             this, [=](){

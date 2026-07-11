@@ -13,7 +13,7 @@ class QvkCameraOneWindow : public QWidget
     Q_OBJECT
 
 public:
-    explicit QvkCameraOneWindow(QWidget *parent = nullptr);
+    explicit QvkCameraOneWindow(QWidget *parent = nullptr, QString deviceName = "");
     ~QvkCameraOneWindow();
     int get_camera_window_x();
     int get_camera_window_y();
@@ -21,7 +21,7 @@ public:
 
 private:
     Ui::QvkCameraOneWindow *ui;
-    QCheckBox *checkBox_frame_OnOff = nullptr;
+    QCheckBox *checkBox_Frame_OnOff = nullptr;
     QWidget *m_parent = nullptr;
 
 };
