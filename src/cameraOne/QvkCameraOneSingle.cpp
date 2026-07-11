@@ -40,9 +40,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     connect(ui->checkBoxCameraOneOnOff,&QCheckBox::clicked, this, [=](bool value){
         if (value == true){
             if (vkCameraOneWindow == NULL){
-                // deviceName ist z.b "/dev/video0"
-                QString deviceName = objectName().section("_", 1, 1);
-                vkCameraOneWindow = new QvkCameraOneWindow(this, deviceName);
+                vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
                 vkCameraOneWindow->show();
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
             }

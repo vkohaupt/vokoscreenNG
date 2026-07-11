@@ -5,6 +5,7 @@
 #include <QCheckBox>
 
 #include "QvkCameraOneWindow.h"
+#include "QvkCameraOneOptions.h"
 #include "ui_QvkCameraOneSingle.h"
 
 namespace Ui {
@@ -22,7 +23,7 @@ public:
     int cameraOneWindow_X = 200;
     int cameraOneWindow_Y = 200;
     Ui::QvkCameraOneSingle *ui;
-
+    QvkCameraOneOptions *vkCameraOneOptions = nullptr;
 
 private:
 
