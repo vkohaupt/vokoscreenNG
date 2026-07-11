@@ -37,7 +37,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     layout->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
-    connect(ui->checkBoxCameraOneOnOff,&QCheckBox::clicked, this, [=](bool value){
+    connect(ui->checkBoxCameraOneOnOff, &QCheckBox::clicked, this, [=](bool value){
         if (value == true){
             if (vkCameraOneWindow == NULL){
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
@@ -58,14 +58,33 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
 
     // Frame On/Off
     connect(vkCameraOneOptions->ui->checkBox_Frame_OnOff,
-            &QCheckBox
-            ::clicked,
-            this, [=](){
+            &QCheckBox::clicked,
+            this,
+            [=](){
         if(ui->checkBoxCameraOneOnOff->isChecked() == true){
             if (vkCameraOneWindow != NULL){
                 ui->checkBoxCameraOneOnOff->click(); // Erster Klick zum entfernen des Fensters
                 ui->checkBoxCameraOneOnOff->click(); // Zweiter Klick zum anzeigen des Fensters
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
+            }
+        }
+    });
+
+    // Options On/Off
+    connect(ui->radioButton,
+            &QRadioButton::toggled,
+            this,
+            [=](bool checked){
+        if (checked == true){
+            // device ist z.b /dev/video1
+            QString device = vkCameraOneOptions->objectName().section("_", 1, 1);
+            QList<QvkCameraOneOptions *> listOptions = parent->topLevelWidget()->findChildren<QvkCameraOneOptions *>();
+            for (int i = 0; i < listOptions.count(); i++){
+                if (listOptions.at(i)->objectName().section("_", 1, 1) == device){
+                    listOptions.at(i)->show();
+                }else{
+                    listOptions.at(i)->hide();
+                }
             }
         }
     });
