@@ -29,6 +29,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
 
     vkCameraOneOptions = new QvkCameraOneOptions(this);
     vkCameraOneOptions->setObjectName( vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0));
+    vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
     QString m_objectName = vkCameraOneOptions->ui->checkBox_Frame_OnOff->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->checkBox_Frame_OnOff->setObjectName(m_objectName);
 
