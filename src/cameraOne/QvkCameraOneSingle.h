@@ -23,7 +23,7 @@ public:
     int cameraOneWindow_X = 200;
     int cameraOneWindow_Y = 200;
     Ui::QvkCameraOneSingle *ui;
-    QvkCameraOneOptions *vkCameraOneOptions = nullptr;
+    QvkCameraOneOptions *vkCameraOneOptions = NULL;
 
 private:
 

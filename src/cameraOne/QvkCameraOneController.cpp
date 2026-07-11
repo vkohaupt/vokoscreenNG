@@ -29,6 +29,12 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent
             if (vkCameraOneSingle != nullptr){
                 vkCameraOneSingle->deleteLater();
             }
+
+            removedDevice = "QvkCameraOneOptions_" + device.section(":::", 0, 0);
+            QvkCameraOneOptions *vkCameraOneOptions = parent->topLevelWidget()->findChild<QvkCameraOneOptions *>(removedDevice);
+            if (vkCameraOneOptions != nullptr){
+                vkCameraOneOptions->deleteLater();
+            }
         }
     });
     vkCameraOneWatcher->init();

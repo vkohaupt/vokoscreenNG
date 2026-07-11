@@ -27,13 +27,12 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     QString resolution = ui->comboBoxCameraOneResolution->objectName() + "_" + device.section(":::", 0, 0);
     ui->comboBoxCameraOneResolution->setObjectName(resolution);
 
-    QvkCameraOneOptions *vkCameraOneOptions = new QvkCameraOneOptions(this);
+    vkCameraOneOptions = new QvkCameraOneOptions(this);
     vkCameraOneOptions->setObjectName( vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0));
-    QVBoxLayout *layout = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
-
     QString m_objectName = vkCameraOneOptions->ui->checkBox_Frame_OnOff->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->checkBox_Frame_OnOff->setObjectName(m_objectName);
 
+    QVBoxLayout *layout = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
     layout->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
