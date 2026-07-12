@@ -1,3 +1,4 @@
+#include "global.h"
 #include "QvkCameraOneWindow.h"
 #include "ui_QvkCameraOneWindow.h"
 
@@ -14,6 +15,7 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     m_parent = parent;
     setObjectName(objectName() + "_" + deviceName);
     checkBox_Frame_OnOff = m_parent->topLevelWidget()->findChild<QCheckBox *>("checkBox_Frame_OnOff_" + deviceName);
+    setWindowTitle(global::name + "  " + global::version);
 
     if (checkBox_Frame_OnOff->isChecked() == false){
         Qt::WindowFlags flags;

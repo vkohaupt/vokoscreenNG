@@ -45,7 +45,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
                 vkCameraOneWindow->show();
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
-                vkCameraOneWindow->setWindowTitle(vkCameraOneOptions->ui->lineEditCameraTitel->text());
             }
         }else{
             if (vkCameraOneWindow != NULL){
