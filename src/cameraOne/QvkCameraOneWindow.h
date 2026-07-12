@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QCheckBox>
+#include <QShowEvent>
 
 namespace Ui {
 class QvkCameraOneWindow;
@@ -23,6 +24,12 @@ private:
     Ui::QvkCameraOneWindow *ui;
     QCheckBox *checkBox_Frame_OnOff = nullptr;
     QWidget *m_parent = nullptr;
+    QString m_deviceName;
+
+
+protected:
+    void showEvent(QShowEvent *event);
+
 
 };
 

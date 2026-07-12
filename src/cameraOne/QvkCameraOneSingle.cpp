@@ -4,6 +4,7 @@
 #include <QCheckBox>
 #include <QVBoxLayout>
 
+#include "global.h"
 #include "QvkCameraOneSingle.h"
 #include "QvkCameraOneWindow.h"
 #include "QvkCameraOneOptions.h"
@@ -100,6 +101,11 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
             vkCameraOneWindow->setWindowTitle(vkCameraOneOptions->ui->lineEditCameraTitel->text());
         }
     });
+
+    // Erst suchen dann setzen
+    QLineEdit *lineEdit = parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + device.section(":::", 0, 0));
+    lineEdit->setText(global::name + "  " + global::version);
+
 }
 
 QvkCameraOneSingle::~QvkCameraOneSingle()

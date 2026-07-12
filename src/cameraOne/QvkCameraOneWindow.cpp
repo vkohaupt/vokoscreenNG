@@ -1,10 +1,11 @@
-#include "global.h"
 #include "QvkCameraOneWindow.h"
 #include "ui_QvkCameraOneWindow.h"
 
 #include <QWidget>
 #include <QCheckBox>
 #include <QList>
+#include <QLineEdit>
+#include <QShowEvent>
 
 QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
         QWidget(parent),
@@ -13,9 +14,9 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     m_parent = parent;
+    m_deviceName = deviceName;
     setObjectName(objectName() + "_" + deviceName);
     checkBox_Frame_OnOff = m_parent->topLevelWidget()->findChild<QCheckBox *>("checkBox_Frame_OnOff_" + deviceName);
-    setWindowTitle(global::name + "  " + global::version);
 
     if (checkBox_Frame_OnOff->isChecked() == false){
         Qt::WindowFlags flags;
@@ -78,3 +79,10 @@ int QvkCameraOneWindow::get_camera_window_y()
 }
 #endif
 
+
+void QvkCameraOneWindow::showEvent(QShowEvent *event)
+{
+    Q_UNUSED(event)
+    QLineEdit *lineEdit = m_parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + m_deviceName);
+    setWindowTitle(lineEdit->text());
+}
