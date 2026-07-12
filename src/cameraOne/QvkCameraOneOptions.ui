@@ -34,7 +34,7 @@
       <number>20</number>
      </property>
      <item row="3" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="2,3,2">
+      <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="2,3,0,2">
        <property name="topMargin">
         <number>10</number>
        </property>
@@ -66,6 +66,20 @@
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
          <property name="placeholderText">
+          <string notr="true"/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButtonCameraTitelReset">
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="../screencast.qrc">
+           <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+         </property>
+         <property name="shortcut">
           <string notr="true"/>
          </property>
         </widget>
