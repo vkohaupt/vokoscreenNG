@@ -91,6 +91,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
             }
         }
     });
+    ui->radioButton->click();
 
     connect(vkCameraOneOptions->ui->lineEditCameraTitel,
             &QLineEdit::textChanged,
