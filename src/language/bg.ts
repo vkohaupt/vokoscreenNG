@@ -1,184 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="bg">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете едно или повече устройства</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraOneOptions</name>
-    <message>
-        <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraOneSingle</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CheckBox</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraOneWindow</name>
-    <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Noto Sans&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;asa s as a s as a s  as a s as  as a s  as as &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете едно или повече устройства</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахнете прозореца</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Обръщане вертикално</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Обръщане хоризонтално</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Обърни</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Сиво</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Черно бяло</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Сменете към прозорец</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Превключване към цял екран</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSurface_wl</name>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Камера</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Камера</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройката беше успешна.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Затворете този прозорец и стартирайте vokoscreenNG отново.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"></translation>
+        <translation>Забавлявайте се с vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Диалог</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Помощ</translation>
     </message>
 </context>
 <context>
-    <name>QvkHelpBrowser_wl</name>
+    <name>QvkHelp_wl</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Помощ</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не беше намерен файлов мениджър</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Моля инсталирайте файлов мениджър.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не беше намерен файлов мениджър</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Моля инсталирайте файлов мениджър.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Предупреждение</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation type="unfinished"></translation>
+        <translation>Записа не беше стартиран поради недостатъчно място на диска.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation type="unfinished"></translation>
+        <translation>Достигнат е лимитът на свободното дисково пространство.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Ограничение на свободното дисково пространство</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation type="unfinished"></translation>
+        <translation>Мегабайт</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation type="unfinished"></translation>
+        <translation>Записът беше спрян, няма достатъчно свободно място на диска.</translation>
     </message>
 </context>
 <context>
@@ -186,672 +152,668 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Не беше намерен файлов мениджър</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Моля инсталирайте файлов мениджър.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Изходен код</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглавна страница</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Преводи</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Дари</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Изходен код</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Заглавна страница</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Преводи</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Дари</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не беше намерен файлов мениджър</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Моля инсталирайте файлов мениджър.</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете едно или повече устройства</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Област</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Област</translation>
     </message>
 </context>
 <context>
     <name>QvkShowMessage_wl</name>
     <message>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Папка</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не беше намерен файлов мениджър</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Моля инсталирайте файлов мениджър.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Старт</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Продължи</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Изход</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Увеличение</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Старт</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Продължи</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Изход</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Увеличение</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray_wl</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Старт</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Продължи</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Изход</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете едно или повече устройства</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Диалог</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Обръщане хоризонтално</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Обръщане вертикално</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Обърни</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Сиво</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Черно и бяло</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахнете прозореца</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки на камерата</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Област</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Нулиране</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Увеличение</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Обратно преброяване</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер на видеото:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation type="unfinished"></translation>
+        <translation>Свободно дисково пространство:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Време за запис:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудио</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Кадри</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Видеокодек</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматиране</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудиокодек</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Не записвай курсора на мишката</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Час</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation type="unfinished"></translation>
+        <translation>Минута</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Започни таймера</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation type="unfinished"></translation>
+        <translation>Спри записа след</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Часа</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>Минути</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Секунди</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Път на видеото</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Ограничение на свободното дисково пространство</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Покажи в системната лента</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Второ изчакване преди запис</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверете за актуализации</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Помощ</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Видео</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation type="unfinished"></translation>
+        <translation>Налично</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Недостъпно</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Старт</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Продължи</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Пусни</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Папка</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Обърни</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Сиво</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation type="unfinished"></translation>
+        <translation>Пусни последния запис</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Отвори папка</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Минимизирано при започване на записа</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Започва минимизирано</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Обръщане хоризонтално</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Обръщане вертикално</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Черно и бяло</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Премахнете прозореца</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation type="unfinished"></translation>
+        <translation>Нулиране на всички настройки при следващото стартиране</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторски права и лиценз за снимки</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation type="unfinished"></translation>
+        <translation>Мегабайт</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation type="unfinished"></translation>
+        <translation>Запис на екрана</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Плейър</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>История</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматично</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"></translation>
+        <translation>Създаване на изображения от раздели</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация за лиценза</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>Включено</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>Изключено</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Глобални клавишни комбинации</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"></translation>
+        <translation>Назначени клавишни комбинации.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Клавишната комбинация не е зададена или е зададена повече от веднъж.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ако се показва като присвоено, но не работи, значи се използва от друга програма.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Моментна снимка</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"></translation>
+        <translation>Път на изображението</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрийте този прозорец</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Секунди изчакване преди запис</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Прозорец</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>Цял екран</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторски права и лиценз за снимки</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"></translation>
+        <translation>Създаване на изображения от раздели</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация за лиценза</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"></translation>
+        <translation>Включено</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>Изключено</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Време за запис:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер на видеото:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation type="unfinished"></translation>
+        <translation>Свободно дисково пространство:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Прозорец</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Цял екран</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Област</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Видеокодек</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Кадри</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматиране</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation type="unfinished"></translation>
+        <translation>Налично</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Недостъпно</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Старт</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Папка</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Не записвай курсора на мишката</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудиокодек</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Път на видеото</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Обратно преброяване</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Помощ</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Второ изчакване преди запис</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Нулиране</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрийте този прозорец</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Секунди изчакване преди запис</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматично</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Продължи</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Покажи в системната лента</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation type="unfinished"></translation>
+        <translation>Нулиране на всички настройки при следващото стартиране</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Моментна снимка</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Минимизирано при започване на записа</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторски права и лиценз за снимки</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Пусни</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Пауза</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
     </message>
 </context>
 </TS>
