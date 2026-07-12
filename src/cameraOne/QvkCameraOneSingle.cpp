@@ -32,6 +32,8 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
     QString m_objectName = vkCameraOneOptions->ui->checkBox_Frame_OnOff->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->checkBox_Frame_OnOff->setObjectName(m_objectName);
+    m_objectName = vkCameraOneOptions->ui->lineEditCameraTitel->objectName() + "_" + device.section(":::", 0, 0);
+    vkCameraOneOptions->ui->lineEditCameraTitel->setObjectName(m_objectName);
 
     QVBoxLayout *layout = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
     layout->addWidget(vkCameraOneOptions);
@@ -43,6 +45,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
                 vkCameraOneWindow->show();
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
+                vkCameraOneWindow->setWindowTitle(vkCameraOneOptions->ui->lineEditCameraTitel->text());
             }
         }else{
             if (vkCameraOneWindow != NULL){
@@ -86,6 +89,15 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
                     listOptions.at(i)->hide();
                 }
             }
+        }
+    });
+
+    connect(vkCameraOneOptions->ui->lineEditCameraTitel,
+            &QLineEdit::textChanged,
+            this,
+            [=](){
+        if (vkCameraOneWindow != NULL){
+            vkCameraOneWindow->setWindowTitle(vkCameraOneOptions->ui->lineEditCameraTitel->text());
         }
     });
 }
