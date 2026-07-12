@@ -37,6 +37,10 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions->ui->lineEditCameraTitel->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraTitelReset->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraTitelReset->setObjectName(m_objectName);
+    m_objectName = vkCameraOneOptions->ui->checkBoxCameraOneMirrorVertical->objectName() + "_" + device.section(":::", 0, 0);
+    vkCameraOneOptions->ui->checkBoxCameraOneMirrorVertical->setObjectName(m_objectName);
+    m_objectName = vkCameraOneOptions->ui->checkBoxCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
+    vkCameraOneOptions->ui->checkBoxCameraOneMirrorHorizontal->setObjectName(m_objectName);
 
     QVBoxLayout *layout = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
     layout->addWidget(vkCameraOneOptions);
