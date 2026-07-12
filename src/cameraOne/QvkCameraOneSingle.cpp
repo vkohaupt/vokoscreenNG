@@ -22,7 +22,11 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
 
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
     ui->radioButton->setObjectName(ui->radioButton->objectName() + "_" + device.section(":::", 0, 0));
+
+    QString m_objectName = ui->checkBoxCameraOneOnOff->objectName() + "_" + device.section(":::", 0, 0);
+    ui->checkBoxCameraOneOnOff->setObjectName(m_objectName);
     ui->checkBoxCameraOneOnOff->setText(device.section(":::", 1, 1));
+
     QString pixelformat = ui->comboBoxCameraOnePixelformat->objectName() + "_" + device.section(":::", 0, 0);
     ui->comboBoxCameraOnePixelformat->setObjectName(pixelformat);
     QString resolution = ui->comboBoxCameraOneResolution->objectName() + "_" + device.section(":::", 0, 0);
@@ -31,7 +35,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions = new QvkCameraOneOptions(this);
     vkCameraOneOptions->setObjectName( vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0));
     vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
-    QString m_objectName = vkCameraOneOptions->ui->checkBox_Frame_OnOff->objectName() + "_" + device.section(":::", 0, 0);
+    m_objectName = vkCameraOneOptions->ui->checkBox_Frame_OnOff->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->checkBox_Frame_OnOff->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->lineEditCameraTitel->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->lineEditCameraTitel->setObjectName(m_objectName);

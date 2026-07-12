@@ -6,6 +6,7 @@
 #include <QList>
 #include <QLineEdit>
 #include <QShowEvent>
+#include <QCloseEvent>
 
 QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
         QWidget(parent),
@@ -86,3 +87,12 @@ void QvkCameraOneWindow::showEvent(QShowEvent *event)
     QLineEdit *lineEdit = m_parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + m_deviceName);
     setWindowTitle(lineEdit->text());
 }
+
+
+void QvkCameraOneWindow::closeEvent(QCloseEvent *event)
+{
+    Q_UNUSED(event)
+    QCheckBox *checkBox_Camera_OnOff = m_parent->topLevelWidget()->findChild<QCheckBox *>("checkBoxCameraOneOnOff_" +m_deviceName);
+    checkBox_Camera_OnOff->click();
+}
+

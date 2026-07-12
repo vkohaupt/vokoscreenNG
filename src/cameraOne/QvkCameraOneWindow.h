@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QShowEvent>
+#include <QCloseEvent>
 
 namespace Ui {
 class QvkCameraOneWindow;
@@ -29,6 +30,11 @@ private:
 
 protected:
     void showEvent(QShowEvent *event);
+    void closeEvent(QCloseEvent *event);
+
+
+signals:
+    void signal_cameraOneWindowClosed(QString);
 
 
 };
