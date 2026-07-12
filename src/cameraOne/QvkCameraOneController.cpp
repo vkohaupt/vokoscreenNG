@@ -9,6 +9,7 @@
 
 QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent)
 {
+    hide();
     QvkCameraOneWatcher *vkCameraOneWatcher = new QvkCameraOneWatcher;
 
     // Varibale device enthält zum Beispiel folgenden Inhalt

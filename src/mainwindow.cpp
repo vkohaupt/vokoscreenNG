@@ -546,8 +546,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Camera ***********************************
 
     QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this);
+    vk_setCornerWidget(ui->tabWidgetCameraOne);
     //ui->toolButtonCameraOne->hide();
-    Q_UNUSED(vkCameraOneController)
+    //Q_UNUSED(vkCameraOneController)
 
 
     // ***************** shortcut ******************************

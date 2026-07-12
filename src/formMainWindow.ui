@@ -2613,8 +2613,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>24</width>
-                   <height>100</height>
+                   <width>405</width>
+                   <height>436</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -7197,7 +7197,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QTabWidget" name="tabWidget">
+         <widget class="QTabWidget" name="tabWidgetCameraOne">
           <property name="currentIndex">
            <number>0</number>
           </property>
