@@ -597,17 +597,30 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         if ( toolButton->objectName().contains( "toolButtonMute" ) ) {
             if ( toolButton->isChecked() == true ) {
                 settings.setValue( toolButton->objectName(), "audio-volume-muted" );
+                continue;
             } else {
                 settings.setValue( toolButton->objectName(), "audio-volume-high" );
+                continue;
             }
         }
 
         if ( toolButton->objectName().contains( "toolButton_camera_view" ) ) {
             settings.setValue( toolButton->objectName(), toolButton->isChecked() );
+            continue;
         }
 
         if ( toolButton->objectName().contains( "toolButton_magnifier" ) ) {
             settings.setValue( toolButton->objectName(), toolButton->isChecked() );
+            continue;
+        }
+
+        if ( toolButton->objectName().contains( "toolButtonCameraOneMirrorVertical" ) ) {
+            settings.setValue( toolButton->objectName(), toolButton->isChecked() );
+            continue;
+        }
+        if ( toolButton->objectName().contains( "toolButtonCameraOneMirrorHorizontal" ) ) {
+            settings.setValue( toolButton->objectName(), toolButton->isChecked() );
+            continue;
         }
     }
 
