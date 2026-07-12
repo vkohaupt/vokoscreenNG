@@ -4,6 +4,7 @@
 class QvkInterceptor_wl : public QWebEngineUrlRequestInterceptor {
 public:
     void interceptRequest(QWebEngineUrlRequestInfo &info) override {
+        Q_UNUSED(info)
         // Prüfen, ob die Anfrage ein Bild ist
 /*
         if (info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeImage) {
