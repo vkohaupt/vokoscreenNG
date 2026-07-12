@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraOneOptions</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Ta bort fönsterram</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -92,7 +99,7 @@
     </message>
 </context>
 <context>
-    <name>QvkHelp_wl</name>
+    <name>QvkHelpBrowser_wl</name>
     <message>
         <source>Help</source>
         <translation>Hjälp</translation>
@@ -641,6 +648,10 @@
     <message>
         <source>Fullscreen</source>
         <translation>Helskärm</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
     </message>
 </context>
 <context>

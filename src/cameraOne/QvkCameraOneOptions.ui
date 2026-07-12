@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>482</width>
-    <height>340</height>
+    <width>721</width>
+    <height>314</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,17 +33,126 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <property name="bottomMargin">
-      <number>20</number>
+     <property name="verticalSpacing">
+      <number>25</number>
      </property>
-     <item row="5" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_17">
+     <item row="3" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="2,3,0,2">
        <property name="spacing">
-        <number>0</number>
+        <number>20</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
+       <item>
+        <spacer name="horizontalSpacer_18">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignVCenter">
+        <widget class="QLineEdit" name="lineEditCameraTitel">
+         <property name="inputMask">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="placeholderText">
+          <string notr="true"/>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignVCenter">
+        <widget class="QToolButton" name="toolButtonCameraTitelReset">
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="../screencast.qrc">
+           <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+         </property>
+         <property name="shortcut">
+          <string notr="true"/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_43">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_17">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButton">
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="../screencast.qrc">
+           <normaloff>:/pictures/camera/window-frameless-on.png</normaloff>:/pictures/camera/window-frameless-on.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>46</width>
+           <height>46</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string notr="true"/>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <widget class="QToolButton" name="toolButtonCameraOneMirrorVertical">
          <property name="text">
@@ -123,79 +232,10 @@
        </item>
       </layout>
      </item>
-     <item row="6" column="0">
-      <widget class="QWidget" name="widget" native="true"/>
-     </item>
-     <item row="2" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="2,3,0,2">
-       <property name="topMargin">
-        <number>20</number>
-       </property>
-       <property name="bottomMargin">
-        <number>15</number>
-       </property>
-       <item>
-        <spacer name="horizontalSpacer_18">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEditCameraTitel">
-         <property name="inputMask">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string notr="true"/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-         <property name="placeholderText">
-          <string notr="true"/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButtonCameraTitelReset">
-         <property name="text">
-          <string notr="true"/>
-         </property>
-         <property name="icon">
-          <iconset resource="../screencast.qrc">
-           <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-         </property>
-         <property name="shortcut">
-          <string notr="true"/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_43">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item row="1" column="0" colspan="2">
+     <item row="2" column="0" colspan="2">
       <layout class="QHBoxLayout" name="horizontalLayout_65">
-       <property name="spacing">
-        <number>0</number>
+       <property name="rightMargin">
+        <number>6</number>
        </property>
        <item>
         <spacer name="horizontalSpacer_41">
@@ -222,9 +262,12 @@
          </property>
          <property name="iconSize">
           <size>
-           <width>34</width>
-           <height>34</height>
+           <width>46</width>
+           <height>46</height>
           </size>
+         </property>
+         <property name="shortcut">
+          <string notr="true"/>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -268,8 +311,8 @@
          </property>
          <property name="iconSize">
           <size>
-           <width>34</width>
-           <height>34</height>
+           <width>46</width>
+           <height>46</height>
           </size>
          </property>
          <property name="checkable">
@@ -311,8 +354,8 @@
          </property>
          <property name="iconSize">
           <size>
-           <width>34</width>
-           <height>34</height>
+           <width>46</width>
+           <height>46</height>
           </size>
          </property>
          <property name="checkable">
@@ -341,32 +384,12 @@
        </item>
       </layout>
      </item>
-     <item row="3" column="0">
+     <item row="1" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QCheckBox" name="checkBox_Frame_OnOff">
          <property name="text">
           <string>Remove window frame</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="toolButton">
-         <property name="icon">
-          <iconset resource="../screencast.qrc">
-           <normaloff>:/pictures/camera/window-frameless-on.png</normaloff>:/pictures/camera/window-frameless-on.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>34</width>
-           <height>34</height>
-          </size>
-         </property>
-         <property name="shortcut">
-          <string notr="true"/>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
          </property>
         </widget>
        </item>
