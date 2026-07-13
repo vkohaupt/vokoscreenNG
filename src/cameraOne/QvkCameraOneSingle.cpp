@@ -46,7 +46,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
-qDebug() << "vvvvvvvvvvvvvvvvvvvvvvvvvvvv" << vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName();
     QVBoxLayout *layout = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
     layout->addWidget(vkCameraOneOptions);
 
@@ -117,10 +116,7 @@ qDebug() << "vvvvvvvvvvvvvvvvvvvvvvvvvvvv" << vkCameraOneOptions->ui->toolButton
         QLineEdit *lineEdit = parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + device.section(":::", 0, 0));
         lineEdit->setText(global::name + "  " + global::version);
     });
-
-    // Erst suchen dann Text setzen
-    QLineEdit *lineEdit = parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + device.section(":::", 0, 0));
-    lineEdit->setText(global::name + "  " + global::version);
+    vkCameraOneOptions->ui->toolButtonCameraTitelReset->click();
 }
 
 QvkCameraOneSingle::~QvkCameraOneSingle()

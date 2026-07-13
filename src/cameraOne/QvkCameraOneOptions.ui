@@ -112,13 +112,13 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton">
+        <widget class="QToolButton" name="toolButtonCameraFramelessOnOff">
          <property name="text">
           <string notr="true"/>
          </property>
          <property name="icon">
           <iconset resource="../screencast.qrc">
-           <normaloff>:/pictures/camera/window-frameless-on.png</normaloff>:/pictures/camera/window-frameless-on.png</iconset>
+           <normaloff>:/pictures/camera/window-frameless-off.png</normaloff>:/pictures/camera/window-frameless-off.png</iconset>
          </property>
          <property name="iconSize">
           <size>

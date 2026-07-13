@@ -6,6 +6,16 @@ QvkCameraOneOptions::QvkCameraOneOptions(QWidget *parent) :
     ui(new Ui::QvkCameraOneOptions)
 {
     ui->setupUi(this);
+
+    connect(ui->toolButtonCameraFramelessOnOff,
+            &QToolButton::toggled,
+            this, [=](bool value){
+        if (value == false){
+            ui->toolButtonCameraFramelessOnOff->setIcon(QIcon(":/pictures/camera/window-frameless-off.png"));
+        }else{
+            ui->toolButtonCameraFramelessOnOff->setIcon(QIcon(":/pictures/camera/window-frameless-on.png"));
+        }
+    });
 }
 
 QvkCameraOneOptions::~QvkCameraOneOptions()
