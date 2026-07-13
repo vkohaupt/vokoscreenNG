@@ -2613,7 +2613,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>24</width>
+                   <width>100</width>
                    <height>100</height>
                   </rect>
                  </property>
@@ -7270,25 +7270,6 @@
                </spacer>
               </item>
              </layout>
-            </item>
-            <item>
-             <widget class="QWidget" name="widget_2" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_74">
-               <item>
-                <spacer name="horizontalSpacer_45">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </widget>
             </item>
             <item>
              <spacer name="verticalSpacer_5">

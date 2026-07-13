@@ -3,12 +3,12 @@
 #include "QvkCameraOneSingle.h"
 
 #include <QWidget>
-#include <QCheckBox>
-#include <QList>
-#include <QVBoxLayout>
+#include <QString>
 
-QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent)
+QvkCameraOneController::QvkCameraOneController(
+        QWidget *parent, Ui_formMainWindow *m_GuiUi) : QWidget(parent)
 {
+    GuiUi = m_GuiUi;
     hide();
     QvkCameraOneWatcher *vkCameraOneWatcher = new QvkCameraOneWatcher;
 
@@ -19,10 +19,10 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent
             this,
             [=](QString device){
         if (device.section(":::", 2, 2) == "added"){
-            QVBoxLayout *layoutForCameras = topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_28");
             vkCameraOneSingle = new QvkCameraOneSingle(this, device);
             buttonGroup->addButton(vkCameraOneSingle->ui->radioButtonCameraOneSelect);
-            layoutForCameras->addWidget(vkCameraOneSingle);
+            GuiUi->verticalLayout_28->addWidget(vkCameraOneSingle);
+
         }
         if (device.section(":::", 2, 2) == "removed"){
             QString removedDevice = "QvkCameraOneSingle_" + device.section(":::", 0, 0);
