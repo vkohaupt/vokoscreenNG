@@ -91,45 +91,6 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButtonCameraFramelessOnOff">
-         <property name="text">
-          <string notr="true"/>
-         </property>
-         <property name="icon">
-          <iconset resource="../screencast.qrc">
-           <normaloff>:/pictures/camera/window-frameless-off.png</normaloff>:/pictures/camera/window-frameless-off.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>34</width>
-           <height>34</height>
-          </size>
-         </property>
-         <property name="shortcut">
-          <string notr="true"/>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Policy::Minimum</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="QToolButton" name="toolButtonCameraOneMirrorVertical">
          <property name="text">
           <string notr="true"/>
@@ -189,6 +150,45 @@
           <bool>true</bool>
          </property>
          <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButtonCameraFramelessOnOff">
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="../screencast.qrc">
+           <normaloff>:/pictures/camera/window-frameless-off.png</normaloff>:/pictures/camera/window-frameless-off.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>34</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string notr="true"/>
+         </property>
+         <property name="checkable">
           <bool>true</bool>
          </property>
         </widget>
