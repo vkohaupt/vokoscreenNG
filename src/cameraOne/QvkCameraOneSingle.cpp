@@ -46,7 +46,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
-    QVBoxLayout *layout = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
+    QVBoxLayout *layout = topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
     layout->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
@@ -91,7 +91,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
         if (checked == true){
             // device ist z.b /dev/video1
             QString device = vkCameraOneOptions->objectName().section("_", 1, 1);
-            QList<QvkCameraOneOptions *> listOptions = parent->topLevelWidget()->findChildren<QvkCameraOneOptions *>();
+            QList<QvkCameraOneOptions *> listOptions = topLevelWidget()->findChildren<QvkCameraOneOptions *>();
             for (int i = 0; i < listOptions.count(); i++){
                 if (listOptions.at(i)->objectName().section("_", 1, 1) == device){
                     listOptions.at(i)->show();

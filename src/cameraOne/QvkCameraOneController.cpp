@@ -19,20 +19,20 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent
             this,
             [=](QString device){
         if (device.section(":::", 2, 2) == "added"){
-            QVBoxLayout *layoutForCameras = parent->topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_28");
+            QVBoxLayout *layoutForCameras = topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_28");
             vkCameraOneSingle = new QvkCameraOneSingle(this, device);
             buttonGroup->addButton(vkCameraOneSingle->ui->radioButton);
             layoutForCameras->addWidget(vkCameraOneSingle);
         }
         if (device.section(":::", 2, 2) == "removed"){
             QString removedDevice = "QvkCameraOneSingle_" + device.section(":::", 0, 0);
-            QvkCameraOneSingle *vkCameraOneSingle = parent->topLevelWidget()->findChild<QvkCameraOneSingle *>(removedDevice);
+            QvkCameraOneSingle *vkCameraOneSingle = topLevelWidget()->findChild<QvkCameraOneSingle *>(removedDevice);
             if (vkCameraOneSingle != nullptr){
                 vkCameraOneSingle->deleteLater();
             }
 
             removedDevice = "QvkCameraOneOptions_" + device.section(":::", 0, 0);
-            QvkCameraOneOptions *vkCameraOneOptions = parent->topLevelWidget()->findChild<QvkCameraOneOptions *>(removedDevice);
+            QvkCameraOneOptions *vkCameraOneOptions = topLevelWidget()->findChild<QvkCameraOneOptions *>(removedDevice);
             if (vkCameraOneOptions != nullptr){
                 vkCameraOneOptions->deleteLater();
             }
