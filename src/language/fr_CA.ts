@@ -1,157 +1,157 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr_CA">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Choisissez un ou plusieurs appareils</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Choisir un ou plusieurs appareils</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraOneOptions</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Supprimer le cadre de la fenêtre</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Supprimer le cadre de la fenêtre</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>Basculez verticalement</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>Basculez horizontalement</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>Inversez</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>Noir et blanc</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Växla till fönsterläge</translation>
+        <translation>Basculer vers le mode fenêtre</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Växla till helskärmsläge</translation>
+        <translation>Basculer vers le mode plein écran</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSurface_wl</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Caméra</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Caméra</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Installationen gick bra.</translation>
+        <translation>Le paramétrage est un succès</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Stäng detta fönster och starta vokoscreenNG igen.</translation>
+        <translation>Fermer cette fenêtre et redémarrer VokoscreenNG</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Ha så kul med vokoscreenNG</translation>
+        <translation>Amusez-vous avec VokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Dialogue</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Aide</translation>
     </message>
 </context>
 <context>
     <name>QvkHelpBrowser_wl</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Aide</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Aucun explorateur de fichiers disponible</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prière d&apos;installer un explorateur de fichiers</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Aucun explorateur de fichiers disponible</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prière d&apos;installer un explorateur de fichiers</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Varning</translation>
+        <translation>Attention</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Inspelningen är inte startad, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>L&apos;enregistrement n&apos;a pas démarré car l&apos;espace disque est insuffisant</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Det lediga diskutrymmet är slut.</translation>
+        <translation>La limite spécifiée pour l&apos;espace disque minimum a été atteinte</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation>Espace disque libre minimum</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Mégaoctet</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Inspelningen har stoppats, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>L&apos;enregistrement a été stoppé car l&apos;espace disque est insuffisant</translation>
     </message>
 </context>
 <context>
@@ -159,267 +159,267 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Aucun explorateur de fichiers disponible</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prière d&apos;installer un explorateur de fichiers</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>Code source</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>Page d&apos;accueil</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>Traductions</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>Donnez</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>Code source</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>Page d&apos;accueil</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>Traductions</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>Donnez</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Aucun explorateur de fichiers disponible</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prière d&apos;installer un explorateur de fichiers</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Choisir un ou plusieurs appareils</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Espace</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Espace</translation>
     </message>
 </context>
 <context>
     <name>QvkShowMessage_wl</name>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>Répertoire</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Aucun explorateur de fichiers disponible</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prière d&apos;installer un explorateur de fichiers</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Démarrer</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>Sortie</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Caméra</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>Grossissement</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Démarrer</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>Sortie</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Caméra</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>Grossissement</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray_wl</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Démarrer</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>Sortie</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Choisir un ou plusieurs appareils</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Dialogue</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>Basculer horizontalement</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>Basculer verticalement</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>Inverser</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>Noir et blanc</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Supprimer le cadre de la fenêtre</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kamerainställningar</translation>
+        <translation>Paramètres de la caméra</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Espace</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>Grossissement</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>Décompte</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>Dimensions de la vidéo:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>Espace disque disponible</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informations</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>Durée de l&apos;enregistrement:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ljud</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>Fréquence d&apos;images</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>Codec vidéo</translation>
     </message>
     <message>
         <source>Format</source>
@@ -427,286 +427,286 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>Codec audio</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>Ne pas enregistrer le curseur</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Timma</translation>
+        <translation>Heure</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minut</translation>
+        <translation>Minute</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Starta tiduret</translation>
+        <translation>Démarrez la minuterie</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stoppa inspelningen efter</translation>
+        <translation>Arrêter l&apos;enregistrement après</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Timmar</translation>
+        <translation>Heures</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuter</translation>
+        <translation>Minutes</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunder</translation>
+        <translation>Secondes</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>Chemin d&apos;accès à la vidéo</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation>Limite d&apos;espace disque libre</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>Afficher dans la barre d&apos;état système</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>Seconde d&apos;attente avant démarrage de l&apos;enregistrement</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Sök efter uppdateringar</translation>
+        <translation>Vérifier pour des mises à jour</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Vidéo</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>Disponible</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>Non disponible</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Démarrer</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>Démarrer</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>Répertoire</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Caméra</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>Inverser</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Spela upp senaste inspelning</translation>
+        <translation>Jouer le dernier enregistrement</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Öppna mapp</translation>
+        <translation>Ouvrir le répertoire</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation>Minimiser au démarrage de l&apos;enregistrement</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Starta minimerad</translation>
+        <translation>Démarre minimisé</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>Basculer horizontalement</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>Basculer verticalement</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>Noir et blanc</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Supprimer le cadre de la fenêtre</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>Réinitialiser tous les paramètres au prochain démarrage</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Droits d&apos;auteur et licence des images</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Mégaoctet</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Skärminspelning</translation>
+        <translation>Captation d&apos;écran</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Spelare</translation>
+        <translation>Lecteur</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logg</translation>
+        <translation>Journal</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>Automatiquement</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>Créer des images d&apos;onglets</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>Information sur la licence</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>ON</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>OFF</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Systemövergripande tangentbordsgenvägar</translation>
+        <translation>Raccourcis clavier globaux</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tilldelade snabbtangenter</translation>
+        <translation>Raccoucis clavier assignés</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Ej tilldelade snabbtangenter eller tilldelade mer än en gång.</translation>
+        <translation>Raccoucis clavier non utilisés ou assignés plus d&apos;une fois</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Om den visas som tilldelad men inte fungerar, används den av ett annat program.</translation>
+        <translation>Si le raccoucis est assigné mais qu&apos;il ne répond pas, c&apos;est qu&apos;il est attaché à une autre application</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>Snapshot</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bildsökväg</translation>
+        <translation>Chemin d&apos;accès à l&apos;image</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>Masquer cette fenêtre</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>Secondes d&apos;attente avant le début de l&apos;enegistrement</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>Fenêtre</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>Plein écran</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Droits d&apos;auteur et licence des images</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>Créer des images d&apos;onglets</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>Information sur la licence</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>ON</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>OFF</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>Durée de l&apos;enregistrement:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>Dimensions de la vidéo:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>Espace disque disponible</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informations</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>Fenêtre</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>Plein écran</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Espace</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>Codec vidéo</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>Fréquence d&apos;images</translation>
     </message>
     <message>
         <source>Format</source>
@@ -714,113 +714,113 @@
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>Disponible</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>Non disponible</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Démarrer</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>Répertoire</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>Ne pas enregistrer le curseur</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>Codec audio</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>Chemin d&apos;accès à la vidéo</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>Décompte</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Caméra</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>Seconde d&apos;attente avant démarrage de l&apos;enregistrement</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>Masquer cette fenêtre</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>Secondes d&apos;attente avant le début de l&apos;enegistrement</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>Automatiquement</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>Afficher dans la barre d&apos;état système</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>Réinitialiser tous les paramètres au prochain démarrage</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>Snapshot</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation>Minimiser au démarrage de l&apos;enregistrement</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Droit d&apos;auteur et licence des médias</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>Démarrer</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
 </context>
 </TS>

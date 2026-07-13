@@ -1,157 +1,157 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="th_TH">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>เลือกอุปกรณ์</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>เลือกอุปกรณ์</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraOneOptions</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>ลบเฟรมหน้าต่าง</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>ลบเฟรมหน้าต่าง</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>พลิกแนวตั้ง</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>พลิกแนวนอน</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>กลับด้าน</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>เกรย์</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>ขาว-และ-ดำ</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Växla till fönsterläge</translation>
+        <translation>สลับหน้าต่าง</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Växla till helskärmsläge</translation>
+        <translation>สลับหน้าจอ</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSurface_wl</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>กล้อง</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>กล้อง</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Installationen gick bra.</translation>
+        <translation>การติดตั้งเสร็จสมบูรณ์!</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Stäng detta fönster och starta vokoscreenNG igen.</translation>
+        <translation>ปิดหน้าต่างนี้และเปิดโปรแกรม vokoscreenNG ใหม่ </translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Ha så kul med vokoscreenNG</translation>
+        <translation>ขอให้สนุกกับการใช้งานโปรแกรม vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>ไดอะล็อก</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>ช่วยเหลือ</translation>
     </message>
 </context>
 <context>
     <name>QvkHelpBrowser_wl</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>ช่วยเหลือ</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>ไม่พบ filemanager</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>โปรดติดตั้ง filemanager</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>ไม่พบ filemanager</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>โปรดติดตั้ง filemanager</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Varning</translation>
+        <translation>คำเตือน</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Inspelningen är inte startad, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>การอัดภาพเริ่มไม่ได้ ไม่เหลือเนื้อที่สำหรับบันทึก</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Det lediga diskutrymmet är slut.</translation>
+        <translation>ดิสใกล้เต็ม</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation>จำกัดพื้นที่เหลือของดิส</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>เมกะไบต์</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Inspelningen har stoppats, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>หยุดอัดภาพ ไม่เหลือเนื้อที่สำหรับบันทึก</translation>
     </message>
 </context>
 <context>
@@ -159,668 +159,668 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>ไม่พบ filemanager</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>โปรดติดตั้ง filemanager</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>รหัสต้นฉบับ</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>โฮมเพจ</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>การแปล</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>บริจาค</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>รหัสต้นฉบับ</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>โฮมเพจ</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>การแปล</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>บริจาค</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>ไม่พบ filemanager</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>โปรดติดตั้ง filemanager</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>เลือกอุปกรณ์</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>พื้นที่</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>พื้นที่</translation>
     </message>
 </context>
 <context>
     <name>QvkShowMessage_wl</name>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>โฟลเดอร์</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>ไม่พบ filemanager</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>โปรดติดตั้ง filemanager</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>เริ่ม</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>หยุด</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>หยุดชั่วคราว</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>ต่อ</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>ออก</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>กล้อง</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>เกาะติด</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>เริ่ม</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>หยุด</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>หยุดชั่วคราว</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>ต่อ</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>ออก</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>กล้อง</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>เกาะติด</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray_wl</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>เริ่ม</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>หยุด</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>หยุดชั่วคราว</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>ต่อ</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>ออก</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>เลือกอุปกรณ์</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>ไดอะล็อก</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>พลิกแนวนอน</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>พลิกแนวตั้ง</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>กลับด้าน</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>เกรย์</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>ขาว-และ-ดำ</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>ลบเฟรมหน้าต่าง</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kamerainställningar</translation>
+        <translation>เซตกล้อง</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>พื้นที่</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>รีเซต</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>เกาะติด</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>นับถอยหลัง</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>ขนาดวีดีโอ</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>เพิ่มเนื้อที่ดิส</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>สารสนเทศ</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>เวลาอัด</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ljud</translation>
+        <translation>เสียง</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>เฟรม</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>ตัวถอดรหัสวิดีโอ</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>รูปแบบ</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>ตัวถอดรหัสเสียง</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>ไม่ต้องแสดงเคอร์เซอร์</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Timma</translation>
+        <translation>ชั่วโมง</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minut</translation>
+        <translation>นาที</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Starta tiduret</translation>
+        <translation>เวลาเริ่ม</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stoppa inspelningen efter</translation>
+        <translation>หยุดอัดภาพก่อนที่</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Timmar</translation>
+        <translation>ชั่วโมง</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuter</translation>
+        <translation>นาที</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunder</translation>
+        <translation>วินาที</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>พาธของวิดีโอ</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation>จำกัดพื้นที่เหลือของดิส</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>แสดงในถาดระบบ</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>Second wait before recording</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Sök efter uppdateringar</translation>
+        <translation>ตรวจการอัพเดท</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>ช่วยเหลือ</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>วีดีโอ</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>พร้อม</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>ไม่พร้อม</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>เริ่ม</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>หยุด</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>หยุดชั่วคราว</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>ต่อ</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>เล่น</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>โฟลเดอร์</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>กล้อง</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>กลับด้าน</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>เกรย์</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Spela upp senaste inspelning</translation>
+        <translation>เล่นวีดีโอล่าสุด</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Öppna mapp</translation>
+        <translation>เปิดโฟลเดอร์</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation>ย่อหน้าต่างเมื่อเริ่มอัด</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Starta minimerad</translation>
+        <translation>เริ่มโปรแกรมแบบย่อ</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>พลิกแนวนอน</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>พลิกแนวตั้ง</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>ขาว-และ-ดำ</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>ลบเฟรมหน้าต่าง</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>รีเซตเมื่อเริ่มโปรแกรมใหม่</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Copyright and license from pictures</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>เมกะไบต์</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Skärminspelning</translation>
+        <translation>แชร์หน้าจอ</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Spelare</translation>
+        <translation>เครื่องเล่น</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logg</translation>
+        <translation>ล็อค</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>อัตโนมัติ</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>สร้างภาพตัวอย่างดีไซน์ </translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>ข้อมูลใบอนุญาตของโปรแกรม </translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>เปิด</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>ปิด</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Systemövergripande tangentbordsgenvägar</translation>
+        <translation>ปุ่ม shotcut ทางลัด</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tilldelade snabbtangenter</translation>
+        <translation>ปุ่ม shotcut ได้ถูกสร้างขึ้นแล้ว</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Ej tilldelade snabbtangenter eller tilldelade mer än en gång.</translation>
+        <translation>ปุ่ม shotcut นี้ยังไม่ได้กำหนดขึ้น หรืออาจถูกตั้งเป็นปุ่มคำสั่งทางลัดมากกว่า 1 คำสั่ง</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Om den visas som tilldelad men inte fungerar, används den av ett annat program.</translation>
+        <translation>หากปุ่ม shotcut ทางลัดถูกสร้างขึ้นแล้วและกดใช้งานไม่ได้ มันอาจทับกับโปรแกรมอื่นอยู่</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>จับภาพนิ่ง</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bildsökväg</translation>
+        <translation>ตำแหน่งที่ใช้เก็บไฟล์ภาพ</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>ซ่อนหน้าต่างนี้ไว้</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>ตัวช่วยหน่วงเวลาก่อนกดบันทึกหน้าจอ</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>หน้าต่าง</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>เต็มจอ</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Copyright and license from pictures</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>สร้างภาพตัวอย่างดีไซน์ </translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>ข้อมูลใบอนุญาตของโปรแกรม </translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>เปิด</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>ปิด</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>เวลาอัด</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>ขนาดวีดีโอ</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>เพิ่มเนื้อที่ดิส</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>สารสนเทศ</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>หน้าต่าง</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>เต็มจอ</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>พื้นที่</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>ตัวถอดรหัสวิดีโอ</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>เฟรม</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>รูปแบบ</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>พร้อม</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>ไม่พร้อม</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>เริ่ม</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>หยุด</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>โฟลเดอร์</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>ไม่ต้องแสดงเคอร์เซอร์</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>ตัวถอดรหัสเสียง</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>พาธของวิดีโอ</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>นับถอยหลัง</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>ช่วยเหลือ</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>กล้อง</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>Second wait before recording</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>รีเซต</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>ซ่อนหน้าต่างนี้ไว้</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>ตัวช่วยหน่วงเวลาก่อนกดบันทึกหน้าจอ</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>อัตโนมัติ</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>หยุดชั่วคราว</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>ต่อ</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>แสดงในถาดระบบ</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>รีเซตเมื่อเริ่มโปรแกรมใหม่</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>จับภาพนิ่ง</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation>ย่อหน้าต่างเมื่อเริ่มอัด</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Copyright and license from pictures</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>เล่น</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>หยุดชั่วคราว</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>หยุด</translation>
     </message>
 </context>
 </TS>

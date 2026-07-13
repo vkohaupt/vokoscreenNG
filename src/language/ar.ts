@@ -1,157 +1,157 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ar">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>اختر جهازًا واحدًا أو أكثر</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>اختر جهازًا واحدًا أو أكثر</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraOneOptions</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>إزالة إطار النافذة</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>إزالة إطار النافذة</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>تغيير الوجه الرأسي</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>تغيير الوجه الأفقي</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>عكس</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>رمادي</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>ابيض واسود</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Växla till fönsterläge</translation>
+        <translation> أظهر النافذة</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Växla till helskärmsläge</translation>
+        <translation>تغيير لملء الشاشة</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSurface_wl</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>الكاميرا</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>الكاميرا</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Installationen gick bra.</translation>
+        <translation>كان الإعداد ناجحًا.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Stäng detta fönster och starta vokoscreenNG igen.</translation>
+        <translation>أغلق هذه النافذة وابدأ تشغيل vokoscreenNG مرة أخرى.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Ha så kul med vokoscreenNG</translation>
+        <translation>استمتع مع vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>الحوار</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>مساعده</translation>
     </message>
 </context>
 <context>
     <name>QvkHelpBrowser_wl</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>مساعده</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>الرجاء تثبيت مدير الملفات</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>الرجاء تثبيت مدير الملفاتالرجاء تنصيب اداره الملفات</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Varning</translation>
+        <translation>تحذير</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Inspelningen är inte startad, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>لم يبدأ التسجيل، لاتوجد مساحة حرة كافية على القرص.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Det lediga diskutrymmet är slut.</translation>
+        <translation>تم الوصول إلى الحد الأقصى لمساحة القرص الحرة.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation> مساحه التخزين المتاحه: </translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>ميغابايت</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Inspelningen har stoppats, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>توقّف التسجيل، لاتوجد مساحة حرة كافية على القرص.</translation>
     </message>
 </context>
 <context>
@@ -159,668 +159,668 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>الرجاء تثبيت مدير الملفاتالرجاء تنصيب اداره الملفات</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>الملف المصدري</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>صفحة البرنامج</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>الترجمات</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>تبرع</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>الملف المصدري</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>صفحة البرنامج</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>الترجمات</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>تبرع</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>الرجاء تثبيت مدير الملفات</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>اختر جهازًا واحدًا أو أكثر</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>منطقة</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>منطقة</translation>
     </message>
 </context>
 <context>
     <name>QvkShowMessage_wl</name>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>دليل</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>الرجاء تثبيت مدير الملفات</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>اِبدأ</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>اُخرج</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>الكاميرا</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>المكبّرة</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>اِبدأ</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>اُخرج</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>الكاميرا</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>المكبّرة</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray_wl</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>اِبدأ</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>اُخرج</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>اِختر جهازاً أو أكثر</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>الحوار</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>تغيير الوجه الأفقي</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>تغيير الوجه الرأسي</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>عكس</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>رمادي</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>ابيض واسود</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>إزالة إطار النافذة</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kamerainställningar</translation>
+        <translation>اعدادات الكاميرا</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>منطقة</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>أعاده للوضع </translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>المكبّرة</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>عدّ تنازلي</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>حجم ملف الفيديو</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>مساحه التخزين المتاحه:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>معلومه</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>مده التسجيل</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ljud</translation>
+        <translation>الصوت</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>المشاهد</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>ترميز الفيديو</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>الصيغة</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>ترميز الصوت</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>لا تسجل مؤشر الفأرة</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Timma</translation>
+        <translation>ساعه</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minut</translation>
+        <translation>دقيقه</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Starta tiduret</translation>
+        <translation>بدأ الموقت</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stoppa inspelningen efter</translation>
+        <translation>اوقف التسجيل بعد</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Timmar</translation>
+        <translation>ساعات</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuter</translation>
+        <translation>دقائق</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunder</translation>
+        <translation>ثواني</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>مسار الفيديو</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation> مساحه التخزين المتاحه: </translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>أظهِر البرنامج في مساحة التبليغ</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>الانتظار الثاني قبل التسجيل</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Sök efter uppdateringar</translation>
+        <translation>ابحث عن التحديثات</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>مساعده</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>قيديو</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>المتاح</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>غير متاح</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>اِبدأ</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>شغّل</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>دليل</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>الكاميرا</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>عكس</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>رمادي</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Spela upp senaste inspelning</translation>
+        <translation>شغل اخر تسجيل</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Öppna mapp</translation>
+        <translation>افتح الدليل</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation> تصغير البرنامج عند بدأ التسجيل </translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Starta minimerad</translation>
+        <translation> البدء بوضع التصغير </translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>تغيير الوجه الأفقي</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>تغيير الوجه الرأسي</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>ابيض واسود</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>إزالة إطار النافذة</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>إعادة ضبط جميع الإعدادات في التشغيل القادم</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>ميغابايت</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Skärminspelning</translation>
+        <translation>القاء الشاشة</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Spelare</translation>
+        <translation>المشغّل</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logg</translation>
+        <translation>سجل</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>تلقائيا</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>إنشاء صور لعلامات التبويب</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>معلومات الترخيص</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>تشغيل</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>إيقاف</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Systemövergripande tangentbordsgenvägar</translation>
+        <translation>اختصارات لوحة المفاتيح العامة</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tilldelade snabbtangenter</translation>
+        <translation>مفاتيح الاختصار المعينة.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Ej tilldelade snabbtangenter eller tilldelade mer än en gång.</translation>
+        <translation>لم يتم تعيين اختصار لوحة المفاتيح أو تم التعيين أكثر من مرة.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Om den visas som tilldelad men inte fungerar, används den av ett annat program.</translation>
+        <translation>إذا ظهر أنه تم تعيينه ولكنه لا يعمل ، فهذا يعني أنه قيد الاستخدام من قبل برنامج آخر.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>لقطة</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bildsökväg</translation>
+        <translation>المسار</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>إخفاء النافذة</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>ثواني الانتظار قبل بدء التسجيل</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>نافذة</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>شاشة كاملة</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>إنشاء صور لعلامات التبويب</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>معلومات الترخيص</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>تشغيل</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>إيقاف</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>مده التسجيل</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>حجم ملف الفيديو</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>مساحه التخزين المتاحه:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>معلومه</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>نافذة</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>شاشة كاملة</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>منطقة</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>ترميز الفيديو</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>المشاهد</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>الصيغة</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>المتاح</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>غير متاح</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>اِبدأ</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>دليل</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>لا تسجل مؤشر الفأرة</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>ترميز الصوت</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>مسار الفيديو</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>عدّ تنازلي</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>مساعده</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>الكاميرا</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>الانتظار الثاني قبل التسجيل</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>أعاده للوضع </translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>إخفاء النافذة</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>ثواني الانتظار قبل بدء التسجيل</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>تلقائيا</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>أظهِر البرنامج في مساحة التبليغ</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>إعادة ضبط جميع الإعدادات في التشغيل القادم</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>لقطة</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation> تصغير البرنامج عند بدأ التسجيل </translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>حقوق النشر والترخيص من الصور</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>شغّل</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>إيقاف مؤقت</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>أوقِف</translation>
     </message>
 </context>
 </TS>

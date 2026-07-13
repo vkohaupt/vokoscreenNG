@@ -1,58 +1,58 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="cs_CZ">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Vyberte jedno nebo více zařízení</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Vyberte jedno nebo více zařízení</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraOneOptions</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Odstranit rám okna</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Odstranit rám okna</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>Překlopit svisle</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>Překlopit vodorovně</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>Invertovat</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>Šedý</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>Černá a bílá</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Växla till fönsterläge</translation>
+        <translation>Přepnout do okna</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Växla till helskärmsläge</translation>
+        <translation>Přepnout na celou obrazovku</translation>
     </message>
 </context>
 <context>
@@ -73,15 +73,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Installationen gick bra.</translation>
+        <translation>Nastavení proběhlo úspěšně.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Stäng detta fönster och starta vokoscreenNG igen.</translation>
+        <translation>Zavřít toto okno, a spustit vokoscreenNG znovu.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Ha så kul med vokoscreenNG</translation>
+        <translation>Hezkou zábavu s vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -95,63 +95,63 @@
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Nápověda</translation>
     </message>
 </context>
 <context>
     <name>QvkHelpBrowser_wl</name>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Nápověda</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Nebyl nalezen žádný správce souborů.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prosím o instalaci správce souborů.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Nebyl nalezen žádný správce souborů.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prosím o instalaci správce souborů.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Varning</translation>
+        <translation>Upozornění</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Inspelningen är inte startad, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>Nahrávání nemůže být spuštěno, není dostatek volného místa na disku.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Det lediga diskutrymmet är slut.</translation>
+        <translation>Je dosaženo limitu volného místa na disku.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation>Limit volného místa na disku</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Inspelningen har stoppats, det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>Nahrávání bylo zastaveno, není volné místo na disku.</translation>
     </message>
 </context>
 <context>
@@ -159,116 +159,116 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Nebyl nalezen žádný správce souborů.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prosím o instalaci správce souborů.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>Zdrojový kód</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>Domovská stránka</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>Překlad</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>Podpořit</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Källkod</translation>
+        <translation>Zdrojový kód</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hemsida</translation>
+        <translation>Domovská stránka</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättningar</translation>
+        <translation>Překlad</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donera</translation>
+        <translation>Podpořit</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Nebyl nalezen žádný správce souborů.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prosím o instalaci správce souborů.</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Vyberte jedno nebo více zařízení</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Výřez</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Výřez</translation>
     </message>
 </context>
 <context>
     <name>QvkShowMessage_wl</name>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>Adresář</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filhanterare hittades.</translation>
+        <translation>Nebyl nalezen žádný správce souborů.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installera en filhanterare.</translation>
+        <translation>Prosím o instalaci správce souborů.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Pokračovat</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>Odejít</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -276,30 +276,30 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>Zvětšení</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Pokračovat</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>Odejít</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -307,37 +307,37 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>Zvětšení</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray_wl</name>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Pokračovat</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avsluta</translation>
+        <translation>Odejít</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
+        <translation>Vyberte jedno nebo více zařízení</translation>
     </message>
 </context>
 <context>
@@ -348,74 +348,74 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>Překlopit vodorovně</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>Překlopit svisle</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>Invertovat</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>Šedý</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>Černá a bílá</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Odstranit rám okna</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kamerainställningar</translation>
+        <translation>Nastavení kamery</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Výřez</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoringsglas</translation>
+        <translation>Zvětšení</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>Odpočítávání</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>Velikost videa:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>Volné místo na disku:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informace</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>Doba záznamu:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ljud</translation>
+        <translation>Zvuk</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>Snímky</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -423,67 +423,67 @@
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>Audiokodek</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>Nenahrávat kurzor myši</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Timma</translation>
+        <translation>Hodina</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minut</translation>
+        <translation>Minuta</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Starta tiduret</translation>
+        <translation>Spustit časovač</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stoppa inspelningen efter</translation>
+        <translation>Ukončit nahrávání po</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Timmar</translation>
+        <translation>Hodiny</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuter</translation>
+        <translation>Minuty</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunder</translation>
+        <translation>Sekundy</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>Cesta k videosekvenci</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt diskutrymme</translation>
+        <translation>Limit volného místa na disku</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>Zobrazit v systémové části panelu</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>Druhé čekání před nahráváním</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Sök efter uppdateringar</translation>
+        <translation>Vyhledat aktualizace</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Nápověda</translation>
     </message>
     <message>
         <source>Video</source>
@@ -491,35 +491,35 @@
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>Dostupný</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>Nedostupný</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Pokračovat</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>Přehrát</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>Adresář</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -527,178 +527,178 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertera</translation>
+        <translation>Invertovat</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grå</translation>
+        <translation>Šedý</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Spela upp senaste inspelning</translation>
+        <translation>Přehrát poslední záznam</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Öppna mapp</translation>
+        <translation>Otevřít adresář</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation>Minimalizovat před začátkem nahrávání</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Starta minimerad</translation>
+        <translation>Spustit minimalizované</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
+        <translation>Překlopit vodorovně</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
+        <translation>Překlopit svisle</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svartvit</translation>
+        <translation>Černá a bílá</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterram</translation>
+        <translation>Odstranit rám okna</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>Obnovit všechna nastavení při následujícím spuštění</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Autorská práva a licence k obrázkům</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Skärminspelning</translation>
+        <translation>Nahrávka</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Spelare</translation>
+        <translation>Přehrávač</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logg</translation>
+        <translation>Logy</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>Automaticky</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>Vytvořit snímky karet</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>Informace o licenci</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>Zapnuto</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>Vypnuto</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Systemövergripande tangentbordsgenvägar</translation>
+        <translation>Globální klávesové zkratky</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tilldelade snabbtangenter</translation>
+        <translation>Přiřazené klávesové zkratky.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Ej tilldelade snabbtangenter eller tilldelade mer än en gång.</translation>
+        <translation>Nepřiřazená nebo více než jednou přiřazená klávesová zkratka.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Om den visas som tilldelad men inte fungerar, används den av ett annat program.</translation>
+        <translation>Pokud je zobrazena jako přiřazená, ale nefunguje, používá ji jiný program.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>Momentka</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bildsökväg</translation>
+        <translation>Složka nahrávek (záznamů)</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>Skrýt toto okno</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>Vteřin počkej před nahráváním</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>Okno</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>Celá obrazovka</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Autorská práva a licence k obrázkům</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Skapa bilder av flikar</translation>
+        <translation>Vytvořit snímky karet</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licensinformation</translation>
+        <translation>Informace o licenci</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>Zapnuto</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>Vypnuto</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Inspelningstid:</translation>
+        <translation>Doba záznamu:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostorlek:</translation>
+        <translation>Velikost videa:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme:</translation>
+        <translation>Volné místo na disku:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informace</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fönster</translation>
+        <translation>Okno</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Helskärm</translation>
+        <translation>Celá obrazovka</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Výřez</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -706,51 +706,51 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bildrutor</translation>
+        <translation>Snímky</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgänglig</translation>
+        <translation>Dostupný</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Inte tillgänglig</translation>
+        <translation>Nedostupný</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starta</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapp</translation>
+        <translation>Adresář</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in muspekaren</translation>
+        <translation>Nenahrávat kurzor myši</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ljudkodek</translation>
+        <translation>Audiokodek</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videosökväg</translation>
+        <translation>Cesta k videosekvenci</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedräkning</translation>
+        <translation>Odpočítávání</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Nápověda</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -758,69 +758,69 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Vänta x sekunder före inspelningsstart</translation>
+        <translation>Druhé čekání před nahráváním</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställ</translation>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dölj det här fönstret</translation>
+        <translation>Skrýt toto okno</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunders väntetid före inspelning</translation>
+        <translation>Vteřin počkej před nahráváním</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatiskt</translation>
+        <translation>Automaticky</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsätt</translation>
+        <translation>Pokračovat</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visa i systemfältet</translation>
+        <translation>Zobrazit v systémové části panelu</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa programstart</translation>
+        <translation>Obnovit všechna nastavení při následujícím spuštění</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Ögonblicksbild</translation>
+        <translation>Momentka</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimerad när inspelning startar</translation>
+        <translation>Minimalizovat před začátkem nahrávání</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright och licens från bilder</translation>
+        <translation>Autorská práva a licence k obrázkům</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Spela upp</translation>
+        <translation>Přehrát</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppa</translation>
+        <translation>Stop</translation>
     </message>
 </context>
 </TS>

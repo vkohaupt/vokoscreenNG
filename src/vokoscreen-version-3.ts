@@ -16,13 +16,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraOneOptions</name>
-    <message>
-        <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>

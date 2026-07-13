@@ -649,10 +649,6 @@
         <source>Fullscreen</source>
         <translation>Visas ekranas</translation>
     </message>
-    <message>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
