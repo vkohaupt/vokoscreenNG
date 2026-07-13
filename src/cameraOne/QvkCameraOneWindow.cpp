@@ -85,7 +85,7 @@ int QvkCameraOneWindow::get_camera_window_y()
 void QvkCameraOneWindow::showEvent(QShowEvent *event)
 {
     Q_UNUSED(event)
-    QLineEdit *lineEdit = m_parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + m_deviceName);
+    QLineEdit *lineEdit = m_parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraOneTitel_" + m_deviceName);
     setWindowTitle(lineEdit->text());
 }
 
