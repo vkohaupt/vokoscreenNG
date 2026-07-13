@@ -363,7 +363,7 @@
      <item row="2" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="2,3,0,2">
        <property name="spacing">
-        <number>20</number>
+        <number>15</number>
        </property>
        <item>
         <spacer name="horizontalSpacer_18">
@@ -402,6 +402,12 @@
          <property name="icon">
           <iconset resource="../screencast.qrc">
            <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
          </property>
          <property name="shortcut">
           <string notr="true"/>
