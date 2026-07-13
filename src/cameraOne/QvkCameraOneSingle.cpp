@@ -14,11 +14,12 @@
 
 // Varibale device enthält zum Beispiel folgenden Inhalt
 // "/dev/video1:::UVC Camera (046d:0809):::added" or removed
-QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
+QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formMainWindow *m_GuiUi) :
     QWidget(parent),
     ui(new Ui::QvkCameraOneSingle)
 {
     ui->setupUi(this);
+    GuiUi = m_GuiUi;
 
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
     ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
@@ -46,8 +47,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
-    QVBoxLayout *layout = topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_42");
-    layout->addWidget(vkCameraOneOptions);
+    GuiUi->verticalLayout_42->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
     connect(ui->checkBoxCameraOneOnOff, &QCheckBox::clicked, this, [=](bool value){

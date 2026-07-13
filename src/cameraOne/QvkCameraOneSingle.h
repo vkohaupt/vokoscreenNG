@@ -6,7 +6,9 @@
 
 #include "QvkCameraOneWindow.h"
 #include "QvkCameraOneOptions.h"
+
 #include "ui_QvkCameraOneSingle.h"
+#include "ui_formMainWindow.h"
 
 namespace Ui {
 class QvkCameraOneSingle;
@@ -17,7 +19,7 @@ class QvkCameraOneSingle : public QWidget
     Q_OBJECT
 
 public:
-    explicit QvkCameraOneSingle(QWidget *parent = nullptr, QString device = "");
+    explicit QvkCameraOneSingle(QWidget *parent, QString device, Ui_formMainWindow *m_GuiUi);
     ~QvkCameraOneSingle();
     QvkCameraOneWindow *vkCameraOneWindow = NULL;
     int cameraOneWindow_X = 200;
@@ -26,6 +28,7 @@ public:
     QvkCameraOneOptions *vkCameraOneOptions = NULL;
 
 private:
+    Ui_formMainWindow *GuiUi;
 
 
 };
