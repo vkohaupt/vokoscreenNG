@@ -38,8 +38,8 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
     m_objectName = vkCameraOneOptions->ui->lineEditCameraTitel->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->lineEditCameraTitel->setObjectName(m_objectName);
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraTitelReset->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraTitelReset->setObjectName(m_objectName);
+    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->objectName() + "_" + device.section(":::", 0, 0);
+    vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraFramelessOnOff->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraFramelessOnOff->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->objectName() + "_" + device.section(":::", 0, 0);
@@ -112,11 +112,11 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
         }
     });
 
-    connect(vkCameraOneOptions->ui->toolButtonCameraTitelReset, &QToolButton::clicked, this, [=](){
+    connect(vkCameraOneOptions->ui->toolButtonCameraOneTitelReset, &QToolButton::clicked, this, [=](){
         QLineEdit *lineEdit = parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + device.section(":::", 0, 0));
         lineEdit->setText(global::name + "  " + global::version);
     });
-    vkCameraOneOptions->ui->toolButtonCameraTitelReset->click();
+    vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->click();
 }
 
 QvkCameraOneSingle::~QvkCameraOneSingle()

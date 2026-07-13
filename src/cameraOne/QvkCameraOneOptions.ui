@@ -395,7 +395,7 @@
         </widget>
        </item>
        <item alignment="Qt::AlignmentFlag::AlignVCenter">
-        <widget class="QToolButton" name="toolButtonCameraTitelReset">
+        <widget class="QToolButton" name="toolButtonCameraOneTitelReset">
          <property name="text">
           <string notr="true"/>
          </property>
