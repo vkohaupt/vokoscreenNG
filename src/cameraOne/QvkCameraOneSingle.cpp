@@ -35,35 +35,35 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
     ui->comboBoxCameraOneResolution->setObjectName(m_objectName);
 
     vkCameraOneOptions = new QvkCameraOneOptions(this);
+    {
+        m_objectName = vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->setObjectName(m_objectName);
+        vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
 
-    m_objectName = vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->setObjectName(m_objectName);
-    vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
+        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->setObjectName(m_objectName);
 
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->setObjectName(m_objectName);
+        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->setObjectName(m_objectName);
 
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->setObjectName(m_objectName);
+        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->setObjectName(m_objectName);
 
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->setObjectName(m_objectName);
+        m_objectName = vkCameraOneOptions->ui->lineEditCameraOneTitel->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->lineEditCameraOneTitel->setObjectName(m_objectName);
 
-    m_objectName = vkCameraOneOptions->ui->lineEditCameraOneTitel->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->lineEditCameraOneTitel->setObjectName(m_objectName);
+        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->setObjectName(m_objectName);
 
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->setObjectName(m_objectName);
+        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->setObjectName(m_objectName);
 
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->setObjectName(m_objectName);
+        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->setObjectName(m_objectName);
 
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->setObjectName(m_objectName);
-
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
-
+        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
+        vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
+    }
     GuiUi->verticalLayout_42->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
