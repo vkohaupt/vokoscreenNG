@@ -38,7 +38,7 @@
      <item row="0" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QRadioButton" name="radioButton">
+        <widget class="QRadioButton" name="radioButtonCameraOneSelect">
          <property name="text">
           <string notr="true"/>
          </property>

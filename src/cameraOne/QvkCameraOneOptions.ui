@@ -227,7 +227,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton_camera_view_rectangle">
+        <widget class="QToolButton" name="toolButtonCameraOneViewRectangle">
          <property name="text">
           <string notr="true"/>
          </property>
@@ -276,7 +276,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton_camera_view_ellipse">
+        <widget class="QToolButton" name="toolButtonCameraOneViewEllipse">
          <property name="text">
           <string notr="true"/>
          </property>
@@ -319,7 +319,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButton_camera_view_circle">
+        <widget class="QToolButton" name="toolButtonCameraOneViewCircle">
          <property name="text">
           <string notr="true"/>
          </property>

@@ -21,7 +21,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     ui->setupUi(this);
 
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
-    ui->radioButton->setObjectName(ui->radioButton->objectName() + "_" + device.section(":::", 0, 0));
+    ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
 
     QString m_objectName = ui->checkBoxCameraOneOnOff->objectName() + "_" + device.section(":::", 0, 0);
     ui->checkBoxCameraOneOnOff->setObjectName(m_objectName);
@@ -84,7 +84,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     });
 
     // Options On/Off
-    connect(ui->radioButton,
+    connect(ui->radioButtonCameraOneSelect,
             &QRadioButton::toggled,
             this,
             [=](bool checked){
@@ -101,7 +101,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
             }
         }
     });
-    ui->radioButton->click();
+    ui->radioButtonCameraOneSelect->click();
 
     connect(vkCameraOneOptions->ui->lineEditCameraOneTitel,
             &QLineEdit::textChanged,

@@ -21,7 +21,7 @@ QvkCameraOneController::QvkCameraOneController(QWidget *parent) : QWidget(parent
         if (device.section(":::", 2, 2) == "added"){
             QVBoxLayout *layoutForCameras = topLevelWidget()->findChild<QVBoxLayout *>("verticalLayout_28");
             vkCameraOneSingle = new QvkCameraOneSingle(this, device);
-            buttonGroup->addButton(vkCameraOneSingle->ui->radioButton);
+            buttonGroup->addButton(vkCameraOneSingle->ui->radioButtonCameraOneSelect);
             layoutForCameras->addWidget(vkCameraOneSingle);
         }
         if (device.section(":::", 2, 2) == "removed"){
