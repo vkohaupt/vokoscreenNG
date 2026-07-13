@@ -17,7 +17,7 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     m_parent = parent;
     m_deviceName = deviceName;
     setObjectName(objectName() + "_" + deviceName);
-    toolButton_Frame_OnOff = topLevelWidget()->findChild<QToolButton *>("toolButtonCameraFramelessOnOff_" + deviceName);
+    toolButton_Frame_OnOff = topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + deviceName);
 
     if (toolButton_Frame_OnOff->isChecked() == false){
         Qt::WindowFlags flags;

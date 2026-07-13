@@ -40,8 +40,8 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     vkCameraOneOptions->ui->lineEditCameraOneTitel->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->setObjectName(m_objectName);
-    m_objectName = vkCameraOneOptions->ui->toolButtonCameraFramelessOnOff->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->toolButtonCameraFramelessOnOff->setObjectName(m_objectName);
+    m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->objectName() + "_" + device.section(":::", 0, 0);
+    vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
@@ -70,7 +70,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     });
 
     // Frame On/Off
-    connect(vkCameraOneOptions->ui->toolButtonCameraFramelessOnOff,
+    connect(vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff,
             &QToolButton::clicked,
             this,
             [=](){
