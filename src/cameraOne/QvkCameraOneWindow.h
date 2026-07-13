@@ -2,9 +2,10 @@
 #define QVKCAMERAONEWINDOW_H
 
 #include <QWidget>
-#include <QCheckBox>
+//#include <QCheckBox>
 #include <QShowEvent>
 #include <QCloseEvent>
+#include <QToolButton>
 
 namespace Ui {
 class QvkCameraOneWindow;
@@ -23,7 +24,8 @@ public:
 
 private:
     Ui::QvkCameraOneWindow *ui;
-    QCheckBox *checkBox_Frame_OnOff = nullptr;
+//    QCheckBox *checkBox_Frame_OnOff = nullptr;
+    QToolButton *toolButton_Frame_OnOff = nullptr;
     QWidget *m_parent = nullptr;
     QString m_deviceName;
 

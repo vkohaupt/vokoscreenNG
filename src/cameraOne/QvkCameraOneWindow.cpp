@@ -17,16 +17,17 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     m_parent = parent;
     m_deviceName = deviceName;
     setObjectName(objectName() + "_" + deviceName);
-    checkBox_Frame_OnOff = m_parent->topLevelWidget()->findChild<QCheckBox *>("checkBox_Frame_OnOff_" + deviceName);
+    toolButton_Frame_OnOff = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraFramelessOnOff_" + deviceName);
 
-    if (checkBox_Frame_OnOff->isChecked() == false){
+    
+    if (toolButton_Frame_OnOff->isChecked() == false){
         Qt::WindowFlags flags;
         flags  = Qt::Window;
         flags |= Qt::WindowStaysOnTopHint;
         setWindowFlags(flags);
     }
 
-    if (checkBox_Frame_OnOff->isChecked() == true){
+    if (toolButton_Frame_OnOff->isChecked() == true){
         Qt::WindowFlags flags;
         flags  = Qt::Window;
         flags |= Qt::FramelessWindowHint;
@@ -67,11 +68,11 @@ int QvkCameraOneWindow::get_camera_window_y()
 {
     int y = 0;
     // Rahmen wird entfernt
-    if (checkBox_Frame_OnOff->isChecked() == true){
+    if (toolButton_Frame_OnOff->isChecked() == true){
         y = geometry().y();
     }
     // Rahmen wird gesetzt
-    if (checkBox_Frame_OnOff->isChecked() == false){
+    if (toolButton_Frame_OnOff->isChecked() == false){
         int pos_y = m_parent->topLevelWidget()->pos().y();
         int geometry_y = m_parent->topLevelWidget()->geometry().y();
         y = geometry().y() - (geometry_y - pos_y);
