@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -42,9 +42,9 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
 
     // VideoSize and FreeDiskSpace
     timerStorageInfo = new QTimer(this);
-    timerStorageInfo->setTimerType( Qt::PreciseTimer );
-    timerStorageInfo->setInterval( 1000 );
-    connect( timerStorageInfo, &QTimer::timeout, this, [this](){slot_StorageInfo();} );
+    timerStorageInfo->setTimerType(Qt::PreciseTimer);
+    timerStorageInfo->setInterval(1000);
+    connect(timerStorageInfo, &QTimer::timeout, this, [this](){slot_StorageInfo();});
     timerStorageInfo->start();
 
     // Recorded time
@@ -57,13 +57,23 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
     connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){timerRecord->start();});
 
     // Frames, Format, Codecs
-    connect(ui->comboBoxAudioCodec,   &QComboBox::currentTextChanged,  this, [this](QString value){slot_Audiocodec(value);});
+    connect(ui->comboBoxAudioCodec,
+            &QComboBox::currentTextChanged,
+            this,
+            [this](QString value){
+        slot_Audiocodec(value);
+    });
 
     QList<QSlider *> listSlider = ui->centralwidget->findChildren<QSlider *>();
-    for ( int i = 0; i < listSlider.count(); i++ ) {
+    for (int i = 0; i < listSlider.count(); i++){
         QSlider *slider = listSlider.at(i);
-        if ( slider->objectName() == "sliderFrames" ) {
-            connect(slider, &QvkSpezialSlider::valueChanged, this, [this](int value){slot_Frames(value);});
+        if (slider->objectName() == "sliderFrames"){
+            connect(slider,
+                    &QvkSpezialSlider::valueChanged,
+                    this,
+                    [this](int value){
+                slot_Frames(value);
+            });
         }
     }
 }
@@ -74,7 +84,7 @@ QvkInformation_wl::~QvkInformation_wl()
 }
 
 
-void QvkInformation_wl::slot_beginRecordTime(QString beginTime )
+void QvkInformation_wl::slot_beginRecordTime(QString beginTime)
 {
     Q_UNUSED(beginTime)
     sumTime = 0;

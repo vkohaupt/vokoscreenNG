@@ -236,7 +236,7 @@
          <enum>QTabWidget::TabPosition::West</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -1454,8 +1454,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>24</width>
-                     <height>100</height>
+                     <width>490</width>
+                     <height>395</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
