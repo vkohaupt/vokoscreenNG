@@ -1,6 +1,7 @@
 #ifndef QVKCAMERAONEWINDOW_H
 #define QVKCAMERAONEWINDOW_H
 
+#include <QString>
 #include <QWidget>
 #include <QShowEvent>
 #include <QCloseEvent>

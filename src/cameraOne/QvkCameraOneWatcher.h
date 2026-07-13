@@ -24,9 +24,6 @@
 #define QVKCAMERAONEWATCHER_H
 
 #include <QObject>
-#include <QCameraDevice>
-#include <QMediaDevices>
-#include <QList>
 #include <QStringList>
 
 class QvkCameraOneWatcher : public QObject
