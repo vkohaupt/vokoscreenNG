@@ -36,8 +36,8 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     m_objectName = vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->setObjectName(m_objectName);
     vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
-    m_objectName = vkCameraOneOptions->ui->lineEditCameraTitel->objectName() + "_" + device.section(":::", 0, 0);
-    vkCameraOneOptions->ui->lineEditCameraTitel->setObjectName(m_objectName);
+    m_objectName = vkCameraOneOptions->ui->lineEditCameraOneTitel->objectName() + "_" + device.section(":::", 0, 0);
+    vkCameraOneOptions->ui->lineEditCameraOneTitel->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->objectName() + "_" + device.section(":::", 0, 0);
     vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->setObjectName(m_objectName);
     m_objectName = vkCameraOneOptions->ui->toolButtonCameraFramelessOnOff->objectName() + "_" + device.section(":::", 0, 0);
@@ -103,18 +103,17 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device) :
     });
     ui->radioButton->click();
 
-    connect(vkCameraOneOptions->ui->lineEditCameraTitel,
+    connect(vkCameraOneOptions->ui->lineEditCameraOneTitel,
             &QLineEdit::textChanged,
             this,
             [=](){
         if (vkCameraOneWindow != NULL){
-            vkCameraOneWindow->setWindowTitle(vkCameraOneOptions->ui->lineEditCameraTitel->text());
+            vkCameraOneWindow->setWindowTitle(vkCameraOneOptions->ui->lineEditCameraOneTitel->text());
         }
     });
 
     connect(vkCameraOneOptions->ui->toolButtonCameraOneTitelReset, &QToolButton::clicked, this, [=](){
-        QLineEdit *lineEdit = parent->topLevelWidget()->findChild<QLineEdit *>("lineEditCameraTitel_" + device.section(":::", 0, 0));
-        lineEdit->setText(global::name + "  " + global::version);
+        vkCameraOneOptions->ui->lineEditCameraOneTitel->setText(global::name + "  " + global::version);
     });
     vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->click();
 }

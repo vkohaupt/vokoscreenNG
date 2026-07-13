@@ -379,7 +379,7 @@
         </spacer>
        </item>
        <item alignment="Qt::AlignmentFlag::AlignVCenter">
-        <widget class="QLineEdit" name="lineEditCameraTitel">
+        <widget class="QLineEdit" name="lineEditCameraOneTitel">
          <property name="inputMask">
           <string notr="true"/>
          </property>
