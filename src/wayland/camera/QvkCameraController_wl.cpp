@@ -47,10 +47,10 @@
  *
  */
 
-QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
+QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi )
 {
-    ui = ui_surface;
-    ui->help_camera_camera->hide();
+    GuiUi = m_GuiUi;
+    GuiUi->help_camera_camera->hide();
 }
 
 
@@ -78,10 +78,10 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
     if(device.contains("added")){
         vkCameraSingle_wl = new QvkCameraSingle_wl;
-        vkCameraSingle_wl->set_GUIui(ui);
+        vkCameraSingle_wl->set_GUIui(GuiUi);
         vkCameraSingle_wl->set_init(device);
         vkCameraSingle_wl->set_PixelFormatOnComboBox(device.section(":::", 0, 0));
-        ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
+        GuiUi->verticalLayout_3->addWidget(vkCameraSingle_wl);
         emit signal_forSystrayCameraAdded(vkCameraSingle_wl->ui->checkBoxCameraOnOff);
 
         // Kameras werden in der GUI disabled oder enabled
@@ -102,7 +102,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
     if(device.contains("removed")){
         // Camera ist aktiv und wurde entfernt
-        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        QList<QCheckBox *> listCheckBox = GuiUi->centralwidget->findChildren<QCheckBox *>();
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listCheckBox.at(i);
             QString str_1 = checkBox->objectName();
@@ -115,7 +115,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             }
         }
 
-        QList<QvkCameraSingle_wl *> listCameraSingle = ui->centralwidget->findChildren<QvkCameraSingle_wl *>();
+        QList<QvkCameraSingle_wl *> listCameraSingle = GuiUi->centralwidget->findChildren<QvkCameraSingle_wl *>();
         for(int i = 0; i < listCameraSingle.count(); i++){
             QvkCameraSingle_wl *cameraSingle = listCameraSingle.at(i);
             if(cameraSingle->objectName() == QString("cameraSingleVideoID_" + device.section(":::", 0, 0 ))){
@@ -131,7 +131,7 @@ void QvkCameraController_wl::slot_disableEnableCameras(bool checked)
 {
     // Disable all other cameras
     if ( checked == true ){
-        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        QList<QCheckBox *> listCheckBox = GuiUi->centralwidget->findChildren<QCheckBox *>();
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listCheckBox.at(i);
             if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){
@@ -144,7 +144,7 @@ void QvkCameraController_wl::slot_disableEnableCameras(bool checked)
 
     // Enable all cameras
     if ( checked == false ){
-        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        QList<QCheckBox *> listCheckBox = GuiUi->centralwidget->findChildren<QCheckBox *>();
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listCheckBox.at(i);
             if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){

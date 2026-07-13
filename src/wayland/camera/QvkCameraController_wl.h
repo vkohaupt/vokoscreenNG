@@ -37,11 +37,11 @@ class QvkCameraController_wl : public QObject
     Q_OBJECT
 
 public:
-    QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
+    QvkCameraController_wl( Ui_formMainWindow_wl *m_GuiUi );
     virtual ~QvkCameraController_wl();
     void init();
     QvkCameraSingle_wl *vkCameraSingle_wl = NULL;
-    Ui_formMainWindow_wl *ui;
+    Ui_formMainWindow_wl *GuiUi;
 
 
 public slots:
