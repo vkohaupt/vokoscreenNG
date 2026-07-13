@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -269,7 +269,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
         //
         if ( checkBox->objectName().contains( "checkBox_shortcut" ) and
-           ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
+             ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
         {
             checkBox->setChecked( true );
             continue;
@@ -277,100 +277,100 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
         // Start/Stop
         if ( checkBox->objectName() == "checkBox_shortcut_start_strg" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
         if ( checkBox->objectName() == "checkBox_shortcut_start_shift" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
 
         // Pause/Continue
         if ( checkBox->objectName() == "checkBox_shortcut_pause_strg" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
         if ( checkBox->objectName() == "checkBox_shortcut_pause_shift" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
 
         // Magnification
         if ( checkBox->objectName() == "checkBox_shortcut_magnification_strg" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
         if ( checkBox->objectName() == "checkBox_shortcut_magnification_shift" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
 
         // Camera
         if ( checkBox->objectName() == "checkBox_shortcut_camera_strg" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
         if ( checkBox->objectName() == "checkBox_shortcut_camera_shift" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
 
         // Showclick
         if ( checkBox->objectName() == "checkBox_shortcut_showclick_strg" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
         if ( checkBox->objectName() == "checkBox_shortcut_showclick_shift" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
 
         // Halo
         if ( checkBox->objectName() == "checkBox_shortcut_halo_strg" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
         if ( checkBox->objectName() == "checkBox_shortcut_halo_shift" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
 
         // Snapshot
         if ( checkBox->objectName() == "checkBox_shortcut_snapshot_strg" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
         if ( checkBox->objectName() == "checkBox_shortcut_snapshot_shift" ) {
-             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
-                 checkBox->setChecked( true );
-                 continue;
-             }
+            if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                checkBox->setChecked( true );
+                continue;
+            }
         }
 
 
@@ -381,7 +381,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
 
         if ( ( checkBox->objectName().contains( "checkBoxGifLoop" ) ) and
-            ( settings.value( checkBox->objectName(), true ).toBool() == true ) ) {
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) ) {
             checkBox->click();
             continue;
         }
@@ -458,38 +458,25 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             if ( value == "audio-volume-muted") {
                 toolButton->click();
             }
+            continue;
         }
 
         if ( toolButton->objectName().contains( "toolButton_camera_view" ) ) {
             if ( settings.value( toolButton->objectName() ).toBool() == true ) {
                 toolButton->click();
             }
+            continue;
         }
 
         if ( toolButton->objectName().contains( "toolButton_magnifier" ) ) {
             if ( settings.value( toolButton->objectName() ).toBool() == true ) {
                 toolButton->click();
             }
+            continue;
         }
-    }
 
-    QList<QToolButton *> listToolButtonCameraView = ui_mainwindow->centralWidget->findChildren<QToolButton *>( "toolButton_camera_view_" );
-    for ( int i = 0; i < listToolButtonCameraView.count(); i++ ) {
-        QToolButton *toolButton = listToolButtonCameraView.at(i);
-        if ( toolButton->objectName().contains( "toolButton_camera_view_Rectangle" ) ) {
-            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
+        if ( settings.value( toolButton->objectName() ).toBool() == true ) {
                 toolButton->click();
-            }
-        }
-        if ( toolButton->objectName().contains( "toolButton_camera_view_Ellipse" ) ) {
-            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
-                toolButton->click();
-            }
-        }
-        if ( toolButton->objectName().contains( "toolButton_camera_view_Circle" ) ) {
-            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
-                toolButton->click();
-            }
         }
     }
 
@@ -506,7 +493,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         QPushButton *pushButton = listPushButton.at(i);
         if ( pushButton->objectName().contains( "pushButtonCameraShortcut-" ) ) {
             if ( settings.value( pushButton->objectName(), true ).toBool() == false ) {
-                   pushButton->click();
+                pushButton->click();
             }
         }
     }
@@ -622,6 +609,10 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
             settings.setValue( toolButton->objectName(), toolButton->isChecked() );
             continue;
         }
+        // Nur die checkable Toolbutton abspeichern
+        if ( toolButton->isCheckable() == true){
+            settings.setValue( toolButton->objectName(), toolButton->isChecked() );
+        }
     }
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
@@ -705,7 +696,7 @@ void QvkSettings::readCamera( QList<QvkCameraSingle *> cameraSingleList )
     for ( int i = 0; i < cameraSingleList.count(); i++ ) {
         QvkCameraSingle *vkCameraSingle = cameraSingleList.at( i );
         settings.beginGroup( "Camera-" + QString::number( i ) );
-           vkCameraSingle->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+        vkCameraSingle->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
         settings.endGroup();
     }
 }
