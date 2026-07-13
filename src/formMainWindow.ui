@@ -359,7 +359,7 @@
        <enum>QTabWidget::TabPosition::West</enum>
       </property>
       <property name="currentIndex">
-       <number>7</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1977,7 +1977,7 @@
               <item row="5" column="2">
                <widget class="QToolButton" name="help_screencast">
                 <property name="text">
-                 <string>...</string>
+                 <string notr="true">...</string>
                 </property>
                </widget>
               </item>
@@ -2238,7 +2238,7 @@
               <item row="6" column="2">
                <widget class="QToolButton" name="help_screencast_2">
                 <property name="text">
-                 <string>...</string>
+                 <string notr="true">...</string>
                 </property>
                </widget>
               </item>
@@ -4567,7 +4567,7 @@
                 <item row="2" column="2">
                  <widget class="QToolButton" name="toolButtonSnapshotImagePath">
                   <property name="text">
-                   <string notr="true">...</string>
+                   <string notr="true"/>
                   </property>
                  </widget>
                 </item>
@@ -7351,7 +7351,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
