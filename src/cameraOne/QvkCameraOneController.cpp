@@ -27,18 +27,26 @@ QvkCameraOneController::QvkCameraOneController(
             QString removedDevice = "QvkCameraOneSingle_" + device.section(":::", 0, 0);
             QvkCameraOneSingle *vkCameraOneSingle = topLevelWidget()->findChild<QvkCameraOneSingle *>(removedDevice);
             if (vkCameraOneSingle != nullptr){
-                vkCameraOneSingle->deleteLater();
+                delete vkCameraOneSingle;
             }
 
             removedDevice = "QvkCameraOneOptions_" + device.section(":::", 0, 0);
             QvkCameraOneOptions *vkCameraOneOptions = topLevelWidget()->findChild<QvkCameraOneOptions *>(removedDevice);
             if (vkCameraOneOptions != nullptr){
-                vkCameraOneOptions->deleteLater();
+                delete vkCameraOneOptions;
+            }
+        }
+
+        QList<QvkCameraOneSingle *> cameraOneSingle = topLevelWidget()->findChildren<QvkCameraOneSingle *>();
+        for(int i = 0; i < cameraOneSingle.count(); i++){
+            if (cameraOneSingle.count() == 1){
+                cameraOneSingle.at(i)->ui->radioButtonCameraOneSelect->hide();
+            }else{
+                cameraOneSingle.at(i)->ui->radioButtonCameraOneSelect->show();
             }
         }
     });
     vkCameraOneWatcher->init();
-
 }
 
 QvkCameraOneController::~QvkCameraOneController()
