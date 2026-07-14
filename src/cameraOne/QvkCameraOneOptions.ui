@@ -78,11 +78,14 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <property name="verticalSpacing">
+     <property name="spacing">
       <number>20</number>
      </property>
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <property name="spacing">
+        <number>20</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
        </item>
