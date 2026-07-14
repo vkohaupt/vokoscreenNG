@@ -64,7 +64,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
         vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
     }
-    GuiUi->verticalLayout_42->addWidget(vkCameraOneOptions);
+    GuiUi->verticalLayout_39->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
     connect(ui->checkBoxCameraOneOnOff, &QCheckBox::clicked, this, [=](bool value){
