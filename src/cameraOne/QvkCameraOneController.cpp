@@ -41,8 +41,12 @@ QvkCameraOneController::QvkCameraOneController(
         for(int i = 0; i < cameraOneSingle.count(); i++){
             if (cameraOneSingle.count() == 1){
                 cameraOneSingle.at(i)->ui->radioButtonCameraOneSelect->hide();
+                cameraOneSingle.at(i)->vkCameraOneOptions->ui->labelCameraOneOptions->hide();
+                cameraOneSingle.at(i)->ui->radioButtonCameraOneSelect->click();
             }else{
                 cameraOneSingle.at(i)->ui->radioButtonCameraOneSelect->show();
+                cameraOneSingle.at(i)->vkCameraOneOptions->ui->labelCameraOneOptions->show();
+                cameraOneSingle.at(i)->ui->radioButtonCameraOneSelect->click();
             }
         }
     });

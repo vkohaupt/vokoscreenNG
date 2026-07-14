@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "ui_QvkCameraOneOptions.h"
+
 namespace Ui {
 class QvkCameraOneOptions;
 }
