@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>351</height>
+    <height>311</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,6 +75,75 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="2,3,0,2">
+     <property name="spacing">
+      <number>15</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer_18">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item alignment="Qt::AlignmentFlag::AlignVCenter">
+      <widget class="QLineEdit" name="lineEditCameraOneTitel">
+       <property name="inputMask">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+       <property name="placeholderText">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignmentFlag::AlignVCenter">
+      <widget class="QToolButton" name="toolButtonCameraOneTitelReset">
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="icon">
+        <iconset resource="../screencast.qrc">
+         <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>18</width>
+         <height>18</height>
+        </size>
+       </property>
+       <property name="shortcut">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_43">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
@@ -217,75 +286,6 @@
        </item>
        <item>
         <spacer name="horizontalSpacer_9">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item row="5" column="0" colspan="2">
-      <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="2,3,0,2">
-       <property name="spacing">
-        <number>15</number>
-       </property>
-       <item>
-        <spacer name="horizontalSpacer_18">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item alignment="Qt::AlignmentFlag::AlignVCenter">
-        <widget class="QLineEdit" name="lineEditCameraOneTitel">
-         <property name="inputMask">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string notr="true"/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-         <property name="placeholderText">
-          <string notr="true"/>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignmentFlag::AlignVCenter">
-        <widget class="QToolButton" name="toolButtonCameraOneTitelReset">
-         <property name="text">
-          <string notr="true"/>
-         </property>
-         <property name="icon">
-          <iconset resource="../screencast.qrc">
-           <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>18</width>
-           <height>18</height>
-          </size>
-         </property>
-         <property name="shortcut">
-          <string notr="true"/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_43">
          <property name="orientation">
           <enum>Qt::Orientation::Horizontal</enum>
          </property>
