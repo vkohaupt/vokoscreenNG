@@ -24,6 +24,8 @@
 #include "global.h"
 #include "QvkSpezialCheckbox.h"
 
+#include "QvkCameraOneSingle.h"
+
 #include <QSettings>
 #include <QFileInfo>
 #include <QMouseEvent>
@@ -627,6 +629,18 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         if ( pushButton->objectName().contains( "pushButtonCameraShortcut-" ) ) {
             settings.setValue( pushButton->objectName(), pushButton->isChecked() );
         }
+    }
+
+    QList<QvkCameraOneSingle *> listCameraOneSingle = ui_mainwindow->centralWidget->findChildren<QvkCameraOneSingle *>();
+    for(int i =0; i < listCameraOneSingle.count(); i++){
+        settings.beginGroup( "QvkCameraOneWindow_" + listCameraOneSingle.at(i)->objectName().section("_", 1, 1) );
+        {
+            int x = listCameraOneSingle.at(i)->cameraOneWindow_X;
+            int y = listCameraOneSingle.at(i)->cameraOneWindow_Y;
+            settings.setValue("X", x);
+            settings.setValue("Y", y);
+        }
+        settings.endGroup();
     }
 }
 
