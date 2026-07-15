@@ -640,8 +640,8 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         int x = cameraOneSingle.at(i)->cameraOneWindow_X;
         int y = cameraOneSingle.at(i)->cameraOneWindow_Y;
         QString device = cameraOneSingle.at(i)->objectName();
-        settings.setValue(device + "_" + "X", x);
-        settings.setValue(device + "_" + "Y", y);
+        settings.setValue(device + "_X", x);
+        settings.setValue(device + "_Y", y);
     }
 }
 
