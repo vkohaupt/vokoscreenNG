@@ -138,11 +138,23 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             QString device = vkCameraOneOptions->objectName().section("_", 1, 1);
             QList<QvkCameraOneOptions *> listOptions = topLevelWidget()->findChildren<QvkCameraOneOptions *>();
             for (int i = 0; i < listOptions.count(); i++){
+
+                // "radioButtonCameraOneSelect_" ist der ObjectName
+                QString nameObject = listOptions.at(i)->objectName().section("_", 0, 0) + "_";
+                QString nameDevice = listOptions.at(i)->objectName().replace(nameObject, "");
+                if (nameDevice == device){
+                    listOptions.at(i)->show();
+                }else{
+                    listOptions.at(i)->hide();
+                }
+
+/*
                 if (listOptions.at(i)->objectName().section("_", 1, 1) == device){
                     listOptions.at(i)->show();
                 }else{
                     listOptions.at(i)->hide();
                 }
+*/
             }
         }
     });
