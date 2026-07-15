@@ -1021,8 +1021,8 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 #ifdef Q_OS_UNIX
         for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
             vkSettings.saveCamera( index,
-                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
-                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().y() );
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().y() );
         }
 #endif
 #ifdef Q_OS_WIN

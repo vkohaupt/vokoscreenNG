@@ -1,5 +1,6 @@
 #include "QvkCameraOneWindow.h"
 #include "ui_QvkCameraOneWindow.h"
+#include "QvkSettings.h"
 
 #include <QWidget>
 #include <QCheckBox>

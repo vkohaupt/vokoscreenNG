@@ -41,6 +41,7 @@
 #include "QvkLogController.h"
 #include "QvkContainerController.h"
 #include "QvkLicenses.h"
+#include "QvkCameraOneController.h"
 
 #ifdef Q_OS_UNIX
   #include "QvkAudioController.h"
@@ -89,6 +90,7 @@ public:
     QvkLicenses *vkLicenses;
     QvkHelp *vkHelp;
     QvkCameraController *vkCameraController;
+    QvkCameraOneController *vkCameraOneController;
     bool wantRecording = true;
     bool isFlatpak = false;
 

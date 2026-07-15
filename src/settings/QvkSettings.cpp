@@ -631,18 +631,20 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         }
     }
 
-    QList<QvkCameraOneSingle *> listCameraOneSingle = ui_mainwindow->centralWidget->findChildren<QvkCameraOneSingle *>();
-    for(int i =0; i < listCameraOneSingle.count(); i++){
-        settings.beginGroup( "QvkCameraOneWindow_" + listCameraOneSingle.at(i)->objectName().section("_", 1, 1) );
-        {
-            int x = listCameraOneSingle.at(i)->cameraOneWindow_X;
-            int y = listCameraOneSingle.at(i)->cameraOneWindow_Y;
-            settings.setValue("X", x);
-            settings.setValue("Y", y);
+    QList<QvkCameraOneSingle *> cameraOneSingle = ui_mainwindow->centralWidget->findChildren<QvkCameraOneSingle *>();
+    for (int i = 0; i < cameraOneSingle.count(); i++){
+        if ( cameraOneSingle.at(i)->ui->checkBoxCameraOneOnOff->isChecked() == true){
+            // Fenster muß geschloßen werden damit cameraOneWindow_X(Y) verschobenen Wert hat
+            cameraOneSingle.at(i)->ui->checkBoxCameraOneOnOff->click();
         }
-        settings.endGroup();
+        int x = cameraOneSingle.at(i)->cameraOneWindow_X;
+        int y = cameraOneSingle.at(i)->cameraOneWindow_Y;
+        QString device = cameraOneSingle.at(i)->objectName();
+        settings.setValue(device + "_" + "X", x);
+        settings.setValue(device + "_" + "Y", y);
     }
 }
+
 
 QString QvkSettings::getFileName()
 {
