@@ -499,6 +499,20 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             }
         }
     }
+
+    QList<QvkCameraOneSingle *> cameraOneSingle = ui_mainwindow->centralWidget->findChildren<QvkCameraOneSingle *>();
+    for (int i = 0; i < cameraOneSingle.count(); i++){
+        QString device_X = cameraOneSingle.at(i)->objectName() + "_X";
+        QString device_Y = cameraOneSingle.at(i)->objectName() + "_Y";
+        int x = settings.value(device_X).toInt();
+        int y = settings.value(device_Y).toInt();
+        if (cameraOneSingle.at(i)->vkCameraOneWindow != nullptr){
+            cameraOneSingle.at(i)->vkCameraOneWindow->move(x, y);
+        }else{
+            cameraOneSingle.at(i)->cameraOneWindow_X = x;
+            cameraOneSingle.at(i)->cameraOneWindow_Y = y;
+        }
+    }
 }
 
 /*
