@@ -10,7 +10,6 @@
 #include "QvkCameraOneWindow.h"
 #include "QvkCameraOneOptions.h"
 #include "QvkSpezialSlider.h"
-#include "QvkSettings.h"
 
 #include "ui_QvkCameraOneSingle.h"
 #include "ui_QvkCameraOneOptions.h"
@@ -111,9 +110,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
                 // wenn checkBox_Frame_OnOff getätigt wird
                 delete vkCameraOneWindow;
                 vkCameraOneWindow = NULL;
-                // Camera wird hier nur gespeichert wenn Fenster offen ist
-                //QvkSettings vkSettings;
-                //vkSettings.saveCameraOne(device.section(":::", 0, 0), cameraOneWindow_X, cameraOneWindow_Y);
             }
         }
     });
