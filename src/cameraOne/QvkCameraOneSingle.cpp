@@ -4,6 +4,8 @@
 #include <QCheckBox>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QCameraDevice>
+#include <QMediaDevices>
 
 #include "global.h"
 #include "QvkCameraOneSingle.h"
@@ -22,6 +24,15 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
 {
     ui->setupUi(this);
     GuiUi = m_GuiUi;
+
+    connect(ui->comboBoxCameraOnePixelformat,
+            &QComboBox::currentIndexChanged,
+            this,
+            [=](int index){
+        set_resolution_into_comboBox(device, index);
+    });
+    set_pixelformat_into_comboBox(device);
+
 
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
     ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
@@ -166,4 +177,109 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
 QvkCameraOneSingle::~QvkCameraOneSingle()
 {
     delete ui;
+}
+
+
+// Varibale device enthält zum Beispiel folgenden Inhalt
+// "/dev/video1:::UVC Camera (046d:0809):::added" or removed
+void QvkCameraOneSingle::set_pixelformat_into_comboBox(QString device)
+{
+    QCameraDevice cameraDevice;
+    QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+    for (int i = 0; i < cameras.count(); i++){
+        if (cameras.at(i).id() == device.section(":::", 0, 0)){
+            cameraDevice = cameras.at(i);
+            break;
+        }
+    }
+
+    for (int i = 0; i < cameraDevice.videoFormats().count(); i++){
+        QString pixelFormat = QVideoFrameFormat::pixelFormatToString(
+                    cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
+
+        if(ui->comboBoxCameraOnePixelformat->findText(pixelFormat) == -1){
+            // bei der Philips wird der Wert 17 für YUYV eingetragen und für JPEG der Wert 29
+            ui->comboBoxCameraOnePixelformat->addItem(pixelFormat, cameraDevice.videoFormats().at(i).pixelFormat());
+        }
+    }
+}
+
+void QvkCameraOneSingle::set_resolution_into_comboBox(QString device, int index)
+{
+    QCameraDevice cameraDevice;
+    QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+    for (int i = 0; i < cameras.count(); i++){
+        if (cameras.at(i).id() == device.section(":::", 0, 0)){
+            cameraDevice = cameras.at(i);
+            break;
+        }
+    }
+
+    ui->comboBoxCameraOneResolution->clear();
+    const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+    for (int i = 0; i < cameraFormatList.count(); i++){
+        if (cameraFormatList.at(i).pixelFormat() == ui->comboBoxCameraOnePixelformat->currentData()){
+            qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
+            QString resolution = QVideoFrameFormat::pixelFormatToString(
+                        cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
+            resolution.append(" ");
+            resolution.append(QString::number(cameraFormatList.at(i).resolution().width()));
+            resolution.append("x");
+            resolution.append(QString::number(cameraFormatList.at(i).resolution().height()));
+            if (ui->comboBoxCameraOneResolution->findText(resolution) == -1){
+                ui->comboBoxCameraOneResolution->addItem(resolution, cameraFormatList.at(i).resolution());
+            }
+        }
+    }
+}
+
+
+void QvkCameraOneSingle::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event)
+    {
+        // In der Gui die ComboBoxen für die Auflösung auf eine gemeinsame Breite setzen
+        QList<QComboBox *> listComboBox;
+        QList<QComboBox *> listComboBoxAll = topLevelWidget()->findChildren<QComboBox *>();
+        for(int i = 0; i < listComboBoxAll.count(); i++){
+            QComboBox *comboBoxResolution = listComboBoxAll.at(i);
+            if(comboBoxResolution->objectName().contains("comboBoxCameraOneResolution_")){
+                listComboBox.append(comboBoxResolution);
+            }
+        }
+        int width = 0;
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            if ( comboBox->width() > width ){
+                width = comboBox->width();
+            }
+        }
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            comboBox->setMinimumWidth(width);
+        }
+    }
+
+    // In der Gui die ComboBoxen für das Pixelformat auf eine gemeinsame Breite setzen
+    {
+        QList<QComboBox *> listComboBox;
+        QList<QComboBox *> listComboBoxAll = topLevelWidget()->findChildren<QComboBox *>();
+        for(int i = 0; i < listComboBoxAll.count(); i++){
+            QComboBox *comboBoxResolution = listComboBoxAll.at(i);
+            if(comboBoxResolution->objectName().contains("comboBoxCameraOnePixelformat_")){
+                listComboBox.append(comboBoxResolution);
+            }
+        }
+        int width = 0;
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            if ( comboBox->width() > width ){
+                width = comboBox->width();
+            }
+        }
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            comboBox->setMinimumWidth(width);
+        }
+    }
 }

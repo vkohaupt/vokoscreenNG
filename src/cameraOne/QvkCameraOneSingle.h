@@ -21,15 +21,25 @@ class QvkCameraOneSingle : public QWidget
 public:
     explicit QvkCameraOneSingle(QWidget *parent, QString device, Ui_formMainWindow *m_GuiUi);
     ~QvkCameraOneSingle();
+
     QvkCameraOneWindow *vkCameraOneWindow = NULL;
+    QvkCameraOneOptions *vkCameraOneOptions = NULL;
+
+    Ui::QvkCameraOneSingle *ui;
+
     int cameraOneWindow_X = 200;
     int cameraOneWindow_Y = 200;
-    Ui::QvkCameraOneSingle *ui;
-    QvkCameraOneOptions *vkCameraOneOptions = NULL;
+
+    void set_pixelformat_into_comboBox(QString device);
+    void set_resolution_into_comboBox(QString device, int index);
+
 
 private:
     Ui_formMainWindow *GuiUi;
 
+
+protected:
+    void resizeEvent(QResizeEvent *event);
 
 };
 

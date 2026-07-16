@@ -2613,8 +2613,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>24</width>
-                   <height>100</height>
+                   <width>405</width>
+                   <height>436</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -7238,18 +7238,25 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignTop">
-               <widget class="QToolButton" name="help_camera_camera_2">
-                <property name="text">
-                 <string>Help</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="0">
                <layout class="QVBoxLayout" name="verticalLayout_28">
                 <property name="spacing">
                  <number>0</number>
                 </property>
+               </layout>
+              </item>
+              <item row="0" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_41">
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <item alignment="Qt::AlignmentFlag::AlignTop">
+                 <widget class="QToolButton" name="help_camera_camera_2">
+                  <property name="text">
+                   <string>Help</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
              </layout>
@@ -7315,7 +7322,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
