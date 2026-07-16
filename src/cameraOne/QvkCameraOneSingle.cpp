@@ -238,9 +238,9 @@ void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
         if (cameraFormatList.at(i).pixelFormat() == ui->comboBoxCameraOnePixelformat->currentData()){
             qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
             QString resolution;
-            //resolution = QVideoFrameFormat::pixelFormatToString(
-            //            cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
-            //resolution.append(" ");
+            resolution = QVideoFrameFormat::pixelFormatToString(
+                        cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
+            resolution.append(" ");
             resolution.append(QString::number(cameraFormatList.at(i).resolution().width()));
             resolution.append("x");
             resolution.append(QString::number(cameraFormatList.at(i).resolution().height()));
