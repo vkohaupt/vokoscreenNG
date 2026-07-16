@@ -16,21 +16,8 @@
   <property name="toolTip">
    <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string notr="true"/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../screencast.qrc">:/pictures/camera/camera.png</pixmap>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <layout class="QVBoxLayout" name="verticalLayout"/>
  </widget>
- <resources>
-  <include location="../screencast.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

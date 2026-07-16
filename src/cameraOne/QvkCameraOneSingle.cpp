@@ -10,6 +10,9 @@
 #include <QLineEdit>
 #include <QRadioButton>
 #include <QToolButton>
+#include <QPainter>
+#include <QPainterPath>
+#include <QRectF>
 
 #include <QCamera>
 #include <QCameraDevice>
@@ -17,6 +20,7 @@
 #include <QVideoFrameFormat>
 #include <QVideoSink>
 #include <QMediaCaptureSession>
+#include <QVideoFrame>
 
 #include "global.h"
 #include "QvkCameraOneSingle.h"
@@ -233,9 +237,10 @@ void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
     for (int i = 0; i < cameraFormatList.count(); i++){
         if (cameraFormatList.at(i).pixelFormat() == ui->comboBoxCameraOnePixelformat->currentData()){
             qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
-            QString resolution = QVideoFrameFormat::pixelFormatToString(
-                        cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
-            resolution.append(" ");
+            QString resolution;
+            //resolution = QVideoFrameFormat::pixelFormatToString(
+            //            cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
+            //resolution.append(" ");
             resolution.append(QString::number(cameraFormatList.at(i).resolution().width()));
             resolution.append("x");
             resolution.append(QString::number(cameraFormatList.at(i).resolution().height()));
@@ -312,7 +317,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
     // Camera starten
     if (value == true){
         camera = new QCamera(cameraDevice);
-        connect( camera, SIGNAL( errorChanged() ), this, SLOT( slot_cameraError() ) );
+        //connect( camera, SIGNAL( errorChanged() ), this, SLOT( slot_cameraError() ) );
 
         // Format und Resolution von Widget ermitteln und anwenden
         const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
@@ -336,8 +341,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 &QVideoSink::videoFrameChanged,
                 this,
                 [=](QVideoFrame videoFrame){
-            QImage image = videoFrame.toImage();
-            vkCameraOneWindow->set_newImage(image);
+            slot_videoFrameChanged(videoFrame);
         });
 
         captureSession = new QMediaCaptureSession;
@@ -361,4 +365,36 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
         vkCameraOneWindow->hide();
         qDebug().noquote() << global::nameOutput << "[Camera] Stop";
     }
+}
+
+
+void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
+{
+    QImage image = videoFrame.toImage();
+
+    // Circle
+    if (vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->isChecked() == true){
+        qreal h = image.height();
+
+        QPixmap pixmap(h, h);
+        pixmap.fill(Qt::transparent);
+
+        QPainter painter;
+        painter.begin(&pixmap);
+
+            painter.setRenderHints(QPainter::Antialiasing, true);
+            painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+
+            QPainterPath path;
+            path.addEllipse(0, 0, h, h);
+            painter.setClipPath(path);
+            painter.drawImage(QPoint(0, 0), image);
+
+        painter.end();
+        image = pixmap.toImage();
+        vkCameraOneWindow->setFixedSize(h, h);
+    }
+    // Circle end
+
+    vkCameraOneWindow->set_newImage(image);
 }

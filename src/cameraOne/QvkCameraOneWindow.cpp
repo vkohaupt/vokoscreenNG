@@ -7,11 +7,13 @@
 #include <QLineEdit>
 #include <QShowEvent>
 #include <QCloseEvent>
+#include <QPainter>
+#include <QPoint>
 
 QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
-        QWidget(parent),
-        ui(new Ui::QvkCameraOneWindow)
-    {
+    QWidget(parent),
+    ui(new Ui::QvkCameraOneWindow)
+{
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     m_parent = parent;
@@ -101,4 +103,39 @@ void QvkCameraOneWindow::set_newImage(QImage m_image)
 {
     image = m_image;
     repaint();
+}
+
+
+void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+
+    QImage m_image = image;
+    if (image.isNull() == true){
+        return;
+    }
+
+    QPixmap pixmap(m_image.width(), m_image.height());
+    pixmap.fill(Qt::transparent);
+
+    QPainter painterPixmap;
+    painterPixmap.begin(&pixmap);
+    painterPixmap.setRenderHint(QPainter::Antialiasing, true);
+    painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
+    painterPixmap.drawImage((width() - m_image.width() ) / 2 , 0, m_image);
+    painterPixmap.end();
+
+    QPainter painter;
+    painter.begin(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+    painter.drawImage((width() - m_image.width() ) / 2 , 0, m_image);
+    painter.end();
+
+    QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1));
+    if (toolButton != nullptr){
+        if (toolButton->isChecked() == true){
+            setMask(pixmap.mask());
+        }
+    }
 }

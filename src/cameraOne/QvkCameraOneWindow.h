@@ -7,6 +7,7 @@
 #include <QCloseEvent>
 #include <QToolButton>
 #include <QImage>
+#include <QPaintEvent>
 
 namespace Ui {
 class QvkCameraOneWindow;
@@ -35,6 +36,7 @@ private:
 protected:
     void showEvent(QShowEvent *event);
     void closeEvent(QCloseEvent *event);
+    void paintEvent(QPaintEvent *event);
 
 
 signals:

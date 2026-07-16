@@ -8,6 +8,7 @@
 #include <QCamera>
 #include <QVideoSink>
 #include <QMediaCaptureSession>
+#include <QVideoFrame>
 
 
 #include "QvkCameraOneWindow.h"
@@ -49,7 +50,7 @@ private:
 
 private slots:
     void slot_checkBoxCameraOnOff(bool value);
-
+    void slot_videoFrameChanged(QVideoFrame videoFrame);
 
 protected:
     void resizeEvent(QResizeEvent *event);
