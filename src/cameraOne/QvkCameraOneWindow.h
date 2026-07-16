@@ -6,6 +6,7 @@
 #include <QShowEvent>
 #include <QCloseEvent>
 #include <QToolButton>
+#include <QImage>
 
 namespace Ui {
 class QvkCameraOneWindow;
@@ -20,6 +21,7 @@ public:
     ~QvkCameraOneWindow();
     int get_camera_window_x();
     int get_camera_window_y();
+    void set_newImage(QImage m_image);
 
 
 private:
@@ -27,6 +29,7 @@ private:
     QToolButton *toolButton_Frame_OnOff = nullptr;
     QWidget *m_parent = nullptr;
     QString m_deviceName;
+    QImage image;
 
 
 protected:

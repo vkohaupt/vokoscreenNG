@@ -95,3 +95,10 @@ void QvkCameraOneWindow::closeEvent(QCloseEvent *event)
     QCheckBox *checkBox_Camera_OnOff = m_parent->topLevelWidget()->findChild<QCheckBox *>("checkBoxCameraOneOnOff_" +m_deviceName);
     checkBox_Camera_OnOff->click();
 }
+
+
+void QvkCameraOneWindow::set_newImage(QImage m_image)
+{
+    image = m_image;
+    repaint();
+}

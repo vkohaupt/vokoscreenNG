@@ -5,6 +5,10 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QResizeEvent>
+#include <QCamera>
+#include <QVideoSink>
+#include <QMediaCaptureSession>
+
 
 #include "QvkCameraOneWindow.h"
 #include "QvkCameraOneOptions.h"
@@ -38,6 +42,13 @@ public:
 
 private:
     Ui_formMainWindow *GuiUi;
+    QCamera *camera;
+    QVideoSink *videoSink;
+    QMediaCaptureSession *captureSession;
+
+
+private slots:
+    void slot_checkBoxCameraOnOff(bool value);
 
 
 protected:

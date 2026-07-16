@@ -10,9 +10,13 @@
 #include <QLineEdit>
 #include <QRadioButton>
 #include <QToolButton>
+
+#include <QCamera>
 #include <QCameraDevice>
 #include <QMediaDevices>
 #include <QVideoFrameFormat>
+#include <QVideoSink>
+#include <QMediaCaptureSession>
 
 #include "global.h"
 #include "QvkCameraOneSingle.h"
@@ -40,6 +44,8 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         set_resolution_into_comboBox(device);
     });
     set_pixelformat_into_comboBox(device);
+    connect( ui->checkBoxCameraOneOnOff, SIGNAL( clicked(bool) ), this, SLOT( slot_checkBoxCameraOnOff(bool) ) );
+
 
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
     ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
@@ -288,5 +294,71 @@ void QvkCameraOneSingle::resizeEvent(QResizeEvent *event)
             QComboBox *comboBox = listComboBox.at(i);
             comboBox->setMinimumWidth(width);
         }
+    }
+}
+
+
+void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
+{
+    QCameraDevice cameraDevice;
+    QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+    for (int i = 0; i < cameras.count(); i++){
+        if (cameras.at(i).id() == ui->checkBoxCameraOneOnOff->objectName().section("_", 1, 1)){
+            cameraDevice = cameras.at(i);
+            break;
+        }
+    }
+
+    // Camera starten
+    if (value == true){
+        camera = new QCamera(cameraDevice);
+        connect( camera, SIGNAL( errorChanged() ), this, SLOT( slot_cameraError() ) );
+
+        // Format und Resolution von Widget ermitteln und anwenden
+        const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+        for (int i = 0; i < cameraFormatList.count(); i++){
+            if (cameraFormatList.at(i).pixelFormat() == ui->comboBoxCameraOnePixelformat->currentData()){
+                if (cameraFormatList.at(i).resolution() == ui->comboBoxCameraOneResolution->currentData()){
+                    camera->setCameraFormat(cameraFormatList.at(i));
+                    QString width  = QString::number(cameraFormatList.at(i).resolution().width());
+                    QString height = QString::number(cameraFormatList.at(i).resolution().height());
+                    qDebug().noquote() << global::nameOutput
+                                       << "[Camera] Start with format:"
+                                       << cameraFormatList.at(i).pixelFormat()
+                                       << "and resolution:"
+                                       << width + "x" + height;
+                }
+            }
+        }
+
+        videoSink = new QVideoSink;
+        connect(videoSink,
+                &QVideoSink::videoFrameChanged,
+                this,
+                [=](QVideoFrame videoFrame){
+            QImage image = videoFrame.toImage();
+            vkCameraOneWindow->set_newImage(image);
+        });
+
+        captureSession = new QMediaCaptureSession;
+        captureSession->setCamera( camera );
+        captureSession->setVideoOutput( videoSink );
+
+        camera->start();
+    }
+
+    // Camera stopen
+    if ( value == false ) {
+        disconnect( videoSink );
+        delete videoSink;
+
+        camera->stop();
+        delete camera;
+        camera = Q_NULLPTR;
+
+        delete captureSession;
+
+        vkCameraOneWindow->hide();
+        qDebug().noquote() << global::nameOutput << "[Camera] Stop";
     }
 }
