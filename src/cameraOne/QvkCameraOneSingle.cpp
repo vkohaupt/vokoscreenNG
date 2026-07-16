@@ -4,8 +4,15 @@
 #include <QCheckBox>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QResizeEvent>
+#include <QComboBox>
+#include <QList>
+#include <QLineEdit>
+#include <QRadioButton>
+#include <QToolButton>
 #include <QCameraDevice>
 #include <QMediaDevices>
+#include <QVideoFrameFormat>
 
 #include "global.h"
 #include "QvkCameraOneSingle.h"
@@ -29,10 +36,10 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             &QComboBox::currentIndexChanged,
             this,
             [=](int index){
-        set_resolution_into_comboBox(device, index);
+        Q_UNUSED(index)
+        set_resolution_into_comboBox(device);
     });
     set_pixelformat_into_comboBox(device);
-
 
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
     ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
@@ -204,7 +211,7 @@ void QvkCameraOneSingle::set_pixelformat_into_comboBox(QString device)
     }
 }
 
-void QvkCameraOneSingle::set_resolution_into_comboBox(QString device, int index)
+void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
 {
     QCameraDevice cameraDevice;
     QList<QCameraDevice> cameras = QMediaDevices::videoInputs();

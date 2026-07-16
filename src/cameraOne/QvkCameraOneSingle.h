@@ -1,8 +1,10 @@
 #ifndef QVKCAMERAONESINGLE_H
 #define QVKCAMERAONESINGLE_H
 
+#include <QString>
 #include <QWidget>
 #include <QCheckBox>
+#include <QResizeEvent>
 
 #include "QvkCameraOneWindow.h"
 #include "QvkCameraOneOptions.h"
@@ -31,7 +33,7 @@ public:
     int cameraOneWindow_Y = 200;
 
     void set_pixelformat_into_comboBox(QString device);
-    void set_resolution_into_comboBox(QString device, int index);
+    void set_resolution_into_comboBox(QString device);
 
 
 private:
