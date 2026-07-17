@@ -133,14 +133,29 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
     painter.drawImage((width() - m_image.width() ) / 2 , 0, m_image);
     painter.end();
 
-    QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1));
-    if (toolButton != nullptr){
-        if (toolButton->isChecked() == true){
-            setMask(pixmap.mask());
+    QToolButton *toolButtonFrameless = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1));
+    if (toolButtonFrameless != nullptr){
+        // With frame
+        if (toolButtonFrameless->isChecked() == false){
+            QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + objectName().section("_", 1, 1));
+            if (toolButtonCircle->isChecked() == true){
+                setFixedSize(image.height(), image.height());
+            }else{
+                setFixedSize(image.width(), image.height());
+            }
+        }
+        // Frameless
+        if (toolButtonFrameless->isChecked() == true){
+            QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + objectName().section("_", 1, 1));
+            if (toolButtonCircle->isChecked() == true){
+               setMask(pixmap.mask());
+               setFixedSize(image.height(), image.height());
+            }else{
+                setMask(pixmap.mask());
+                setFixedSize(image.width(), image.height());
+            }
         }
     }
-
-    setFixedSize(image.width(), image.height());
 }
 
 
