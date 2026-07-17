@@ -144,13 +144,13 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
 
 void QvkCameraOneWindow::mousePressEvent(QMouseEvent *event)
 {
-    if ( event->button() == Qt::RightButton ) {
+    if (event->button() == Qt::RightButton) {
         //emit signal_mousePressEvent( event );
     }
 
     QString name = "toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1);
     QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>(name);
-    if ((toolButton->isChecked() == true ) and (event->button() == Qt::LeftButton)){
+    if ((toolButton->isChecked() == true) and (event->button() == Qt::LeftButton)){
         QPixmap pixmap(":/pictures/cursor/size_all.png");
         QCursor cursor(pixmap);
         setCursor(cursor);
@@ -166,7 +166,7 @@ void QvkCameraOneWindow::mouseReleaseEvent(QMouseEvent *event)
     Q_UNUSED(event)
     QString name = "toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1);
     QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>(name);
-    if ((toolButton->isChecked() == true )){
+    if ((toolButton->isChecked() == true)){
         unsetCursor();
         mousePressed = false;
     }
