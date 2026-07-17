@@ -392,7 +392,6 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
 
     // Rectangle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->isChecked() == true){
-        vkCameraOneWindow->setFixedSize(image.width(), image.height());
     }
 
     // Ellipse
@@ -411,13 +410,12 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
         }
         painter.end();
         image = pixmap.toImage();
-        vkCameraOneWindow->setFixedSize(image.width(), image.height());
     }
 
     // Circle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->isChecked() == true){
-        qreal w = image.width();
-        qreal h = image.height();
+        int w = image.width();
+        int h = image.height();
 
         QPixmap pixmap(w, h);
         pixmap.fill(Qt::transparent);
@@ -427,17 +425,13 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
         {
             painter.setRenderHints(QPainter::Antialiasing, true);
             painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-
             QPainterPath path;
             path.addEllipse((w-h)/2, 0, h, h);
             painter.setClipPath(path);
             painter.drawImage(QPoint(0, 0), image);
-
         }
         painter.end();
         image = pixmap.toImage();
-        vkCameraOneWindow->resize(image.width(), image.height());
-
     }
     // Circle end
 

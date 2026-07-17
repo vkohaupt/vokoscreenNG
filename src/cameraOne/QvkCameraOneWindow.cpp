@@ -139,6 +139,8 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
             setMask(pixmap.mask());
         }
     }
+
+    setFixedSize(image.width(), image.height());
 }
 
 
