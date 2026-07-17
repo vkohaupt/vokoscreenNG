@@ -56,6 +56,16 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
     });
     set_pixelformat_into_comboBox(device);
 
+    connect(ui->comboBoxCameraOneResolution,
+            &QComboBox::currentIndexChanged,
+            this,
+            [=](){
+        if (ui->checkBoxCameraOneOnOff->isChecked() == true){
+            ui->checkBoxCameraOneOnOff->click();
+            ui->checkBoxCameraOneOnOff->click();
+        }
+    });
+
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
     ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
 
@@ -228,6 +238,8 @@ void QvkCameraOneSingle::set_pixelformat_into_comboBox(QString device)
 
 void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
 {
+    ui->comboBoxCameraOneResolution->blockSignals(true);
+
     QCameraDevice cameraDevice;
     QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
     for (int i = 0; i < cameras.count(); i++){
@@ -253,6 +265,8 @@ void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
             }
         }
     }
+
+    ui->comboBoxCameraOneResolution->blockSignals(false);
 }
 
 
