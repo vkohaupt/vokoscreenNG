@@ -390,6 +390,30 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
 {
     QImage image = videoFrame.toImage();
 
+    // Rectangle
+    if (vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->isChecked() == true){
+        vkCameraOneWindow->setFixedSize(image.width(), image.height());
+    }
+
+    // Ellipse
+    if (vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->isChecked() == true){
+        QPixmap pixmap(image.width(), image.height());
+        pixmap.fill(Qt::transparent);
+        QPainter painter;
+        {
+            painter.begin(&pixmap);
+            painter.setRenderHints(QPainter::Antialiasing, true);
+            painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+            QPainterPath path;
+            path.addEllipse(0, 0, image.width(), image.height());
+            painter.setClipPath(path);
+            painter.drawImage(QPoint(0, 0), image);
+        }
+        painter.end();
+        image = pixmap.toImage();
+        vkCameraOneWindow->setFixedSize(image.width(), image.height());
+    }
+
     // Circle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->isChecked() == true){
         qreal h = image.height();
@@ -399,15 +423,14 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
 
         QPainter painter;
         painter.begin(&pixmap);
-
+        {
             painter.setRenderHints(QPainter::Antialiasing, true);
             painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-
             QPainterPath path;
             path.addEllipse(0, 0, h, h);
             painter.setClipPath(path);
             painter.drawImage(QPoint(0, 0), image);
-
+        }
         painter.end();
         image = pixmap.toImage();
         vkCameraOneWindow->setFixedSize(h, h);
