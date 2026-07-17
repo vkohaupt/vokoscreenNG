@@ -3,11 +3,12 @@
 
 #include <QString>
 #include <QWidget>
-#include <QShowEvent>
-#include <QCloseEvent>
 #include <QToolButton>
 #include <QImage>
+#include <QShowEvent>
+#include <QCloseEvent>
 #include <QPaintEvent>
+#include <QMouseEvent>
 
 namespace Ui {
 class QvkCameraOneWindow;
@@ -31,12 +32,18 @@ private:
     QWidget *m_parent = nullptr;
     QString m_deviceName;
     QImage image;
+    bool mousePressed = false;
+    int mouseLocal_X;
+    int mouseLocal_Y;
 
 
 protected:
     void showEvent(QShowEvent *event);
     void closeEvent(QCloseEvent *event);
     void paintEvent(QPaintEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 
 signals:
