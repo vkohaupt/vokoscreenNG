@@ -416,16 +416,8 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
 
     // Circle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->isChecked() == true){
-        qreal w;
-        qreal h;
-
-        if (vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->isChecked() == true){
-            w = image.height();
-            h = image.height();
-        } else {
-            w = image.width();
-            h = image.height();
-        }
+        qreal w = image.width();
+        qreal h = image.height();
 
         QPixmap pixmap(w, h);
         pixmap.fill(Qt::transparent);
@@ -436,33 +428,16 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
             painter.setRenderHints(QPainter::Antialiasing, true);
             painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
 
-            //Fenster Ok aber Kreis im Fenster nicht aus der Mitte
             QPainterPath path;
-            //path.addEllipse(0, 0, h, h);
             path.addEllipse((w-h)/2, 0, h, h);
             painter.setClipPath(path);
             painter.drawImage(QPoint(0, 0), image);
 
-
-/*
-            QPainterPath path;
-            path.addEllipse(0 + (image.width() - image.height())/2,
-                            0,
-                            image.height(),
-                            image.height());
-            painter.setClipPath(path);
-            painter.drawImage(QPoint(0, 0), image);
-*/
-
         }
         painter.end();
         image = pixmap.toImage();
+        vkCameraOneWindow->resize(image.width(), image.height());
 
-        if (vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->isChecked() == true){
-            vkCameraOneWindow->setFixedSize(h, h);
-        }else{
-            vkCameraOneWindow->setFixedSize(w, h);
-        }
     }
     // Circle end
 
