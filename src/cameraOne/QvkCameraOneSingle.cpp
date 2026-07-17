@@ -40,6 +40,13 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
     ui->setupUi(this);
     GuiUi = m_GuiUi;
 
+    connect(ui->checkBoxCameraOneOnOff,
+            &QCheckBox::clicked,
+            this,
+            [=](bool value){
+        slot_checkBoxCameraOnOff(value);
+    });
+
     connect(ui->comboBoxCameraOnePixelformat,
             &QComboBox::currentIndexChanged,
             this,
@@ -48,8 +55,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         set_resolution_into_comboBox(device);
     });
     set_pixelformat_into_comboBox(device);
-    connect( ui->checkBoxCameraOneOnOff, SIGNAL( clicked(bool) ), this, SLOT( slot_checkBoxCameraOnOff(bool) ) );
-
 
     setObjectName(objectName() + "_" + device.section(":::", 0, 0));
     ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
