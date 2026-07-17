@@ -19,8 +19,8 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     m_parent = parent;
     m_deviceName = deviceName;
     setObjectName(objectName() + "_" + deviceName);
-    toolButton_Frame_OnOff = topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + deviceName);
 
+    toolButton_Frame_OnOff = topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + deviceName);
     if (toolButton_Frame_OnOff->isChecked() == false){
         Qt::WindowFlags flags;
         flags  = Qt::Window;
@@ -29,6 +29,8 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     }
 
     if (toolButton_Frame_OnOff->isChecked() == true){
+        // WA_TranslucentBackground sehr gute aussehende Ränder bei Circle und setMask
+        setAttribute( Qt::WA_TranslucentBackground, true );
         Qt::WindowFlags flags;
         flags  = Qt::Window;
         flags |= Qt::FramelessWindowHint;
