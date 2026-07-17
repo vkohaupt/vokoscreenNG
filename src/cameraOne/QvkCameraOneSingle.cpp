@@ -236,7 +236,6 @@ void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
     const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
     for (int i = 0; i < cameraFormatList.count(); i++){
         if (cameraFormatList.at(i).pixelFormat() == ui->comboBoxCameraOnePixelformat->currentData()){
-            qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
             QString resolution;
             resolution = QVideoFrameFormat::pixelFormatToString(
                         cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();

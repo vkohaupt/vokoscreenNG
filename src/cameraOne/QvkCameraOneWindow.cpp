@@ -111,7 +111,8 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
     Q_UNUSED(event)
 
     QImage m_image = image;
-    if (image.isNull() == true){
+
+    if (m_image.format() == QImage::Format_Invalid){
         return;
     }
 
