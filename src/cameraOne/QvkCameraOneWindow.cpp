@@ -1,14 +1,24 @@
 #include "QvkCameraOneWindow.h"
 #include "ui_QvkCameraOneWindow.h"
 
+#include <QString>
 #include <QWidget>
 #include <QCheckBox>
 #include <QList>
 #include <QLineEdit>
+#include <QPainter>
+#include <QToolButton>
+#include <QCheckBox>
+#include <QPoint>
+#include <QImage>
+#include <QPixmap>
+#include <QCursor>
+
 #include <QShowEvent>
 #include <QCloseEvent>
-#include <QPainter>
-#include <QPoint>
+#include <QPaintEvent>
+#include <QMouseEvent>
+
 
 QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     QWidget(parent),
@@ -107,13 +117,13 @@ void QvkCameraOneWindow::set_newImage(QImage m_image)
     repaint();
 }
 
-#include <QVideoFrameFormat>
+
 void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
 
+    //image = image.convertedTo(QImage::Format_Grayscale8);
     QImage m_image = image;
-    image = image.convertedTo( QImage::Format_Grayscale8);
 
     // Bild muß hier und in QvkCameraOneSingle verworfen werden wenn invalid
     if (m_image.format() == QImage::Format_Invalid){
@@ -143,9 +153,9 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
         if (toolButtonFrameless->isChecked() == false){
             QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + m_deviceName);
             if (toolButtonCircle->isChecked() == true){
-                setFixedSize(image.height(), image.height());
+                setFixedSize(m_image.height(), m_image.height());
             }else{
-                setFixedSize(image.width(), image.height());
+                setFixedSize(m_image.width(), m_image.height());
             }
         }
         // Frameless
@@ -153,10 +163,10 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
             QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + m_deviceName);
             if (toolButtonCircle->isChecked() == true){
                setMask(pixmap.mask());
-               setFixedSize(image.height(), image.height());
+               setFixedSize(m_image.height(), m_image.height());
             }else{
                 setMask(pixmap.mask());
-                setFixedSize(image.width(), image.height());
+                setFixedSize(m_image.width(), m_image.height());
             }
         }
     }
