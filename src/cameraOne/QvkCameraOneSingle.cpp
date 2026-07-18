@@ -326,7 +326,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
     QCameraDevice cameraDevice;
     QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
     for (int i = 0; i < cameras.count(); i++){
-        if (cameras.at(i).id() == ui->checkBoxCameraOneOnOff->objectName().section("_", 1, 1)){
+        if (cameras.at(i).id() == ui->checkBoxCameraOneOnOff->objectName().section("_", 1, -1)){
             cameraDevice = cameras.at(i);
             break;
         }

@@ -17,7 +17,7 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     m_parent = parent;
-    m_deviceName = deviceName;
+    m_deviceName = deviceName; // z.b /dev/video0
     setObjectName(objectName() + "_" + deviceName);
 
     toolButton_Frame_OnOff = topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + deviceName);
@@ -96,7 +96,7 @@ void QvkCameraOneWindow::showEvent(QShowEvent *event)
 void QvkCameraOneWindow::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event)
-    QCheckBox *checkBox_Camera_OnOff = m_parent->topLevelWidget()->findChild<QCheckBox *>("checkBoxCameraOneOnOff_" +m_deviceName);
+    QCheckBox *checkBox_Camera_OnOff = m_parent->topLevelWidget()->findChild<QCheckBox *>("checkBoxCameraOneOnOff_" + m_deviceName);
     checkBox_Camera_OnOff->click();
 }
 
@@ -135,11 +135,11 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
     painter.drawImage((width() - m_image.width() ) / 2 , 0, m_image);
     painter.end();
 
-    QToolButton *toolButtonFrameless = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1));
+    QToolButton *toolButtonFrameless = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneFramelessOnOff_" + m_deviceName);
     if (toolButtonFrameless != nullptr){
         // With frame
         if (toolButtonFrameless->isChecked() == false){
-            QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + objectName().section("_", 1, 1));
+            QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + m_deviceName);
             if (toolButtonCircle->isChecked() == true){
                 setFixedSize(image.height(), image.height());
             }else{
@@ -148,7 +148,7 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
         }
         // Frameless
         if (toolButtonFrameless->isChecked() == true){
-            QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + objectName().section("_", 1, 1));
+            QToolButton *toolButtonCircle = m_parent->topLevelWidget()->findChild<QToolButton *>("toolButtonCameraOneViewCircle_" + m_deviceName);
             if (toolButtonCircle->isChecked() == true){
                setMask(pixmap.mask());
                setFixedSize(image.height(), image.height());
@@ -167,7 +167,7 @@ void QvkCameraOneWindow::mousePressEvent(QMouseEvent *event)
         //emit signal_mousePressEvent( event );
     }
 
-    QString name = "toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1);
+    QString name = "toolButtonCameraOneFramelessOnOff_" + m_deviceName;
     QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>(name);
     if ((toolButton->isChecked() == true) and (event->button() == Qt::LeftButton)){
         QPixmap pixmap(":/pictures/cursor/size_all.png");
@@ -183,7 +183,7 @@ void QvkCameraOneWindow::mousePressEvent(QMouseEvent *event)
 void QvkCameraOneWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
-    QString name = "toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1);
+    QString name = "toolButtonCameraOneFramelessOnOff_" + m_deviceName;
     QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>(name);
     if ((toolButton->isChecked() == true)){
         unsetCursor();
@@ -195,7 +195,7 @@ void QvkCameraOneWindow::mouseReleaseEvent(QMouseEvent *event)
 void QvkCameraOneWindow::mouseMoveEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
-    QString name = "toolButtonCameraOneFramelessOnOff_" + objectName().section("_", 1, 1);
+    QString name = "toolButtonCameraOneFramelessOnOff_" + m_deviceName;
     QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>(name);
     if ((toolButton->isChecked() == true) and (mousePressed == true)){
         move(QCursor::pos().x() - mouseLocal_X, QCursor::pos().y() - mouseLocal_Y);
