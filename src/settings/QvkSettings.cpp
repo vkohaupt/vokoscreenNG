@@ -391,7 +391,12 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         // We found a setting, then we want set or not.
         if ( settings.value( checkBox->objectName(), false ).toBool() == true )
         {
-            checkBox->click();
+            // Camera wird nicht gestartet
+            // Dies geschieht erst wenn alle Widget der Camera mit Werte geladen ist
+            // und gschieht ganz zum Schluß von readAll()
+            if (checkBox->objectName().contains("checkBoxCameraOneOnOff") == false){
+                checkBox->click();
+            }
         }
     }
 
@@ -478,7 +483,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
 
         if ( settings.value( toolButton->objectName() ).toBool() == true ) {
-                toolButton->click();
+            toolButton->click();
         }
     }
 
@@ -513,6 +518,22 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             cameraOneSingle.at(i)->cameraOneWindow_Y = y;
         }
     }
+
+
+    // Hier, ganz zum Schluß werden die Cameras gestartet
+    QList<QCheckBox *> listCheckBoxCamera = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        QCheckBox *checkBox = listCheckBoxCamera.at(i);
+        if (checkBox->objectName().contains("checkBoxCameraOneOnOff") == true){
+            checkBox->click();
+        }
+    }
+
+
+
+
+
 }
 
 /*

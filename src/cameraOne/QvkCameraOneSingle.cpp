@@ -54,7 +54,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         Q_UNUSED(index)
         set_resolution_into_comboBox(device);
         if (ui->checkBoxCameraOneOnOff->isChecked() == true){
-            qDebug() << "11111111111111111111111111111111111" << camera->isActive();
             ui->checkBoxCameraOneOnOff->click();
             ui->checkBoxCameraOneOnOff->click();
         }
