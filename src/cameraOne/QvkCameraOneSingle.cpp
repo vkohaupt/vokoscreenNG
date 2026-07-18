@@ -393,6 +393,7 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
     // Rectangle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->isChecked() == true){
     }
+    // Rectangle end
 
     // Ellipse
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->isChecked() == true){
@@ -411,6 +412,7 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
         painter.end();
         image = pixmap.toImage();
     }
+    // Ellipse end
 
     // Circle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->isChecked() == true){
@@ -434,6 +436,16 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
         image = pixmap.toImage();
     }
     // Circle end
+
+    // Mirror vertical
+    if (vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->isChecked() == true){
+        image = image.flipped(Qt::Vertical);
+    }
+
+    // Mirror horizontal
+    if (vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->isChecked() == true ) {
+        image = image.flipped(Qt::Horizontal);
+    }
 
     vkCameraOneWindow->set_newImage(image);
 }
