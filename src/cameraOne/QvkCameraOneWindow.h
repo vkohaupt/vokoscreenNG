@@ -24,6 +24,7 @@ public:
     int get_camera_window_x();
     int get_camera_window_y();
     void set_newImage(QImage m_image);
+    QImage image;
 
 
 private:
@@ -31,7 +32,6 @@ private:
     QToolButton *toolButton_Frame_OnOff = nullptr;
     QWidget *m_parent = nullptr;
     QString m_deviceName;
-    QImage image;
     bool mousePressed = false;
     int mouseLocal_X;
     int mouseLocal_Y;

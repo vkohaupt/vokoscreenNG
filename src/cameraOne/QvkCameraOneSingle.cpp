@@ -208,6 +208,52 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         vkCameraOneOptions->ui->lineEditCameraOneTitel->setText(global::name + "  " + global::version);
     });
     vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->click();
+
+    // Rectangle: Fenster verschieben so das das Bild "stehen" bleibt
+    connect(vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle,
+            &QToolButton::clicked,
+            this,
+            [=](){
+        if (vkCameraOneWindow != nullptr){
+            int x = vkCameraOneWindow->x();
+            int y = vkCameraOneWindow->y();
+            int width = vkCameraOneWindow->image.width();
+            int height = vkCameraOneWindow->image.height();
+            if (vkCameraOneWindow->width() != vkCameraOneWindow->image.width()){
+                vkCameraOneWindow->move(x - (width-height)/2, y);
+            }
+        }
+    });
+
+    // Ellipse: Fenster verschieben so das das Bild "stehen" bleibt
+    connect(vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse,
+            &QToolButton::clicked,
+            this,
+            [=](){
+        if (vkCameraOneWindow != nullptr){
+            int x = vkCameraOneWindow->x();
+            int y = vkCameraOneWindow->y();
+            int width = vkCameraOneWindow->image.width();
+            int height = vkCameraOneWindow->image.height();
+            if (vkCameraOneWindow->width() != vkCameraOneWindow->image.width()){
+                vkCameraOneWindow->move(x - (width-height)/2, y);
+            }
+        }
+    });
+
+    // Circle: Fenster verschieben so das das Bild "stehen" bleibt
+    connect(vkCameraOneOptions->ui->toolButtonCameraOneViewCircle,
+            &QToolButton::clicked,
+            this,
+            [=](){
+        if (vkCameraOneWindow != nullptr){
+            int x = vkCameraOneWindow->x();
+            int y = vkCameraOneWindow->y();
+            int width = vkCameraOneWindow->width();
+            int height = vkCameraOneWindow->height();
+            vkCameraOneWindow->move(x + (width-height)/2, y);
+        }
+    });
 }
 
 QvkCameraOneSingle::~QvkCameraOneSingle()
