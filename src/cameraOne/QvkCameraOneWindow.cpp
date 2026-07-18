@@ -114,6 +114,7 @@ void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
 
     QImage m_image = image;
 
+    // Bild muß hier und in QvkCameraOneSingle verworfen werden wenn invalid
     if (m_image.format() == QImage::Format_Invalid){
         return;
     }

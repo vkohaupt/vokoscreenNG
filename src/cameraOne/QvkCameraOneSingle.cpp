@@ -394,6 +394,11 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
 {
     QImage image = videoFrame.toImage();
 
+    // Bild muß hier und in QvkCameraOneWindow verworfen werden wenn invalid
+    if (image.format() == QImage::Format_Invalid){
+        return;
+    }
+
     // Rectangle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->isChecked() == true){
     }
