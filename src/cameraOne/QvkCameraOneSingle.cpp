@@ -53,6 +53,10 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             [=](int index){
         Q_UNUSED(index)
         set_resolution_into_comboBox(device);
+        if (ui->checkBoxCameraOneOnOff->isChecked() == true){
+            ui->checkBoxCameraOneOnOff->click();
+            ui->checkBoxCameraOneOnOff->click();
+        }
     });
     set_pixelformat_into_comboBox(device);
 
