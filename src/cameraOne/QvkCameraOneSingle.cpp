@@ -393,12 +393,11 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
 void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
 {
     QImage image = videoFrame.toImage();
-qDebug() << "11111 QvkCameraOneSingle::slot_videoFrameChanged";
+
     // Bild muß hier und in QvkCameraOneWindow verworfen werden wenn invalid
     if (image.format() == QImage::Format_Invalid){
         return;
     }
-qDebug() << "22222 QvkCameraOneSingle::slot_videoFrameChanged";
 
     // Rectangle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->isChecked() == true){
