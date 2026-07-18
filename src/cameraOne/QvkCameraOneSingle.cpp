@@ -54,6 +54,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         Q_UNUSED(index)
         set_resolution_into_comboBox(device);
         if (ui->checkBoxCameraOneOnOff->isChecked() == true){
+            qDebug() << "11111111111111111111111111111111111" << camera->isActive();
             ui->checkBoxCameraOneOnOff->click();
             ui->checkBoxCameraOneOnOff->click();
         }
@@ -393,11 +394,12 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
 void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
 {
     QImage image = videoFrame.toImage();
-
+qDebug() << "11111 QvkCameraOneSingle::slot_videoFrameChanged";
     // Bild muß hier und in QvkCameraOneWindow verworfen werden wenn invalid
     if (image.format() == QImage::Format_Invalid){
         return;
     }
+qDebug() << "22222 QvkCameraOneSingle::slot_videoFrameChanged";
 
     // Rectangle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->isChecked() == true){
