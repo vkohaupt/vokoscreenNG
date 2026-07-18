@@ -107,12 +107,13 @@ void QvkCameraOneWindow::set_newImage(QImage m_image)
     repaint();
 }
 
-
+#include <QVideoFrameFormat>
 void QvkCameraOneWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
 
     QImage m_image = image;
+    image = image.convertedTo( QImage::Format_Grayscale8);
 
     // Bild muß hier und in QvkCameraOneSingle verworfen werden wenn invalid
     if (m_image.format() == QImage::Format_Invalid){
