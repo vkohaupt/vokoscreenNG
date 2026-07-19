@@ -17,6 +17,7 @@ public:
     explicit QvkCameraOneOptions(QWidget *parent = nullptr);
     ~QvkCameraOneOptions();
     Ui::QvkCameraOneOptions *ui;
+    void set_init(QString device);
 
 private:
 

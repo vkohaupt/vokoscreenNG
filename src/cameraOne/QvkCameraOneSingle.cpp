@@ -26,7 +26,6 @@
 #include "QvkCameraOneSingle.h"
 #include "QvkCameraOneWindow.h"
 #include "QvkCameraOneOptions.h"
-#include "QvkSpezialSlider.h"
 
 #include "ui_QvkCameraOneSingle.h"
 #include "ui_QvkCameraOneOptions.h"
@@ -84,61 +83,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
     ui->comboBoxCameraOneResolution->setObjectName(m_objectName);
 
     vkCameraOneOptions = new QvkCameraOneOptions(this);
-    {
-        m_objectName = vkCameraOneOptions->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->setObjectName(m_objectName);
-        vkCameraOneOptions->ui->labelCameraOneOptions->setText(device.section(":::", 1, 1));
-
-        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->setObjectName(m_objectName);
-
-        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->toolButtonCameraOneViewEllipse->setObjectName(m_objectName);
-
-        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->toolButtonCameraOneViewCircle->setObjectName(m_objectName);
-
-        m_objectName = vkCameraOneOptions->ui->lineEditCameraOneTitel->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->lineEditCameraOneTitel->setObjectName(m_objectName);
-
-        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->toolButtonCameraOneTitelReset->setObjectName(m_objectName);
-
-        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->toolButtonCameraOneFramelessOnOff->setObjectName(m_objectName);
-
-        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->setObjectName(m_objectName);
-
-        m_objectName = vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->objectName() + "_" + device.section(":::", 0, 0);
-        vkCameraOneOptions->ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
-
-        QLabel *labelCameraWindowSize = new QLabel;
-        vkCameraOneOptions->ui->horizontalLayout_3->addWidget(labelCameraWindowSize);
-        labelCameraWindowSize->setObjectName("labelCameraOneWindowSize_" + device.section(":::", 0, 0));
-        labelCameraWindowSize->setText("---x---");
-
-        QvkSpezialSlider *sliderCameraOneWindowSize = new QvkSpezialSlider(Qt::Horizontal);
-        vkCameraOneOptions->ui->horizontalLayout_2->insertWidget(0, sliderCameraOneWindowSize);
-        sliderCameraOneWindowSize->setObjectName("sliderCameraOneWindowSize_" + device.section(":::", 0, 0));
-        sliderCameraOneWindowSize->setMinimum(0);
-        sliderCameraOneWindowSize->setMaximum(1);
-        sliderCameraOneWindowSize->setValue(0);
-        sliderCameraOneWindowSize->show();
-        sliderCameraOneWindowSize->setShowValue(false);
-        sliderCameraOneWindowSize->setBigHandel(true);
-        sliderCameraOneWindowSize->setEnabled(true);
-
-        QvkSpezialSlider *sliderCameraOneWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
-        vkCameraOneOptions->ui->horizontalLayout_5->insertWidget(0, sliderCameraOneWindowZoom);
-        sliderCameraOneWindowZoom->setObjectName("sliderCameraOneWindowZoom_" + device.section(":::", 0, 0));;
-        sliderCameraOneWindowZoom->setMinimum(0);
-        sliderCameraOneWindowZoom->setMaximum(1);
-        sliderCameraOneWindowZoom->setValue(0);
-        sliderCameraOneWindowZoom->show();
-        sliderCameraOneWindowZoom->setShowValue(true);
-        sliderCameraOneWindowZoom->setEnabled(true);
-    }
+    vkCameraOneOptions->set_init(device);
     GuiUi->verticalLayout_39->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
