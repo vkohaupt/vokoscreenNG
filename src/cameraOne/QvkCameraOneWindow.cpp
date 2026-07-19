@@ -39,8 +39,8 @@ QvkCameraOneWindow::QvkCameraOneWindow(QWidget *parent, QString deviceName) :
     }
 
     if (toolButton_Frame_OnOff->isChecked() == true){
-        // WA_TranslucentBackground sehr gute aussehende Ränder bei Circle und setMask
-        setAttribute( Qt::WA_TranslucentBackground, true );
+        // Mit WA_TranslucentBackground sehr gute aussehende Ränder bei Circle und setMask
+        setAttribute(Qt::WA_TranslucentBackground, true);
         Qt::WindowFlags flags;
         flags  = Qt::Window;
         flags |= Qt::FramelessWindowHint;

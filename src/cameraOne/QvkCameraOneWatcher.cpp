@@ -44,12 +44,12 @@ void QvkCameraOneWatcher::init()
     // object_id + ":::" + camera_name + ":::" + "added" or removed
 
     QMediaDevices *mediaDevices = new QMediaDevices;
-    connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){
+    connect(mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){
 
         QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
 
         // Camera wurde hinzugefügt
-        if(cameras.count() > stringListDevices.count()){
+        if (cameras.count() > stringListDevices.count()){
             for(int i = 0; i < cameras.count(); i++){
                 QString id = cameras.at(i).id();
                 QString description = cameras.at(i).description();
@@ -57,7 +57,7 @@ void QvkCameraOneWatcher::init()
                 if(!stringListDevices.contains(id_and_description)){
                     stringListDevices.append(id_and_description);
                     qDebug().noquote() << global::nameOutput << "[Camera] Added:" << description << "Device:" << id;
-                    emit signal_cameraChanged( id + ":::" + description + ":::" + "added" );
+                    emit signal_cameraChanged(id + ":::" + description + ":::" + "added");
                 }
             }
             qDebug().noquote();
@@ -72,7 +72,7 @@ void QvkCameraOneWatcher::init()
         }
 
         int index = 0;
-        if(tmpList.count() < stringListDevices.count()){
+        if (tmpList.count() < stringListDevices.count()){
             for(int i = 0; i < stringListDevices.count(); i++){
                 QString id_and_description = stringListDevices.at(i);
                 if(!tmpList.contains(id_and_description)){
@@ -80,7 +80,7 @@ void QvkCameraOneWatcher::init()
                     QString id = id_and_description.section(":::", 0, 0);
                     QString description = id_and_description.section(":::", 1, 1);
                     qDebug().noquote() << global::nameOutput << "[Camera] Removed:" << description << "Device:" << id;
-                    emit signal_cameraChanged( id + ":::" + description + ":::" + "removed" );
+                    emit signal_cameraChanged(id + ":::" + description + ":::" + "removed");
                     index = i;
                     break;
                 }
