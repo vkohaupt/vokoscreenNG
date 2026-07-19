@@ -66,18 +66,18 @@ void QvkCameraOneOptions::set_init(QString m_device)
     labelCameraWindowSize->setObjectName("labelCameraOneWindowSize_" + device);
     labelCameraWindowSize->setText("---x---");
 
-    QvkSpezialSlider *sliderCameraOneWindowSize = new QvkSpezialSlider(Qt::Horizontal);
+    sliderCameraOneWindowSize = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_2->insertWidget(0, sliderCameraOneWindowSize);
     sliderCameraOneWindowSize->setObjectName("sliderCameraOneWindowSize_" + device);
     sliderCameraOneWindowSize->setMinimum(0);
     sliderCameraOneWindowSize->setMaximum(1);
     sliderCameraOneWindowSize->setValue(0);
     sliderCameraOneWindowSize->show();
-    sliderCameraOneWindowSize->setShowValue(false);
+    sliderCameraOneWindowSize->setShowValue(true);
     sliderCameraOneWindowSize->setBigHandel(true);
     sliderCameraOneWindowSize->setEnabled(true);
 
-    QvkSpezialSlider *sliderCameraOneWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
+    sliderCameraOneWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_5->insertWidget(0, sliderCameraOneWindowZoom);
     sliderCameraOneWindowZoom->setObjectName("sliderCameraOneWindowZoom_" + device);;
     sliderCameraOneWindowZoom->setMinimum(0);

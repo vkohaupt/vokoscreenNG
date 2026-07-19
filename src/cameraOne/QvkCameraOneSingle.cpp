@@ -63,6 +63,12 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             &QComboBox::currentIndexChanged,
             this,
             [=](){
+
+        int value = ui->comboBoxCameraOneResolution->currentData().toSize().width() - 100;
+        vkCameraOneOptions->sliderCameraOneWindowSize->setValue(0);
+        vkCameraOneOptions->sliderCameraOneWindowSize->setMinimum(0);
+        vkCameraOneOptions->sliderCameraOneWindowSize->setMaximum(value);
+
         if (ui->checkBoxCameraOneOnOff->isChecked() == true){
             ui->checkBoxCameraOneOnOff->click();
             ui->checkBoxCameraOneOnOff->click();
@@ -233,7 +239,7 @@ void QvkCameraOneSingle::set_pixelformat_into_comboBox(QString device)
 
 void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
 {
-    ui->comboBoxCameraOneResolution->blockSignals(true);
+    //    ui->comboBoxCameraOneResolution->blockSignals(true);
 
     QCameraDevice cameraDevice;
     QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
@@ -261,7 +267,7 @@ void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)
         }
     }
 
-    ui->comboBoxCameraOneResolution->blockSignals(false);
+    //    ui->comboBoxCameraOneResolution->blockSignals(false);
 }
 
 

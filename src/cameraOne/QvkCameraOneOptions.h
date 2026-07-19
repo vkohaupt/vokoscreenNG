@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "QvkSpezialSlider.h"
+
 #include "ui_QvkCameraOneOptions.h"
 
 namespace Ui {
@@ -18,6 +20,9 @@ public:
     ~QvkCameraOneOptions();
     Ui::QvkCameraOneOptions *ui;
     void set_init(QString device);
+    QvkSpezialSlider *sliderCameraOneWindowSize;
+    QvkSpezialSlider *sliderCameraOneWindowZoom;
+
 
 private:
 
