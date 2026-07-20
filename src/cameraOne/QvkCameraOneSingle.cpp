@@ -74,7 +74,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         value = ui->comboBoxCameraOneResolution->currentData().toSize().width() / 2;
         vkCameraOneOptions->sliderCameraOneWindowZoom->setValue(0);
         vkCameraOneOptions->sliderCameraOneWindowZoom->setMinimum(0);
-        vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value);
+        vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value-1);
 
         if (ui->checkBoxCameraOneOnOff->isChecked() == true){
             ui->checkBoxCameraOneOnOff->click();
@@ -160,7 +160,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             value = ui->comboBoxCameraOneResolution->currentData().toSize().width() / 2;
             vkCameraOneOptions->sliderCameraOneWindowZoom->setValue(0);
             vkCameraOneOptions->sliderCameraOneWindowZoom->setMinimum(0);
-            vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value);
+            vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value-1);
         }
     });
 
@@ -410,6 +410,34 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
         return;
     }
 
+    // Zoom
+    // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
+    if (vkCameraOneOptions->sliderCameraOneWindowZoom->value() > 0){
+        qreal width = image.width();
+        qreal height = image.height();
+        qreal quotient = width / height;
+        qreal minusPixel = vkCameraOneOptions->sliderCameraOneWindowZoom->value();
+        QImage image_zoom = image.copy( minusPixel,
+                                        minusPixel / quotient,
+                                        width - (2 * minusPixel),
+                                        height - (2 * minusPixel / quotient)
+                                        );
+        image = image_zoom.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    }
+    // Zoom end
+
+    // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
+    if(vkCameraOneOptions->sliderCameraOneWindowSize->value() > 0){
+        qreal quotient = (qreal)image.width() / (qreal)image.height();
+        int w1 = ui->comboBoxCameraOneResolution->currentData().toSize().width();
+        int w2 = vkCameraOneOptions->sliderCameraOneWindowSize->value();
+        int w3 = w1 - w2;
+        int h1 = ui->comboBoxCameraOneResolution->currentData().toSize().height();
+        int h2 = vkCameraOneOptions->sliderCameraOneWindowSize->value() / quotient;
+        int h3 = h1 - h2;
+        image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    }
+
     // Rectangle
     if (vkCameraOneOptions->ui->toolButtonCameraOneViewRectangle->isChecked() == true){
     }
@@ -456,33 +484,6 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
         image = pixmap.toImage();
     }
     // Circle end
-
-    // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
-    if(vkCameraOneOptions->sliderCameraOneWindowSize->value() > 0){
-        qreal quotient = (qreal)image.width() / (qreal)image.height();
-        int w1 = ui->comboBoxCameraOneResolution->currentData().toSize().width();
-        int w2 = vkCameraOneOptions->sliderCameraOneWindowSize->value();
-        int w3 = w1 - w2;
-        int h1 = ui->comboBoxCameraOneResolution->currentData().toSize().height();
-        int h2 = vkCameraOneOptions->sliderCameraOneWindowSize->value() / quotient;
-        int h3 = h1 - h2;
-        image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-    }
-
-    // Zoom
-    if (vkCameraOneOptions->sliderCameraOneWindowZoom->value() > 0 ) {
-        qreal width = image.width();
-        qreal height = image.height();
-        qreal quotient = width / height;
-        qreal minusPixel = vkCameraOneOptions->sliderCameraOneWindowZoom->value();
-        QImage image_zoom = image.copy( minusPixel,
-                                        minusPixel / quotient,
-                                        width - ( 2 * minusPixel ),
-                                        height - ( 2 * minusPixel / quotient )
-                                        );
-        image = image_zoom.scaled( width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    }
-    // Zoom end
 
     // Mirror vertical
     if (vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->isChecked() == true){
