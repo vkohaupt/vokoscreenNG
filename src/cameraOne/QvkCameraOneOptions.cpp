@@ -34,6 +34,8 @@ void QvkCameraOneOptions::set_init(QString m_device)
     QString m_objectName = objectName() + device.section(":::", 0, 0);
     setObjectName(m_objectName);
 
+    m_objectName = ui->labelCameraOneOptions->objectName();
+    ui->labelCameraOneOptions->setObjectName(m_objectName);
     ui->labelCameraOneOptions->setText(m_device.section(":::", 1, 1));
 
     m_objectName = ui->toolButtonCameraOneViewRectangle->objectName() + device;
