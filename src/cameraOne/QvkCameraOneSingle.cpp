@@ -217,6 +217,8 @@ QvkCameraOneSingle::~QvkCameraOneSingle()
 // "/dev/video1:::UVC Camera (046d:0809):::added" or removed
 void QvkCameraOneSingle::set_pixelformat_into_comboBox(QString device)
 {
+    //ui->comboBoxCameraOnePixelformat->blockSignals(true);
+
     QCameraDevice cameraDevice;
     QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
     for (int i = 0; i < cameras.count(); i++){
@@ -235,6 +237,8 @@ void QvkCameraOneSingle::set_pixelformat_into_comboBox(QString device)
             ui->comboBoxCameraOnePixelformat->addItem(pixelFormat, cameraDevice.videoFormats().at(i).pixelFormat());
         }
     }
+    //ui->comboBoxCameraOnePixelformat->blockSignals(false);
+
 }
 
 void QvkCameraOneSingle::set_resolution_into_comboBox(QString device)

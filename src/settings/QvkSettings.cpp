@@ -146,7 +146,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             if ( index > -1 ) {
                 comboBox->setCurrentIndex( index );
             }
-
             continue;
         }
 
@@ -164,6 +163,22 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             comboBox->blockSignals( false );
         }
     }
+
+    // ComboBox Resolution für Camera setzen
+    QList<QComboBox *> listResolution = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
+    for (int i = 0; i < listResolution.count(); i++){
+        QComboBox *comboBox = listResolution.at(i);
+        if (comboBox->objectName().contains("comboBoxCameraOneResolution") == true ){
+            QString valueText = settings.value(comboBox->objectName()).toString();
+            int index = comboBox->findText(valueText, Qt::MatchCaseSensitive);
+            if (index != -1){
+                comboBox->setCurrentIndex(index);
+            }else{
+                comboBox->setCurrentIndex(0);
+            }
+        }
+    }
+
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
