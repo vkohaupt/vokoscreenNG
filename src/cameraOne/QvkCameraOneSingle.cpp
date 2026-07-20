@@ -64,6 +64,8 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             this,
             [=](){
 
+        // Selbiges ist auch im connect radioButtonCameraOneSelect vorhanden
+        // Bitte immer abgleichen
         int value = ui->comboBoxCameraOneResolution->currentData().toSize().width() - 100;
         vkCameraOneOptions->sliderCameraOneWindowSize->setValue(0);
         vkCameraOneOptions->sliderCameraOneWindowSize->setMinimum(0);
@@ -143,6 +145,12 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
                     listOptions.at(i)->hide();
                 }
             }
+            // Selbiges ist auch im connect comboBoxCameraOneResolution vorhanden
+            // Bitte immer abgleichen
+            int value = ui->comboBoxCameraOneResolution->currentData().toSize().width() - 100;
+            vkCameraOneOptions->sliderCameraOneWindowSize->setValue(0);
+            vkCameraOneOptions->sliderCameraOneWindowSize->setMinimum(0);
+            vkCameraOneOptions->sliderCameraOneWindowSize->setMaximum(value);
         }
     });
 
