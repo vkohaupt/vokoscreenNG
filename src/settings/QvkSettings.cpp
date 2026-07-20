@@ -23,7 +23,6 @@
 #include "QvkSettings.h"
 #include "global.h"
 #include "QvkSpezialCheckbox.h"
-
 #include "QvkCameraOneSingle.h"
 
 #include <QSettings>
@@ -537,8 +536,10 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QCheckBox *> listCheckBoxCamera = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for (int i = 0; i < listCheckBox.count(); i++){
         QCheckBox *checkBox = listCheckBoxCamera.at(i);
-        if (settings.value(checkBox->objectName(), false).toBool() == true){
-            checkBox->click();
+        if (checkBox->objectName().contains("checkBoxCameraOneOnOff")){
+            if (settings.value(checkBox->objectName(), false).toBool() == true){
+                checkBox->click();
+            }
         }
     }
 }
