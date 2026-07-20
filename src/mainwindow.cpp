@@ -335,8 +335,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Sidebar
     connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
     connect( ui->toolButtonCameraOne,  &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
-    //connect( ui->toolButtonCamera,     &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
-    //ui->toolButtonCamera->hide();
     connect( ui->toolButtonShowclick,  &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(2); } );
     connect( ui->toolButtonSnapshot,   &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(3); } );
     connect( ui->toolButtonShortcut,   &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(4); } );
@@ -536,9 +534,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetSnapshot );
 
     // *****************Begin Camera *********************************
-    //vkCameraController = new QvkCameraController(ui);
-    //vk_setCornerWidget( ui->tabWidgetCamera );
-
     QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this, ui);
     vk_setCornerWidget(ui->tabWidgetCameraOne);
     Q_UNUSED(vkCameraOneController)
@@ -676,14 +671,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->frame_cisco->hide();
 #endif
 
-#ifdef Q_OS_WIN
-    /vkSettings.readCamera( vkCameraController->cameraSingleList );
-#endif
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
-#ifdef Q_OS_UNIX
-    //vkSettings.readCamera( vkCameraController->cameraSingleList );
-#endif
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( 0, vkPlayerController );
 
@@ -1011,22 +1000,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
-/*
-#ifdef Q_OS_UNIX
-        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
-            vkSettings.saveCamera( index,
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().y() );
-        }
-#endif
-#ifdef Q_OS_WIN
-        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
-            vkSettings.saveCamera( index,
-                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().x(),
-                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().y() );
-        }
-#endif
-*/
+
 #ifdef Q_OS_WIN
     }
 #endif
@@ -1134,18 +1108,6 @@ void QvkMainWindow::changeEvent( QEvent *event )
             vkSystray->setMenuText();
         }
         vkSystrayAlternative->setMenuText();
-/*
-        for ( int i = 0; i < vkCameraController->cameraSingleList.count(); i++ ) {
-            QvkCameraSingle *vkCameraSingle = vkCameraController->cameraSingleList.at(i);
-            vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraSingle->vkCameraSettingsDialog );
-            vkCameraSingle->checkBoxCameraWindowFrame->setText( ui->checkBoxCameraWindowFrame->text() );
-            vkCameraSingle->checkBoxCameraMirrorHorizontal->setText( ui->checkBoxCameraMirrorHorizontal->text() );
-            vkCameraSingle->checkBoxCameraMirrorVertical->setText( ui->checkBoxCameraMirrorVertical->text() );
-            vkCameraSingle->checkBoxCameraInvert->setText( ui->checkBoxCameraInvert->text() );
-            vkCameraSingle->checkBoxCameraGray->setText( ui->checkBoxCameraGray->text() );
-            vkCameraSingle->checkBoxCameraMono->setText( ui->checkBoxCameraMono->text() );
-        }
-*/
     } else {
         QWidget::changeEvent(event);
     }
