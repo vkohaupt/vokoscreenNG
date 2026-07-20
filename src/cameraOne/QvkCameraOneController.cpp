@@ -23,6 +23,7 @@ QvkCameraOneController::QvkCameraOneController(
             buttonGroup->addButton(vkCameraOneSingle->ui->radioButtonCameraOneSelect);
             GuiUi->verticalLayout_28->addWidget(vkCameraOneSingle);
         }
+
         if (device.section(":::", 2, 2) == "removed"){
             QString removedDevice = "QvkCameraOneSingle_" + device.section(":::", 0, 0);
             QvkCameraOneSingle *vkCameraOneSingle = topLevelWidget()->findChild<QvkCameraOneSingle *>(removedDevice);
