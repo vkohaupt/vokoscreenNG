@@ -37,6 +37,7 @@ QvkCameraOneController::QvkCameraOneController(
             }
         }
 
+        // Den Radiobutton und das Label verstecken wenn nur eine Camera angezeigt wird
         QList<QvkCameraOneSingle *> cameraOneSingle = topLevelWidget()->findChildren<QvkCameraOneSingle *>();
         for(int i = 0; i < cameraOneSingle.count(); i++){
             if (cameraOneSingle.count() == 1){
