@@ -26,7 +26,7 @@
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
 #include "QvkRegionChoise.h"
-#include "QvkCameraController.h"
+//#include "QvkCameraController.h"
 #include "QvkSettings.h"
 #include "QvkHelp.h"
 #include "QvkSystray.h"
@@ -88,7 +88,7 @@ public:
     QvkLogController *vkLogController;
     QvkLicenses *vkLicenses;
     QvkHelp *vkHelp;
-    QvkCameraController *vkCameraController;
+    //QvkCameraController *vkCameraController;
     bool wantRecording = true;
     bool isFlatpak = false;
 

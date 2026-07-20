@@ -334,7 +334,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Sidebar
     connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
-    connect( ui->toolButtonCamera,     &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
+    connect( ui->toolButtonCameraOne,  &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
+    //connect( ui->toolButtonCamera,     &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
+    //ui->toolButtonCamera->hide();
     connect( ui->toolButtonShowclick,  &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(2); } );
     connect( ui->toolButtonSnapshot,   &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(3); } );
     connect( ui->toolButtonShortcut,   &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(4); } );
@@ -342,7 +344,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(6);
         ui->pushButton_log_refresh->click();
     } );
-    connect( ui->toolButtonCameraOne,  &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(7); } );
 
     ui->tabWidgetSideBar->tabBar()->hide();
     ui->toolButtonScreencast->click();
@@ -535,14 +536,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetSnapshot );
 
     // *****************Begin Camera *********************************
-    vkCameraController = new QvkCameraController(ui);
-    vk_setCornerWidget( ui->tabWidgetCamera );
-    // *****************End Camera ***********************************
+    //vkCameraController = new QvkCameraController(ui);
+    //vk_setCornerWidget( ui->tabWidgetCamera );
 
     QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this, ui);
     vk_setCornerWidget(ui->tabWidgetCameraOne);
-    //ui->toolButtonCameraOne->hide();
-    //Q_UNUSED(vkCameraOneController)
+    Q_UNUSED(vkCameraOneController)
+    // *****************End Camera ***********************************
 
 
     // ***************** shortcut ******************************
@@ -677,12 +677,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_WIN
-    vkSettings.readCamera( vkCameraController->cameraSingleList );
+    /vkSettings.readCamera( vkCameraController->cameraSingleList );
 #endif
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
 #ifdef Q_OS_UNIX
-    vkSettings.readCamera( vkCameraController->cameraSingleList );
+    //vkSettings.readCamera( vkCameraController->cameraSingleList );
 #endif
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( 0, vkPlayerController );
@@ -1011,7 +1011,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
-
+/*
 #ifdef Q_OS_UNIX
         for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
             vkSettings.saveCamera( index,
@@ -1026,7 +1026,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().y() );
         }
 #endif
-
+*/
 #ifdef Q_OS_WIN
     }
 #endif
@@ -1134,7 +1134,7 @@ void QvkMainWindow::changeEvent( QEvent *event )
             vkSystray->setMenuText();
         }
         vkSystrayAlternative->setMenuText();
-
+/*
         for ( int i = 0; i < vkCameraController->cameraSingleList.count(); i++ ) {
             QvkCameraSingle *vkCameraSingle = vkCameraController->cameraSingleList.at(i);
             vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraSingle->vkCameraSettingsDialog );
@@ -1145,6 +1145,7 @@ void QvkMainWindow::changeEvent( QEvent *event )
             vkCameraSingle->checkBoxCameraGray->setText( ui->checkBoxCameraGray->text() );
             vkCameraSingle->checkBoxCameraMono->setText( ui->checkBoxCameraMono->text() );
         }
+*/
     } else {
         QWidget::changeEvent(event);
     }
