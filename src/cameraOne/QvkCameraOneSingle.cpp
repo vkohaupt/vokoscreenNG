@@ -447,6 +447,18 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
     }
     // Circle end
 
+    // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
+    if(vkCameraOneOptions->sliderCameraOneWindowSize->value() > 0){
+        qreal quotient = (qreal)image.width() / (qreal)image.height();
+        int w1 = ui->comboBoxCameraOneResolution->currentData().toSize().width();
+        int w2 = vkCameraOneOptions->sliderCameraOneWindowSize->value();
+        int w3 = w1 - w2;
+        int h1 = ui->comboBoxCameraOneResolution->currentData().toSize().height();
+        int h2 = vkCameraOneOptions->sliderCameraOneWindowSize->value() / quotient;
+        int h3 = h1 - h2;
+        image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    }
+
     // Mirror vertical
     if (vkCameraOneOptions->ui->toolButtonCameraOneMirrorVertical->isChecked() == true){
         image = image.flipped(Qt::Vertical);
