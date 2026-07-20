@@ -740,25 +740,6 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
     settings.endGroup();
 }
 
-void QvkSettings::saveCamera( int index, int x, int y )
-{
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    settings.beginGroup( "Camera-" + QString::number( index ) );
-    settings.setValue( "X", x );
-    settings.setValue( "Y", y );
-    settings.endGroup();
-}
-
-void QvkSettings::readCamera( QList<QvkCameraSingle *> cameraSingleList )
-{
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    for ( int i = 0; i < cameraSingleList.count(); i++ ) {
-        QvkCameraSingle *vkCameraSingle = cameraSingleList.at( i );
-        settings.beginGroup( "Camera-" + QString::number( i ) );
-        vkCameraSingle->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
-        settings.endGroup();
-    }
-}
 
 void QvkSettings::saveSystrayAlternative( int x, int y )
 {
