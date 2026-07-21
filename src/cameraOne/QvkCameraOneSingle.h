@@ -37,9 +37,6 @@ public:
     int cameraOneWindow_X = 200;
     int cameraOneWindow_Y = 200;
 
-    void set_pixelformat_into_comboBox(QString device);
-    void set_resolution_into_comboBox(QString device);
-
 
 private:
     Ui_formMainWindow *GuiUi;
@@ -47,10 +44,15 @@ private:
     QVideoSink *videoSink;
     QMediaCaptureSession *captureSession;
 
+    void set_pixelformat_into_comboBox(QString device);
+    void set_resolution_into_comboBox(QString device);
+
 
 private slots:
     void slot_checkBoxCameraOnOff(bool value);
     void slot_videoFrameChanged(QVideoFrame videoFrame);
+    void slot_slider_min_max();
+
 
 protected:
     void resizeEvent(QResizeEvent *event);

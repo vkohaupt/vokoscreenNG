@@ -63,18 +63,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             &QComboBox::currentIndexChanged,
             this,
             [=](){
-
-        // Selbiges ist auch im connect radioButtonCameraOneSelect vorhanden
-        // Bitte immer abgleichen
-        int value = ui->comboBoxCameraOneResolution->currentData().toSize().width() - 100;
-        vkCameraOneOptions->sliderCameraOneWindowSize->setValue(0);
-        vkCameraOneOptions->sliderCameraOneWindowSize->setMinimum(0);
-        vkCameraOneOptions->sliderCameraOneWindowSize->setMaximum(value);
-
-        value = ui->comboBoxCameraOneResolution->currentData().toSize().width() / 2;
-        vkCameraOneOptions->sliderCameraOneWindowZoom->setValue(0);
-        vkCameraOneOptions->sliderCameraOneWindowZoom->setMinimum(0);
-        vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value-1);
+        slot_slider_min_max();
 
         if (ui->checkBoxCameraOneOnOff->isChecked() == true){
             ui->checkBoxCameraOneOnOff->click();
@@ -150,17 +139,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
                     listOptions.at(i)->hide();
                 }
             }
-            // Selbiges ist auch im connect comboBoxCameraOneResolution vorhanden
-            // Bitte immer abgleichen
-            int value = ui->comboBoxCameraOneResolution->currentData().toSize().width() - 100;
-            vkCameraOneOptions->sliderCameraOneWindowSize->setValue(0);
-            vkCameraOneOptions->sliderCameraOneWindowSize->setMinimum(0);
-            vkCameraOneOptions->sliderCameraOneWindowSize->setMaximum(value);
-
-            value = ui->comboBoxCameraOneResolution->currentData().toSize().width() / 2;
-            vkCameraOneOptions->sliderCameraOneWindowZoom->setValue(0);
-            vkCameraOneOptions->sliderCameraOneWindowZoom->setMinimum(0);
-            vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value-1);
+            slot_slider_min_max();
         }
     });
 
@@ -228,6 +207,22 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
 QvkCameraOneSingle::~QvkCameraOneSingle()
 {
     delete ui;
+}
+
+
+void QvkCameraOneSingle::slot_slider_min_max()
+{
+    // Selbiges ist auch im connect comboBoxCameraOneResolution vorhanden
+    // Bitte immer abgleichen
+    int value = ui->comboBoxCameraOneResolution->currentData().toSize().width() - 100;
+    vkCameraOneOptions->sliderCameraOneWindowSize->setValue(0);
+    vkCameraOneOptions->sliderCameraOneWindowSize->setMinimum(0);
+    vkCameraOneOptions->sliderCameraOneWindowSize->setMaximum(value);
+
+    value = ui->comboBoxCameraOneResolution->currentData().toSize().width() / 2;
+    vkCameraOneOptions->sliderCameraOneWindowZoom->setValue(0);
+    vkCameraOneOptions->sliderCameraOneWindowZoom->setMinimum(0);
+    vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value-1);
 }
 
 
