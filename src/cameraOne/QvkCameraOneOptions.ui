@@ -187,7 +187,7 @@
        <item>
         <widget class="QToolButton" name="toolButtonCameraOneMirrorVertical">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Flip vertical&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>Flip vertical</string>
          </property>
          <property name="text">
           <string notr="true"/>
@@ -230,7 +230,7 @@
        <item>
         <widget class="QToolButton" name="toolButtonCameraOneMirrorHorizontal">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Flip horizontal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>Flip horizontal</string>
          </property>
          <property name="text">
           <string notr="true"/>
@@ -279,7 +279,7 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Remove window frame&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>Remove window frame</string>
          </property>
          <property name="text">
           <string notr="true"/>
