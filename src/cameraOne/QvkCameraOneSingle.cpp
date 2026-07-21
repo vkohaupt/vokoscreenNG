@@ -39,6 +39,23 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
     ui->setupUi(this);
     GuiUi = m_GuiUi;
 
+    setObjectName(objectName() + "_" + device.section(":::", 0, 0));
+    ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
+
+    QString m_objectName = ui->checkBoxCameraOneOnOff->objectName() + "_" + device.section(":::", 0, 0);
+    ui->checkBoxCameraOneOnOff->setObjectName(m_objectName);
+    ui->checkBoxCameraOneOnOff->setText(device.section(":::", 1, 1));
+
+    m_objectName = ui->comboBoxCameraOnePixelformat->objectName() + "_" + device.section(":::", 0, 0);
+    ui->comboBoxCameraOnePixelformat->setObjectName(m_objectName);
+
+    m_objectName = ui->comboBoxCameraOneResolution->objectName() + "_" + device.section(":::", 0, 0);
+    ui->comboBoxCameraOneResolution->setObjectName(m_objectName);
+
+    vkCameraOneOptions = new QvkCameraOneOptions(this);
+    vkCameraOneOptions->set_init(device);
+    GuiUi->verticalLayout_39->addWidget(vkCameraOneOptions);
+
     connect(ui->checkBoxCameraOneOnOff,
             &QCheckBox::clicked,
             this,
@@ -70,23 +87,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             ui->checkBoxCameraOneOnOff->click();
         }
     });
-
-    setObjectName(objectName() + "_" + device.section(":::", 0, 0));
-    ui->radioButtonCameraOneSelect->setObjectName(ui->radioButtonCameraOneSelect->objectName() + "_" + device.section(":::", 0, 0));
-
-    QString m_objectName = ui->checkBoxCameraOneOnOff->objectName() + "_" + device.section(":::", 0, 0);
-    ui->checkBoxCameraOneOnOff->setObjectName(m_objectName);
-    ui->checkBoxCameraOneOnOff->setText(device.section(":::", 1, 1));
-
-    m_objectName = ui->comboBoxCameraOnePixelformat->objectName() + "_" + device.section(":::", 0, 0);
-    ui->comboBoxCameraOnePixelformat->setObjectName(m_objectName);
-
-    m_objectName = ui->comboBoxCameraOneResolution->objectName() + "_" + device.section(":::", 0, 0);
-    ui->comboBoxCameraOneResolution->setObjectName(m_objectName);
-
-    vkCameraOneOptions = new QvkCameraOneOptions(this);
-    vkCameraOneOptions->set_init(device);
-    GuiUi->verticalLayout_39->addWidget(vkCameraOneOptions);
 
     // Window ON/Off
     connect(ui->checkBoxCameraOneOnOff, &QCheckBox::clicked, this, [=](bool value){
