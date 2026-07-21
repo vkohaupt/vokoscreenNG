@@ -14,13 +14,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraOneOptions</name>
-    <message>
-        <source>Remove window frame</source>
-        <translation>حذف فریم دور پنچره</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>

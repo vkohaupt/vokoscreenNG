@@ -14,13 +14,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraOneOptions</name>
-    <message>
-        <source>Remove window frame</source>
-        <translation>Remover a moldura da janela</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>

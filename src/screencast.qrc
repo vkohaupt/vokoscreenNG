@@ -10,11 +10,11 @@
 <file>pictures/camera/window-circle-on.png</file>
 <file>pictures/camera/window-ellipse-off.png</file>
 <file>pictures/camera/window-ellipse-on.png</file>
+<file>pictures/camera/window-frameless-off.png</file>
+<file>pictures/camera/window-frameless-on.png</file>
 <file>pictures/camera/window-rectangle-off.png</file>
 <file>pictures/camera/window-rectangle-on.png</file>
 <file>pictures/camera/window-resize.png</file>
-<file>pictures/camera/window-frameless-on.png</file>
-<file>pictures/camera/window-frameless-off.png</file>
 <file>pictures/convert/convertTo.png</file>
 <file>pictures/cornerWidget/linux-flatpak.png</file>
 <file>pictures/cornerWidget/linux.png</file>
@@ -143,11 +143,11 @@
 <file>pictures/camera/window-circle-on.license</file>
 <file>pictures/camera/window-ellipse-off.license</file>
 <file>pictures/camera/window-ellipse-on.license</file>
+<file>pictures/camera/window-frameless-off.license</file>
+<file>pictures/camera/window-frameless-on.license</file>
 <file>pictures/camera/window-rectangle-off.license</file>
 <file>pictures/camera/window-rectangle-on.license</file>
 <file>pictures/camera/window-resize.license</file>
-<file>pictures/camera/window-frameless-on.license</file>
-<file>pictures/camera/window-frameless-off.license</file>
 <file>pictures/cursor/size_all.license</file>
 <file>pictures/cursor/size_bdiag.license</file>
 <file>pictures/cursor/size_fdiag.license</file>
