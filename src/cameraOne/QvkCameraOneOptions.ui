@@ -186,9 +186,6 @@
        </item>
        <item>
         <widget class="QToolButton" name="toolButtonCameraOneMirrorVertical">
-         <property name="toolTip">
-          <string>Flip vertical</string>
-         </property>
          <property name="text">
           <string notr="true"/>
          </property>
@@ -229,9 +226,6 @@
        </item>
        <item>
         <widget class="QToolButton" name="toolButtonCameraOneMirrorHorizontal">
-         <property name="toolTip">
-          <string>Flip horizontal</string>
-         </property>
          <property name="text">
           <string notr="true"/>
          </property>
@@ -277,9 +271,6 @@
            <width>46</width>
            <height>46</height>
           </size>
-         </property>
-         <property name="toolTip">
-          <string>Remove window frame</string>
          </property>
          <property name="text">
           <string notr="true"/>
