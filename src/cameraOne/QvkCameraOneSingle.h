@@ -47,6 +47,7 @@ private:
     void set_pixelformat_into_comboBox(QString device);
     void set_resolution_into_comboBox(QString device);
 
+    void get_colorTemperature();
 
 private slots:
     void slot_checkBoxCameraOnOff(bool value);

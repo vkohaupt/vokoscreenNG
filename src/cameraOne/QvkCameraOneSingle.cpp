@@ -347,41 +347,94 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
         camera = new QCamera(cameraDevice);
         //connect( camera, SIGNAL( errorChanged() ), this, SLOT( slot_cameraError() ) );
 
-        // Format und Resolution von Widget ermitteln und anwenden
-        const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
-        for (int i = 0; i < cameraFormatList.count(); i++){
-            if (cameraFormatList.at(i).pixelFormat() == ui->comboBoxCameraOnePixelformat->currentData()){
-                if (cameraFormatList.at(i).resolution() == ui->comboBoxCameraOneResolution->currentData()){
-                    camera->setCameraFormat(cameraFormatList.at(i));
-                    QString width  = QString::number(cameraFormatList.at(i).resolution().width());
-                    QString height = QString::number(cameraFormatList.at(i).resolution().height());
-                    qDebug().noquote() << global::nameOutput
-                                       << "[Camera] Start with format:"
-                                       << cameraFormatList.at(i).pixelFormat()
-                                       << "and resolution:"
-                                       << width + "x" + height;
-                }
+        // Farbtemperatur ermitteln
+        connect(camera, &QCamera::activeChanged, this, [=](bool active){
+            if (active == true){
+                /*
+                In Qt ist die Standard-Farbtemperatur typischerweise an den automatischen Weißabgleich (AWB) gekoppelt.
+                Sie wird standardmäßig nicht als fester Kelvin-Wert definiert,
+                sondern vom Kameratreiber dynamisch anhand der aktuellen Umgebung berechnet.
+
+                Für die direkte manuelle Steuerung (in Kelvin) muss der manuelle Weißabgleich aktiviert werden.
+                Hier ist die genaue Funktionsweise der Farbtemperatur in
+                Qt (Qt 6):Standardverhalten: Wenn der Weißabgleich auf WhiteBalanceAuto steht,
+                wird die Farbtemperatur von der Hardware dynamisch geregelt.
+
+                Manuelle Anpassung: Sie können die Eigenschaft colorTemperature (in Kelvin) nur dann setzen,
+                wenn Sie den Weißabgleich explizit auf WhiteBalanceManual
+                (oder den entsprechenden C++-Modus) umstellen.
+
+                Details zum automatischen Zurücksetzen: In C++ bewirkt das Setzen der Temperatur auf 0,
+                dass das System automatisch wieder in den Modus WhiteBalanceAuto wechselt.
+                */
+
+                qDebug().noquote() << global::nameOutput << "[Camera] is active";
+
+                //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
+                bool m_modeSupported = camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
+                qDebug().noquote() << "[Camera] isWhiteBalanceModeSupported:" << m_modeSupported;
+                if (m_modeSupported != true){
+                  return;
+                };
+
+                int min_ColorTemperatur = 0;
+                int max_ColorTemperatur = 0;
+
+                // colorTemperatur auf sehr hohen Wert setzen....
+                camera->setColorTemperature(50000);
+                // ... nun den maximalen Wert abfragen
+                max_ColorTemperatur = camera->colorTemperature() - 1;
+                qDebug().noquote() << global::nameOutput << "[Camera] max. color temperature:" << camera->colorTemperature();
+
+                // Nun die Werte am Schieberegler setzen
+                vkCameraOneOptions->sliderCameraOneColorTemperature->setMinimum(min_ColorTemperatur);
+                vkCameraOneOptions->sliderCameraOneColorTemperature->setMaximum(max_ColorTemperatur);
+                QvkSpezialSlider *slider = vkCameraOneOptions->sliderCameraOneColorTemperature;
+                connect(slider, &QvkSpezialSlider::valueChanged, this, [=](int value){
+                    camera->setColorTemperature(value);
+                });
+            }
+            if (active == false){
+                qDebug().noquote() << global::nameOutput << "[Camera] not active";
+            }
+        });
+    };
+
+    // Format und Resolution von Widget ermitteln und anwenden
+    const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+    for (int i = 0; i < cameraFormatList.count(); i++){
+        if (cameraFormatList.at(i).pixelFormat() == ui->comboBoxCameraOnePixelformat->currentData()){
+            if (cameraFormatList.at(i).resolution() == ui->comboBoxCameraOneResolution->currentData()){
+                camera->setCameraFormat(cameraFormatList.at(i));
+                QString width  = QString::number(cameraFormatList.at(i).resolution().width());
+                QString height = QString::number(cameraFormatList.at(i).resolution().height());
+                qDebug().noquote() << global::nameOutput
+                                   << "[Camera] Start with format:"
+                                   << cameraFormatList.at(i).pixelFormat()
+                                   << "and resolution:"
+                                   << width + "x" + height;
             }
         }
-
-        videoSink = new QVideoSink;
-        connect(videoSink,
-                &QVideoSink::videoFrameChanged,
-                this,
-                [=](QVideoFrame videoFrame){
-            slot_videoFrameChanged(videoFrame);
-        });
-
-        captureSession = new QMediaCaptureSession;
-        captureSession->setCamera( camera );
-        captureSession->setVideoOutput( videoSink );
-
-        camera->start();
     }
 
+    videoSink = new QVideoSink;
+    connect(videoSink,
+            &QVideoSink::videoFrameChanged,
+            this,
+            [=](QVideoFrame videoFrame){
+        slot_videoFrameChanged(videoFrame);
+    });
+
+    captureSession = new QMediaCaptureSession;
+    captureSession->setCamera(camera);
+    captureSession->setVideoOutput(videoSink);
+
+    camera->start();
+
+
     // Camera stopen
-    if ( value == false ) {
-        disconnect( videoSink );
+    if (value == false){
+        disconnect(videoSink);
         delete videoSink;
 
         camera->stop();
@@ -491,4 +544,30 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
     }
 
     vkCameraOneWindow->set_newImage(image);
+}
+
+
+void QvkCameraOneSingle::get_colorTemperature()
+{
+    /*
+    QCameraDevice cameraDevice;
+    QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+    for (int i = 0; i < cameras.count(); i++){
+        if (cameras.at(i).id() == ui->checkBoxCameraOneOnOff->objectName().section("_", 1, -1)){
+            cameraDevice = cameras.at(i);
+            break;
+        }
+    }
+*/
+    //   QCamera *camera = new QCamera(cameraDevice);
+
+    //Dies muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
+    qDebug() << "111111111111111 isWhiteBalanceModeSupported:" << camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
+    qDebug() << "222222222222222 isActive:" << camera->isActive();
+    qDebug() << "333333333333333 colorTemperature:" << camera->colorTemperature();
+    qDebug() << "444444444444444 whiteBalanceMode:" << camera->whiteBalanceMode();
+    //camera->setColorTemperature(100);
+
+
+
 }

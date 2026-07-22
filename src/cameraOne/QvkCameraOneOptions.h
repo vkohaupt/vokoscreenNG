@@ -22,6 +22,7 @@ public:
     void set_init(QString device);
     QvkSpezialSlider *sliderCameraOneWindowSize;
     QvkSpezialSlider *sliderCameraOneWindowZoom;
+    QvkSpezialSlider *sliderCameraOneColorTemperature;
 
 
 private:
