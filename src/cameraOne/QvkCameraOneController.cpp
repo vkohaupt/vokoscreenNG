@@ -5,6 +5,15 @@
 #include <QWidget>
 #include <QString>
 
+/*
+ls -l /dev/v4l/by-id/
+Ausgabe: usb-Logitech_HD_Pro_Webcam_C920_A1B2C3D4-video-index0 -> ../../video0
+Eindeutiges Merkmal: Hier wird die Seriennummer der Hardware
+(im Beispiel A1B2C3D4) oder der physische USB-Port eingewebt.
+Nutzen Sie diesen Pfad in Ihren Skripten oder Anwendungen,
+um immer exakt dieselbe Kamera anzusprechen.
+*/
+
 QvkCameraOneController::QvkCameraOneController(
         QWidget *parent, Ui_formMainWindow *m_GuiUi) : QWidget(parent)
 {

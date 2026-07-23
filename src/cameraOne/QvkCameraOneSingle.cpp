@@ -81,7 +81,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             this,
             [=](){
         slot_slider_min_max();
-
         if (ui->checkBoxCameraOneOnOff->isChecked() == true){
             ui->checkBoxCameraOneOnOff->click();
             ui->checkBoxCameraOneOnOff->click();
@@ -552,30 +551,4 @@ void QvkCameraOneSingle::slot_videoFrameChanged(QVideoFrame videoFrame)
     }
 
     vkCameraOneWindow->set_newImage(image);
-}
-
-
-void QvkCameraOneSingle::get_colorTemperature()
-{
-    /*
-    QCameraDevice cameraDevice;
-    QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
-    for (int i = 0; i < cameras.count(); i++){
-        if (cameras.at(i).id() == ui->checkBoxCameraOneOnOff->objectName().section("_", 1, -1)){
-            cameraDevice = cameras.at(i);
-            break;
-        }
-    }
-*/
-    //   QCamera *camera = new QCamera(cameraDevice);
-
-    //Dies muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
-    qDebug() << "111111111111111 isWhiteBalanceModeSupported:" << camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
-    qDebug() << "222222222222222 isActive:" << camera->isActive();
-    qDebug() << "333333333333333 colorTemperature:" << camera->colorTemperature();
-    qDebug() << "444444444444444 whiteBalanceMode:" << camera->whiteBalanceMode();
-    //camera->setColorTemperature(100);
-
-
-
 }

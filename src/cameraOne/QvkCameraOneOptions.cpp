@@ -38,7 +38,7 @@ void QvkCameraOneOptions::set_init(QString m_device)
 
     sliderCameraOneWindowSize = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_2->insertWidget(0, sliderCameraOneWindowSize);
-    sliderCameraOneWindowSize->setObjectName("sliderCameraOneWindowSize" + device);
+    sliderCameraOneWindowSize->setObjectName("sliderCameraOneWindowSize");
     sliderCameraOneWindowSize->setMinimum(0);
     sliderCameraOneWindowSize->setMaximum(1);
     sliderCameraOneWindowSize->setValue(0);
@@ -49,7 +49,7 @@ void QvkCameraOneOptions::set_init(QString m_device)
 
     sliderCameraOneWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_5->insertWidget(0, sliderCameraOneWindowZoom);
-    sliderCameraOneWindowZoom->setObjectName("sliderCameraOneWindowZoom" + device);;
+    sliderCameraOneWindowZoom->setObjectName("sliderCameraOneWindowZoom");
     sliderCameraOneWindowZoom->setMinimum(0);
     sliderCameraOneWindowZoom->setMaximum(1);
     sliderCameraOneWindowZoom->setValue(0);
@@ -59,7 +59,7 @@ void QvkCameraOneOptions::set_init(QString m_device)
 
     sliderCameraOneColorTemperature = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_7->addWidget(sliderCameraOneColorTemperature);
-    sliderCameraOneColorTemperature->setObjectName("sliderCameraOneColorTemperature" + device);;
+    sliderCameraOneColorTemperature->setObjectName("sliderCameraOneColorTemperature");
     sliderCameraOneColorTemperature->setMinimum(0);
     sliderCameraOneColorTemperature->setMaximum(1);
     sliderCameraOneColorTemperature->setValue(0);
