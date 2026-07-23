@@ -94,5 +94,5 @@ void QvkCameraOneOptions::set_init(QString m_device)
     sliderCameraOneColorTemperature->setValue(0);
     sliderCameraOneColorTemperature->show();
     sliderCameraOneColorTemperature->setShowValue(true);
-    sliderCameraOneColorTemperature->setEnabled(true);
+    sliderCameraOneColorTemperature->setEnabled(false);
 }

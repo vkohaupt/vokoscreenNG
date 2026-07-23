@@ -369,6 +369,8 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 */
 
                 qDebug().noquote() << global::nameOutput << "[Camera] is active";
+                vkCameraOneOptions->ui->comboBox->setEnabled(true);
+                vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
 
                 //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
                 bool m_modeSupported = camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
@@ -399,6 +401,8 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 });
             }
             if (active == false){
+                vkCameraOneOptions->ui->comboBox->setEnabled(false);
+                vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
                 qDebug().noquote() << global::nameOutput << "[Camera] not active";
             }
         });

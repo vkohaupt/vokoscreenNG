@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>316</height>
+    <height>317</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -311,6 +311,9 @@
        </property>
        <item>
         <widget class="QComboBox" name="comboBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="toolTip">
           <string notr="true"/>
          </property>
