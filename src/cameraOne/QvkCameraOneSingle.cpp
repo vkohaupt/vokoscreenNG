@@ -364,16 +364,16 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 */
 
                 qDebug().noquote() << global::nameOutput << "[Camera] is active";
-                vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(true);
-                vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
 
                 //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
                 bool m_modeSupported = camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
                 qDebug().noquote() << "[Camera] isWhiteBalanceModeSupported:" << m_modeSupported;
                 if (m_modeSupported != true){
-                  return;
+                    return;
                 }else{
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                    vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(true);
+                    vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
                 };
 
                 int min_ColorTemperatur = 0;
