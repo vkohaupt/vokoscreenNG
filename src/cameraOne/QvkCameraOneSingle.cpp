@@ -375,6 +375,8 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 qDebug().noquote() << "[Camera] isWhiteBalanceModeSupported:" << m_modeSupported;
                 if (m_modeSupported != true){
                   return;
+                }else{
+                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                 };
 
                 int min_ColorTemperatur = 0;
@@ -383,7 +385,9 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 // colorTemperatur auf sehr hohen Wert setzen....
                 camera->setColorTemperature(50000);
                 // ... nun den maximalen Wert abfragen
-                max_ColorTemperatur = camera->colorTemperature() - 1;
+                max_ColorTemperatur = camera->colorTemperature();
+                camera->setColorTemperature(0); // resetten
+
                 qDebug().noquote() << global::nameOutput << "[Camera] max. color temperature:" << camera->colorTemperature();
 
                 // Nun die Werte am Schieberegler setzen
@@ -398,6 +402,10 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 qDebug().noquote() << global::nameOutput << "[Camera] not active";
             }
         });
+
+        qDebug() << "hhhhhhhh1111111111" << camera->isExposureModeSupported(QCamera::ExposureAuto);
+        qDebug() << "hhhhhhhh2222222222" << camera->isExposureModeSupported(QCamera::ExposureManual);
+        qDebug() << "hhhhhhhh3333333333" << camera->isExposureModeSupported(QCamera::ExposurePortrait);
     };
 
     // Format und Resolution von Widget ermitteln und anwenden

@@ -62,10 +62,8 @@ void QvkCameraOneOptions::set_init(QString m_device)
     m_objectName = ui->toolButtonCameraOneMirrorHorizontal->objectName() + device;
     ui->toolButtonCameraOneMirrorHorizontal->setObjectName(m_objectName);
 
-    QLabel *labelCameraWindowSize = new QLabel;
-    ui->horizontalLayout_3->addWidget(labelCameraWindowSize);
-    labelCameraWindowSize->setObjectName("labelCameraOneWindowSize_" + device);
-    labelCameraWindowSize->setText("---x---");
+    m_objectName = ui->labelCameraOneWindowSize->objectName() + device;
+    ui->labelCameraOneWindowSize->setObjectName(m_objectName);
 
     sliderCameraOneWindowSize = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_2->insertWidget(0, sliderCameraOneWindowSize);
@@ -89,7 +87,7 @@ void QvkCameraOneOptions::set_init(QString m_device)
     sliderCameraOneWindowZoom->setEnabled(true);
 
     sliderCameraOneColorTemperature = new QvkSpezialSlider(Qt::Horizontal);
-    ui->horizontalLayout_7->insertWidget(0, sliderCameraOneColorTemperature);
+    ui->horizontalLayout_7->addWidget(sliderCameraOneColorTemperature);
     sliderCameraOneColorTemperature->setObjectName("sliderCameraOneColorTemperature_" + device);;
     sliderCameraOneColorTemperature->setMinimum(0);
     sliderCameraOneColorTemperature->setMaximum(1);
