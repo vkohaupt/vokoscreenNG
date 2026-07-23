@@ -212,8 +212,6 @@ QvkCameraOneSingle::~QvkCameraOneSingle()
 
 void QvkCameraOneSingle::slot_slider_min_max()
 {
-    // Selbiges ist auch im connect comboBoxCameraOneResolution vorhanden
-    // Bitte immer abgleichen
     int value = ui->comboBoxCameraOneResolution->currentData().toSize().width() - 100;
     vkCameraOneOptions->sliderCameraOneWindowSize->setMinimum(0);
     vkCameraOneOptions->sliderCameraOneWindowSize->setMaximum(value);
