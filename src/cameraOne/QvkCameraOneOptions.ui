@@ -310,7 +310,7 @@
         <number>10</number>
        </property>
        <item>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="comboBoxCameraOneColorTemperature">
          <property name="enabled">
           <bool>false</bool>
          </property>

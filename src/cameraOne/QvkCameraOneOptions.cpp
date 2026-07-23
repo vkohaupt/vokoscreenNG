@@ -65,9 +65,12 @@ void QvkCameraOneOptions::set_init(QString m_device)
     m_objectName = ui->labelCameraOneWindowSize->objectName() + device;
     ui->labelCameraOneWindowSize->setObjectName(m_objectName);
 
+    m_objectName = ui->comboBoxCameraOneColorTemperature->objectName() + device;
+    ui->comboBoxCameraOneColorTemperature->setObjectName(device);
+
     sliderCameraOneWindowSize = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_2->insertWidget(0, sliderCameraOneWindowSize);
-    sliderCameraOneWindowSize->setObjectName("sliderCameraOneWindowSize_" + device);
+    sliderCameraOneWindowSize->setObjectName("sliderCameraOneWindowSize" + device);
     sliderCameraOneWindowSize->setMinimum(0);
     sliderCameraOneWindowSize->setMaximum(1);
     sliderCameraOneWindowSize->setValue(0);
@@ -78,7 +81,7 @@ void QvkCameraOneOptions::set_init(QString m_device)
 
     sliderCameraOneWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_5->insertWidget(0, sliderCameraOneWindowZoom);
-    sliderCameraOneWindowZoom->setObjectName("sliderCameraOneWindowZoom_" + device);;
+    sliderCameraOneWindowZoom->setObjectName("sliderCameraOneWindowZoom" + device);;
     sliderCameraOneWindowZoom->setMinimum(0);
     sliderCameraOneWindowZoom->setMaximum(1);
     sliderCameraOneWindowZoom->setValue(0);
@@ -88,11 +91,23 @@ void QvkCameraOneOptions::set_init(QString m_device)
 
     sliderCameraOneColorTemperature = new QvkSpezialSlider(Qt::Horizontal);
     ui->horizontalLayout_7->addWidget(sliderCameraOneColorTemperature);
-    sliderCameraOneColorTemperature->setObjectName("sliderCameraOneColorTemperature_" + device);;
+    sliderCameraOneColorTemperature->setObjectName("sliderCameraOneColorTemperature" + device);;
     sliderCameraOneColorTemperature->setMinimum(0);
     sliderCameraOneColorTemperature->setMaximum(1);
     sliderCameraOneColorTemperature->setValue(0);
     sliderCameraOneColorTemperature->show();
     sliderCameraOneColorTemperature->setShowValue(true);
     sliderCameraOneColorTemperature->setEnabled(false);
+/*
+    // Jedem Widget muß ein eindeutiger Objectname zugewiesen werden
+    // damit dieser in den Settings gspeichert werden kann.
+    QObjectList widgetList = children();
+    for (int i = 0; i < widgetList.count(); i++){
+        widgetList.at(i)->setObjectName(widgetList.at(i)->objectName() + device);
+    }
+
+    QObjectList widget = children();
+    qDebug() << widget;
+*/
+
 }
