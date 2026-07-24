@@ -367,7 +367,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
 
                 //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
                 bool m_modeSupported = camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
-                qDebug().noquote() << "[Camera] isWhiteBalanceModeSupported:" << m_modeSupported;
+                qDebug().noquote() << global::nameOutput << "[Camera] isWhiteBalanceModeSupported:" << m_modeSupported;
                 if (m_modeSupported != true){
                     return;
                 }else{
@@ -405,10 +405,12 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 camera->setColorTemperature(50000);
                 // ... nun den maximalen Wert abfragen
                 max_ColorTemperatur = camera->colorTemperature() / 100;
+                qDebug().noquote() << global::nameOutput << "[Camera] max. color temperature:" << camera->colorTemperature();
+
                 camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                 camera->setColorTemperature(0); // resetten
+                qDebug().noquote() << global::nameOutput << "[Camera] Reset temperature. Automatic value:" << camera->colorTemperature();
 
-                qDebug().noquote() << global::nameOutput << "[Camera] max. color temperature:" << camera->colorTemperature();
 
                 // Nun die Werte am Schieberegler setzen
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setMinimum(min_ColorTemperatur);
