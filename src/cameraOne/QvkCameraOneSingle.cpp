@@ -94,7 +94,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
                 vkCameraOneWindow->show();
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
-                qDebug() << cameraOneWindow_X << cameraOneWindow_Y;
             }
         }else{
             if (vkCameraOneWindow != NULL){
