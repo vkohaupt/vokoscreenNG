@@ -397,7 +397,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     }
                 });
 
-                int min_ColorTemperatur = 0;
+                int min_ColorTemperatur = 1;
                 int max_ColorTemperatur = 0;
 
                 // colorTemperatur auf sehr hohen Wert setzen....
