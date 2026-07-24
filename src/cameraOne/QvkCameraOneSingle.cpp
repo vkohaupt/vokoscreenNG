@@ -373,7 +373,8 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 }else{
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(true);
-                    if (vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->currentIndex() == 1){
+                    int index = vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->findText("Manual");
+                    if (vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->currentIndex() == index){
                         vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
                     }else{
                         vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
