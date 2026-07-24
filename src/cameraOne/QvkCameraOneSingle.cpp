@@ -418,6 +418,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     int color = value * 100;
                     camera->setColorTemperature(color);
                     vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
+                    qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
                 });
             }
             if (active == false){
@@ -426,10 +427,6 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 qDebug().noquote() << global::nameOutput << "[Camera] not active";
             }
         });
-
-        qDebug() << "hhhhhhhh1111111111" << camera->isExposureModeSupported(QCamera::ExposureAuto);
-        qDebug() << "hhhhhhhh2222222222" << camera->isExposureModeSupported(QCamera::ExposureManual);
-        qDebug() << "hhhhhhhh3333333333" << camera->isExposureModeSupported(QCamera::ExposurePortrait);
     };
 
     // Format und Resolution von Widget ermitteln und anwenden
