@@ -391,8 +391,9 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     }else{
                         vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
                         camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                        int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value();
+                        int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value() * 100;
                         camera->setColorTemperature(color);
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
                     }
                 });
 
@@ -402,7 +403,8 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 // colorTemperatur auf sehr hohen Wert setzen....
                 camera->setColorTemperature(50000);
                 // ... nun den maximalen Wert abfragen
-                max_ColorTemperatur = camera->colorTemperature();
+                max_ColorTemperatur = camera->colorTemperature() / 100;
+                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                 camera->setColorTemperature(0); // resetten
 
                 qDebug().noquote() << global::nameOutput << "[Camera] max. color temperature:" << camera->colorTemperature();
@@ -412,7 +414,9 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setMaximum(max_ColorTemperatur);
                 QvkSpezialSlider *slider = vkCameraOneOptions->sliderCameraOneColorTemperature;
                 connect(slider, &QvkSpezialSlider::valueChanged, this, [=](int value){
-                    camera->setColorTemperature(value);
+                    int color = value * 100;
+                    camera->setColorTemperature(color);
+                    vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
                 });
             }
             if (active == false){
