@@ -94,6 +94,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
                 vkCameraOneWindow->show();
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
+                qDebug() << cameraOneWindow_X << cameraOneWindow_Y;
             }
         }else{
             if (vkCameraOneWindow != NULL){
@@ -373,8 +374,28 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 }else{
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(true);
-                    vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
+                    if (vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->currentIndex() == 1){
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
+                    }else{
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
+                    }
                 };
+
+                connect(vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature,
+                        &QComboBox::currentIndexChanged,
+                        this,
+                        [=](int index){
+                    if (index == 0){
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
+                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                        camera->setColorTemperature(0); // resetten
+                    }else{
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
+                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                        int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value();
+                        camera->setColorTemperature(color);
+                    }
+                });
 
                 int min_ColorTemperatur = 0;
                 int max_ColorTemperatur = 0;
