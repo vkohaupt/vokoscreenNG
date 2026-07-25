@@ -406,7 +406,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
                 });
 
-                connect(vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature,
+                comboBoxTemperatureConnect = connect(vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature,
                         &QComboBox::currentIndexChanged,
                         this,
                         [=](int index){
@@ -444,6 +444,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(false);
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
                 qDebug().noquote() << global::nameOutput << "[Camera] not active";
+                QObject::disconnect(comboBoxTemperatureConnect);
             }
         });
     };
