@@ -468,7 +468,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
 
         shortcutCamera->unsetShortcut();
         shortcutCamera->setShortcut( QKeySequence( shortcut ) );
-        ui->checkBoxCameraOnOff->setToolTip( shortcut );
+//        ui->checkBoxCameraOnOff->setToolTip( shortcut );
 
         QList<QPushButton *> listPushButton = ui->centralWidget->findChildren<QPushButton *>();
         for ( int i = 0; i < listPushButton.count(); i++ ) {
@@ -494,7 +494,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
         ui->label_shortcut_picture_camera->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutCamera->unsetShortcut();
-        ui->checkBoxCameraOnOff->setToolTip( "None" );
+//        ui->checkBoxCameraOnOff->setToolTip( "None" );
         emit signal_shortcutSystray( "camera", "None" );
 
         QList<QPushButton *> listPushButton = ui->centralWidget->findChildren<QPushButton *>();

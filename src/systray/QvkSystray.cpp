@@ -128,9 +128,9 @@ void QvkSystray::init()
     connect( pauseAction,    SIGNAL( triggered(bool) ), ui->pushButtonPause,    SLOT( click() ) );
     connect( continueAction, SIGNAL( triggered(bool) ), ui->pushButtonContinue, SLOT( click() ) );
 
-    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled(bool) ),   cameraAction,            SLOT( setChecked(bool) ) );
-    connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
-    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
+//    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled(bool) ),   cameraAction,            SLOT( setChecked(bool) ) );
+//    connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
+//    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
 
     connect( ui->checkBoxMagnifier, SIGNAL( toggled(bool) ),   magnifierAction, SLOT( setChecked(bool) ) );
     connect( magnifierAction,       SIGNAL( triggered(bool) ), ui->checkBoxMagnifier, SLOT( click() ) );
@@ -174,9 +174,9 @@ void QvkSystray::init()
 
     connect( exitAction, SIGNAL( triggered(bool) ), this, SLOT( slot_hide() ) );
 
-    if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
-        cameraAction->setEnabled( false );
-    }
+//    if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
+//        cameraAction->setEnabled( false );
+//    }
 
     setMenuText();
 }
