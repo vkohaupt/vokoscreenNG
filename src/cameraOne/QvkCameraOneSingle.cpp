@@ -443,8 +443,8 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
             if (active == false){
                 vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(false);
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
-                qDebug().noquote() << global::nameOutput << "[Camera] not active";
                 QObject::disconnect(comboBoxTemperatureConnect);
+                qDebug().noquote() << global::nameOutput << "[Camera] not active";
             }
         });
     };
