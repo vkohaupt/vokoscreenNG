@@ -371,7 +371,6 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 if (m_modeSupported != true){
                     return;
                 }else{
-                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(true);
                     int index = vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->findText("Manual");
                     if (vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->currentIndex() == index){
@@ -402,6 +401,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 int max_ColorTemperatur = 0;
 
                 // colorTemperatur auf sehr hohen Wert setzen....
+                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                 camera->setColorTemperature(50000);
                 // ... nun den maximalen Wert abfragen
                 max_ColorTemperatur = camera->colorTemperature() / 100;
@@ -411,13 +411,13 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 camera->setColorTemperature(0); // resetten
                 qDebug().noquote() << global::nameOutput << "[Camera] Reset temperature. Automatic value:" << camera->colorTemperature();
 
-
                 // Nun die Werte am Schieberegler setzen
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setMinimum(min_ColorTemperatur);
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setMaximum(max_ColorTemperatur);
                 QvkSpezialSlider *slider = vkCameraOneOptions->sliderCameraOneColorTemperature;
                 connect(slider, &QvkSpezialSlider::valueChanged, this, [=](int value){
                     int color = value * 100;
+                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     camera->setColorTemperature(color);
                     vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
                     qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
