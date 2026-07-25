@@ -380,23 +380,6 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     }
                 };
 
-                connect(vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature,
-                        &QComboBox::currentIndexChanged,
-                        this,
-                        [=](int index){
-                    if (index == 0){
-                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
-                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                        camera->setColorTemperature(0); // resetten
-                    }else{
-                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
-                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                        int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value() * 100;
-                        camera->setColorTemperature(color);
-                        vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
-                    }
-                });
-
                 int min_ColorTemperatur = 1;
                 int max_ColorTemperatur = 0;
 
@@ -421,6 +404,25 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     camera->setColorTemperature(color);
                     vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
                     qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
+                });
+
+                connect(vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature,
+                        &QComboBox::currentIndexChanged,
+                        this,
+                        [=](int index){
+                    if (index == 0){
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
+                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                        camera->setColorTemperature(0); // resetten
+                        qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
+                    }else{
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(true);
+                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                        int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value() * 100;
+                        camera->setColorTemperature(color);
+                        vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
+                        qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual";
+                    }
                 });
             }
             if (active == false){
