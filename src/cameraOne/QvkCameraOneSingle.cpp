@@ -424,20 +424,20 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                         qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual";
                     }
                 });
-            }
 
-            // Colortemperatur unabhängig von ComboBox setzen
-            int index = vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->findText("Manual");
-            int currentIndex = vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->currentIndex();
-            if (currentIndex == index){
-                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value() * 100;
-                camera->setColorTemperature(color);
-                qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual";
-            }else{
-                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                camera->setColorTemperature(0);
-                qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
+                // Colortemperatur unabhängig von einem ComboBox Signal setzen
+                int index = vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->findText("Manual");
+                int currentIndex = vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->currentIndex();
+                if (currentIndex == index){
+                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                    int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value() * 100;
+                    camera->setColorTemperature(color);
+                    qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual";
+                }else{
+                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                    camera->setColorTemperature(0);
+                    qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
+                }
             }
 
             if (active == false){
