@@ -426,9 +426,19 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        QVariant variant = settings.value( slider->objectName() );
-        if ( variant.isValid() ) {
-            slider->setValue( variant.toInt() );
+        // Find Key sliderColorTemperature in Setting
+        // set Value to maximum and value
+        QStringList keyList = settings.allKeys();
+        for (int x = 0; x < keyList.count(); x++){
+            if (keyList.at(x) == slider->objectName()){
+                QVariant variant = settings.value(slider->objectName());
+                if (variant.isValid()){
+                    slider->setEnabled(true);
+                    slider->setMaximum(variant.toInt());
+                    slider->setValue(variant.toInt());
+                    break;
+                }
+            }
         }
     }
 
