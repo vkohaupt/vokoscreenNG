@@ -108,7 +108,6 @@ include(winInfo/winInfo.pri)
 include(countdown/countdown.pri)
 
 # camera
-include(camera/camera.pri)
 include(cameraOne/cameraOne.pri)
 
 # audio linux
