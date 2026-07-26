@@ -1016,15 +1016,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     vkMagnifierController->vkMagnifier->close();
 #endif
 
-    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraOnOff-" ) ) {
-            if ( listCheckBox.at(i)->isChecked() == true ) {
-                listCheckBox.at(i)->click();
-            }
-        }
-    }
-
     qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent End close";
 }
 
