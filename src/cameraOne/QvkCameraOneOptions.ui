@@ -443,14 +443,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButtonCameraOneViewEllipse">
+        <widget class="QToolButton" name="toolButtonCameraOneViewCircle">
          <property name="text">
           <string notr="true"/>
          </property>
          <property name="icon">
           <iconset resource="../screencast.qrc">
-           <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
-           <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
+           <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
+           <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -486,14 +486,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="toolButtonCameraOneViewCircle">
+        <widget class="QToolButton" name="toolButtonCameraOneViewEllipse">
          <property name="text">
           <string notr="true"/>
          </property>
          <property name="icon">
           <iconset resource="../screencast.qrc">
-           <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
-           <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
+           <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
+           <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
          </property>
          <property name="iconSize">
           <size>
