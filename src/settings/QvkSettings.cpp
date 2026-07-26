@@ -426,18 +426,17 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        // Find Key sliderColorTemperature in Setting
-        // set KeyValue to maximum and value
-        QStringList keyList = settings.allKeys();
-        for (int x = 0; x < keyList.count(); x++){
-            if (keyList.at(x) == slider->objectName()){
-                QVariant variant = settings.value(slider->objectName());
-                if (variant.isValid()){
-                    slider->setMaximum(variant.toInt());
-                    slider->setValue(variant.toInt());
-                    break;
-                }
+        if (slider->objectName().contains("sliderCameraOneColorTemperature_")){
+            QVariant variant = settings.value(slider->objectName());
+            if (variant.isValid()){
+                slider->setMaximum(variant.toInt());
+                slider->setValue(variant.toInt());
             }
+        }
+
+        QVariant variant = settings.value(slider->objectName());
+        if (variant.isValid()){
+            slider->setValue(variant.toInt());
         }
     }
 
