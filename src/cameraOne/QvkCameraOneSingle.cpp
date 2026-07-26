@@ -87,7 +87,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         }
     });
 
-    // Window ON/Off
+    // Camera ON/Off
     connect(ui->checkBoxCameraOneOnOff, &QCheckBox::clicked, this, [=](bool value){
         if (value == true){
             if (vkCameraOneWindow == NULL){
@@ -116,7 +116,6 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             if (vkCameraOneWindow != NULL){
                 ui->checkBoxCameraOneOnOff->click(); // Erster Klick zum entfernen des Fensters
                 ui->checkBoxCameraOneOnOff->click(); // Zweiter Klick zum anzeigen des Fensters
-                vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
             }
         }
     });
