@@ -325,12 +325,12 @@
          </property>
          <item>
           <property name="text">
-           <string>Automatic</string>
+           <string notr="true">Automatic</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Manual</string>
+           <string notr="true">Manual</string>
           </property>
          </item>
         </widget>

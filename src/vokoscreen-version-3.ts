@@ -16,60 +16,7 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraOneOptions</name>
-    <message>
-        <source>Automatic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Manual</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSingle</name>
-    <message>
-        <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Invert</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switch to Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSurface_wl</name>
-    <message>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
         <translation type="unfinished"></translation>
@@ -347,41 +294,6 @@
     </message>
 </context>
 <context>
-    <name>cameraSettingsDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Invert</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Camera settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
@@ -532,14 +444,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation type="unfinished"></translation>
     </message>
@@ -553,22 +457,6 @@
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
