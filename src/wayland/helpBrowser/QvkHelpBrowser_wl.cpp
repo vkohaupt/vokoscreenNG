@@ -137,7 +137,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     QString groupName_wl = global::name;
     QDateTime time;
     time.setMSecsSinceEpoch(QDateTime::currentDateTime().currentMSecsSinceEpoch());
-    QSettings installSetting(QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR);
+    QSettings installSetting(QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr);
     installSetting.beginGroup(groupName_wl);
     QString timeStringMSecsSinceEpoch = installSetting.value("time", time.toString("yyyy.MM.dd-hh:mm:ss:zzz")).toString();
     QString version = installSetting.value("version", global::version).toString();

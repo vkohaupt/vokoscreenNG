@@ -262,7 +262,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                     &QvkSystray_wl::signal_cameraOnOff,
                     vkSystray,
                     [this](QCheckBox *checkBoxSystray){
-                QCheckBox *checkBox = NULL;
+                QCheckBox *checkBox = nullptr;
                 QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
                 for(int i = 0; i < listCheckBox.count(); i++){
                     checkBox = listCheckBox.at(i);
@@ -456,7 +456,7 @@ void QvkMainWindow_wl::get_system_info()
     QString folderName_wl = global::name;
     QString fileName_wl = global::name + "_wl";
     QString groupName_wl = global::name + "_wl";
-    QSettings setting( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings setting( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     setting.beginGroup( groupName_wl );
     QList<QCheckBox *> listCheckBoxReset = ui->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
@@ -612,7 +612,7 @@ void QvkMainWindow_wl::slot_pushButton_snapshot()
     // https://pythonhosted.org/txdbus/dbus_overview.html
     // https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Screenshot.html#
     QDBusConnection bus = QDBusConnection::sessionBus();
-    QDBusInterface *i = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot", bus, NULL);
+    QDBusInterface *i = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot", bus, nullptr);
 
     QVariantMap options;
     if ( ui->checkBox_snapshot_interactive->isChecked() == false ) {
@@ -1060,7 +1060,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
-    GError *error = Q_NULLPTR;
+    GError *error = nullptr;
     pipeline = gst_parse_launch( line, &error );
 
     // Da ist irgendwo ein Bug, stürzt bei STOP ab
@@ -1409,7 +1409,7 @@ void QvkMainWindow_wl::slot_Pause()
         if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
         /* wait until it's up and running or failed */
-        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
+        if (gst_element_get_state (pipeline, nullptr, nullptr, -1) == GST_STATE_CHANGE_FAILURE) {
             g_error ("Failed to go into PAUSED state");
         }
     }
@@ -1426,7 +1426,7 @@ void QvkMainWindow_wl::slot_Continue()
         if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
         /* wait until it's up and running or failed */
-        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
+        if (gst_element_get_state (pipeline, nullptr, nullptr, -1) == GST_STATE_CHANGE_FAILURE) {
             g_error ("Failed to go into PLAYING state");
         } else {
             qDebug().noquote() << global::nameOutput << "Continue was clicked";

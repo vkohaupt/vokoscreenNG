@@ -174,13 +174,13 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
 
         camera->stop();
         delete camera;
-        camera = NULL;
+        camera = nullptr;
         qDebug().noquote() << global::nameOutput
                            << "[Camera] Stop:"
                            << checkBoxCameraOnOff->objectName().section("_", 1, 1);
 
         delete vkCameraSurface_wl;
-        vkCameraSurface_wl = NULL;
+        vkCameraSurface_wl = nullptr;
     }
 }
 

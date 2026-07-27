@@ -130,7 +130,7 @@ void QvkRegionMargins_wl::slot_singleShot( bool bo )
 void QvkRegionMargins_wl::slot_snapshot()
 {
         QDBusConnection bus = QDBusConnection::sessionBus();
-        QDBusInterface *i = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot", bus, NULL);
+        QDBusInterface *i = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot", bus, nullptr);
 
         QVariantMap options;
         options["interactive"] = false;

@@ -44,14 +44,14 @@
 QvkSettings::QvkSettings()
 {
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( global::name );
     settings.setValue( "Version", global::version );
     settings.endGroup();
 
     QDateTime time;
     time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
-    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), Q_NULLPTR );
+    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), nullptr );
     installSetting.beginGroup( global::name );
     if ( installSetting.value( "version", "0.0.0" ).toString() != global::version ) {
         installSetting.setValue( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) );
@@ -61,7 +61,7 @@ QvkSettings::QvkSettings()
 
 #ifdef Q_OS_WIN
     // Extra Verzeichnis für openh264 erstellen
-    QSettings openh264Settings( QSettings::IniFormat, QSettings::UserScope, QString( global::name + "-" + "openh264" + "-" + global::version ), global::name, Q_NULLPTR );
+    QSettings openh264Settings( QSettings::IniFormat, QSettings::UserScope, QString( global::name + "-" + "openh264" + "-" + global::version ), global::name, nullptr );
     openh264Settings.beginGroup( global::name );
     openh264Settings.setValue( "Version", global::version );
     openh264Settings.endGroup();
@@ -72,7 +72,7 @@ QvkSettings::~QvkSettings(){}
 
 void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
 
     // We want block the signals for shortcut ComboBox signals and set the default value
     QList<QComboBox *> listComboBoxShortcut = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
@@ -558,7 +558,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent, bool log )
 {
     Q_UNUSED(parent);
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     if ( log == true ) {
         // do nothing
     } else {
@@ -699,14 +699,14 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
 
 QString QvkSettings::getFileName()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr);
     return settings.fileName();
 }
 
 
 QString QvkSettings::getOpenh264ProfilePathWithFilename()
 {
-    QSettings openh264Settings( QSettings::IniFormat, QSettings::UserScope, QString( global::name + "-" + "openh264" + "-" + global::version ), global::name, Q_NULLPTR );
+    QSettings openh264Settings( QSettings::IniFormat, QSettings::UserScope, QString( global::name + "-" + "openh264" + "-" + global::version ), global::name, nullptr );
     QFileInfo fileInfo( openh264Settings.fileName() );
     return fileInfo.absoluteFilePath();
 }
@@ -714,21 +714,21 @@ QString QvkSettings::getOpenh264ProfilePathWithFilename()
 
 QString QvkSettings::getVideoPath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     return settings.value( "lineEditVideoPath" ).toString();
 }
 
 
 QString QvkSettings::getPicturePath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     return settings.value( "lineEditSnapshotImagePath" ).toString();
 }
 
 
 void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "AreaScreencast" );
     settings.setValue( "X", QVariant(x).toInt() );
     settings.setValue( "Y", QVariant(y).toInt() );
@@ -739,7 +739,7 @@ void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal heigh
 
 void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "AreaScreencast" );
     vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
     vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
@@ -751,7 +751,7 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
 
 void QvkSettings::saveSystrayAlternative( int x, int y )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "SystrayAlternative" );
     settings.setValue( "X", x );
     settings.setValue( "Y", y );
@@ -760,7 +760,7 @@ void QvkSettings::saveSystrayAlternative( int x, int y )
 
 void QvkSettings::readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "SystrayAlternative" );
     vkSystrayAlternative->vkSystrayAlternativeWindow->move( settings.value( "X", 30 ).toInt(), settings.value( "Y", 30 ).toInt() );
     settings.endGroup();
@@ -769,7 +769,7 @@ void QvkSettings::readSystrayAlternative( QvkSystrayAlternative *vkSystrayAltern
 
 void QvkSettings::savePlayerPathOpenFile( QString pathFile )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "Player" );
     QFileInfo fileInfo( pathFile );
     QString file = fileInfo.fileName();
@@ -782,7 +782,7 @@ void QvkSettings::savePlayerPathOpenFile( QString pathFile )
 void QvkSettings::readPlayerPathOpenFile( int value, QvkPlayerController *vkplayer )
 {
     Q_UNUSED(value)
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "Player" );
     vkplayer->pathOpenFile = settings.value( "Path", "" ).toString();
     settings.endGroup();
@@ -790,7 +790,7 @@ void QvkSettings::readPlayerPathOpenFile( int value, QvkPlayerController *vkplay
 
 void QvkSettings::saveHaloColor( QColor value )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "Halo" );
     settings.setValue( "Color", value );
     settings.endGroup();
@@ -798,7 +798,7 @@ void QvkSettings::saveHaloColor( QColor value )
 
 void QvkSettings::readHaloColor( QvkHalo *vkHalo )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "Halo" );
     QColor color = settings.value( "Color", vkHalo->colorDefault ).value<QColor>();
     vkHalo->vkHaloPreviewWidget->setColor( color );
@@ -808,7 +808,7 @@ void QvkSettings::readHaloColor( QvkHalo *vkHalo )
 
 void QvkSettings::saveShowclickColor( QColor color )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "ShowClick" );
     settings.setValue( "Color", color );
     settings.endGroup();
@@ -816,7 +816,7 @@ void QvkSettings::saveShowclickColor( QColor color )
 
 void QvkSettings::readShowclickColor( QvkShowClick *vkShowClick )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     settings.beginGroup( "ShowClick" );
     QColor color = settings.value( "Color", vkShowClick->colorDefault ).value<QColor>();
     vkShowClick->vkPreviewWidget->setColor( color );
@@ -827,7 +827,7 @@ void QvkSettings::readShowclickColor( QvkShowClick *vkShowClick )
 void QvkSettings::readWASAPIAudioDevice(QCheckBox *checkBox)
 {
     // checkBox->objectName() ist "checkboxAudioDevice-XX"
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
         checkBox->click();
     }

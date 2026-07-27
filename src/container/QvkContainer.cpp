@@ -117,7 +117,7 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 
     // Die Abfrage ist nötig damit GIF nicht im Tab erscheint
     // Das Paket gstreamer-plugins-rs enthält den gifencoder und wurde erstmals mit Gstreamer 1.18.0 veröffentlicht
-    Container *GIF = Q_NULLPTR;
+    Container *GIF = nullptr;
     if ( QString( gst_version_string() ) >= "GStreamer 1.18.0" ) {
         GIF = new Container( "gifenc", "gif" );
         GIF->add_VideoCodec( "gifenc", "gif" );

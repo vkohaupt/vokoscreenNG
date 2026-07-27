@@ -37,14 +37,14 @@
 QvkSettings_wl::QvkSettings_wl()
 {
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     settings.beginGroup( groupName_wl );
     settings.setValue( "Version", global::version );
     settings.endGroup();
 
     QDateTime time;
     time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
-    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, folderName_wl, QString( "InstallTime" ), Q_NULLPTR );
+    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, folderName_wl, QString( "InstallTime" ), nullptr );
     installSetting.beginGroup( global::name );
     if ( installSetting.value( "version", "0.0.0" ).toString() != global::version ) {
         installSetting.setValue( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) );
@@ -60,7 +60,7 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
 {
     Q_UNUSED(parent)
     qDebug().noquote() << global::nameOutput << "[Settings] Begin read";
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     settings.beginGroup( groupName_wl );
     QList<QToolButton *> listToolButton = ui->centralwidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
@@ -186,7 +186,7 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
 void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
 {
     Q_UNUSED(parent);
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     settings.beginGroup( groupName_wl );
 
     settings.remove( "" );
@@ -234,14 +234,14 @@ void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
 
 QString QvkSettings_wl::getFileName()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     return settings.fileName();
 }
 
 
 QString QvkSettings_wl::getVideoPath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     QString value;
     settings.beginGroup( groupName_wl );
     {
@@ -254,7 +254,7 @@ QString QvkSettings_wl::getVideoPath()
 
 QString QvkSettings_wl::getPicturePath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     QString value;
     settings.beginGroup( groupName_wl );
     {
@@ -267,7 +267,7 @@ QString QvkSettings_wl::getPicturePath()
 
 void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     settings.beginGroup( "AreaScreencast_wl" );
     {
         settings.setValue( "X", QVariant(x).toInt() );
@@ -281,7 +281,7 @@ void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal he
 
 void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     settings.beginGroup( "AreaScreencast_wl" );
     {
         vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
@@ -295,7 +295,7 @@ void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
 
 void QvkSettings_wl::saveCameraSurface(qreal x, qreal y, QString ID)
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     QByteArray a = QUrl::toPercentEncoding(ID);
     settings.beginGroup( "CameraSurface_wl_" + a);
     {
@@ -308,7 +308,7 @@ void QvkSettings_wl::saveCameraSurface(qreal x, qreal y, QString ID)
 
 QPoint QvkSettings_wl::readCameraSurface(QString ID)
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     QByteArray a = QUrl::toPercentEncoding(ID);
     int x, y;
     settings.beginGroup( "CameraSurface_wl_" + a);
@@ -324,7 +324,7 @@ QPoint QvkSettings_wl::readCameraSurface(QString ID)
 
 bool QvkSettings_wl::readAudioDevice(QString device)
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
     bool bo;
     settings.beginGroup( groupName_wl );
     {

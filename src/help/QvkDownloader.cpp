@@ -50,7 +50,7 @@ void QvkDownloader::doDownload( const QUrl &url )
 
     QDateTime time;
     time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
-    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), Q_NULLPTR );
+    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), nullptr );
     installSetting.beginGroup( global::name );
     QString timeStringMSecsSinceEpoch = installSetting.value( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) ).toString();
     QString version = installSetting.value( "version", global::version ).toString();

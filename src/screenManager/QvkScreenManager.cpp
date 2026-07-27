@@ -36,7 +36,7 @@ QvkScreenManager::QvkScreenManager( QMainWindow *parent )
     connect( qApp, SIGNAL( primaryScreenChanged(QScreen*) ), this, SLOT( slot_screen_count_changed() ) );
 
     QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
-    if ( toolButton != NULL ) {
+    if ( toolButton != nullptr ) {
         connect( toolButton, SIGNAL( toggled(bool) ), this, SLOT( slot_toolButton_toggled(bool) ) );
     }
 }

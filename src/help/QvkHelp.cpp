@@ -114,7 +114,7 @@ void QvkHelp::slot_parse_locale( QStringList list )
        ui->comboBoxOnlineHelp->addItem( locale.nativeLanguageName() + " " + "(" + list.at(i) + ")", list.at( i ) );
     }
 
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     QString valueText = settings.value( ui->comboBoxOnlineHelp->objectName(), "" ).toString();
     int valueInt = ui->comboBoxOnlineHelp->findText( valueText );
     if ( valueInt > -1 ) {
