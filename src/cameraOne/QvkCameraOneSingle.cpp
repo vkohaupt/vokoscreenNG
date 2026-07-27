@@ -420,7 +420,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                         int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value() * 100;
                         camera->setColorTemperature(color);
                         vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
-                        qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual";
+                        qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual:" << color;
                     }
                 });
 
@@ -431,7 +431,8 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     int color = vkCameraOneOptions->sliderCameraOneColorTemperature->value() * 100;
                     camera->setColorTemperature(color);
-                    qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual";
+                    vkCameraOneOptions->sliderCameraOneColorTemperature->setToolTip(QString::number(color) + " Kelvin");
+                    qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual:" << color;
                 }else{
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     camera->setColorTemperature(0);
@@ -478,6 +479,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
         captureSession->setVideoOutput(videoSink);
 
         camera->start();
+        qDebug();
     };
 
     // Camera stopen
@@ -493,6 +495,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
 
         vkCameraOneWindow->hide();
         qDebug().noquote() << global::nameOutput << "[Camera] Stop";
+        qDebug();
     }
 }
 
