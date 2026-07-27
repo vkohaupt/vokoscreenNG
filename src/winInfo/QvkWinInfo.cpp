@@ -103,11 +103,11 @@ static listWinId getWindow( Atom prop )
     listWinId listWId;
     Atom type = 0;
     int format = 0;
-    uchar* data = Q_NULLPTR;
+    uchar* data = nullptr;
     ulong count;
     ulong after;
 
-    Display *display = XOpenDisplay( NULL );
+    Display *display = XOpenDisplay( nullptr );
     Window window = XDefaultRootWindow( display) ;
     if ( XGetWindowProperty( display, window, prop, 0, 1024 * sizeof(Window) / 4, False, AnyPropertyType,
                              &type, &format, &count, &after, &data ) == Success )
@@ -131,7 +131,7 @@ WId QvkWinInfo::activeWindow()
 {
     static Atom net_active = 0;
     if ( !net_active ) {
-        Display *display = XOpenDisplay( NULL );
+        Display *display = XOpenDisplay( nullptr );
         net_active = XInternAtom( display, "_NET_ACTIVE_WINDOW", True );
         XCloseDisplay( display );
     }
@@ -146,7 +146,7 @@ QRectF QvkWinInfo::windowGeometryWithoutFrame( WId child )
     Window root;
     uint w, h, border, depth;
 
-    Display *display = XOpenDisplay( NULL );
+    Display *display = XOpenDisplay( nullptr );
     XGetGeometry( display, child, &root, &x, &y, &w, &h, &border, &depth );
 
     Window parent;

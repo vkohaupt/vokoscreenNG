@@ -40,7 +40,7 @@ public:
     QvkCameraController_wl( Ui_formMainWindow_wl *m_GuiUi );
     virtual ~QvkCameraController_wl();
     void init();
-    QvkCameraSingle_wl *vkCameraSingle_wl = NULL;
+    QvkCameraSingle_wl *vkCameraSingle_wl = nullptr;
     Ui_formMainWindow_wl *GuiUi;
 
 

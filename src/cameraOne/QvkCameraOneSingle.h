@@ -29,8 +29,8 @@ public:
     explicit QvkCameraOneSingle(QWidget *parent, QString device, Ui_formMainWindow *m_GuiUi);
     ~QvkCameraOneSingle();
 
-    QvkCameraOneWindow *vkCameraOneWindow = NULL;
-    QvkCameraOneOptions *vkCameraOneOptions = NULL;
+    QvkCameraOneWindow *vkCameraOneWindow = nullptr;
+    QvkCameraOneOptions *vkCameraOneOptions = nullptr;
 
     Ui::QvkCameraOneSingle *ui;
 

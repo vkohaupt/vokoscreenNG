@@ -36,8 +36,8 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
     GstDeviceMonitor *monitor;
     GstCaps *caps;
     GstDevice *device;
-    GList *iterator = Q_NULLPTR;
-    GList *list = Q_NULLPTR;
+    GList *iterator = nullptr;
+    GList *list = nullptr;
 
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "video/x-raw" );
@@ -105,7 +105,7 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
             listStructure.append( stringStructure );
 
             if ( gst_structure_has_field( structureCaps, "format" ) ) {
-                const gchar *format = NULL;
+                const gchar *format = nullptr;
                 format = gst_structure_get_string( structureCaps, "format" );
                 Q_UNUSED(format)
             }
@@ -134,7 +134,7 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
     gst_device_monitor_remove_filter( monitor, filterID );
 
     QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
-    if ( toolButton != NULL ) {
+    if ( toolButton != nullptr ) {
         connect( toolButton, SIGNAL( toggled(bool) ), this, SLOT( slot_toolButton_toggled(bool) ) );
     }
 }

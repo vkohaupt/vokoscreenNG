@@ -33,7 +33,7 @@ class QvkImageFromTabs : public QWindow
     Q_OBJECT
 
 public:
-    QvkImageFromTabs( QvkMainWindow *parent = 0 );
+    QvkImageFromTabs( QvkMainWindow *parent = nullptr );
     virtual ~QvkImageFromTabs();
 
 
@@ -52,7 +52,7 @@ protected:
 
 
 private:
-    QvkMainWindow *myParent = Q_NULLPTR;
+    QvkMainWindow *myParent = nullptr;
     int counterFile;
 
 };

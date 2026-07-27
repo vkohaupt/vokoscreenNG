@@ -40,7 +40,7 @@ class QvkMainWindow_wl : public QMainWindow
 {
     Q_OBJECT
 public:
-    QvkMainWindow_wl( QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags() );
+    QvkMainWindow_wl( QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags() );
     ~QvkMainWindow_wl();
     Ui::formMainWindow_wl *ui;
     Portal_wl *portal_wl = new Portal_wl();
@@ -50,7 +50,7 @@ public:
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
     QvkSystray_wl *vkSystray;
-    QvkCameraController_wl *vkCameraController_wl = NULL;
+    QvkCameraController_wl *vkCameraController_wl = nullptr;
     QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl;
     QvkHelpBrowser_wl *vkHelpBrowser_wl;
 
