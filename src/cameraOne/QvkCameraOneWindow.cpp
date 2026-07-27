@@ -197,7 +197,7 @@ void QvkCameraOneWindow::mouseReleaseEvent(QMouseEvent *event)
     Q_UNUSED(event)
     QString name = "toolButtonCameraOneFramelessOnOff_" + m_deviceName;
     QToolButton *toolButton = m_parent->topLevelWidget()->findChild<QToolButton *>(name);
-    if ((toolButton->isChecked() == true)){
+    if (toolButton->isChecked() == true){
         unsetCursor();
         mousePressed = false;
     }
