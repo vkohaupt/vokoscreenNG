@@ -90,19 +90,19 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
     // Camera ON/Off
     connect(ui->checkBoxCameraOneOnOff, &QCheckBox::clicked, this, [=](bool value){
         if (value == true){
-            if (vkCameraOneWindow == NULL){
+            if (vkCameraOneWindow == nullptr){
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
-                vkCameraOneWindow->show();
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
+                vkCameraOneWindow->show();
             }
         }else{
-            if (vkCameraOneWindow != NULL){
+            if (vkCameraOneWindow != nullptr){
                 cameraOneWindow_X = vkCameraOneWindow->get_camera_window_x();
                 cameraOneWindow_Y = vkCameraOneWindow->get_camera_window_y();
                 // Kein deletelater verwenden da dadurch das Fenster erst in der Hauptschleife zerstört wird
                 // wenn checkBox_Frame_OnOff getätigt wird
                 delete vkCameraOneWindow;
-                vkCameraOneWindow = NULL;
+                vkCameraOneWindow = nullptr;
             }
         }
     });
@@ -113,7 +113,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             this,
             [=](){
         if(ui->checkBoxCameraOneOnOff->isChecked() == true){
-            if (vkCameraOneWindow != NULL){
+            if (vkCameraOneWindow != nullptr){
                 ui->checkBoxCameraOneOnOff->click(); // Erster Klick zum entfernen des Fensters
                 ui->checkBoxCameraOneOnOff->click(); // Zweiter Klick zum anzeigen des Fensters
             }
@@ -145,7 +145,7 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             &QLineEdit::textChanged,
             this,
             [=](){
-        if (vkCameraOneWindow != NULL){
+        if (vkCameraOneWindow != nullptr){
             vkCameraOneWindow->setWindowTitle(vkCameraOneOptions->ui->lineEditCameraOneTitel->text());
         }
     });
@@ -489,7 +489,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
 
         camera->stop();
         delete camera;
-        camera = Q_NULLPTR;
+        camera = nullptr;
 
         delete captureSession;
 
