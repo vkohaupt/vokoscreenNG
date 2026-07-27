@@ -11,7 +11,7 @@ class QvkSpezialCheckbox : public QWidget
     Q_OBJECT
 
 public:
-    QvkSpezialCheckbox(QWidget *parent = 0);
+    QvkSpezialCheckbox(QWidget *parent = nullptr);
     bool isChecked();
     void set_colorChecked( QColor color );
     void set_colorUnChecked ( QColor color );

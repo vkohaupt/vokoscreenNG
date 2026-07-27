@@ -12,7 +12,7 @@ class QvkFileDialog : public QFileDialog
     Q_OBJECT
 
 public:
-    QvkFileDialog(QWidget *parent = 0);
+    QvkFileDialog(QWidget *parent = nullptr);
     void setVideoPath(QString videoPath );
 
     

@@ -12,7 +12,7 @@ class QvkSpezialProgressBarAudio : public QProgressBar
     Q_OBJECT
 
 public:
-    QvkSpezialProgressBarAudio(QProgressBar *parent = 0);
+    QvkSpezialProgressBarAudio(QProgressBar *parent = nullptr);
     void set_Text( QString text );
     QString get_Text();
 

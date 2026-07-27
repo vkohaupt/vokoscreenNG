@@ -33,7 +33,7 @@ class QvkImageFromTabs_wl : public QWindow
     Q_OBJECT
 
 public:
-    QvkImageFromTabs_wl(Ui_formMainWindow_wl *ui_mainwindow = 0 );
+    QvkImageFromTabs_wl(Ui_formMainWindow_wl *ui_mainwindow = nullptr );
     virtual ~QvkImageFromTabs_wl();
 
 
