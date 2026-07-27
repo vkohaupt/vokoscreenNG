@@ -104,7 +104,7 @@ void QvkWASAPIWatcher::startWASAPIMonitoring()
     GstCaps *caps = gst_caps_new_empty_simple( "audio/x-raw" );
     gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
     gst_caps_unref( caps );
-    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_WASAPI_func, this, NULL );
+    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_WASAPI_func, this, nullptr );
     gst_object_unref( bus );
     gst_device_monitor_start( monitor );
 }

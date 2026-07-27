@@ -42,15 +42,15 @@ bool QvkPulseAudioServer::isAvailable()
 
     pa_mainloop *pa_ml;
     pa_mainloop_api *pa_mlapi;
-    pa_context *context = NULL;
+    pa_context *context = nullptr;
 
     // Create a mainloop API and connection to the default server
     pa_ml = pa_mainloop_new();
     pa_mlapi = pa_mainloop_get_api( pa_ml );
-    context = pa_context_new( pa_mlapi, NULL );
+    context = pa_context_new( pa_mlapi, nullptr );
 
     // This function connects to the pulse server
-    int status = pa_context_connect( context, NULL, PA_CONTEXT_NOAUTOSPAWN, NULL );
+    int status = pa_context_connect( context, nullptr, PA_CONTEXT_NOAUTOSPAWN, nullptr );
     if ( status < 0 ) {
         value = false;
     } else {

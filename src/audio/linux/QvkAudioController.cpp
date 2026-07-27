@@ -67,7 +67,7 @@ void QvkAudioController::getAllDevices()
                 QString name = list.at(i).section( ":::", 1, 1 );
                 QString device = list.at(i).section( ":::", 0, 0 );
 
-                // Führende Null voranstellen
+                // Führende 0 voranstellen
                 QString index;
                 if ( i < 10 ) {
                     index = "0" + QString::number(i);

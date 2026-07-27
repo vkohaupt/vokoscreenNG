@@ -138,7 +138,7 @@ int pa_get_devicelist(pa_devicelist_t *input, pa_devicelist_t *output)
     pa_ctx = pa_context_new(pa_mlapi, "test");
 
     // This function connects to the pulse server
-    pa_context_connect(pa_ctx, NULL, 0, NULL);
+    pa_context_connect(pa_ctx, nullptr, 0, nullptr);
 
     // This function defines a callback so the server will tell us it's state.
     // Our callback will wait for the state to be ready.  The callback will
@@ -153,7 +153,7 @@ int pa_get_devicelist(pa_devicelist_t *input, pa_devicelist_t *output)
         // We can't do anything until PA is ready, so just iterate the mainloop
         // and continue
         if ( pa_ready == 0 ) {
-            pa_mainloop_iterate(pa_ml, 1, NULL);
+            pa_mainloop_iterate(pa_ml, 1, nullptr);
             continue;
         }
 
@@ -216,7 +216,7 @@ int pa_get_devicelist(pa_devicelist_t *input, pa_devicelist_t *output)
         // Iterate the main loop and go again.  The second argument is whether
         // or not the iteration should block until something is ready to be
         // done.  Set it to zero for non-blocking.
-        pa_mainloop_iterate(pa_ml, 1, NULL);
+        pa_mainloop_iterate(pa_ml, 1, nullptr);
 
     } // end for
 }
