@@ -81,7 +81,7 @@ void QvkPadsAndCaps::pad_profile()
 
             for ( guint i = 0; i < gst_caps_get_size( caps ); i++ ) {
                 GstStructure *structure = gst_caps_get_structure( caps, i );
-                gst_structure_foreach( structure, print_field, NULL );
+                gst_structure_foreach( structure, print_field, nullptr );
             }
 
             gst_caps_unref (caps);

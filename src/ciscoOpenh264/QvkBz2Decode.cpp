@@ -80,7 +80,7 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     GstBus *bus;
     guint bus_watch_id;
 
-    loop = g_main_loop_new (NULL, FALSE);
+    loop = g_main_loop_new (nullptr, FALSE);
 
     // Create gstreamer elements
     pipeline = gst_pipeline_new ("audio-player");
@@ -94,10 +94,10 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     }
 
     // we set the input filename to the source element
-    g_object_set( G_OBJECT( source ), "location", inFile, NULL );
+    g_object_set( G_OBJECT( source ), "location", inFile, nullptr );
 
     // we set the output filename to the sink element
-    g_object_set( G_OBJECT( sink ), "location", outFile, NULL );
+    g_object_set( G_OBJECT( sink ), "location", outFile, nullptr );
 
     // we add a message handler
     bus = gst_pipeline_get_bus( GST_PIPELINE( pipeline ) );
@@ -105,10 +105,10 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     gst_object_unref( bus );
 
     // we add all elements into the pipeline
-    gst_bin_add_many( GST_BIN (pipeline), source, decoder, sink, NULL );
+    gst_bin_add_many( GST_BIN (pipeline), source, decoder, sink, nullptr );
 
     // we link the elements together
-    gst_element_link_many( source, decoder, sink, NULL );
+    gst_element_link_many( source, decoder, sink, nullptr );
 
     // Set the pipeline to "playing" state
     qDebug().noquote() << global::nameOutput << "[QvkBz2Decode::start_encoding]" << "Now decode file:" << inFile;;
