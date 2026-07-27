@@ -66,7 +66,7 @@ void QvkGlobalMouse::slot_mousePressed()
 {
     Display* display;
     Window root;
-    display = XOpenDisplay( NULL );
+    display = XOpenDisplay( nullptr );
     root = DefaultRootWindow( display);
     Window root_return, child_return;
     int x, y;
@@ -104,7 +104,7 @@ void QvkGlobalMouse::slot_mousePressed()
 
 
 #ifdef Q_OS_WIN
-HHOOK hHook = NULL;
+HHOOK hHook = nullptr;
 QString Mouse_Button;
 int Mouse_X;
 int Mouse_Y;
@@ -150,11 +150,11 @@ LRESULT CALLBACK MouseProc( int nCode, WPARAM wParam, LPARAM lParam )
 void QvkGlobalMouse::slot_mousePressed()
 {
     if ( once == false ) {
-        hHook = SetWindowsHookEx( WH_MOUSE_LL, MouseProc, NULL, 0 );
+        hHook = SetWindowsHookEx( WH_MOUSE_LL, MouseProc, nullptr, 0 );
         once = true;
     }
 
-    if ( hHook == NULL ) {
+    if ( hHook == nullptr ) {
         qDebug() << "Hook failed";
     }
 
