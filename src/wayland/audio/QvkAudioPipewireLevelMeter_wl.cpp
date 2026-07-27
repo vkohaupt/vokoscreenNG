@@ -111,18 +111,18 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
 
     caps = gst_caps_from_string( "audio/x-raw,channels=2" );
 
-    pipeline = gst_pipeline_new( NULL );
+    pipeline = gst_pipeline_new( nullptr );
     g_assert (pipeline);
-    audiosrc = gst_element_factory_make( "pipewiresrc", NULL );
+    audiosrc = gst_element_factory_make( "pipewiresrc", nullptr );
     g_assert (audiosrc);
-    audioconvert = gst_element_factory_make( "audioconvert", NULL );
+    audioconvert = gst_element_factory_make( "audioconvert", nullptr );
     g_assert (audioconvert);
-    level = gst_element_factory_make( "level", NULL );
+    level = gst_element_factory_make( "level", nullptr );
     g_assert (level);
-    fakesink = gst_element_factory_make( "fakesink", NULL );
+    fakesink = gst_element_factory_make( "fakesink", nullptr );
     g_assert (fakesink);
 
-    gst_bin_add_many( GST_BIN( pipeline ), audiosrc, audioconvert, level, fakesink, NULL );
+    gst_bin_add_many( GST_BIN( pipeline ), audiosrc, audioconvert, level, fakesink, nullptr );
     if ( !gst_element_link( audiosrc, audioconvert ) ) {
         g_error( "Failed to link audiosrc and audioconvert" );
     }
@@ -133,25 +133,25 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
         g_error( "Failed to link level and fakesink" );
     }
 
-    g_object_set( G_OBJECT( audiosrc ), "target-object", deviceID.toUtf8().constData(), NULL );
+    g_object_set( G_OBJECT( audiosrc ), "target-object", deviceID.toUtf8().constData(), nullptr );
 
     QString m_name = myname;
-    g_object_set( G_OBJECT( audiosrc ), "client-name", m_name.toUtf8().constData(), NULL );
+    g_object_set( G_OBJECT( audiosrc ), "client-name", m_name.toUtf8().constData(), nullptr );
 
     // make sure we'll get messages
-    g_object_set( G_OBJECT( level ), "post-messages", TRUE, NULL );
+    g_object_set( G_OBJECT( level ), "post-messages", TRUE, nullptr );
 
     // run synced and not as fast as we can
-    g_object_set( G_OBJECT( fakesink ), "sync", TRUE, NULL );
+    g_object_set( G_OBJECT( fakesink ), "sync", TRUE, nullptr );
 
     // Setzt den Intervall. Acht Nullen sind ca. 15Aufrufe/Sekunde
     //                      Sieben Nullen sind ca. 100Aufrufe/Sekunde
-    g_object_set( G_OBJECT( level ), "interval", 10000000, NULL );
+    g_object_set( G_OBJECT( level ), "interval", 10000000, nullptr );
 
     bus = gst_element_get_bus (pipeline);
 
     gint64 msg = index.toInt();
-    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, NULL );
+    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, nullptr );
     gst_object_unref(bus);
 
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
