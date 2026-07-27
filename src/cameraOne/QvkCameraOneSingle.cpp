@@ -92,8 +92,10 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         if (value == true){
             if (vkCameraOneWindow == nullptr){
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
-                vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
                 vkCameraOneWindow->show();
+                qDebug() << "11111" << cameraOneWindow_X << cameraOneWindow_Y;
+                vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
+                qDebug() <<  "22222" << vkCameraOneWindow->pos().x() << vkCameraOneWindow->pos().y();
             }
         }else{
             if (vkCameraOneWindow != nullptr){
@@ -361,7 +363,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 Details zum automatischen Zurücksetzen: In C++ bewirkt das Setzen der Temperatur auf 0,
                 dass das System automatisch wieder in den Modus WhiteBalanceAuto wechselt.
                 */
-
+            /*
                 qDebug().noquote() << global::nameOutput << "[Camera] is active";
 
                 //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
@@ -438,6 +440,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     camera->setColorTemperature(0);
                     qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
                 }
+            */
             }
 
             if (active == false){
@@ -493,7 +496,6 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
 
         delete captureSession;
 
-        vkCameraOneWindow->hide();
         qDebug().noquote() << global::nameOutput << "[Camera] Stop";
         qDebug();
     }

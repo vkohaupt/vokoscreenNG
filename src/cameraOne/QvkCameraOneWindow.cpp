@@ -213,3 +213,9 @@ void QvkCameraOneWindow::mouseMoveEvent(QMouseEvent *event)
         move(QCursor::pos().x() - mouseLocal_X, QCursor::pos().y() - mouseLocal_Y);
     }
 }
+
+
+void QvkCameraOneWindow::moveEvent(QMoveEvent *event)
+{
+    qDebug() << event->pos();
+}
