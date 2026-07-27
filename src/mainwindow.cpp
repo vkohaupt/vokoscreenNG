@@ -294,7 +294,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Log:" << vkLogController->get_log_filePath();
 
     // Clear all settings if checkBoxResetAtNextStart is set
-    QSettings setting( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings setting( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     QList<QCheckBox *> listCheckBoxReset = ui->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
         QCheckBox *checkBox = listCheckBoxReset.at(i);
@@ -728,12 +728,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxProfile,         SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
 
     // Jede childGroup ist ein Profil und wird aus der profiles.ini ausgelesen und in der Combobox eingetragen
-    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
+    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", nullptr );
     QStringList stringList = profileSettings.childGroups();
     ui->comboBoxProfile->addItems( stringList );
 
     // Nun wird aus der vokoscreenNG.ini der abgespeicherte Profilname ausgelesen und das Profil geladen.
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
     QString profil = settings.value( "comboBoxProfile" ).toString();
     QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
     QComboBox *comboBox = listComboBox.at(0);
@@ -784,7 +784,7 @@ void QvkMainWindow::slot_profileSave( bool bo )
         return;
     }
 
-    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
+    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", nullptr );
     profileSettings.beginGroup( profileName );
 
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
@@ -838,7 +838,7 @@ void QvkMainWindow::slot_profileLoad( int index )
         return;
     }
 
-    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
+    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", nullptr );
     profileSettings.beginGroup( profileName );
 
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
@@ -921,7 +921,7 @@ void QvkMainWindow::slot_profileDelete( bool bo ) {
         return;
     }
 
-    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
+    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", nullptr );
     profileSettings.remove( profileName );
 
     int index = ui->comboBoxProfile->findText( profileName );
@@ -2165,7 +2165,7 @@ void QvkMainWindow::slot_Start()
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
-    GError *error = Q_NULLPTR;
+    GError *error = nullptr;
     pipeline = gst_parse_launch( line, &error );
 
     // Start playing
@@ -2262,7 +2262,7 @@ void QvkMainWindow::slot_Pause()
         if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
         /* wait until it's up and running or failed */
-        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
+        if (gst_element_get_state (pipeline, nullptr, nullptr, -1) == GST_STATE_CHANGE_FAILURE) {
           g_error ("Failed to go into PAUSED state");
         }
 
@@ -2280,7 +2280,7 @@ void QvkMainWindow::slot_Continue()
         if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
         /* wait until it's up and running or failed */
-        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
+        if (gst_element_get_state (pipeline, nullptr, nullptr, -1) == GST_STATE_CHANGE_FAILURE) {
           g_error ("Failed to go into PLAYING state");
         } else {
             qDebug().noquote() << global::nameOutput << "Continue was clicked";

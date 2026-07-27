@@ -1065,7 +1065,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
     // Da ist irgendwo ein Bug, stürzt bei STOP ab
     //    GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-    //    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+    //    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, nulptr );
     //    gst_object_unref( bus );
 
     // Start playing
