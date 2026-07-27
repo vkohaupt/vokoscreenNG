@@ -197,11 +197,11 @@ void QvkAudioPipewireLevelMeter_wl::stop()
     gst_element_get_state(pipeline, &state, &pending, 1000000000);// 1 Millionen Nanosekunden sind eine Sekunde
     if (state == GST_STATE_PLAYING){
         qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "State is PLAYING";
-        qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "State wants to switch to NULL";
+        qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "State wants to switch to State_NULL";
         gst_element_set_state(pipeline, GST_STATE_NULL);
         gst_element_get_state(pipeline, &state, &pending, 1000000000);
         if (state == GST_STATE_NULL){
-            qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "State is NULL";
+            qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "State is State_NULL";
             qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "Stop";
         }
     }

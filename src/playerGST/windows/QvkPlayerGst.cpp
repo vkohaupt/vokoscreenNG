@@ -77,7 +77,7 @@ GstBusSyncReply QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message
         case GST_MESSAGE_STATE_CHANGED:
             {
 /*                GstState old_state, new_state;
-                gst_message_parse_state_changed ( message, &old_state, &new_state, NULL);
+                gst_message_parse_state_changed ( message, &old_state, &new_state, nullptr);
                 QString message1 = GST_OBJECT_NAME ( message->src );
                 QString oldState = gst_element_state_get_name( old_state );
                 QString newState = gst_element_state_get_name( new_state );
@@ -158,14 +158,14 @@ void QvkPlayerGst::slot_discover_quit( bool video, bool audio )
 
 void QvkPlayerGst::set_mute( bool bol )
 {
-    g_object_set( G_OBJECT( audiosink ), "mute", bol, NULL );
+    g_object_set( G_OBJECT( audiosink ), "mute", bol, nullptr );
 }
 
 
 void QvkPlayerGst::set_volume( qreal m_volume )
 {
     qreal volume = QAudio::convertVolume( m_volume / qreal(100.0), QAudio::CubicVolumeScale, QAudio::LinearVolumeScale );
-    g_object_set( G_OBJECT( audiosink ), "volume", volume, NULL );
+    g_object_set( G_OBJECT( audiosink ), "volume", volume, nullptr );
 }
 
 
@@ -188,14 +188,14 @@ void QvkPlayerGst::slot_timer()
     // Get mute from system
     if ( have_stream_audio == true ) {
         bool bol;
-        g_object_get( G_OBJECT( audiosink ), "mute", &bol, NULL );
+        g_object_get( G_OBJECT( audiosink ), "mute", &bol, nullptr );
         emit signal_mute( bol );
     }
 
     // Get volume from system
     if ( have_stream_audio == true ) {
         qreal volume;
-        g_object_get( G_OBJECT( audiosink ), "volume", &volume, NULL );
+        g_object_get( G_OBJECT( audiosink ), "volume", &volume, nullptr );
         qreal m_volume = QAudio::convertVolume( volume, QAudio::LinearVolumeScale, QAudio::CubicVolumeScale );
         emit signal_volume( m_volume );
     }
@@ -229,10 +229,10 @@ void QvkPlayerGst::play_pre()
 
         gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( videosink ), get_winId() );
 
-        g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), NULL );
+        g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), nullptr );
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, nullptr );
         gst_object_unref( bus );
         return;
     }
@@ -255,10 +255,10 @@ void QvkPlayerGst::play_pre()
 
         gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( videosink ), get_winId() );
 
-        g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), NULL );
+        g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), nullptr );
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, nullptr );
         gst_object_unref( bus );
         return;
     }
@@ -278,11 +278,11 @@ void QvkPlayerGst::play_pre()
         gst_element_link( audioconvert, audiosink );
         g_signal_connect( decodebin, "pad-added", G_CALLBACK( on_pad_added ), audioconvert );
 
-        g_object_set( G_OBJECT( audiosink ), "client-name", "vokoscreenNG", NULL );
-        g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), NULL );
+        g_object_set( G_OBJECT( audiosink ), "client-name", "vokoscreenNG", nullptr );
+        g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), nullptr );
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, nullptr );
         gst_object_unref( bus );
         return;
     }
@@ -341,9 +341,9 @@ bool QvkPlayerGst::is_running()
     GstState cur_state = GST_STATE_NULL;
     GstStateChangeReturn state_change;
 
-    if ( pipeline != NULL  ) {
+    if ( pipeline != nullptr ) {
         /* 10 ms timeout */
-        state_change = gst_element_get_state( pipeline, &cur_state,  NULL, 10000000 );
+        state_change = gst_element_get_state( pipeline, &cur_state, nullptr, 10000000 );
         Q_UNUSED(state_change)
     }
     if ( cur_state == GST_STATE_PLAYING ) {
@@ -359,9 +359,9 @@ bool QvkPlayerGst::is_pause()
     GstState curState = GST_STATE_NULL;
     GstStateChangeReturn state_change;
 
-    if ( pipeline != NULL  ) {
+    if ( pipeline != nullptr ) {
         /* 10 ms timeout */
-        state_change = gst_element_get_state( pipeline, &curState,  NULL, 10000000 );
+        state_change = gst_element_get_state( pipeline, &curState,  nullptr, 10000000 );
         Q_UNUSED(state_change)
     }
 

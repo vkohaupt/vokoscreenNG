@@ -130,7 +130,7 @@ void on_finished_cb( GstDiscoverer *discoverer, CustomData *data )
 void QvkPlayerGstDiscover::discover_file( QString mediaFile )
 {
     CustomData data;
-    GError *err = NULL;
+    GError *err = nullptr;
 
     isAudio = false;
     isVideo = false;
@@ -169,7 +169,7 @@ void QvkPlayerGstDiscover::discover_file( QString mediaFile )
     }
 
     // Create a GLib Main Loop and set it to run, so we can wait for the signals
-    data.loop = g_main_loop_new (NULL, FALSE);
+    data.loop = g_main_loop_new (nullptr, FALSE);
     g_main_loop_run (data.loop);
 
     // Stop the discoverer process
