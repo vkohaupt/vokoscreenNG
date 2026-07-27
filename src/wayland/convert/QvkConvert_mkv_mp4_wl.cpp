@@ -276,11 +276,11 @@ void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4()
 
             QByteArray byteArray = VK_Pipeline.toUtf8();
             const gchar *line = byteArray.constData();
-            GError *error = Q_NULLPTR;
+            GError *error = nullptr;
             pipeline = gst_parse_launch( line, &error );
 
             GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-            gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message_convert_mp4, this, NULL );
+            gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message_convert_mp4, this, nullptr );
             gst_object_unref( bus );
 
             // Start playing
@@ -355,7 +355,7 @@ void QvkConvert_mkv_mp4_wl::print_tag_foreach( const GstTagList *tags, const gch
 // Print information regarding a stream
 void QvkConvert_mkv_mp4_wl::print_stream_info (GstDiscovererStreamInfo * info, gint depth)
 {
-    gchar *desc = NULL;
+    gchar *desc = nullptr;
     GstCaps *caps;
     const GstTagList *tags;
 
@@ -376,7 +376,7 @@ void QvkConvert_mkv_mp4_wl::print_stream_info (GstDiscovererStreamInfo * info, g
 
     if ( desc ) {
         g_free( desc );
-        desc = NULL;
+        desc = nullptr;
     }
 
     tags = gst_discoverer_stream_info_get_tags( info );
@@ -500,7 +500,7 @@ void QvkConvert_mkv_mp4_wl::on_finished_cb(GstDiscoverer *discoverer, CustomData
 void QvkConvert_mkv_mp4_wl::slot_discover_start()
 {
     CustomDataMP4 data;
-    GError *err = NULL;
+    GError *err = nullptr;
 
     QString file = "file://" + ui->lineEdit_convert_mkv_to_mp4->text();
     QByteArray byteArray = file.toUtf8();
@@ -532,7 +532,7 @@ void QvkConvert_mkv_mp4_wl::slot_discover_start()
     }
 
     // Create a GLib Main Loop and set it to run, so we can wait for the signals
-    data.loop = g_main_loop_new (NULL, FALSE);
+    data.loop = g_main_loop_new (nullptr, FALSE);
     g_main_loop_run (data.loop);
 
     // Stop the discoverer process

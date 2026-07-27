@@ -251,11 +251,11 @@ void QvkConvert_mkv_repair_wl::slot_convert_mkv_repair()
 
         QByteArray byteArray = VK_Pipeline.toUtf8();
         const gchar *line = byteArray.constData();
-        GError *error = Q_NULLPTR;
+        GError *error = nullptr;
         pipeline = gst_parse_launch( line, &error );
 
         GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message_convert_repair, this, NULL );
+        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message_convert_repair, this, nullptr );
         gst_object_unref( bus );
 
         // Start playing
@@ -326,7 +326,7 @@ void QvkConvert_mkv_repair_wl::print_tag_foreach(const GstTagList *tags, const g
 // Print information regarding a stream
 void QvkConvert_mkv_repair_wl::print_stream_info(GstDiscovererStreamInfo *info, gint depth)
 {
-    gchar *desc = NULL;
+    gchar *desc = nullptr;
     GstCaps *caps;
     const GstTagList *tags;
 
@@ -347,7 +347,7 @@ void QvkConvert_mkv_repair_wl::print_stream_info(GstDiscovererStreamInfo *info, 
 
     if ( desc ) {
         g_free( desc );
-        desc = NULL;
+        desc = nullptr;
     }
 
     tags = gst_discoverer_stream_info_get_tags( info );
@@ -471,7 +471,7 @@ void QvkConvert_mkv_repair_wl::on_finished_cb(GstDiscoverer *discoverer, CustomD
 void QvkConvert_mkv_repair_wl::slot_discover_start()
 {
     CustomDataREPAIR data;
-    GError *err = NULL;
+    GError *err = nullptr;
 
     QString file = "file://" + ui->lineEdit_convert_mkv_repair->text();
     QByteArray byteArray = file.toUtf8();
@@ -503,7 +503,7 @@ void QvkConvert_mkv_repair_wl::slot_discover_start()
     }
 
     // Create a GLib Main Loop and set it to run, so we can wait for the signals
-    data.loop = g_main_loop_new (NULL, FALSE);
+    data.loop = g_main_loop_new (nullptr, FALSE);
     g_main_loop_run (data.loop);
 
     // Stop the discoverer process
