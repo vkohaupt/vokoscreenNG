@@ -48,6 +48,7 @@ private:
     void set_resolution_into_comboBox(QString device);
 
     QMetaObject::Connection comboBoxTemperatureConnect;
+    QMetaObject::Connection sliderTemperatureConnect;
 
 
 private slots:

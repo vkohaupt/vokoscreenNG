@@ -363,7 +363,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 Details zum automatischen Zurücksetzen: In C++ bewirkt das Setzen der Temperatur auf 0,
                 dass das System automatisch wieder in den Modus WhiteBalanceAuto wechselt.
                 */
-            /*
+
                 qDebug().noquote() << global::nameOutput << "[Camera] is active";
 
                 //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
@@ -399,7 +399,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setMinimum(min_ColorTemperatur);
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setMaximum(max_ColorTemperatur);
                 QvkSpezialSlider *slider = vkCameraOneOptions->sliderCameraOneColorTemperature;
-                connect(slider, &QvkSpezialSlider::valueChanged, this, [=](int value){
+                sliderTemperatureConnect = connect(slider, &QvkSpezialSlider::valueChanged, this, [=](int value){
                     int color = value * 100;
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     camera->setColorTemperature(color);
@@ -440,13 +440,14 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
                     camera->setColorTemperature(0);
                     qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
                 }
-            */
+
             }
 
             if (active == false){
                 vkCameraOneOptions->ui->comboBoxCameraOneColorTemperature->setEnabled(false);
                 vkCameraOneOptions->sliderCameraOneColorTemperature->setEnabled(false);
                 QObject::disconnect(comboBoxTemperatureConnect);
+                QObject::disconnect(sliderTemperatureConnect);
                 qDebug().noquote() << global::nameOutput << "[Camera] not active";
             }
         });
