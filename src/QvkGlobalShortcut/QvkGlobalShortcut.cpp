@@ -118,7 +118,7 @@ QvkGlobalShortcut::~QvkGlobalShortcut()
 {
 }
 
-
+/*
 void QvkGlobalShortcut::slot_checkbox_camera_click()
 {
     QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
@@ -140,6 +140,18 @@ void QvkGlobalShortcut::slot_checkbox_camera_click()
                     }
                 }
             }
+        }
+    }
+}
+*/
+
+void QvkGlobalShortcut::slot_checkbox_camera_click()
+{
+    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+    for (int i = 0; i < listCheckBox.count(); i++){
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if (checkBox->objectName().contains( "checkBoxCameraOneOnOff_")){
+            checkBox->click();
         }
     }
 }
@@ -481,7 +493,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
         QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listCheckBox.at(i);
-            if ( checkBox->objectName().contains( "checkBoxCameraOnOff-" ) ) {
+            if ( checkBox->objectName().contains( "checkBoxCameraOneOnOff_" ) ) {
                 checkBox->setToolTip( shortcut );
             }
         }
