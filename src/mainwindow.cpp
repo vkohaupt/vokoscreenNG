@@ -549,9 +549,23 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSystray = new QvkSystray(ui);
     if (QSystemTrayIcon::isSystemTrayAvailable() == true){
         vkSystray->init();
-        connect(vkSystray, &QvkSystray::signal_SystemtrayIsClose, this, [=](){close();});
-        connect(ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [=](bool value){vkSystray->setVisible(value);});
-        connect(vkGlobalShortcut,          SIGNAL(signal_shortcutSystray(QString,QString)), vkSystray, SLOT(slot_shortcutSystray(QString,QString)));
+        connect(vkSystray,
+                &QvkSystray::signal_SystemtrayIsClose,
+                this, [=](){
+            close();
+        });
+        connect(ui->checkBoxShowInSystray,
+                &QCheckBox::clicked,
+                vkSystray,
+                [=](bool value){
+            vkSystray->setVisible(value);
+        });
+        connect(vkGlobalShortcut,
+                &QvkGlobalShortcut::signal_shortcutSystray,
+                vkSystray,
+                [=](QString device, QString shortcut){
+            vkSystray->slot_shortcutSystray(device, shortcut);
+        });
         ui->frameShowInSystrayAlternative->hide();
         ui->toolButtonShowInSystrayAlternativeReset->hide();
     }else{

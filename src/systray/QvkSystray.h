@@ -43,6 +43,7 @@ public:
     
 public slots:
     void slot_closeSystray();
+    void slot_shortcutSystray( QString device, QString shortcut );
 
 
 private:
@@ -66,7 +67,6 @@ private slots:
     void slot_setSystrayIcon( bool );
     void slot_setPauseIcon( bool );
     void slot_currentIndexChanged( int index );
-    void slot_shortcutSystray( QString device, QString shortcut );
 
 
 protected:
