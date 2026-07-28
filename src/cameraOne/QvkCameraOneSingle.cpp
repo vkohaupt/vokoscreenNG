@@ -56,19 +56,14 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
     vkCameraOneOptions->set_init(device);
     GuiUi->verticalLayout_39->addWidget(vkCameraOneOptions);
 
-    connect(ui->checkBoxCameraOneOnOff,
-            &QCheckBox::clicked,
-            this,
-            [=](bool value){
-        slot_checkBoxCameraOnOff(value);
-    });
-
     connect(ui->comboBoxCameraOnePixelformat,
             &QComboBox::currentIndexChanged,
             this,
             [=](int index){
         Q_UNUSED(index)
+        ui->comboBoxCameraOneResolution->blockSignals(true);
         set_resolution_into_comboBox(device);
+        ui->comboBoxCameraOneResolution->blockSignals(false);
         if (ui->checkBoxCameraOneOnOff->isChecked() == true){
             ui->checkBoxCameraOneOnOff->click();
             ui->checkBoxCameraOneOnOff->click();
@@ -87,15 +82,13 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         }
     });
 
-    // Camera ON/Off
+    // Fenster ON/Off
     connect(ui->checkBoxCameraOneOnOff, &QCheckBox::clicked, this, [=](bool value){
         if (value == true){
             if (vkCameraOneWindow == nullptr){
                 vkCameraOneWindow = new QvkCameraOneWindow(this, device.section(":::", 0, 0));
                 vkCameraOneWindow->show();
-                qDebug() << "11111" << cameraOneWindow_X << cameraOneWindow_Y;
                 vkCameraOneWindow->move(cameraOneWindow_X, cameraOneWindow_Y);
-                qDebug() <<  "22222" << vkCameraOneWindow->pos().x() << vkCameraOneWindow->pos().y();
             }
         }else{
             if (vkCameraOneWindow != nullptr){
@@ -201,6 +194,13 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
             int height = vkCameraOneWindow->height();
             vkCameraOneWindow->move(x + (width-height)/2, y);
         }
+    });
+
+    connect(ui->checkBoxCameraOneOnOff,
+            &QCheckBox::clicked,
+            this,
+            [=](bool value){
+        slot_checkBoxCameraOnOff(value);
     });
 }
 
@@ -485,7 +485,7 @@ void QvkCameraOneSingle::slot_checkBoxCameraOnOff(bool value)
         qDebug();
     };
 
-    // Camera stopen
+    // Camera stoppen
     if (value == false){
         disconnect(videoSink);
         delete videoSink;

@@ -45,9 +45,6 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
 
-    void moveEvent(QMoveEvent *event);
-
-
 
 signals:
     void signal_cameraOneWindowClosed(QString);
