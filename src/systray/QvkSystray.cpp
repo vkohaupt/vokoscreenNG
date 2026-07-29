@@ -159,7 +159,6 @@ void QvkSystray::init()
     menu->addAction( pauseAction );
     menu->addAction( continueAction );
     menu->addSeparator();
-//    menu->addAction( cameraAction );
     menu->addAction( magnifierAction );
     menu->addAction( showclickAction );
     menu->addAction( haloAction );
@@ -174,10 +173,6 @@ void QvkSystray::init()
 
     connect( exitAction, SIGNAL( triggered(bool) ), this, SLOT( slot_hide() ) );
 
-//    if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
-//        cameraAction->setEnabled( false );
-//    }
-
     setMenuText();
 }
 
@@ -188,7 +183,6 @@ void QvkSystray::setMenuText()
     stopAction->setText( tr( "Stop" ) );
     pauseAction->setText( tr( "Pause" ) );
     continueAction->setText( tr( "Continue" ) );
-//    cameraAction->setText( tr( "Camera" ) );
     magnifierAction->setText( tr( "Magnification" ) );
     exitAction->setText( tr( "Exit" ) );
 }
@@ -223,16 +217,6 @@ void QvkSystray::slot_setSystrayIcon( bool )
 void QvkSystray::slot_setPauseIcon( bool )
 {
     setIcon( QIcon( ":/pictures/systray/pause.png" ) );
-}
-
-
-void QvkSystray::slot_currentIndexChanged( int index )
-{
-    if ( index > -1 ) {
-//        cameraAction->setEnabled( true );
-    } else {
-//        cameraAction->setEnabled( false );
-    }
 }
 
 
