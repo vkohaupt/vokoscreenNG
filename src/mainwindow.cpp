@@ -533,16 +533,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSnapshot->init();
     vk_setCornerWidget( ui->tabWidgetSnapshot );
 
-    // *****************Begin Camera *********************************
-    QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this, ui);
-    vk_setCornerWidget(ui->tabWidgetCameraOne);
-    Q_UNUSED(vkCameraOneController)
-    // *****************End Camera ***********************************
-
-
     // ***************** shortcut ******************************
     vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     vk_setCornerWidget( ui->tabWidgetShortcut );
+
+    // *****************Begin Camera *********************************
+    QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this, ui);
+    vk_setCornerWidget(ui->tabWidgetCameraOne);
+    //Q_UNUSED(vkCameraOneController)
+    // *****************End Camera ***********************************
 
     // *************** Systray and SystrayAlternative **********************
     vkSystrayAlternative = new QvkSystrayAlternative(this, ui, sliderShowInSystrayAlternative);
@@ -568,6 +567,23 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         });
         ui->frameShowInSystrayAlternative->hide();
         ui->toolButtonShowInSystrayAlternativeReset->hide();
+
+        // OK Funktioniert
+        connect(vkCameraOneController,
+                &QvkCameraOneController::signal_forSystrayCameraAdded,
+                vkSystray,
+                [=](QCheckBox *checkBox){
+            vkSystray->slot_cameraAdded(checkBox);
+        });
+        // Bereits eingelesene Cameras an Systray senden
+        // OK Funktioniert
+        QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+        for (int i = 0; i < listCheckBox.count(); i++){
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if (checkBox->objectName().contains("checkBoxCameraOneOnOff_")){
+                vkSystray->slot_cameraAdded(checkBox);
+            }
+        }
     }else{
         connect(ui->checkBoxShowInSystrayAlternative, SIGNAL(clicked(bool)), vkSystrayAlternative, SLOT(setVisible(bool)));
         connect(vkGlobalShortcut, SIGNAL(signal_shortcutSystray(QString,QString)), vkSystrayAlternative, SLOT(slot_shortcutSystray(QString,QString)));

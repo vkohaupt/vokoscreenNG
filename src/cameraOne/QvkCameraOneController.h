@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QButtonGroup>
+#include <QCheckBox>
 
 #include "QvkCameraOneSingle.h"
 
@@ -20,6 +21,9 @@ public:
 
 private:
     Ui_formMainWindow *GuiUi;
+
+signals:
+    void signal_forSystrayCameraAdded(QCheckBox *checkBox);
 
 
 };

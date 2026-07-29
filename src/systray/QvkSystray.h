@@ -52,13 +52,13 @@ private:
     QAction *stopAction;
     QAction *pauseAction;
     QAction *continueAction;
-    QAction *exitAction;
 
-    QAction *cameraAction;
     QAction *magnifierAction;
     QAction *showclickAction;
     QAction *haloAction;
     QAction *snapshotAction;
+
+    QAction *exitAction;
 
 
 private slots:
@@ -67,6 +67,10 @@ private slots:
     void slot_setSystrayIcon( bool );
     void slot_setPauseIcon( bool );
     void slot_currentIndexChanged( int index );
+
+
+public slots:
+    void slot_cameraAdded(QCheckBox *checkBox);
 
 
 protected:

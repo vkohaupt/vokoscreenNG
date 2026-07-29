@@ -60,6 +60,10 @@ private slots:
 protected:
     void resizeEvent(QResizeEvent *event);
 
+
+signals:
+
+
 };
 
 #endif // QVKCAMERAONESINGLE_H

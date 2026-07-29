@@ -63,13 +63,13 @@ void QvkSystray::init()
     continueAction->setIcon( QIcon( ":pictures/player/start.png" ) );
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
-
+/*
     cameraAction = new QAction( this );
     cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
     cameraAction->setData( "Camera" );
     cameraAction->setCheckable( true );
     cameraAction->setEnabled( true );
-
+*/
     magnifierAction = new QAction( this );
     magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
     magnifierAction->setData( "Magnification" );
@@ -159,7 +159,7 @@ void QvkSystray::init()
     menu->addAction( pauseAction );
     menu->addAction( continueAction );
     menu->addSeparator();
-    menu->addAction( cameraAction );
+//    menu->addAction( cameraAction );
     menu->addAction( magnifierAction );
     menu->addAction( showclickAction );
     menu->addAction( haloAction );
@@ -188,7 +188,7 @@ void QvkSystray::setMenuText()
     stopAction->setText( tr( "Stop" ) );
     pauseAction->setText( tr( "Pause" ) );
     continueAction->setText( tr( "Continue" ) );
-    cameraAction->setText( tr( "Camera" ) );
+//    cameraAction->setText( tr( "Camera" ) );
     magnifierAction->setText( tr( "Magnification" ) );
     exitAction->setText( tr( "Exit" ) );
 }
@@ -229,9 +229,9 @@ void QvkSystray::slot_setPauseIcon( bool )
 void QvkSystray::slot_currentIndexChanged( int index )
 {
     if ( index > -1 ) {
-        cameraAction->setEnabled( true );
+//        cameraAction->setEnabled( true );
     } else {
-        cameraAction->setEnabled( false );
+//        cameraAction->setEnabled( false );
     }
 }
 
@@ -270,7 +270,7 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
             continueAction->setShortcutVisibleInContextMenu( false );
         }
     }
-
+/*
     if ( device == "camera" ) {
         cameraAction->setShortcutVisibleInContextMenu( true );
         cameraAction->setShortcut( QKeySequence::fromString( shortcut ) );
@@ -278,7 +278,7 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
             cameraAction->setShortcutVisibleInContextMenu( false );
         }
     }
-
+*/
     if ( device == "magnification" ) {
         magnifierAction->setShortcutVisibleInContextMenu( true );
         magnifierAction->setShortcut( QKeySequence::fromString( shortcut ) );
@@ -310,4 +310,30 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
             snapshotAction->setShortcutVisibleInContextMenu( false );
         }
     }
+}
+
+
+void QvkSystray::slot_cameraAdded(QCheckBox *checkBox)
+{
+    QAction *cameraAction = new QAction(this);
+    cameraAction->setIcon(QIcon( ":pictures/systray/camera.png"));
+    cameraAction->setData("Camera");
+    cameraAction->setCheckable(true);
+    cameraAction->setEnabled(true);
+    cameraAction->setText(checkBox->text());
+    menu->insertAction(exitAction, cameraAction);
+    connect(checkBox,
+            &QCheckBox::toggled,
+            cameraAction,
+            [=](bool value){
+        cameraAction->blockSignals(true);
+        cameraAction->setChecked(value);
+        cameraAction->blockSignals(false);
+    });
+    connect(cameraAction,
+            &QAction::toggled,
+            checkBox,
+            [=](){
+        checkBox->click();
+    });
 }
