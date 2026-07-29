@@ -568,7 +568,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->frameShowInSystrayAlternative->hide();
         ui->toolButtonShowInSystrayAlternativeReset->hide();
 
-        // Camera added OK Funktioniert
+        // Camera added
+        // OK Funktioniert
         connect(vkCameraOneController,
                 &QvkCameraOneController::signal_forSystrayCameraAdded,
                 vkSystray,

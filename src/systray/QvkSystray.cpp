@@ -311,6 +311,7 @@ void QvkSystray::slot_cameraAdded(QCheckBox *checkBox)
 
     menu->insertAction(exitAction, cameraAction);
     menu->insertAction(exitAction, menu->addSeparator());
+
     connect(checkBox,
             &QCheckBox::toggled,
             cameraAction,
