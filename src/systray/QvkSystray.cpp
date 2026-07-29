@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -244,7 +244,7 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
             continueAction->setShortcutVisibleInContextMenu( false );
         }
     }
-/*
+    /*
     if ( device == "camera" ) {
         cameraAction->setShortcutVisibleInContextMenu( true );
         cameraAction->setShortcut( QKeySequence::fromString( shortcut ) );
@@ -295,7 +295,22 @@ void QvkSystray::slot_cameraAdded(QCheckBox *checkBox)
     cameraAction->setCheckable(true);
     cameraAction->setEnabled(true);
     cameraAction->setText(checkBox->text());
+
+    // Vierten Seperator entfernen wenn Kamera hinzugefügt wird
+    int counter = 0;
+    QList<QAction *> listAction = menu->actions();
+    for (int i = 0; i < listAction.count(); i++){
+        QAction *action = listAction.at(i);
+        if (action->isSeparator() == true){
+            counter++;
+            if (counter == 4){
+                menu->removeAction(action);
+            }
+        }
+    }
+
     menu->insertAction(exitAction, cameraAction);
+    menu->insertAction(exitAction, menu->addSeparator());
     connect(checkBox,
             &QCheckBox::toggled,
             cameraAction,
@@ -317,12 +332,12 @@ void QvkSystray::slot_cameraRemoved(QCheckBox *checkBox)
 {
     QList<QAction *> listAction = menu->actions();
     for (int i = 0; i < listAction.count(); i++){
-       QAction *action = listAction.at(i);
-       QString actionName = action->objectName().section("_", 1, 1);
-       QString checkBoxName = checkBox->objectName().section("_", 1, 1);
-       if (actionName == checkBoxName){
-           menu->removeAction(action);
-           break;
-       }
+        QAction *action = listAction.at(i);
+        QString actionName = action->objectName().section("_", 1, 1);
+        QString checkBoxName = checkBox->objectName().section("_", 1, 1);
+        if (actionName == checkBoxName){
+            menu->removeAction(action);
+            break;
+        }
     }
 }
