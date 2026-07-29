@@ -63,13 +63,7 @@ void QvkSystray::init()
     continueAction->setIcon( QIcon( ":pictures/player/start.png" ) );
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
-/*
-    cameraAction = new QAction( this );
-    cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
-    cameraAction->setData( "Camera" );
-    cameraAction->setCheckable( true );
-    cameraAction->setEnabled( true );
-*/
+
     magnifierAction = new QAction( this );
     magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
     magnifierAction->setData( "Magnification" );
@@ -127,10 +121,6 @@ void QvkSystray::init()
     connect( stopAction,     SIGNAL( triggered(bool) ), ui->pushButtonStop,     SLOT( click() ) );
     connect( pauseAction,    SIGNAL( triggered(bool) ), ui->pushButtonPause,    SLOT( click() ) );
     connect( continueAction, SIGNAL( triggered(bool) ), ui->pushButtonContinue, SLOT( click() ) );
-
-//    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled(bool) ),   cameraAction,            SLOT( setChecked(bool) ) );
-//    connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
-//    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
 
     connect( ui->checkBoxMagnifier, SIGNAL( toggled(bool) ),   magnifierAction, SLOT( setChecked(bool) ) );
     connect( magnifierAction,       SIGNAL( triggered(bool) ), ui->checkBoxMagnifier, SLOT( click() ) );
@@ -300,8 +290,8 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
 void QvkSystray::slot_cameraAdded(QCheckBox *checkBox)
 {
     QAction *cameraAction = new QAction(this);
+    cameraAction->setObjectName("cameraAction_" + checkBox->objectName().section("_", 1, 1));
     cameraAction->setIcon(QIcon( ":pictures/systray/camera.png"));
-    cameraAction->setData("Camera");
     cameraAction->setCheckable(true);
     cameraAction->setEnabled(true);
     cameraAction->setText(checkBox->text());
@@ -320,4 +310,19 @@ void QvkSystray::slot_cameraAdded(QCheckBox *checkBox)
             [=](){
         checkBox->click();
     });
+}
+
+
+void QvkSystray::slot_cameraRemoved(QCheckBox *checkBox)
+{
+    QList<QAction *> listAction = menu->actions();
+    for (int i = 0; i < listAction.count(); i++){
+       QAction *action = listAction.at(i);
+       QString actionName = action->objectName().section("_", 1, 1);
+       QString checkBoxName = checkBox->objectName().section("_", 1, 1);
+       if (actionName == checkBoxName){
+           menu->removeAction(action);
+           break;
+       }
+    }
 }

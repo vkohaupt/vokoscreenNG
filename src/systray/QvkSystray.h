@@ -70,6 +70,7 @@ private slots:
 
 public slots:
     void slot_cameraAdded(QCheckBox *checkBox);
+    void slot_cameraRemoved(QCheckBox *checkBox);
 
 
 protected:

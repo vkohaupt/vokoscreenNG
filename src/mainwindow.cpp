@@ -568,7 +568,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->frameShowInSystrayAlternative->hide();
         ui->toolButtonShowInSystrayAlternativeReset->hide();
 
-        // OK Funktioniert
+        // Camera added OK Funktioniert
         connect(vkCameraOneController,
                 &QvkCameraOneController::signal_forSystrayCameraAdded,
                 vkSystray,
@@ -584,6 +584,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                 vkSystray->slot_cameraAdded(checkBox);
             }
         }
+        // Camera removed
+        // OK Funktioniert
+        connect(vkCameraOneController,
+                &QvkCameraOneController::signal_forSystrayCameraRemoved,
+                vkSystray,
+                [=](QCheckBox *checkBox){
+            vkSystray->slot_cameraRemoved(checkBox);
+        });
     }else{
         connect(ui->checkBoxShowInSystrayAlternative, SIGNAL(clicked(bool)), vkSystrayAlternative, SLOT(setVisible(bool)));
         connect(vkGlobalShortcut, SIGNAL(signal_shortcutSystray(QString,QString)), vkSystrayAlternative, SLOT(slot_shortcutSystray(QString,QString)));

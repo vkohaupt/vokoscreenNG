@@ -24,6 +24,7 @@ private:
 
 signals:
     void signal_forSystrayCameraAdded(QCheckBox *checkBox);
+    void signal_forSystrayCameraRemoved(QCheckBox *checkBox);
 
 
 };

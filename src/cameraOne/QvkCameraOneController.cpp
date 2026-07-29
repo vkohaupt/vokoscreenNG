@@ -35,6 +35,16 @@ QvkCameraOneController::QvkCameraOneController(
         }
 
         if (device.section(":::", 2, 2) == "removed"){
+            QList<QCheckBox *> listCheckBox = topLevelWidget()->findChildren<QCheckBox *>();
+            QCheckBox *checkBox;
+            for (int i = 0; i < listCheckBox.count(); i++){
+                checkBox = listCheckBox.at(i);
+                if (device.section(":::", 0, 0) == checkBox->objectName().section("_", 1, 1)){
+                    emit signal_forSystrayCameraRemoved(checkBox);
+                    break;
+                }
+            }
+
             QString removedDevice = "QvkCameraOneSingle_" + device.section(":::", 0, 0);
             QvkCameraOneSingle *vkCameraOneSingle = topLevelWidget()->findChild<QvkCameraOneSingle *>(removedDevice);
             if (vkCameraOneSingle != nullptr){
