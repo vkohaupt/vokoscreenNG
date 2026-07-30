@@ -51,6 +51,7 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi )
 {
     GuiUi = m_GuiUi;
     GuiUi->help_camera_camera->hide();
+    GuiUi->widgetCamera->hide();
 }
 
 
@@ -123,6 +124,14 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             }
         }
         emit signal_forSystrayCameraRemoved(device);
+    }
+
+    // Optionen ein bzw. ausblenden
+    QList<QvkCameraSingle_wl *> listCameraSingle = GuiUi->centralwidget->findChildren<QvkCameraSingle_wl *>();
+    if (listCameraSingle.count() > 0){
+        GuiUi->widgetCamera->setVisible(true);
+    }else{
+        GuiUi->widgetCamera->setVisible(false);
     }
 }
 

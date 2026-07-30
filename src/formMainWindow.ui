@@ -324,7 +324,7 @@
        <enum>QTabWidget::TabPosition::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -581,8 +581,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>398</width>
-                       <height>125</height>
+                       <width>16</width>
+                       <height>16</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -2530,8 +2530,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>405</width>
-                   <height>436</height>
+                   <width>24</width>
+                   <height>100</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -6660,7 +6660,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
