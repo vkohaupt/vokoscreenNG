@@ -247,13 +247,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        if ( ( checkBox->objectName().contains( "checkBoxShowInSystrayAlternative" ) ) and
-             ( settings.value( checkBox->objectName(), true ).toBool() == true ) )
-        {
-            checkBox->click();
-            continue;
-        }
-
 #ifdef Q_OS_WIN
         // WASAPI Geräte werden behandelt in der Funktion readWASAPIAudioDevice(QCheckBox *checkBox)
         // Hier wird die Schleife unterbrochen damit zum Schluß nicht doch noch was gesetzt wird

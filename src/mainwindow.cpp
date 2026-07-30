@@ -563,9 +563,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                 [=](QString device, QString shortcut){
             vkSystray->slot_shortcutSystray(device, shortcut);
         });
-        ui->frameShowInSystrayAlternative->hide();
-        ui->toolButtonShowInSystrayAlternativeReset->hide();
-
         // Camera added
         // OK Funktioniert
         connect(vkCameraOneController,
