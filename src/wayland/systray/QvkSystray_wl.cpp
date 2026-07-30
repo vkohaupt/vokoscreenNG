@@ -136,7 +136,21 @@ void QvkSystray_wl::set_cameraAdded(QCheckBox *checkBoxOnOff)
     cameraAction->setEnabled(true);
     cameraAction->setText(checkBoxOnOff->text().left(30));
 
-    menu->insertAction(snapshotAction, cameraAction);
+    // Vierten Seperator entfernen wenn Kamera hinzugefügt wird
+    int counter = 0;
+    QList<QAction *> listAction = menu->actions();
+    for (int i = 0; i < listAction.count(); i++){
+        QAction *action = listAction.at(i);
+        if (action->isSeparator() == true){
+            counter++;
+            if (counter == 4){
+                menu->removeAction(action);
+            }
+        }
+    }
+
+    menu->insertAction(exitAction, cameraAction);
+    menu->insertAction(exitAction, menu->addSeparator());
 
     connect(cameraAction,
             &QAction::triggered,
