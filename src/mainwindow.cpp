@@ -535,8 +535,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Camera ***********************************
 
     // *************** Systray **********************
+    // Variable is_systemTrayAvailable ist im Header mit false vorbelegt
+    // Zum testen braucht man folgende Zeile nur auskommentieren
+    is_systemTrayAvailable = QSystemTrayIcon::isSystemTrayAvailable();
     vkSystray = new QvkSystray(ui);
-    if (QSystemTrayIcon::isSystemTrayAvailable() == true){
+    if (is_systemTrayAvailable == true){
         vkSystray->init();
         connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
             if(isHidden() == false){
@@ -1120,7 +1123,7 @@ void QvkMainWindow::changeEvent( QEvent *event )
         vkPlayerController->ui->retranslateUi( vkPlayerController );
         vkLicenses->ui->retranslateUi( vkLicenses );
         vkHelp->uiHelp->retranslateUi( vkHelp );
-        if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
+        if (is_systemTrayAvailable == true){
             vkSystray->setMenuText();
         }
     } else {

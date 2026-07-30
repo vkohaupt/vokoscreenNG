@@ -172,6 +172,7 @@ private:
     QString Profile_None = Profile.fill( '-', 20 );
     void set_ToolButtonEnableDisable();
 
+    bool is_systemTrayAvailable = false;
 
 private slots:
     void slot_preStart();
