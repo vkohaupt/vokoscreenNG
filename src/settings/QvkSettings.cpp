@@ -749,24 +749,6 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
 }
 
 
-void QvkSettings::saveSystrayAlternative( int x, int y )
-{
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
-    settings.beginGroup( "SystrayAlternative" );
-    settings.setValue( "X", x );
-    settings.setValue( "Y", y );
-    settings.endGroup();
-}
-
-void QvkSettings::readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative )
-{
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
-    settings.beginGroup( "SystrayAlternative" );
-    vkSystrayAlternative->vkSystrayAlternativeWindow->move( settings.value( "X", 30 ).toInt(), settings.value( "Y", 30 ).toInt() );
-    settings.endGroup();
-}
-
-
 void QvkSettings::savePlayerPathOpenFile( QString pathFile )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );

@@ -158,9 +158,6 @@ include(spezialSlider/spezialSlider.pri)
 # version
 include(version/version.pri)
 
-# systrayAlternative
-include(systrayAlternative/systrayAlternative.pri)
-
 # ciscoOpenh264
 win32:include(ciscoOpenh264/ciscoOpenh264.pri)
 

@@ -24,7 +24,6 @@
 #define QVKSETTINGS_H
 
 #include "QvkRegionChoise.h"
-#include "QvkSystrayAlternative.h"
 #include "QvkPlayerController.h"
 #include "QvkHalo.h"
 #include "QvkShowClick.h"
@@ -48,9 +47,6 @@ public:
 
     void saveAreaScreencast( qreal x, qreal y, qreal width, qreal height );
     void readAreaScreencast( QvkRegionChoise *vkRegionChoise );
-
-    void saveSystrayAlternative( int x, int y );
-    void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );
 
     void savePlayerPathOpenFile( QString pathFile );
     void readPlayerPathOpenFile( int dummy, QvkPlayerController *vkplayer );
