@@ -535,8 +535,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Camera ***********************************
 
     // *************** Systray **********************
+    vkSystray = new QvkSystray(ui);
     if (QSystemTrayIcon::isSystemTrayAvailable() == true){
-        vkSystray = new QvkSystray(ui);
         vkSystray->init();
         connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
             if(isHidden() == false){
