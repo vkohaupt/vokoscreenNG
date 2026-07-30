@@ -33,7 +33,6 @@
 #include "QvkPlayerController.h"
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
-#include "QvkSystrayAlternative.h"
 #include "QvkShowClick.h"
 #include "QvkHalo.h"
 #include "QvkGlobalShortcut.h"
@@ -98,7 +97,6 @@ private:
     QvkSpezialSlider *sliderX264;
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
-    QvkSpezialSlider *sliderShowInSystrayAlternative;
     QvkSpezialSlider *sliderHour;
     QvkSpezialSlider *sliderMinute;
     QvkSpezialSlider *sliderSecondWaitBeforeRecording;
@@ -146,8 +144,6 @@ private:
     QvkPlayerController *vkPlayerController; // This is for the new GStreamer player
 
     QvkHalo *vkHalo;
-
-    QvkSystrayAlternative *vkSystrayAlternative;
 
     QvkLimitDiskFreeSpace *vkLimitDiskFreeSpace;
 

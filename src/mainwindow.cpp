@@ -141,14 +141,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderLimitOfFreeDiskSpace->setValue( 250 );
     sliderLimitOfFreeDiskSpace->show();
 
-    sliderShowInSystrayAlternative = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_18->insertWidget( 1, sliderShowInSystrayAlternative );
-    sliderShowInSystrayAlternative->setObjectName( "sliderShowInSystrayAlternative" );
-    sliderShowInSystrayAlternative->setMinimum( 24 );
-    sliderShowInSystrayAlternative->setMaximum( 64 );
-    sliderShowInSystrayAlternative->setValue( 48 );
-    sliderShowInSystrayAlternative->show();
-
     sliderHour = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_14->addWidget( sliderHour );
     sliderHour->setObjectName( "sliderHour" );
@@ -543,10 +535,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     //Q_UNUSED(vkCameraOneController)
     // *****************End Camera ***********************************
 
-    // *************** Systray and SystrayAlternative **********************
-    vkSystrayAlternative = new QvkSystrayAlternative(this, ui, sliderShowInSystrayAlternative);
-    vkSystray = new QvkSystray(ui);
+    // *************** Systray **********************
     if (QSystemTrayIcon::isSystemTrayAvailable() == true){
+        vkSystray = new QvkSystray(ui);
         vkSystray->init();
         connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
             if(isHidden() == false){
@@ -600,10 +591,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                 [=](QCheckBox *checkBox){
             vkSystray->slot_cameraRemoved(checkBox);
         });
-    }else{
-        connect(ui->checkBoxShowInSystrayAlternative, SIGNAL(clicked(bool)), vkSystrayAlternative, SLOT(setVisible(bool)));
-        connect(vkGlobalShortcut, SIGNAL(signal_shortcutSystray(QString,QString)), vkSystrayAlternative, SLOT(slot_shortcutSystray(QString,QString)));
-        ui->frameShowInSystray->hide();
     }
 
     // Tab 5 Available muxer, encoder etc.
@@ -622,7 +609,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       vkHelp->vkLocale,       SLOT( slot_cleanUp() ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
-    connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkPlayerController,     SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkRegionChoise,         SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystray,              SLOT( slot_closeSystray() ) );
@@ -719,7 +705,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
-    vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( 0, vkPlayerController );
 
     vkSettings.readHaloColor( vkHalo );
@@ -1041,8 +1026,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio()
                                      );
-        vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(),
-                                           vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
@@ -1144,7 +1127,6 @@ void QvkMainWindow::changeEvent( QEvent *event )
         if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
             vkSystray->setMenuText();
         }
-        vkSystrayAlternative->setMenuText();
     } else {
         QWidget::changeEvent(event);
     }
