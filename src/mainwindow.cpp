@@ -532,7 +532,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************Begin Camera *********************************
     QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this, ui);
     vk_setCornerWidget(ui->tabWidgetCameraOne);
-    //Q_UNUSED(vkCameraOneController)
     // *****************End Camera ***********************************
 
     // *************** Systray **********************
