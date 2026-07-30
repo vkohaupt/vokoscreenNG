@@ -548,6 +548,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSystray = new QvkSystray(ui);
     if (QSystemTrayIcon::isSystemTrayAvailable() == true){
         vkSystray->init();
+        connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
+            if(isHidden() == false){
+                show(); hide();
+            }else{
+                show();
+            }
+        });
         connect(vkSystray,
                 &QvkSystray::signal_SystemtrayIsClose,
                 this, [=](){
