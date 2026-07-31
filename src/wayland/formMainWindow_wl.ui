@@ -236,7 +236,7 @@
          <enum>QTabWidget::TabPosition::West</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -2896,9 +2896,30 @@
                </widget>
               </item>
               <item>
+               <widget class="Line" name="line_7">
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(200, 200, 200);
+</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Plain</enum>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
                <layout class="QGridLayout" name="gridLayout_5">
                 <item row="4" column="0" colspan="4">
                  <widget class="Line" name="line_11">
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(200, 200, 200);
+</string>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Shadow::Plain</enum>
+                  </property>
                   <property name="orientation">
                    <enum>Qt::Orientation::Horizontal</enum>
                   </property>
@@ -3079,6 +3100,13 @@
                 </item>
                 <item row="2" column="0" colspan="4">
                  <widget class="Line" name="line_10">
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(200, 200, 200);
+</string>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Shadow::Plain</enum>
+                  </property>
                   <property name="orientation">
                    <enum>Qt::Orientation::Horizontal</enum>
                   </property>
