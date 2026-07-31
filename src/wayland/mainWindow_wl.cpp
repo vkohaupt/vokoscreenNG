@@ -132,11 +132,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->help_screencast_nomousecursor->hide();
     ui->help_screencast_format->hide();
     ui->help_screencast_videocodec->hide();
-//    ui->help_screencast_countdown->hide();
+    //    ui->help_screencast_countdown->hide();
     ui->frame_cisco->hide();
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
-//    ui->widgetLanguageAndHelp->setVisible( false );
+    //    ui->widgetLanguageAndHelp->setVisible( false );
 
 
     vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl( ui );
@@ -276,6 +276,36 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     }
     vkCameraController_wl->init();
 
+    // Sprachen in ComboBox einlesen
+    QDir dirLanguage( ":/language", "*.qm" );
+    QStringList listLanguage;
+    listLanguage.append( "en" );
+    listLanguage.append( dirLanguage.entryList() );
+    QStringList sortList;
+    QString string_xy_XY;
+    for ( int x=0; x < listLanguage.count(); x++ ) {
+        // .qm remove
+        if ( listLanguage.at(x).contains( "." ) == true ) {
+            string_xy_XY = listLanguage.at(x).chopped(3);
+        } else {
+            string_xy_XY = listLanguage.at(x);
+        }
+        QLocale locale_xy_XY( string_xy_XY );
+        QString language = QLocale::languageToString( locale_xy_XY.language() );
+        QString country = QLocale::territoryToString( locale_xy_XY.territory() );
+        QString string = language + "  " + "( " + country + " )" + "  " + "( " + string_xy_XY + " )";
+        sortList << string;
+    }
+    sortList.sort();
+    for ( int x=0; x < sortList.count(); x++ ) {
+        QString language = sortList.at(x).section( "  ", 2, 2 );
+        language = language.replace( "(", "" );
+        language = language.replace( ")", "" );
+        language = language.trimmed();
+        ui->comboBoxLanguage->addItem( sortList.at(x), language );
+    }
+    connect( ui->comboBoxLanguage, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_languageChanged(int) ) );
+
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
 
@@ -298,7 +328,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent Begin close";
-/*
+    /*
     QList<QvkLevelMeterController_wl *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController_wl *>();
     for ( int i = 0; i < list.count(); i++ ) {
         QvkLevelMeterController_wl *vkLevelMeterController = list.at(i);
@@ -330,7 +360,54 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     vkHelpBrowser_wl->set_close();
 
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
+}
 
+
+void QvkMainWindow_wl::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange){
+        ui->retranslateUi(this);
+
+        ui->labelSourcecodeUrl->setText("<a style=color:#3daee9 href='https://github.com/vkohaupt/vokoscreenNG'>" + tr("Sourcecode") + "</a>");
+        ui->labelWebSiteUrl->setText("<a style=color:#3daee9; href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr("Homepage") + "</a>");
+        ui->labelLanguageUrl->setText("<a style=color:#3daee9; href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr("Translations") + "</a>");
+        ui->labelDonateUrl->setText("<a style=color:#3daee9; href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr("Donate") + "</a>");
+
+        vkLicenses->ui->retranslateUi(vkLicenses);
+        /*
+        vkHelp->uiHelp->retranslateUi( vkHelp );
+        if (is_systemTrayAvailable == true){
+            vkSystray->setMenuText();
+        }
+        */
+    } else {
+        QWidget::changeEvent(event);
+    }
+}
+
+
+// Language is changed from combobox
+void QvkMainWindow_wl::slot_languageChanged( int )
+{
+    QCoreApplication::removeTranslator( &translator );
+    QCoreApplication::removeTranslator( &qtTranslator );
+
+    QString language = ui->comboBoxLanguage->currentData().toString();
+    QString path( ":/language/" );
+    if ( translator.load( path + language + ".qm" ) ) {
+        // GUI
+        QCoreApplication::installTranslator( &translator );
+        qDebug().noquote() << global::nameOutput << "Language changed to:" << ui->comboBoxLanguage->currentText() << path + language + ".qm";
+    } else {
+        QCoreApplication::installTranslator( &translator );
+        qDebug().noquote() << global::nameOutput << "Faild to load language:" << ui->comboBoxLanguage->currentText() << path + language + ".qm" << "Set default language";
+    }
+
+    // Dialoge
+    bool bo = qtTranslator.load( "qt_" + language, QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
+    if ( bo == true ) {
+        QCoreApplication::installTranslator( &qtTranslator );
+    }
 }
 
 

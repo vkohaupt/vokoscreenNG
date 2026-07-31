@@ -236,7 +236,7 @@
          <enum>QTabWidget::TabPosition::West</enum>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -261,7 +261,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidgetScreencast">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <property name="iconSize">
              <size>

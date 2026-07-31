@@ -26,7 +26,9 @@
 #include <QTranslator>
 #include <QStringList>
 #include <QFileSystemWatcher>
+#include <QVariantMap>
 #include <QCloseEvent>
+#include <QEvent>
 
 #include <gst/gst.h>
 
@@ -128,9 +130,12 @@ private Q_SLOTS:
     void slot_path_to_snapshot_folder();
     // Snapshot
 
+    void slot_languageChanged(int);
+
 
 protected:
-    void closeEvent( QCloseEvent *event );
+    void closeEvent(QCloseEvent *event);
+    void changeEvent(QEvent *event);
 
 
 Q_SIGNALS:
