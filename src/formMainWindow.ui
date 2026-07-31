@@ -2530,8 +2530,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>405</width>
-                   <height>436</height>
+                   <width>24</width>
+                   <height>100</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -4267,6 +4267,19 @@
                   </spacer>
                  </item>
                 </layout>
+               </item>
+               <item>
+                <widget class="Line" name="line_12">
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(200, 200, 200);</string>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Plain</enum>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
                </item>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_52">
@@ -6569,6 +6582,32 @@
             <property name="bottomMargin">
              <number>6</number>
             </property>
+            <item alignment="Qt::AlignmentFlag::AlignHCenter">
+             <widget class="QLabel" name="label_22">
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Log</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_14">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(200, 200, 200);
+</string>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Plain</enum>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
             <item>
              <widget class="QTextBrowser" name="textBrowser"/>
             </item>
