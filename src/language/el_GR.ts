@@ -222,41 +222,6 @@
         <translation>Έξοδος</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Κάμερα</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Μεγένθυση</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Έναρξη</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Διακοπή</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Παύση</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Συνέχιση</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Έξοδος</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Κάμερα</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Μεγένθυση</translation>
     </message>

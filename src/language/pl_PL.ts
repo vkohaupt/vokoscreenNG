@@ -222,41 +222,6 @@
         <translation>Zakończ</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Powiększenie</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Start</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stop</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauza</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Kontynuuj</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Zakończ</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Powiększenie</translation>
     </message>

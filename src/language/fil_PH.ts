@@ -222,41 +222,6 @@
         <translation>Umalis</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Pagpapalaki</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Simulan</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Itigil</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Ihinto</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Ipagpatuloy</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Umalis</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Pagpapalaki</translation>
     </message>

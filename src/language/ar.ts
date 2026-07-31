@@ -222,41 +222,6 @@
         <translation>اُخرج</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>الكاميرا</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>المكبّرة</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>اِبدأ</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>أوقِف</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>ألبِث</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>واصل</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>اُخرج</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>الكاميرا</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>المكبّرة</translation>
     </message>

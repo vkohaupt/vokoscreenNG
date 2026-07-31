@@ -222,41 +222,6 @@
         <translation>Kilépés</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Nagyítás</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Indítás</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Megállítás</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Szüneteltetés</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Folytatás</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Kilépés</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Nagyítás</translation>
     </message>

@@ -222,41 +222,6 @@
         <translation>ອອກ</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>ກ້ອງ</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>ແວ່ນຂະຫຍາຍ</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>ເລີ່ມ</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>ຢຸດ</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>ພັກໄວ້</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>ສືບຕໍ່</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>ອອກ</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>ກ້ອງ</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>ແວ່ນຂະຫຍາຍ</translation>
     </message>

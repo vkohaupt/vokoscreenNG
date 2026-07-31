@@ -223,41 +223,6 @@
         <translation>Salir</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Cámara</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Ampliación</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Iniciar</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Detener</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausar</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuar</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Salir</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Cámara</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Ampliación</translation>
     </message>

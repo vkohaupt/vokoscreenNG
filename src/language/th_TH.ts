@@ -222,41 +222,6 @@
         <translation>ออก</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>กล้อง</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>เกาะติด</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>เริ่ม</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>หยุด</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>หยุดชั่วคราว</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>ต่อ</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>ออก</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>กล้อง</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>เกาะติด</translation>
     </message>

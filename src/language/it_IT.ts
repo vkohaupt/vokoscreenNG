@@ -222,43 +222,8 @@
         <translation>Esci</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Webcam</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Ingrandimento</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Inizia</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Interrompi</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continua</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Esci</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Webcam</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Ingrandisci</translation>
     </message>
 </context>
 <context>

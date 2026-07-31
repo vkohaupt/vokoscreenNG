@@ -222,41 +222,6 @@
         <translation>종료</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>카메라</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>확대</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>시작</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>중지</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>일시정지</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>계속하기</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>종료</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>카메라</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>확대</translation>
     </message>

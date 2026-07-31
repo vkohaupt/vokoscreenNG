@@ -222,41 +222,6 @@
         <translation>Keluar</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Pembesaran</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Mulai</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Hentikan</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Jeda</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Lanjutkan</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Keluar</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Pembesaran</translation>
     </message>

@@ -222,41 +222,6 @@
         <translation>Afsluiten</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Camera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Vergroting</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Starten</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stoppen</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Onderbreken</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Hervatten</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Afsluiten</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Camera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Vergroting</translation>
     </message>

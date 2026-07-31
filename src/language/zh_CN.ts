@@ -222,41 +222,6 @@
         <translation>退出</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>摄像头</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>放大</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>开始</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>停止</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>暂停</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>继续</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>退出</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>摄像头</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>放大</translation>
     </message>

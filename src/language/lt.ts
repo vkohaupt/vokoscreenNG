@@ -222,41 +222,6 @@
         <translation>Išeiti</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Didinimas</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Pradėti</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stabdyti</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pristabdyti</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Tęsti</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Išeiti</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Didinimas</translation>
     </message>

@@ -222,41 +222,6 @@
         <translation>Končaj</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Povečava</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Začni</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Zaustavi</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Premor</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Nadaljuj</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Končaj</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Povečava</translation>
     </message>

@@ -222,41 +222,6 @@
         <translation>Poistu</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Suurennus</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Aloita</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Lopeta</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Tauko</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Jatka</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Poistu</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Suurennus</translation>
     </message>

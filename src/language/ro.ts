@@ -222,41 +222,6 @@
         <translation>Ieșire</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Cameră</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Mărire</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Începe</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Oprește</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauză</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuă</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Ieșire</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Cameră</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Mărire</translation>
     </message>

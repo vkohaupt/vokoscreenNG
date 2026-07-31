@@ -371,7 +371,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -581,8 +581,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>16</width>
-                       <height>16</height>
+                       <width>398</width>
+                       <height>125</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -2530,8 +2530,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>24</width>
-                   <height>100</height>
+                   <width>405</width>
+                   <height>436</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -6660,7 +6660,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

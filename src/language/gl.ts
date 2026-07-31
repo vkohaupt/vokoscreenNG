@@ -1,100 +1,100 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="gl">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Velg én til flere enheter</translation>
+        <translation>Seleccionar un ou máis dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Velg én til flere enheter</translation>
+        <translation>Seleccionar un ou máis dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSurface_wl</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Cámara</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Oppsettet var vellykket.</translation>
+        <translation>A instalación rematou con éxito.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Lukk dette vinduet og start vokoscreenNG på nytt.</translation>
+        <translation>Peche esta xanela e abra vokoscreenNG outra vez.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Ha det gøy med vokoscreenNG</translation>
+        <translation>Divírtase con vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Diálogo</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hjelp</translation>
+        <translation>Axuda</translation>
     </message>
 </context>
 <context>
     <name>QvkHelpBrowser_wl</name>
     <message>
         <source>Help</source>
-        <translation>Hjelp</translation>
+        <translation>Axuda</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filutforsker funnet.</translation>
+        <translation>Non se atopou ningún administrador de arquivos.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Vennligst installere en filutforsker.</translation>
+        <translation>Por favor, instale un administrador de arquivos.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filutforsker funnet.</translation>
+        <translation>Non se atopou ningún administrador de arquivos.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Vennligst installere en filutforsker.</translation>
+        <translation>Por favor, instale un administrador de arquivos.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Advarsel</translation>
+        <translation>Aviso</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Opptaket har ikke startet, for lite ledig diskplass.</translation>
+        <translation>A gravación non comezou, xa que non hai suficiente espazo libre no disco duro.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Ledig diskplass grense nådd.</translation>
+        <translation>Acadouse o límite de espazo libre do disco duro.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grense for ledig diskplass.</translation>
+        <translation>Límite de espazo libre do disco duro</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -102,7 +102,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Opptaket ble stoppet, for lite ledig diskplass.</translation>
+        <translation>A gravación parou, non hai suficente espazo libre no disco duro.</translation>
     </message>
 </context>
 <context>
@@ -110,325 +110,325 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Ingen filutforsker funnet.</translation>
+        <translation>Non se atopou ningún administrador de arquivos.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Vennligst installere en filutforsker.</translation>
+        <translation>Por favor, instale un administrador de arquivos.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Sourcekode</translation>
+        <translation>Código fonte</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hjemmeside</translation>
+        <translation>Páxina de inicio</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Oversettelser</translation>
+        <translation>Traducións</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donasjon</translation>
+        <translation>Doar</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Sourcekode</translation>
+        <translation>Código fonte</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Hjemmeside</translation>
+        <translation>Páxina de inicio</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Oversettelser</translation>
+        <translation>Traducións</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donasjon</translation>
+        <translation>Doar</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filutforsker funnet.</translation>
+        <translation>Non se atopou ningún administrador de arquivos.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Vennligst installere en filutforsker.</translation>
+        <translation>Por favor, instale un administrador de arquivos.</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Velg én til flere enheter</translation>
+        <translation>Seleccionar un ou máis dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Zona</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Zona</translation>
     </message>
 </context>
 <context>
     <name>QvkShowMessage_wl</name>
     <message>
         <source>Folder</source>
-        <translation>Mappe</translation>
+        <translation>Cartafol</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ingen filutforsker funnet.</translation>
+        <translation>Non se atopou ningún administrador de arquivos.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Vennligst installere en filutforsker.</translation>
+        <translation>Por favor, instale un administrador de arquivos.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Comezar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppe</translation>
+        <translation>Rematar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Facer pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsett</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avslutt</translation>
+        <translation>Saír</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Forstørrelse</translation>
+        <translation>Lupa </translation>
     </message>
 </context>
 <context>
     <name>QvkSystray_wl</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Comezar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppe</translation>
+        <translation>Rematar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Facer pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsett</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Avslutt</translation>
+        <translation>Saír</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Velg én til flere enheter</translation>
+        <translation>Seleccionar un ou máis dispositivos</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Zona</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Nullstille</translation>
+        <translation>Restablecer</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Forstørrelse</translation>
+        <translation>Lupa </translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedtelling</translation>
+        <translation>Contra atrás</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostørrelse:</translation>
+        <translation>Tamaño do vídeo</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledig diskplass:</translation>
+        <translation>Espazo libre no disco duro</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informasjon</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opptakstid:</translation>
+        <translation>Tempo de gravación</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Lyd</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Rammer</translation>
+        <translation>Fotogramas</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>Códec de vídeo</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Lydkodek</translation>
+        <translation>Códec de audio</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>ikke ta opp musepeker</translation>
+        <translation>Non gravar a icona do rato</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Time</translation>
+        <translation>Hora</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minutt</translation>
+        <translation>Minuto</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Start timeren</translation>
+        <translation>Comezar o temporizador</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stopp opptak etter</translation>
+        <translation>Deter a gravación despois de</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Timer</translation>
+        <translation>Horas</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutter</translation>
+        <translation>Minutos</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunder</translation>
+        <translation>Segundos</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video Sti</translation>
+        <translation>Ruta do vídeo</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grense for ledig diskplass.</translation>
+        <translation>Límite de espazo libre do disco duro</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Vis i systemstatusfeltet</translation>
+        <translation>Amosar na bandexa do sistema</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Sekund venting før opptak</translation>
+        <translation>Segunda espera antes de gravar</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Se etter oppdateringer</translation>
+        <translation>Buscar actualizacións</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjelp</translation>
+        <translation>Axuda</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Vídeo</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tilgjengelig</translation>
+        <translation>Dispoñible</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Ikke tilgjengelig</translation>
+        <translation>Non dispoñible</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Comezar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppe</translation>
+        <translation>Rematar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsett</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Spille</translation>
+        <translation>Visualizar</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mappe</translation>
+        <translation>Cartafol</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Cámara</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Spill av siste opptak</translation>
+        <translation>Visualizar a última gravación</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Åpne mappe</translation>
+        <translation>Abrir cartafol</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimert når opptak starter</translation>
+        <translation>Minimizar o programa cando a gravación comece</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Starter minimert</translation>
+        <translation>Comeza minimizado</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Nullstille alle innstillinger ved neste oppstart</translation>
+        <translation>Restablecer todas as configuracións no próximo inicio</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Opphavsrett og lisens fra bilder</translation>
+        <translation>Dereitos de autor e licenzas das imaxes</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -436,248 +436,248 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Skjermopptak</translation>
+        <translation>Gravación da pantalla</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Spiller</translation>
+        <translation>Reprodutor de vídeo</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logg</translation>
+        <translation>Rexistro</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisk</translation>
+        <translation>Automaticamente</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Lag bilder av faner</translation>
+        <translation>Crear imaxes das pestanas</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Lisensinformasjon</translation>
+        <translation>Información da licenza</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>ACENDIDO</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>APAGADO</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale tastatur snarveier</translation>
+        <translation>Atallos de teclado xerais</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tildelte snarvei taster.</translation>
+        <translation>Atallos de teclado asignados</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Tastesnarvei ikke tildelt eller tildelt mer enn en gang.</translation>
+        <translation>Atallo de teclado non asignado ou asignado máis dunha vez.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Hvis den vises som tildelt, men ikke virker, er den i bruk av et annet program.</translation>
+        <translation>Si aparece como asignado pero non funciona, está a ser usado por outro programa.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Øyeblikksbilde</translation>
+        <translation>Instantánea</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bildesti</translation>
+        <translation>Ruta da imaxe</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Skjul dette vinduet</translation>
+        <translation>Ocultar esta xanela</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunder venter før opptak</translation>
+        <translation>Segundos de espera antes de gravar</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Vindu</translation>
+        <translation>Xanela</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Fullskjerm</translation>
+        <translation>Pantalla completa</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Opphavsrett og lisens fra bilder</translation>
+        <translation>Dereitos de autor e licenzas das imaxes</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Lag bilder av faner</translation>
+        <translation>Crear imaxes das pestanas</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Lisensinformasjon</translation>
+        <translation>Información da licenza</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>PÅ</translation>
+        <translation>ACENDIDO</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>AV</translation>
+        <translation>APAGADO</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opptakstid:</translation>
+        <translation>Tempo de gravación</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videostørrelse:</translation>
+        <translation>Tamaño do vídeo</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledig diskplass:</translation>
+        <translation>Espazo libre no disco duro</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informasjon</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Vindu</translation>
+        <translation>Xanela</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Fullskjerm</translation>
+        <translation>Pantalla completa</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Område</translation>
+        <translation>Zona</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>Códec de vídeo</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Rammer</translation>
+        <translation>Fotogramas</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Tilgjengelig</translation>
+        <translation>Dispoñible</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Ikke tilgjengelig</translation>
+        <translation>Non dispoñible</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Comezar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppe</translation>
+        <translation>Rematar</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mappe</translation>
+        <translation>Cartafol</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>ikke ta opp musepeker</translation>
+        <translation>Non gravar a icona do rato</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Lydkodek</translation>
+        <translation>Códec de audio</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video Sti</translation>
+        <translation>Ruta do vídeo</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Nedtelling</translation>
+        <translation>Contra atrás</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjelp</translation>
+        <translation>Axuda</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Cámara</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Sekund venting før opptak</translation>
+        <translation>Segunda espera antes de gravar</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Nullstille</translation>
+        <translation>Restablecer</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Skjul dette vinduet</translation>
+        <translation>Ocultar esta xanela</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunder venter før opptak</translation>
+        <translation>Segundos de espera antes de gravar</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisk</translation>
+        <translation>Automaticamente</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Fortsett</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Vis i systemstatusfeltet</translation>
+        <translation>Amosar na bandexa do sistema</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Nullstille alle innstillinger ved neste oppstart</translation>
+        <translation>Restablecer todas as configuracións no próximo inicio</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Øyeblikksbilde</translation>
+        <translation>Instantánea</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimert når opptak starter</translation>
+        <translation>Minimizar o programa cando a gravación comece</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Opphavsrett og lisens fra bilder</translation>
+        <translation>Dereitos de autor e licenzas das imaxes</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Spille</translation>
+        <translation>Visualizar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppe</translation>
+        <translation>Rematar</translation>
     </message>
 </context>
 </TS>

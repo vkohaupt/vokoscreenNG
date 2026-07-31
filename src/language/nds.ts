@@ -222,41 +222,6 @@
         <translation>Ofmaken</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Vergrotern</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Start</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stopp</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Anhollen</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Wiedermaken</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Ofmaken</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Vergrotern</translation>
     </message>

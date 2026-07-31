@@ -222,41 +222,6 @@
         <translation>Шығу</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Камера</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>Үлкейту</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>Бастау</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Тоқтату</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Кідірту</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Жалғастыру</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Шығу</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>Камера</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>Үлкейту</translation>
     </message>

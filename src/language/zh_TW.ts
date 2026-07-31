@@ -222,41 +222,6 @@
         <translation>結束</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>攝影機</translation>
-    </message>
-    <message>
-        <source>Magnification</source>
-        <translation>縮放</translation>
-    </message>
-</context>
-<context>
-    <name>QvkSystrayAlternative</name>
-    <message>
-        <source>Start</source>
-        <translation>開始</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>停止</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>暫停</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>繼續</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>結束</translation>
-    </message>
-    <message>
-        <source>Camera</source>
-        <translation>攝影機</translation>
-    </message>
-    <message>
         <source>Magnification</source>
         <translation>縮放</translation>
     </message>
