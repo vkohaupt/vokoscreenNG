@@ -23,6 +23,7 @@
 #include "global.h"
 #include "QvkCameraSurface_wl.h"
 #include "QvkSettings_wl.h"
+#include "QvkSpezialSlider.h"
 
 #include <QDebug>
 #include <QIcon>
@@ -42,9 +43,12 @@
 #include <QToolButton>
 #include <QTimer>
 #include <QCheckBox>
+#include <QCameraFormat>
 
-QvkCameraSurface_wl::QvkCameraSurface_wl(QString ID)
+// device ist z.b /dev/video1
+QvkCameraSurface_wl::QvkCameraSurface_wl(QString m_device)
 {
+    device = m_device;
     setWindowTitle(QString(tr("Camera")));
 
     QIcon icon;
@@ -59,13 +63,13 @@ QvkCameraSurface_wl::QvkCameraSurface_wl(QString ID)
 
     // Kamera surface x y einlesen
     QvkSettings_wl vkSettings_wl;
-    QPoint point = vkSettings_wl.readCameraSurface(ID);
+    QPoint point = vkSettings_wl.readCameraSurface(device);
     imageRect.setX(point.x());
     imageRect.setY(point.y());
 
     // Siehe Hinweis in mouseReleaseEvent
-//    QTimer::singleShot(2000, this, [=](){slot_workaroundForGnome_1();});
-//    QTimer::singleShot(3000, this, [=](){slot_workaroundForGnome_2();});
+    //    QTimer::singleShot(2000, this, [=](){slot_workaroundForGnome_1();});
+    //    QTimer::singleShot(3000, this, [=](){slot_workaroundForGnome_2();});
 }
 
 
@@ -186,6 +190,44 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 
 void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
 {
+    /*
+    // Zoom
+    // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
+    if (sliderCameraWindowZoom->value() > 0){
+        qreal width = image.width();
+        qreal height = image.height();
+        qreal quotient = width / height;
+        qreal minusPixel = vkCameraOneOptions->sliderCameraOneWindowZoom->value();
+        QImage image_zoom = image.copy( minusPixel,
+                                        minusPixel / quotient,
+                                        width - (2 * minusPixel),
+                                        height - (2 * minusPixel / quotient)
+                                        );
+        image = image_zoom.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    }
+    // Zoom end
+*/
+
+    QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
+    if (vkSpezialSlider != nullptr){
+        // Nur wenn der Wert des Schiebereglers größer Eins ist soll skaliert werden
+        if (vkSpezialSlider->value() > 1){
+            qreal quotient = (qreal)image.width() / (qreal)image.height();
+            QComboBox *comboBox = GuiUi->centralwidget->findChild<QComboBox *>("comboBoxCameraResolutionVideoID_" + device);
+            if (comboBox != nullptr){
+                QVariant variantData = comboBox->currentData();
+                QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
+                int w1 = cameraFormat.resolution().width();
+                int w2 = vkSpezialSlider->value();
+                int w3 = w1 - w2;
+                int h1 = cameraFormat.resolution().height();
+                int h2 = vkSpezialSlider->value() / quotient;
+                int h3 = h1 - h2;
+                image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            }
+        }
+    }
+
     if(GuiUi->toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.flipped(Qt::Horizontal);
     }

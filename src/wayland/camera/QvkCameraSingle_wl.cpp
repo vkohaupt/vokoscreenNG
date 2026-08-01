@@ -2,6 +2,7 @@
 #include "QvkCameraSingle_wl.h"
 #include "QvkCameraSurface_wl.h"
 #include "QvkSettings_wl.h"
+#include "QvkSpezialSlider.h"
 
 #include "ui_QvkCameraSingle_wl.h"
 
@@ -93,7 +94,21 @@ void QvkCameraSingle_wl::set_GUIui(Ui_formMainWindow_wl *ui)
 
 void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
-    if ( checked == true ){
+    if (checked == true){
+
+        QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
+        QVariant variantData = ui->comboBoxCameraResolution->currentData();
+        QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
+        int m_width = cameraFormat.resolution().width();
+        int m_height = cameraFormat.resolution().height();
+
+        vkSpezialSlider->setMinimum(1);
+        vkSpezialSlider->setMaximum(m_width - 100);
+
+//        value = ui->comboBoxCameraOneResolution->currentData().toSize().width() / 2;
+//        vkCameraOneOptions->sliderCameraOneWindowZoom->setMinimum(0);
+//        vkCameraOneOptions->sliderCameraOneWindowZoom->setMaximum(value-1);
+
         vkCameraSurface_wl = new QvkCameraSurface_wl(checkBoxCameraOnOff->objectName().section("_", 1, 1));
         vkCameraSurface_wl->set_GUIui(GuiUi);
 

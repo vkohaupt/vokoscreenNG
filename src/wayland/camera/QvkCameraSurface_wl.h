@@ -39,7 +39,7 @@ class QvkCameraSurface_wl : public QWidget
 {
     Q_OBJECT
 public:
-    QvkCameraSurface_wl(QString ID);
+    QvkCameraSurface_wl(QString m_device);
     virtual ~QvkCameraSurface_wl();
     Ui_formMainWindow_wl *GuiUi;
     void set_GUIui(Ui_formMainWindow_wl *ui);
@@ -52,10 +52,13 @@ public:
 
 
 private:
+    QString device;
     QPixmap cameraImage;
     bool mousePressed = false;
     QPoint pointDiv;
     bool mouseHover = false;
+
+
 
 private slots:
 //    void slot_workaroundForGnome_1();
