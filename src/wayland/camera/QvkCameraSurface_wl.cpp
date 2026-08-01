@@ -195,6 +195,39 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
         return;
     }
 
+    if(m_newImageRect == false){
+        set_newImageRect();
+    }
+
+    // ---------- Begin sliderCameraWindowSize ----------
+    QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
+    if (oldSpezialSliderValue != vkSpezialSlider->value()){
+        m_newImageRect = false;
+        oldSpezialSliderValue = vkSpezialSlider->value();
+    }else{
+        m_newImageRect = true;
+    }
+
+    if (vkSpezialSlider != nullptr){
+        // Nur wenn der Wert des Schiebereglers größer Eins ist soll skaliert werden
+        if (vkSpezialSlider->value() > 1){
+            qreal quotient = (qreal)image.width() / (qreal)image.height();
+            QComboBox *comboBox = GuiUi->centralwidget->findChild<QComboBox *>("comboBoxCameraResolutionVideoID_" + device);
+            if (comboBox != nullptr){
+                QVariant variantData = comboBox->currentData();
+                QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
+                int w1 = cameraFormat.resolution().width();
+                int w2 = vkSpezialSlider->value();
+                int w3 = w1 - w2;
+                int h1 = cameraFormat.resolution().height();
+                int h2 = vkSpezialSlider->value() / quotient;
+                int h3 = h1 - h2;
+                image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            }
+        }
+    }
+    // ---------- End sliderCameraWindowSize ----------
+
     /*
     // Zoom
     // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
@@ -213,26 +246,6 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
     // Zoom end
 */
 
-    QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
-    if (vkSpezialSlider != nullptr){
-        // Nur wenn der Wert des Schiebereglers größer Eins ist soll skaliert werden
-        if (vkSpezialSlider->value() > 1){
-            qreal quotient = (qreal)image.width() / (qreal)image.height();
-            QComboBox *comboBox = GuiUi->centralwidget->findChild<QComboBox *>("comboBoxCameraResolutionVideoID_" + device);
-            if (comboBox != nullptr){
-                QVariant variantData = comboBox->currentData();
-                QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
-                int w1 = cameraFormat.resolution().width();
-                int w2 = vkSpezialSlider->value();
-                int w3 = w1 - w2;
-                int h1 = cameraFormat.resolution().height();
-                int h2 = vkSpezialSlider->value() / quotient;
-                int h3 = h1 - h2;
-                image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-                m_newImageRect = false;
-            }
-        }
-    }
 
     if(GuiUi->toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.flipped(Qt::Horizontal);
@@ -243,10 +256,6 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
     }
 
     cameraImage = QPixmap::fromImage(image);
-
-    if(m_newImageRect == false){
-        set_newImageRect();
-    }
 
     repaint();
 }
