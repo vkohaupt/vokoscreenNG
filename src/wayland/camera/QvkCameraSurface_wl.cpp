@@ -190,6 +190,11 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 
 void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
 {
+    // Bild muß hier verworfen werden wenn invalid
+    if (image.format() == QImage::Format_Invalid){
+        return;
+    }
+
     /*
     // Zoom
     // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
