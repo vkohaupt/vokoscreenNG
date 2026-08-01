@@ -197,13 +197,13 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
 
     // ---------- Begin sliderCameraWindowSize ----------
     QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
-    if (oldSpezialSliderValue != vkSpezialSlider->value()){
+/*    if (oldSpezialSliderValue != vkSpezialSlider->value()){
         m_newImageRect = false;
         oldSpezialSliderValue = vkSpezialSlider->value();
     }else{
         m_newImageRect = true;
     }
-
+*/
     if (vkSpezialSlider != nullptr){
         // Nur wenn der Wert des Schiebereglers größer Eins ist soll skaliert werden
         if (vkSpezialSlider->value() > 1){
@@ -253,7 +253,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
 
     cameraImage = QPixmap::fromImage(image);
 
-    if(m_newImageRect == false){
+    if (mousePressed == false){
         set_newImageRect();
     }
 
