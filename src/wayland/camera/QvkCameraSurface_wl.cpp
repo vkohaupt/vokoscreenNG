@@ -88,17 +88,17 @@ void QvkCameraSurface_wl::set_GUIui(Ui_formMainWindow_wl *ui)
     connect(GuiUi->toolButton_camera_view_rectangle,
             &QToolButton::clicked,
             this,
-            [=](){m_newImageRect=false;}
+            [=](){m_newImageRect=false;set_newImageRect();}
     );
     connect(GuiUi->toolButton_camera_view_circle,
             &QToolButton::clicked,
             this,
-            [=](){m_newImageRect=false;}
+            [=](){m_newImageRect=false;set_newImageRect();}
     );
     connect(GuiUi->toolButton_camera_view_ellipse,
             &QToolButton::clicked,
             this,
-            [=](){m_newImageRect=false;}
+            [=](){m_newImageRect=false;set_newImageRect();}
     );
 }
 
@@ -195,10 +195,6 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
         return;
     }
 
-    if(m_newImageRect == false){
-        set_newImageRect();
-    }
-
     // ---------- Begin sliderCameraWindowSize ----------
     QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
     if (oldSpezialSliderValue != vkSpezialSlider->value()){
@@ -256,6 +252,10 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
     }
 
     cameraImage = QPixmap::fromImage(image);
+
+    if(m_newImageRect == false){
+        set_newImageRect();
+    }
 
     repaint();
 }
