@@ -101,7 +101,6 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
         int m_width = cameraFormat.resolution().width();
         int m_height = cameraFormat.resolution().height();
-
         vkSpezialSlider->setMinimum(1);
         vkSpezialSlider->setMaximum(m_width - 100);
 
