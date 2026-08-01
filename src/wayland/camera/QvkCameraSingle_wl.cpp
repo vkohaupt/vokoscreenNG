@@ -126,13 +126,13 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         painter.drawImage(QPoint((width-imagePicture.width())/2, (height-imagePicture.width())/2), imagePicture);
 
         vkCameraSurface_wl->slot_setCameraImage(image);
-        vkCameraSurface_wl->is_setNewImageRect=false;
+        vkCameraSurface_wl->m_newImageRect=false;
 
         timerNoImage = new QTimer();
         timerNoImage->setTimerType( Qt::PreciseTimer );
         timerNoImage->setInterval( 20 );
         connect(timerNoImage, &QTimer::timeout, this, [=](){
-            vkCameraSurface_wl->is_setNewImageRect=false;
+            vkCameraSurface_wl->m_newImageRect=false;
             vkCameraSurface_wl->slot_setCameraImage(image);
         });
         timerNoImage->start();

@@ -88,17 +88,17 @@ void QvkCameraSurface_wl::set_GUIui(Ui_formMainWindow_wl *ui)
     connect(GuiUi->toolButton_camera_view_rectangle,
             &QToolButton::clicked,
             this,
-            [=](){is_setNewImageRect=false;}
+            [=](){m_newImageRect=false;}
     );
     connect(GuiUi->toolButton_camera_view_circle,
             &QToolButton::clicked,
             this,
-            [=](){is_setNewImageRect=false;}
+            [=](){m_newImageRect=false;}
     );
     connect(GuiUi->toolButton_camera_view_ellipse,
             &QToolButton::clicked,
             this,
-            [=](){is_setNewImageRect=false;}
+            [=](){m_newImageRect=false;}
     );
 }
 
@@ -124,7 +124,7 @@ void QvkCameraSurface_wl::set_newImageRect()
     clearMask();
     repaint();
     setMask(pixmap.mask());
-    is_setNewImageRect = true;
+    m_newImageRect = true;
 }
 
 
@@ -224,6 +224,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
                 int h2 = vkSpezialSlider->value() / quotient;
                 int h3 = h1 - h2;
                 image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+                m_newImageRect = false;
             }
         }
     }
@@ -238,7 +239,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
 
     cameraImage = QPixmap::fromImage(image);
 
-    if(is_setNewImageRect == false){
+    if(m_newImageRect == false){
         set_newImageRect();
     }
 

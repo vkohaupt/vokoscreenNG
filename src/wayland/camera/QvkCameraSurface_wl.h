@@ -48,7 +48,7 @@ public:
     QRect imageRect;
 
     void set_newImageRect();
-    bool is_setNewImageRect = false;
+    bool m_newImageRect = false;
 
 
 private:
