@@ -88,17 +88,17 @@ void QvkCameraSurface_wl::set_GUIui(Ui_formMainWindow_wl *ui)
     connect(GuiUi->toolButton_camera_view_rectangle,
             &QToolButton::clicked,
             this,
-            [=](){m_newImageRect=false;set_newImageRect();}
+            [=](){set_newImageRect();}
     );
     connect(GuiUi->toolButton_camera_view_circle,
             &QToolButton::clicked,
             this,
-            [=](){m_newImageRect=false;set_newImageRect();}
+            [=](){set_newImageRect();}
     );
     connect(GuiUi->toolButton_camera_view_ellipse,
             &QToolButton::clicked,
             this,
-            [=](){m_newImageRect=false;set_newImageRect();}
+            [=](){set_newImageRect();}
     );
 }
 
@@ -197,13 +197,6 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
 
     // ---------- Begin sliderCameraWindowSize ----------
     QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
-/*    if (oldSpezialSliderValue != vkSpezialSlider->value()){
-        m_newImageRect = false;
-        oldSpezialSliderValue = vkSpezialSlider->value();
-    }else{
-        m_newImageRect = true;
-    }
-*/
     if (vkSpezialSlider != nullptr){
         // Nur wenn der Wert des Schiebereglers größer Eins ist soll skaliert werden
         if (vkSpezialSlider->value() > 1){
