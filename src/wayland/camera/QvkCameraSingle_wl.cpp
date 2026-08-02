@@ -96,17 +96,21 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
 {
     if (checked == true){
 
-        QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
-        QVariant variantData = ui->comboBoxCameraResolution->currentData();
-        QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
-        int m_width = cameraFormat.resolution().width();
-        vkSpezialSlider->setMinimum(1);
-        vkSpezialSlider->setMaximum(m_width - 100);
+        QvkSpezialSlider *vkSpezialSliderWindowSize = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
+        if (vkSpezialSliderWindowSize != nullptr){
+            QVariant variantData = ui->comboBoxCameraResolution->currentData();
+            QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
+            int m_width = cameraFormat.resolution().width();
+            vkSpezialSliderWindowSize->setMinimum(1);
+            vkSpezialSliderWindowSize->setMaximum(m_width - 100);
+        }
 
         QvkSpezialSlider *vkSpezialSliderZoom = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowZoom");
-        int value = ui->comboBoxCameraResolution->currentData().value<QCameraFormat>().resolution().width() / 2;
-        vkSpezialSliderZoom->setMinimum(0);
-        vkSpezialSliderZoom->setMaximum(value-1);
+        if (vkSpezialSliderZoom != nullptr){
+            int value = ui->comboBoxCameraResolution->currentData().value<QCameraFormat>().resolution().width() / 2;
+            vkSpezialSliderZoom->setMinimum(0);
+            vkSpezialSliderZoom->setMaximum(value-1);
+        }
 
         vkCameraSurface_wl = new QvkCameraSurface_wl(checkBoxCameraOnOff->objectName().section("_", 1, 1));
         vkCameraSurface_wl->set_GUIui(GuiUi);
@@ -148,7 +152,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                         vkCameraSurface_wl,
                         [=](QVideoFrame videoFrame){
                     QImage image = videoFrame.toImage();
-//                    image = image.convertedTo( QImage::Format_ARGB32 );
+                    //                    image = image.convertedTo( QImage::Format_ARGB32 );
                     image = image.convertedTo(QImage::Format_ARGB32_Premultiplied);
                     vkCameraSurface_wl->slot_setCameraImage(image);
                     // Bild von Kamera verfügbar.

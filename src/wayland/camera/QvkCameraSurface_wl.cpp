@@ -214,20 +214,20 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
     // ---------- End Zoom ----------
 
     // ---------- Begin WindowSize ----------
-    QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
-    if (vkSpezialSlider != nullptr){
+    QvkSpezialSlider *vkSpezialSliderSize = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
+    if (vkSpezialSliderSize != nullptr){
         // Nur wenn der Wert des Schiebereglers größer Eins ist soll skaliert werden
-        if (vkSpezialSlider->value() > 1){
+        if (vkSpezialSliderSize->value() > 1){
             qreal quotient = (qreal)image.width() / (qreal)image.height();
             QComboBox *comboBox = GuiUi->centralwidget->findChild<QComboBox *>("comboBoxCameraResolutionVideoID_" + device);
             if (comboBox != nullptr){
                 QVariant variantData = comboBox->currentData();
                 QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
                 int w1 = cameraFormat.resolution().width();
-                int w2 = vkSpezialSlider->value();
+                int w2 = vkSpezialSliderSize->value();
                 int w3 = w1 - w2;
                 int h1 = cameraFormat.resolution().height();
-                int h2 = vkSpezialSlider->value() / quotient;
+                int h2 = vkSpezialSliderSize->value() / quotient;
                 int h3 = h1 - h2;
                 image = image.scaled(w3, h3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             }
