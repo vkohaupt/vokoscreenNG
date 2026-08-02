@@ -2220,115 +2220,21 @@
                      <property name="verticalSpacing">
                       <number>9</number>
                      </property>
-                     <item row="3" column="0" colspan="3">
-                      <layout class="QVBoxLayout" name="verticalLayout_3">
-                       <property name="spacing">
-                        <number>7</number>
+                     <item row="6" column="1">
+                      <spacer name="verticalSpacer_14">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
                        </property>
-                       <property name="leftMargin">
-                        <number>6</number>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Policy::Preferred</enum>
                        </property>
-                      </layout>
-                     </item>
-                     <item row="7" column="0" colspan="3">
-                      <layout class="QHBoxLayout" name="horizontalLayout_17">
-                       <property name="spacing">
-                        <number>0</number>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
                        </property>
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <item>
-                        <spacer name="horizontalSpacer_17">
-                         <property name="orientation">
-                          <enum>Qt::Orientation::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QToolButton" name="toolButtonCameraMirrorVertical">
-                         <property name="text">
-                          <string notr="true"/>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="../screencast.qrc">
-                           <normaloff>:/pictures/camera/flip-vertical-off.png</normaloff>
-                           <normalon>:/pictures/camera/flip-vertical-on.png</normalon>:/pictures/camera/flip-vertical-off.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>46</width>
-                           <height>46</height>
-                          </size>
-                         </property>
-                         <property name="checkable">
-                          <bool>true</bool>
-                         </property>
-                         <property name="autoRaise">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_38">
-                         <property name="orientation">
-                          <enum>Qt::Orientation::Horizontal</enum>
-                         </property>
-                         <property name="sizeType">
-                          <enum>QSizePolicy::Policy::Minimum</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QToolButton" name="toolButtonCameraMirrorHorizontal">
-                         <property name="text">
-                          <string notr="true"/>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="../screencast.qrc">
-                           <normaloff>:/pictures/camera/flip-horizontal-off.png</normaloff>
-                           <normalon>:/pictures/camera/flip-horizontal-on.png</normalon>:/pictures/camera/flip-horizontal-off.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>46</width>
-                           <height>46</height>
-                          </size>
-                         </property>
-                         <property name="checkable">
-                          <bool>true</bool>
-                         </property>
-                         <property name="autoRaise">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_9">
-                         <property name="orientation">
-                          <enum>Qt::Orientation::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                      </layout>
+                      </spacer>
                      </item>
                      <item row="5" column="0" colspan="3">
                       <layout class="QHBoxLayout" name="horizontalLayout_65">
@@ -2485,6 +2391,32 @@
                        </item>
                       </layout>
                      </item>
+                     <item row="8" column="0" colspan="3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_16">
+                       <property name="spacing">
+                        <number>20</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_37">
+                         <property name="maximumSize">
+                          <size>
+                           <width>34</width>
+                           <height>34</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string notr="true"/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
                      <item row="3" column="3">
                       <layout class="QVBoxLayout" name="verticalLayout_15">
                        <property name="sizeConstraint">
@@ -2515,6 +2447,106 @@
                        </item>
                       </layout>
                      </item>
+                     <item row="7" column="0" colspan="3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_17">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <spacer name="horizontalSpacer_17">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QToolButton" name="toolButtonCameraMirrorVertical">
+                         <property name="text">
+                          <string notr="true"/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../screencast.qrc">
+                           <normaloff>:/pictures/camera/flip-vertical-off.png</normaloff>
+                           <normalon>:/pictures/camera/flip-vertical-on.png</normalon>:/pictures/camera/flip-vertical-off.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>46</width>
+                           <height>46</height>
+                          </size>
+                         </property>
+                         <property name="checkable">
+                          <bool>true</bool>
+                         </property>
+                         <property name="autoRaise">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_38">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Horizontal</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Policy::Minimum</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QToolButton" name="toolButtonCameraMirrorHorizontal">
+                         <property name="text">
+                          <string notr="true"/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../screencast.qrc">
+                           <normaloff>:/pictures/camera/flip-horizontal-off.png</normaloff>
+                           <normalon>:/pictures/camera/flip-horizontal-on.png</normalon>:/pictures/camera/flip-horizontal-off.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>46</width>
+                           <height>46</height>
+                          </size>
+                         </property>
+                         <property name="checkable">
+                          <bool>true</bool>
+                         </property>
+                         <property name="autoRaise">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_9">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </item>
                      <item row="4" column="1">
                       <spacer name="verticalSpacer_11">
                        <property name="orientation">
@@ -2531,29 +2563,23 @@
                        </property>
                       </spacer>
                      </item>
-                     <item row="6" column="1">
-                      <spacer name="verticalSpacer_14">
-                       <property name="orientation">
-                        <enum>Qt::Orientation::Vertical</enum>
+                     <item row="3" column="0" colspan="3">
+                      <layout class="QVBoxLayout" name="verticalLayout_3">
+                       <property name="spacing">
+                        <number>7</number>
                        </property>
-                       <property name="sizeType">
-                        <enum>QSizePolicy::Policy::Preferred</enum>
+                       <property name="leftMargin">
+                        <number>6</number>
                        </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>20</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
+                      </layout>
                      </item>
-                     <item row="8" column="0" colspan="3">
-                      <layout class="QHBoxLayout" name="horizontalLayout_16">
+                     <item row="9" column="0" colspan="3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_6">
                        <property name="spacing">
                         <number>20</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_37">
+                        <widget class="QLabel" name="label_38">
                          <property name="maximumSize">
                           <size>
                            <width>34</width>
@@ -2564,7 +2590,7 @@
                           <string notr="true"/>
                          </property>
                          <property name="pixmap">
-                          <pixmap resource="../screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
+                          <pixmap resource="../screencast.qrc">:/pictures/systray/magnification.png</pixmap>
                          </property>
                          <property name="scaledContents">
                           <bool>true</bool>
@@ -3598,7 +3624,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
