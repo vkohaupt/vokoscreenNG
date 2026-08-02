@@ -195,7 +195,25 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
         return;
     }
 
-    // ---------- Begin sliderCameraWindowSize ----------
+    // ---------- Begin Zoom ----------
+    QvkSpezialSlider *vkSpezialSliderZoom = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowZoom");
+    if (vkSpezialSliderZoom != nullptr){
+        if (vkSpezialSliderZoom->value() > 0){
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
+            qreal minusPixel = vkSpezialSliderZoom->value();
+            QImage image_zoom = image.copy( minusPixel,
+                                            minusPixel / quotient,
+                                            width - (2 * minusPixel),
+                                            height - (2 * minusPixel / quotient)
+                                            );
+            image = image_zoom.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        }
+    }
+    // ---------- End Zoom ----------
+
+    // ---------- Begin WindowSize ----------
     QvkSpezialSlider *vkSpezialSlider = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
     if (vkSpezialSlider != nullptr){
         // Nur wenn der Wert des Schiebereglers größer Eins ist soll skaliert werden
@@ -215,28 +233,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
             }
         }
     }
-    // ---------- End sliderCameraWindowSize ----------
-
-
-    // Begin Zoom
-    QvkSpezialSlider *vkSpezialSliderZoom = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowZoom");
-    if (vkSpezialSliderZoom != nullptr){
-        if (vkSpezialSliderZoom->value() > 0){
-            qreal width = image.width();
-            qreal height = image.height();
-            qreal quotient = width / height;
-            qreal minusPixel = vkSpezialSliderZoom->value();
-            QImage image_zoom = image.copy( minusPixel,
-                                            minusPixel / quotient,
-                                            width - (2 * minusPixel),
-                                            height - (2 * minusPixel / quotient)
-                                            );
-            image = image_zoom.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-        }
-    }
-    // End Zoom
-
-
+    // ---------- End WindowSize ----------
 
     if(GuiUi->toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.flipped(Qt::Horizontal);
