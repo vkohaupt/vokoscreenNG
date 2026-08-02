@@ -217,23 +217,25 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
     }
     // ---------- End sliderCameraWindowSize ----------
 
-    /*
-    // Zoom
-    // Wenn der Wert des Schiebereglers größer Null ist soll skaliert werden
-    if (sliderCameraWindowZoom->value() > 0){
-        qreal width = image.width();
-        qreal height = image.height();
-        qreal quotient = width / height;
-        qreal minusPixel = vkCameraOneOptions->sliderCameraOneWindowZoom->value();
-        QImage image_zoom = image.copy( minusPixel,
-                                        minusPixel / quotient,
-                                        width - (2 * minusPixel),
-                                        height - (2 * minusPixel / quotient)
-                                        );
-        image = image_zoom.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+
+    // Begin Zoom
+    QvkSpezialSlider *vkSpezialSliderZoom = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowZoom");
+    if (vkSpezialSliderZoom != nullptr){
+        if (vkSpezialSliderZoom->value() > 0){
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
+            qreal minusPixel = vkSpezialSliderZoom->value();
+            QImage image_zoom = image.copy( minusPixel,
+                                            minusPixel / quotient,
+                                            width - (2 * minusPixel),
+                                            height - (2 * minusPixel / quotient)
+                                            );
+            image = image_zoom.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        }
     }
-    // Zoom end
-*/
+    // End Zoom
+
 
 
     if(GuiUi->toolButtonCameraMirrorHorizontal->isChecked() == true){
