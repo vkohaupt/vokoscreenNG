@@ -56,9 +56,9 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi )
     sliderCameraWindowSize = new QvkSpezialSlider(Qt::Horizontal);
     GuiUi->horizontalLayout_16->insertWidget(1,sliderCameraWindowSize);
     sliderCameraWindowSize->setObjectName("sliderCameraWindowSize");
-    sliderCameraWindowSize->setMinimum(1);
-    sliderCameraWindowSize->setMaximum(1);
-    sliderCameraWindowSize->setValue(1);
+    sliderCameraWindowSize->setMinimum(0);
+    sliderCameraWindowSize->setMaximum(0);
+    sliderCameraWindowSize->setValue(0);
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue(true);
     sliderCameraWindowSize->setBigHandel(true);
@@ -68,7 +68,7 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi )
     GuiUi->horizontalLayout_6->insertWidget(1, sliderCameraWindowZoom);
     sliderCameraWindowZoom->setObjectName("sliderCameraWindowZoom");
     sliderCameraWindowZoom->setMinimum(0);
-    sliderCameraWindowZoom->setMaximum(1);
+    sliderCameraWindowZoom->setMaximum(0);
     sliderCameraWindowZoom->setValue(0);
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue(true);

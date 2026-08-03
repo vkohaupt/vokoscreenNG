@@ -174,12 +174,18 @@ void QvkSpezialSlider::slot_valueChanged( int value )
         }
     }
 
-    qreal distancePixel = QStyle::sliderPositionFromValue( minimum(), maximum(), value, width() - label->width() );
-    int adjustmentPixel = 0;
-    if ( value == minimum() ) {
-        adjustmentPixel = -1;
+    if (invertedAppearance() == false){
+        qreal distancePixel = QStyle::sliderPositionFromValue(minimum(), maximum(), value, width() - label->width());
+        int adjustmentPixel = 0;
+        if (value == minimum()){
+            adjustmentPixel = -1;
+        }
+        label->move(distancePixel + adjustmentPixel, 0);
+    } else {
+        int logicalValue = (maximum() + 1) - value;
+        qreal distancePixel = QStyle::sliderPositionFromValue(minimum(), maximum(), logicalValue, width() - label->width());
+        label->move(distancePixel, 0);
     }
-    label->move( distancePixel + adjustmentPixel, 0 );
 }
 
 
