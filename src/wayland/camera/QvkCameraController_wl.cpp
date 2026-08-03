@@ -47,32 +47,32 @@
  *
  */
 
-QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi )
+QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi)
 {
     GuiUi = m_GuiUi;
     GuiUi->help_camera_camera->hide();
     GuiUi->widgetCamera->hide();
 
-    sliderCameraWindowSize = new QvkSpezialSlider(Qt::Horizontal);
-    GuiUi->horizontalLayout_16->insertWidget(1,sliderCameraWindowSize);
-    sliderCameraWindowSize->setObjectName("sliderCameraWindowSize");
-    sliderCameraWindowSize->setMinimum(0);
-    sliderCameraWindowSize->setMaximum(0);
-    sliderCameraWindowSize->setValue(0);
-    sliderCameraWindowSize->show();
-    sliderCameraWindowSize->setShowValue(true);
-    sliderCameraWindowSize->setBigHandel(true);
-    sliderCameraWindowSize->setEnabled(true);
+    vkSliderCameraWindowSize = new QvkSpezialSlider(Qt::Horizontal);
+    GuiUi->horizontalLayout_16->insertWidget(1, vkSliderCameraWindowSize);
+    vkSliderCameraWindowSize->setObjectName("sliderCameraWindowSize");
+    vkSliderCameraWindowSize->setMinimum(0);
+    vkSliderCameraWindowSize->setMaximum(0);
+    vkSliderCameraWindowSize->setValue(0);
+    vkSliderCameraWindowSize->show();
+    vkSliderCameraWindowSize->setShowValue(true);
+    vkSliderCameraWindowSize->setBigHandel(true);
+    vkSliderCameraWindowSize->setEnabled(true);
 
-    sliderCameraWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
-    GuiUi->horizontalLayout_6->insertWidget(1, sliderCameraWindowZoom);
-    sliderCameraWindowZoom->setObjectName("sliderCameraWindowZoom");
-    sliderCameraWindowZoom->setMinimum(0);
-    sliderCameraWindowZoom->setMaximum(0);
-    sliderCameraWindowZoom->setValue(0);
-    sliderCameraWindowZoom->show();
-    sliderCameraWindowZoom->setShowValue(true);
-    sliderCameraWindowZoom->setEnabled(true);
+    vkSliderCameraWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
+    GuiUi->horizontalLayout_6->insertWidget(1, vkSliderCameraWindowZoom);
+    vkSliderCameraWindowZoom->setObjectName("sliderCameraWindowZoom");
+    vkSliderCameraWindowZoom->setMinimum(0);
+    vkSliderCameraWindowZoom->setMaximum(0);
+    vkSliderCameraWindowZoom->setValue(0);
+    vkSliderCameraWindowZoom->show();
+    vkSliderCameraWindowZoom->setShowValue(true);
+    vkSliderCameraWindowZoom->setEnabled(true);
 }
 
 

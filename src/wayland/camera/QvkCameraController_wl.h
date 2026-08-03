@@ -42,8 +42,8 @@ public:
     void init();
     QvkCameraSingle_wl *vkCameraSingle_wl = nullptr;
     Ui_formMainWindow_wl *GuiUi;
-    QvkSpezialSlider *sliderCameraWindowSize;
-    QvkSpezialSlider *sliderCameraWindowZoom;
+    QvkSpezialSlider *vkSliderCameraWindowSize;
+    QvkSpezialSlider *vkSliderCameraWindowZoom;
 
 
 public slots:
