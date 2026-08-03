@@ -34,6 +34,7 @@ QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
     connect( this, SIGNAL( rangeChanged(int,int) ), this, SLOT( slot_rangeChanged(int,int) ) );
 
     css_slider();
+    slot_valueChanged(1);
 }
 
 
