@@ -59,7 +59,7 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi)
     vkSliderCameraWindowSize->setInvertedAppearance(true);
     vkSliderCameraWindowSize->setInvertedControls(true);
     vkSliderCameraWindowSize->setMinimum(100);
-    vkSliderCameraWindowSize->setMaximum(100); // Maximum zwingend auf 0 da sonst die Zahl in er Gui verstezt erscheint
+    vkSliderCameraWindowSize->setMaximum(100);
     vkSliderCameraWindowSize->setValue(100);
     vkSliderCameraWindowSize->show();
     vkSliderCameraWindowSize->setShowValue(true);
