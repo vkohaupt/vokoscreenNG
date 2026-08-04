@@ -216,13 +216,12 @@ void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
     // ---------- Begin WindowSize ----------
     QvkSpezialSlider *vkSpezialSliderSize = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
     if (vkSpezialSliderSize != nullptr){
-        // Nur wenn der Wert des Schiebereglers kleiner Bild max. ist soll skaliert werden
-        if (vkSpezialSliderSize->value() < image.size().width() ){
-            QComboBox *comboBox = GuiUi->centralwidget->findChild<QComboBox *>("comboBoxCameraResolutionVideoID_" + device);
-            if (comboBox != nullptr){
-                int w = vkSpezialSliderSize->value();
-                image = image.scaled(w, w, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-            }
+        QComboBox *comboBox = GuiUi->centralwidget->findChild<QComboBox *>("comboBoxCameraResolutionVideoID_" + device);
+        if (comboBox != nullptr){
+            qreal quotient = (qreal)image.width() / (qreal)image.height();
+            int h = vkSpezialSliderSize->value() / quotient;
+            int w = vkSpezialSliderSize->value();
+            image = image.scaled(w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         }
     }
     // ---------- End WindowSize ----------
