@@ -6,15 +6,15 @@
 #include <QSlider>
 #include <QStyle>
 
-QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
+QvkSpezialSlider::QvkSpezialSlider(Qt::Orientation orientation)
 {
     QFont font = qApp->font();
-    QFontMetrics fontMetrics( font );
-    fontWidth = fontMetrics.horizontalAdvance( QString::number( 123 ) );
+    QFontMetrics fontMetrics(font);
+    fontWidth = fontMetrics.horizontalAdvance(QString::number(888));
 
     grooveHight = 6;
     grooveBorderRadius = 2;
-    grooveBackgroundColor = QColor( Qt::gray ).name();
+    grooveBackgroundColor = QColor(Qt::gray).name();
     grooveForgroundColor = "#3DAEE9";
 
     handleBorderColor = "#3DAEE9";
@@ -22,19 +22,24 @@ QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
 
     sliderHight = fontWidth + 2*handleBorderWith + 6;
 
-    setOrientation( orientation );
-    setFixedHeight( sliderHight );
+    setOrientation(orientation);
+    setFixedHeight(sliderHight);
 
-    label = new QLabel( this );
-    label->resize( sliderHight, sliderHight );
-    label->setAlignment( Qt::AlignCenter );
-    label->setStyleSheet( "QLabel{ color: black; background-color: none;} QLabel::disabled { color: lightGray; }" );
+    label = new QLabel(this);
+    label->resize(sliderHight, sliderHight);
+    label->setAlignment(Qt::AlignCenter);
+    label->setStyleSheet("QLabel{ color: black; background-color: none;} QLabel::disabled { color: lightGray; }");
 
-    connect( this, SIGNAL( valueChanged(int) ), this, SLOT( slot_valueChanged(int) ) );
-    connect( this, SIGNAL( rangeChanged(int,int) ), this, SLOT( slot_rangeChanged(int,int) ) );
+    connect(this,
+            &QvkSpezialSlider::valueChanged,
+            this,
+            [=](int value){
+        slot_valueChanged(value);
+    });
+
+    connect(this, SIGNAL(rangeChanged(int,int)), this, SLOT(slot_rangeChanged(int,int)));
 
     css_slider();
-    slot_valueChanged(1);
 }
 
 
