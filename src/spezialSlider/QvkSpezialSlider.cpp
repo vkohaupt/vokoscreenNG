@@ -183,9 +183,9 @@ void QvkSpezialSlider::slot_valueChanged( int value )
         }
         label->move(distancePixel + adjustmentPixel, 0);
     } else {
-        int logicalValue = (maximum() + 1) - value;
+        int logicalValue = (maximum() + 1) - value + minimum();
         qreal distancePixel = QStyle::sliderPositionFromValue(minimum(), maximum(), logicalValue, width() - label->width());
-        label->move(distancePixel, 0);
+        label->move(distancePixel - 5, 0);
     }
 }
 

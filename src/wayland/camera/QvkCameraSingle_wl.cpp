@@ -101,7 +101,8 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
             QVariant variantData = ui->comboBoxCameraResolution->currentData();
             QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
             int m_width = cameraFormat.resolution().width();
-            vkSpezialSliderWindowSize->setMaximum(m_width - 100);
+            vkSpezialSliderWindowSize->setMinimum(m_width / 4 * 3);
+            vkSpezialSliderWindowSize->setMaximum(m_width);
         }
 
         QvkSpezialSlider *vkSpezialSliderZoom = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowZoom");
