@@ -188,9 +188,26 @@ void QvkSpezialSlider::slot_valueChanged( int value )
         }
         label->move(distancePixel + adjustmentPixel, 0);
     } else {
+        QFont font = qApp->font();
+        QFontMetrics fontMetrics(font);
+        fontWidth = fontMetrics.horizontalAdvance(QString::number(8888));
+        grooveHight = 6;
+        grooveBorderRadius = 2;
+        grooveBackgroundColor = QColor(Qt::gray).name();
+        grooveForgroundColor = "#3DAEE9";
+        handleBorderColor = "#3DAEE9";
+        handleBorderWith = 2;
+        sliderHight = fontWidth + 2*handleBorderWith + 6;
+        setFixedHeight(sliderHight);
+        label->resize(sliderHight, sliderHight);
+        label->setAlignment(Qt::AlignCenter);
+        label->setStyleSheet("QLabel{ color: black; background-color: none;} QLabel::disabled { color: lightGray; }");
+
         int logicalValue = (maximum() + 1) - value + minimum();
         qreal distancePixel = QStyle::sliderPositionFromValue(minimum(), maximum(), logicalValue, width() - label->width());
-        label->move(distancePixel - 3, 0);
+        label->move(distancePixel - 4, 0);
+
+        css_slider();
     }
 }
 

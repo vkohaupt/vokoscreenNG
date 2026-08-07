@@ -172,7 +172,6 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
         }
         // We found a setting, then we want set or not.
         if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
-            qDebug() << "-----" << checkBox->objectName();
             checkBox->click();
         }
     }
