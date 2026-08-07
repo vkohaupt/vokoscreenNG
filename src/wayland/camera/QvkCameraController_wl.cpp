@@ -66,7 +66,7 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi)
     vkSliderCameraWindowSize->show();
     vkSliderCameraWindowSize->setShowValue(true);
     vkSliderCameraWindowSize->setBigHandel(true);
-    vkSliderCameraWindowSize->setEnabled(true);
+    vkSliderCameraWindowSize->setEnabled(false);
 
     vkSliderCameraWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
     GuiUi->horizontalLayout_6->insertWidget(1, vkSliderCameraWindowZoom);
