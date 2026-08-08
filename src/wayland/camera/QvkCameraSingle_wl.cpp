@@ -104,10 +104,14 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
             int m_width = cameraFormat.resolution().width();
             vkSpezialSliderWindowSize->setMinimum(m_width / 4);
             vkSpezialSliderWindowSize->setMaximum(m_width);
-            if (oldSpezialSliderValue == 0){
-                vkSpezialSliderWindowSize->setValue(m_width);
-            }else{
+            if (oldSpezialSliderValue != 0){
                 vkSpezialSliderWindowSize->setValue(oldSpezialSliderValue);
+            }else{
+                if (vkSpezialSliderWindowSize->value() < m_width){
+                    vkSpezialSliderWindowSize->setValue(vkSpezialSliderWindowSize->value());
+                }else{
+                    vkSpezialSliderWindowSize->setValue(m_width);
+                }
             }
         }
 
