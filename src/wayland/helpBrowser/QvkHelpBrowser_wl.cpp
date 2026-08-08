@@ -53,11 +53,10 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
     vkWebEngineView_wl = new QvkWebEngineView_wl;
     ui->verticalLayout->insertWidget(0, vkWebEngineView_wl);
 
-
+    QCoreApplication::setAttribute(Qt::AA_DisableShaderDiskCache);
     setAttribute(Qt::WA_QuitOnClose, false);
     resize(800, 800);
 
