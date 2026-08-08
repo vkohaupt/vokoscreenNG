@@ -59,7 +59,7 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi)
     vkSliderCameraWindowSize->setInvertedAppearance(true);
     vkSliderCameraWindowSize->setInvertedControls(true);
     vkSliderCameraWindowSize->setMinimum(100);
-    // Sehr hohe Vorgabe von "setMaximum" und "seTvalue" damit beim einlesen
+    // Sehr hohe Vorgabe von "setMaximum" und "setValue" damit beim einlesen
     // aus den Settings auch hohe Werte richtig in der GUI angezeigt werden
     vkSliderCameraWindowSize->setMaximum(10000);
     vkSliderCameraWindowSize->setValue(100000);
