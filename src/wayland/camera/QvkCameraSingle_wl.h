@@ -36,6 +36,7 @@ private:
     Ui_formMainWindow_wl *GuiUi;
     QCamera *camera = nullptr;
     QTimer *timerNoImage;
+    int oldSpezialSliderValue = 0;
 
 
 private slots:

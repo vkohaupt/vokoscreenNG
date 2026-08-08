@@ -104,7 +104,11 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
             int m_width = cameraFormat.resolution().width();
             vkSpezialSliderWindowSize->setMinimum(m_width / 4);
             vkSpezialSliderWindowSize->setMaximum(m_width);
-            vkSpezialSliderWindowSize->setValue(m_width);
+            if (oldSpezialSliderValue == 0){
+                vkSpezialSliderWindowSize->setValue(m_width);
+            }else{
+                vkSpezialSliderWindowSize->setValue(oldSpezialSliderValue);
+            }
         }
 
         QvkSpezialSlider *vkSpezialSliderZoom = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowZoom");
@@ -185,6 +189,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
     if ( checked == false ){
         QvkSpezialSlider *vkSpezialSliderWindowSize = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
         if (vkSpezialSliderWindowSize != nullptr){
+            oldSpezialSliderValue = vkSpezialSliderWindowSize->value();
             vkSpezialSliderWindowSize->setEnabled(false);
         }
         // Beim stoppen der Kamera wird das surface in den Settings gespeichert

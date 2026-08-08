@@ -50,7 +50,6 @@ public:
     void set_newImageRect();
     bool m_newImageRect = false;
 
-    int oldSpezialSliderValue = 0;
 
 private:
     QString device;
