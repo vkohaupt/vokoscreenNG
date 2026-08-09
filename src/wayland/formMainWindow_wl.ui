@@ -236,7 +236,7 @@
          <enum>QTabWidget::TabPosition::West</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -461,8 +461,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>445</width>
-                          <height>93</height>
+                          <width>16</width>
+                          <height>26</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -1454,8 +1454,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>490</width>
-                     <height>395</height>
+                     <width>24</width>
+                     <height>100</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2220,7 +2220,102 @@
                      <property name="verticalSpacing">
                       <number>9</number>
                      </property>
-                     <item row="6" column="1">
+                     <item row="9" column="0">
+                      <widget class="QLabel" name="label_38">
+                       <property name="maximumSize">
+                        <size>
+                         <width>34</width>
+                         <height>34</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string notr="true"/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="../screencast.qrc">:/pictures/systray/magnification.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="8" column="1" colspan="3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_16">
+                       <property name="spacing">
+                        <number>20</number>
+                       </property>
+                      </layout>
+                     </item>
+                     <item row="10" column="0">
+                      <widget class="QLabel" name="label_39">
+                       <property name="maximumSize">
+                        <size>
+                         <width>34</width>
+                         <height>34</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string notr="true"/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="../screencast.qrc">:/pictures/camera/temperature.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="9" column="1" colspan="3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_6">
+                       <property name="spacing">
+                        <number>20</number>
+                       </property>
+                      </layout>
+                     </item>
+                     <item row="10" column="1" colspan="3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_27">
+                       <item>
+                        <widget class="QComboBox" name="comboBoxCameraColorTemperature">
+                         <property name="currentText">
+                          <string notr="true">Automatic</string>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>Automatic</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Manual</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="8" column="0">
+                      <widget class="QLabel" name="label_37">
+                       <property name="maximumSize">
+                        <size>
+                         <width>34</width>
+                         <height>34</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string notr="true"/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="../screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="2">
                       <spacer name="verticalSpacer_14">
                        <property name="orientation">
                         <enum>Qt::Orientation::Vertical</enum>
@@ -2236,7 +2331,63 @@
                        </property>
                       </spacer>
                      </item>
-                     <item row="5" column="0" colspan="3">
+                     <item row="3" column="4">
+                      <layout class="QVBoxLayout" name="verticalLayout_15">
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                       </property>
+                       <item>
+                        <widget class="QToolButton" name="help_camera_camera">
+                         <property name="toolTip">
+                          <string>Help</string>
+                         </property>
+                         <property name="text">
+                          <string notr="true">Help</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_16">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="4" column="2">
+                      <spacer name="verticalSpacer_11">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Vertical</enum>
+                       </property>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Policy::Preferred</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item row="3" column="0" colspan="4">
+                      <layout class="QVBoxLayout" name="verticalLayout_3">
+                       <property name="spacing">
+                        <number>7</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>6</number>
+                       </property>
+                      </layout>
+                     </item>
+                     <item row="5" column="0" colspan="4">
                       <layout class="QHBoxLayout" name="horizontalLayout_65">
                        <property name="spacing">
                         <number>0</number>
@@ -2391,63 +2542,7 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="8" column="0" colspan="3">
-                      <layout class="QHBoxLayout" name="horizontalLayout_16">
-                       <property name="spacing">
-                        <number>20</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="label_37">
-                         <property name="maximumSize">
-                          <size>
-                           <width>34</width>
-                           <height>34</height>
-                          </size>
-                         </property>
-                         <property name="text">
-                          <string notr="true"/>
-                         </property>
-                         <property name="pixmap">
-                          <pixmap resource="../screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
-                         </property>
-                         <property name="scaledContents">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item row="3" column="3">
-                      <layout class="QVBoxLayout" name="verticalLayout_15">
-                       <property name="sizeConstraint">
-                        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-                       </property>
-                       <item>
-                        <widget class="QToolButton" name="help_camera_camera">
-                         <property name="toolTip">
-                          <string>Help</string>
-                         </property>
-                         <property name="text">
-                          <string notr="true">Help</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="verticalSpacer_16">
-                         <property name="orientation">
-                          <enum>Qt::Orientation::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                      </layout>
-                     </item>
-                     <item row="7" column="0" colspan="3">
+                     <item row="7" column="0" colspan="4">
                       <layout class="QHBoxLayout" name="horizontalLayout_17">
                        <property name="spacing">
                         <number>0</number>
@@ -2547,57 +2642,21 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="4" column="1">
-                      <spacer name="verticalSpacer_11">
+                     <item row="4" column="4">
+                      <spacer name="horizontalSpacer_18">
                        <property name="orientation">
-                        <enum>Qt::Orientation::Vertical</enum>
+                        <enum>Qt::Orientation::Horizontal</enum>
                        </property>
                        <property name="sizeType">
-                        <enum>QSizePolicy::Policy::Preferred</enum>
+                        <enum>QSizePolicy::Policy::Maximum</enum>
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
-                         <width>20</width>
-                         <height>40</height>
+                         <width>40</width>
+                         <height>20</height>
                         </size>
                        </property>
                       </spacer>
-                     </item>
-                     <item row="3" column="0" colspan="3">
-                      <layout class="QVBoxLayout" name="verticalLayout_3">
-                       <property name="spacing">
-                        <number>7</number>
-                       </property>
-                       <property name="leftMargin">
-                        <number>6</number>
-                       </property>
-                      </layout>
-                     </item>
-                     <item row="9" column="0" colspan="3">
-                      <layout class="QHBoxLayout" name="horizontalLayout_6">
-                       <property name="spacing">
-                        <number>20</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="label_38">
-                         <property name="maximumSize">
-                          <size>
-                           <width>34</width>
-                           <height>34</height>
-                          </size>
-                         </property>
-                         <property name="text">
-                          <string notr="true"/>
-                         </property>
-                         <property name="pixmap">
-                          <pixmap resource="../screencast.qrc">:/pictures/systray/magnification.png</pixmap>
-                         </property>
-                         <property name="scaledContents">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
                      </item>
                     </layout>
                    </item>
@@ -3624,7 +3683,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
