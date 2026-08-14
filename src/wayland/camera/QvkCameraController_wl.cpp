@@ -77,6 +77,16 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi)
     vkSliderCameraWindowZoom->show();
     vkSliderCameraWindowZoom->setShowValue(true);
     vkSliderCameraWindowZoom->setEnabled(true);
+
+    sliderCameraColorTemperature = new QvkSpezialSlider(Qt::Horizontal);
+    GuiUi->horizontalLayout_27->addWidget(sliderCameraColorTemperature);
+    sliderCameraColorTemperature->setObjectName("sliderCameraColorTemperature");
+    sliderCameraColorTemperature->setMinimum(0);
+    sliderCameraColorTemperature->setMaximum(1);
+    sliderCameraColorTemperature->setValue(0);
+    sliderCameraColorTemperature->show();
+    sliderCameraColorTemperature->setShowValue(true);
+    sliderCameraColorTemperature->setEnabled(false);
 }
 
 

@@ -44,6 +44,7 @@ public:
     Ui_formMainWindow_wl *GuiUi;
     QvkSpezialSlider *vkSliderCameraWindowSize;
     QvkSpezialSlider *vkSliderCameraWindowZoom;
+    QvkSpezialSlider *sliderCameraColorTemperature;
 
 
 public slots:

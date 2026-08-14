@@ -2277,6 +2277,9 @@
                      </item>
                      <item row="10" column="1" colspan="3">
                       <layout class="QHBoxLayout" name="horizontalLayout_27">
+                       <property name="spacing">
+                        <number>15</number>
+                       </property>
                        <item>
                         <widget class="QComboBox" name="comboBoxCameraColorTemperature">
                          <property name="currentText">
