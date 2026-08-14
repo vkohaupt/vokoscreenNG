@@ -260,11 +260,12 @@ void QvkCameraSingle_wl::set_colorTemperature(QCamera *camera)
                 qDebug().noquote() << global::nameOutput << "[Camera] Reset temperature. Automatic value:" << camera->colorTemperature();
 
                 // Nun die Werte am Schieberegler setzen
-//                QvkSpezialSlider  *vkSpezialSliderColorTemperature = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraColorTemperature");
                 vkSpezialSliderColorTemperature->setMinimum(min_ColorTemperatur);
                 vkSpezialSliderColorTemperature->setMaximum(max_ColorTemperatur);
-//                QvkSpezialSlider *slider = vkCameraOneOptions->sliderCameraOneColorTemperature;
-                sliderTemperatureConnect = connect(vkSpezialSliderColorTemperature, &QvkSpezialSlider::valueChanged, this, [=](int value){
+                sliderTemperatureConnect = connect(vkSpezialSliderColorTemperature,
+                                                   &QvkSpezialSlider::valueChanged,
+                                                   this,
+                                                   [=](int value){
                     int color = value * 100;
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     camera->setColorTemperature(color);
@@ -305,7 +306,6 @@ void QvkCameraSingle_wl::set_colorTemperature(QCamera *camera)
                     camera->setColorTemperature(0);
                     qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
                 }
-
             }
 
             if (active == false){
