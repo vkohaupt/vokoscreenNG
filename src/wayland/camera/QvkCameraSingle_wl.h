@@ -37,6 +37,9 @@ private:
     QCamera *camera = nullptr;
     QTimer *timerNoImage;
     int oldSpezialSliderValue = 0;
+    void set_colorTemperature(QCamera *camera);
+    QMetaObject::Connection comboBoxTemperatureConnect;
+    QMetaObject::Connection sliderTemperatureConnect;
 
 
 private slots:
