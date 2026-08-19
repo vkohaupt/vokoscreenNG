@@ -263,14 +263,19 @@ void QvkCameraSingle_wl::set_colorTemperature(QCamera *camera)
             vkSpezialSliderColorTemperature->setMinimum(min_ColorTemperatur);
             vkSpezialSliderColorTemperature->setMaximum(max_ColorTemperatur);
             sliderTemperatureConnect = connect(vkSpezialSliderColorTemperature,
-                                               &QvkSpezialSlider::sliderReleased,
+                                               &QvkSpezialSlider::valueChanged,
                                                this,
-                                               [=](){
-                int color = vkSpezialSliderColorTemperature->value() * 100;
-                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                camera->setColorTemperature(color);
-                vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
-                qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
+                                               [=](int value){
+                Q_UNUSED(value)
+                QTimer::singleShot(50, Qt::PreciseTimer, this, [=](){
+                    int color = vkSpezialSliderColorTemperature->value() * 100;
+                    if (camera->colorTemperature() != color){
+                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                        camera->setColorTemperature(color);
+                        vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
+                        qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
+                    }
+                });
             });
 
             comboBoxTemperatureConnect = connect(GuiUi->comboBoxCameraColorTemperature,

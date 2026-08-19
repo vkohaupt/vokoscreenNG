@@ -12,6 +12,7 @@
 #include <QCamera>
 #include <QResizeEvent>
 #include <QTimer>
+#include <QQueue>
 
 namespace Ui {
 class QvkCameraSingle_wl;
@@ -40,6 +41,7 @@ private:
     void set_colorTemperature(QCamera *camera);
     QMetaObject::Connection comboBoxTemperatureConnect;
     QMetaObject::Connection sliderTemperatureConnect;
+    QQueue<int> queue;
 
 
 private slots:
