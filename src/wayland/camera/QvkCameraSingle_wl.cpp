@@ -224,98 +224,98 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
 
 void QvkCameraSingle_wl::set_colorTemperature(QCamera *camera)
 {
-        // Farbtemperatur ermitteln
-        connect(camera, &QCamera::activeChanged, this, [=](bool active){
-            QvkSpezialSlider  *vkSpezialSliderColorTemperature = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraColorTemperature");
-            if (active == true){
-                qDebug().noquote() << global::nameOutput << "[Camera] is active";
+    // Farbtemperatur ermitteln
+    connect(camera, &QCamera::activeChanged, this, [=](bool active){
+        QvkSpezialSlider  *vkSpezialSliderColorTemperature = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraColorTemperature");
+        if (active == true){
+            qDebug().noquote() << global::nameOutput << "[Camera] is active";
 
-                //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
-                bool m_modeSupported = camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
-                qDebug().noquote() << global::nameOutput << "[Camera] WhiteBalanceModeSupported:" << m_modeSupported;
-                if (m_modeSupported != true){
-                    return;
-                }else{
-                    GuiUi->comboBoxCameraColorTemperature->setEnabled(true);
-                    int index = GuiUi->comboBoxCameraColorTemperature->findText("Manual");
-                    if (GuiUi->comboBoxCameraColorTemperature->currentIndex() == index){
-                        vkSpezialSliderColorTemperature->setEnabled(true);
-                    }else{
-                        vkSpezialSliderColorTemperature->setEnabled(false);
-                    }
-                };
-
-                int min_ColorTemperatur = 1;
-                int max_ColorTemperatur = 0;
-
-                // colorTemperatur auf sehr hohen Wert setzen....
-                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                camera->setColorTemperature(50000);
-                // ... nun den maximalen Wert abfragen
-                max_ColorTemperatur = camera->colorTemperature() / 100;
-                qDebug().noquote() << global::nameOutput << "[Camera] max. color temperature:" << camera->colorTemperature();
-
-                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                camera->setColorTemperature(0); // resetten
-                qDebug().noquote() << global::nameOutput << "[Camera] Reset temperature. Automatic value:" << camera->colorTemperature();
-
-                // Nun die Werte am Schieberegler setzen
-                vkSpezialSliderColorTemperature->setMinimum(min_ColorTemperatur);
-                vkSpezialSliderColorTemperature->setMaximum(max_ColorTemperatur);
-                sliderTemperatureConnect = connect(vkSpezialSliderColorTemperature,
-                                                   &QvkSpezialSlider::valueChanged,
-                                                   this,
-                                                   [=](int value){
-                    int color = value * 100;
-                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                    camera->setColorTemperature(color);
-                    vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
-                    qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
-                });
-
-                comboBoxTemperatureConnect = connect(GuiUi->comboBoxCameraColorTemperature,
-                                                     &QComboBox::currentIndexChanged,
-                                                     this,
-                                                     [=](int index){
-                    if (index == 0){
-                        vkSpezialSliderColorTemperature->setEnabled(false);
-                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                        camera->setColorTemperature(0); // resetten
-                        qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
-                    }else{
-                        vkSpezialSliderColorTemperature->setEnabled(true);
-                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                        int color = vkSpezialSliderColorTemperature->value() * 100;
-                        camera->setColorTemperature(color);
-                        vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
-                        qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual:" << color;
-                    }
-                });
-
-                // Colortemperatur unabhängig von einem ComboBox Signal setzen
+            //QCamera::WhiteBalanceManual muß true sein damit die Temperatur ausgelesen und gesetzt werden kann
+            bool m_modeSupported = camera->isWhiteBalanceModeSupported(QCamera::WhiteBalanceManual);
+            qDebug().noquote() << global::nameOutput << "[Camera] WhiteBalanceModeSupported:" << m_modeSupported;
+            if (m_modeSupported != true){
+                return;
+            }else{
+                GuiUi->comboBoxCameraColorTemperature->setEnabled(true);
                 int index = GuiUi->comboBoxCameraColorTemperature->findText("Manual");
-                int currentIndex = GuiUi->comboBoxCameraColorTemperature->currentIndex();
-                if (currentIndex == index){
+                if (GuiUi->comboBoxCameraColorTemperature->currentIndex() == index){
+                    vkSpezialSliderColorTemperature->setEnabled(true);
+                }else{
+                    vkSpezialSliderColorTemperature->setEnabled(false);
+                }
+            };
+
+            int min_ColorTemperatur = 1;
+            int max_ColorTemperatur = 0;
+
+            // colorTemperatur auf sehr hohen Wert setzen....
+            camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+            camera->setColorTemperature(50000);
+            // ... nun den maximalen Wert abfragen
+            max_ColorTemperatur = camera->colorTemperature() / 100;
+            qDebug().noquote() << global::nameOutput << "[Camera] max. color temperature:" << camera->colorTemperature();
+
+            camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+            camera->setColorTemperature(0); // resetten
+            qDebug().noquote() << global::nameOutput << "[Camera] Reset temperature. Automatic value:" << camera->colorTemperature();
+
+            // Nun die Werte am Schieberegler setzen
+            vkSpezialSliderColorTemperature->setMinimum(min_ColorTemperatur);
+            vkSpezialSliderColorTemperature->setMaximum(max_ColorTemperatur);
+            sliderTemperatureConnect = connect(vkSpezialSliderColorTemperature,
+                                               &QvkSpezialSlider::sliderReleased,
+                                               this,
+                                               [=](){
+                int color = vkSpezialSliderColorTemperature->value() * 100;
+                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                camera->setColorTemperature(color);
+                vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
+                qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
+            });
+
+            comboBoxTemperatureConnect = connect(GuiUi->comboBoxCameraColorTemperature,
+                                                 &QComboBox::currentIndexChanged,
+                                                 this,
+                                                 [=](int index){
+                if (index == 0){
+                    vkSpezialSliderColorTemperature->setEnabled(false);
+                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                    camera->setColorTemperature(0); // resetten
+                    qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
+                }else{
+                    vkSpezialSliderColorTemperature->setEnabled(true);
                     camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
                     int color = vkSpezialSliderColorTemperature->value() * 100;
                     camera->setColorTemperature(color);
                     vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
                     qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual:" << color;
-                }else{
-                    camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
-                    camera->setColorTemperature(0);
-                    qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
                 }
-            }
+            });
 
-            if (active == false){
-                GuiUi->comboBoxCameraColorTemperature->setEnabled(false);
-                vkSpezialSliderColorTemperature->setEnabled(false);
-                QObject::disconnect(comboBoxTemperatureConnect);
-                QObject::disconnect(sliderTemperatureConnect);
-                qDebug().noquote() << global::nameOutput << "[Camera] not active";
+            // Colortemperatur unabhängig von einem ComboBox Signal setzen
+            int index = GuiUi->comboBoxCameraColorTemperature->findText("Manual");
+            int currentIndex = GuiUi->comboBoxCameraColorTemperature->currentIndex();
+            if (currentIndex == index){
+                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                int color = vkSpezialSliderColorTemperature->value() * 100;
+                camera->setColorTemperature(color);
+                vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
+                qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Manual:" << color;
+            }else{
+                camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                camera->setColorTemperature(0);
+                qDebug().noquote() << global::nameOutput << "[Camera] Set ColorTemperature Automatic";
             }
-        });
+        }
+
+        if (active == false){
+            GuiUi->comboBoxCameraColorTemperature->setEnabled(false);
+            vkSpezialSliderColorTemperature->setEnabled(false);
+            QObject::disconnect(comboBoxTemperatureConnect);
+            QObject::disconnect(sliderTemperatureConnect);
+            qDebug().noquote() << global::nameOutput << "[Camera] not active";
+        }
+    });
 }
 
 
