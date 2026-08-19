@@ -267,7 +267,12 @@ void QvkCameraSingle_wl::set_colorTemperature(QCamera *camera)
                                                this,
                                                [=](int value){
                 Q_UNUSED(value)
+                // Unter wayland wird beim verschieben des Reglers jeder Wert gefeuert.
+                // Dies behindert die GUI, das heißt der Regler wird erst bewegt(aktualisiert) wenn alles abgearbeitet ist.
+                // Mit einem singelshot wird dieses Manko beseitigt.
                 QTimer::singleShot(50, Qt::PreciseTimer, this, [=](){
+                    // Der Wert des Schiebereglers muß direkt von diesem kommen,
+                    // es darf nicht der Wert value vom Signal genommen werden
                     int color = vkSpezialSliderColorTemperature->value() * 100;
                     if (camera->colorTemperature() != color){
                         camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
