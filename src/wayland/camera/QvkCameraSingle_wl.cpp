@@ -151,13 +151,13 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         // ----- Für kein Bild ------
 
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
-        for ( int x = 0; x < cameras.count(); x++ ){
+        for (int x = 0; x < cameras.count(); x++){
             QCameraDevice cameraDevice = cameras.at(x);
-            if ( cameraDevice.id() == checkBoxCameraOnOff->objectName().section("_", 1, 1) ){
+            if (cameraDevice.id() == checkBoxCameraOnOff->objectName().section("_", 1, 1)){
                 camera = new QCamera(cameraDevice);
 
 
-                //-------------------------------------------------------------------------------------------
+                //---------------------------
                 set_colorTemperature(camera);
 
 
@@ -196,7 +196,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         }
     }
 
-    if ( checked == false ){
+    if (checked == false){
         QvkSpezialSlider *vkSpezialSliderWindowSize = GuiUi->centralwidget->findChild<QvkSpezialSlider *>("sliderCameraWindowSize");
         if (vkSpezialSliderWindowSize != nullptr){
             oldSpezialSliderValue = vkSpezialSliderWindowSize->value();
@@ -275,7 +275,9 @@ void QvkCameraSingle_wl::set_colorTemperature(QCamera *camera)
                     // es darf nicht der Wert value vom Signal genommen werden
                     int color = vkSpezialSliderColorTemperature->value() * 100;
                     if (camera->colorTemperature() != color){
-                        camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                        if (camera->whiteBalanceMode() != QCamera::WhiteBalanceManual){
+                            camera->setWhiteBalanceMode(QCamera::WhiteBalanceManual);
+                        }
                         camera->setColorTemperature(color);
                         vkSpezialSliderColorTemperature->setToolTip(QString::number(color) + " Kelvin");
                         qDebug().noquote() << global::nameOutput << "[Camera] Color valueChanged:" << color;
@@ -426,7 +428,7 @@ void QvkCameraSingle_wl::resizeEvent(QResizeEvent *event)
         int width = 0;
         for(int i = 0; i < listComboBox.count(); i++){
             QComboBox *comboBox = listComboBox.at(i);
-            if ( comboBox->width() > width ){
+            if (comboBox->width() > width){
                 width = comboBox->width();
             }
         }

@@ -41,7 +41,8 @@ private:
     void set_colorTemperature(QCamera *camera);
     QMetaObject::Connection comboBoxTemperatureConnect;
     QMetaObject::Connection sliderTemperatureConnect;
-    QQueue<int> queue;
+    bool bo = false;
+
 
 
 private slots:

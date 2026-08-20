@@ -54,7 +54,7 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi)
     GuiUi->widgetCamera->hide();
 
     vkSliderCameraWindowSize = new QvkSpezialSlider(Qt::Horizontal);
-    GuiUi->horizontalLayout_16->insertWidget(1, vkSliderCameraWindowSize);
+    GuiUi->horizontalLayout_16->addWidget(vkSliderCameraWindowSize);
     vkSliderCameraWindowSize->setObjectName("sliderCameraWindowSize");
     vkSliderCameraWindowSize->setInvertedAppearance(true);
     vkSliderCameraWindowSize->setInvertedControls(true);
@@ -69,7 +69,7 @@ QvkCameraController_wl::QvkCameraController_wl(Ui_formMainWindow_wl *m_GuiUi)
     vkSliderCameraWindowSize->setEnabled(false);
 
     vkSliderCameraWindowZoom = new QvkSpezialSlider(Qt::Horizontal);
-    GuiUi->horizontalLayout_6->insertWidget(1, vkSliderCameraWindowZoom);
+    GuiUi->horizontalLayout_6->addWidget(vkSliderCameraWindowZoom);
     vkSliderCameraWindowZoom->setObjectName("sliderCameraWindowZoom");
     vkSliderCameraWindowZoom->setMinimum(0);
     vkSliderCameraWindowZoom->setMaximum(0);
