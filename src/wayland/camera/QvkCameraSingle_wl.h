@@ -12,7 +12,6 @@
 #include <QCamera>
 #include <QResizeEvent>
 #include <QTimer>
-#include <QQueue>
 
 namespace Ui {
 class QvkCameraSingle_wl;
@@ -25,7 +24,7 @@ class QvkCameraSingle_wl : public QWidget
 public:
     explicit QvkCameraSingle_wl(QWidget *parent = nullptr);
     ~QvkCameraSingle_wl();
-    Ui::QvkCameraSingle_wl *ui;
+    Ui::QvkCameraSingle_wl *ui = nullptr;
     QvkCameraSurface_wl *vkCameraSurface_wl = nullptr;
     void set_init(QString device);
     void set_GUIui(Ui_formMainWindow_wl *ui);
@@ -34,14 +33,14 @@ public:
 
 
 private:
-    Ui_formMainWindow_wl *GuiUi;
+    Ui_formMainWindow_wl *GuiUi = nullptr;
     QCamera *camera = nullptr;
     QTimer *timerNoImage = nullptr;
     int oldSpezialSliderValue = 0;
     void set_colorTemperature(QCamera *camera);
     QMetaObject::Connection comboBoxTemperatureConnect;
     QMetaObject::Connection sliderTemperatureConnect;
-    bool temperatureChanged = false;
+
 
 private slots:
     void slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff);
