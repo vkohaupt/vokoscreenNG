@@ -461,8 +461,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>16</width>
-                          <height>26</height>
+                          <width>100</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -1454,7 +1454,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>24</width>
+                     <width>100</width>
                      <height>100</height>
                     </rect>
                    </property>
@@ -2282,6 +2282,9 @@
                        </property>
                        <item>
                         <widget class="QComboBox" name="comboBoxCameraColorTemperature">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
                          <property name="currentText">
                           <string notr="true">Automatic</string>
                          </property>
@@ -3686,7 +3689,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

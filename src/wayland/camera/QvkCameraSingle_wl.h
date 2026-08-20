@@ -41,7 +41,7 @@ private:
     void set_colorTemperature(QCamera *camera);
     QMetaObject::Connection comboBoxTemperatureConnect;
     QMetaObject::Connection sliderTemperatureConnect;
-
+    bool temperatureChanged = false;
 
 private slots:
     void slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff);
