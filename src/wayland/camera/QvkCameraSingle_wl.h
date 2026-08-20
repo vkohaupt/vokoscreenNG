@@ -36,13 +36,11 @@ public:
 private:
     Ui_formMainWindow_wl *GuiUi;
     QCamera *camera = nullptr;
-    QTimer *timerNoImage;
+    QTimer *timerNoImage = nullptr;
     int oldSpezialSliderValue = 0;
     void set_colorTemperature(QCamera *camera);
     QMetaObject::Connection comboBoxTemperatureConnect;
     QMetaObject::Connection sliderTemperatureConnect;
-    bool bo = false;
-
 
 
 private slots:

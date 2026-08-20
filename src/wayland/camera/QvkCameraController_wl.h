@@ -41,10 +41,10 @@ public:
     virtual ~QvkCameraController_wl();
     void init();
     QvkCameraSingle_wl *vkCameraSingle_wl = nullptr;
-    Ui_formMainWindow_wl *GuiUi;
-    QvkSpezialSlider *vkSliderCameraWindowSize;
-    QvkSpezialSlider *vkSliderCameraWindowZoom;
-    QvkSpezialSlider *sliderCameraColorTemperature;
+    Ui_formMainWindow_wl *GuiUi = nullptr;
+    QvkSpezialSlider *vkSliderCameraWindowSize = nullptr;
+    QvkSpezialSlider *vkSliderCameraWindowZoom = nullptr;
+    QvkSpezialSlider *sliderCameraColorTemperature = nullptr;
 
 
 public slots:
