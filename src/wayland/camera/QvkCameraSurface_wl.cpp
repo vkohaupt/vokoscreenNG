@@ -55,9 +55,13 @@ QvkCameraSurface_wl::QvkCameraSurface_wl(QString m_device)
     icon.addFile(QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off);
     setWindowIcon(icon);
 
-    setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, true);
-    setAttribute(Qt::WA_QuitOnClose, false);
+    Qt::WindowFlags flags;
+    flags  = Qt::Window;
+    flags |= Qt::FramelessWindowHint;
+    flags |= Qt::WindowStaysOnTopHint;
+    setWindowFlags(flags);
+
     showMaximized();
     setMouseTracking(true);
 
@@ -121,9 +125,7 @@ void QvkCameraSurface_wl::set_newImageRect()
 {
     imageRect.setWidth(cameraImage.width());
     imageRect.setHeight(cameraImage.height());
-    clearMask();
     repaint();
-    setMask(pixmap.mask());
     m_newImageRect = true;
 }
 
@@ -180,11 +182,14 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     QPainter painter;
     painter.begin(this);
     {
+        painter.setCompositionMode(QPainter::CompositionMode_Source);
         painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
         painter.setRenderHint(QPainter::Antialiasing, true);
         painter.drawPixmap(QPoint(0, 0), pixmap);
     }
     painter.end();
+
+    setMask(pixmap.mask());
 }
 
 
@@ -260,9 +265,6 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
     QPoint mousePos = event->position().toPoint();
     pointDiv = mousePos - imageRect.topLeft();
 
-    clearMask();
-    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
-
     // Siehe Hinweis in mouseReleaseEvent
     resize(width()-1, height()-1);
 }
@@ -321,9 +323,6 @@ void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
     Q_UNUSED(event)
     mousePressed = false;
 
-    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
-    setMask(pixmap.mask());
-
     // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
     // Selbst nach hunderten Tests ist nicht ersichtlich warum.
     // Abhilfe schafft ein umschalten mithilfe setVisible(false/true)
@@ -343,7 +342,6 @@ void QvkCameraSurface_wl::enterEvent(QEnterEvent *event)
 {
     Q_UNUSED(event)
     mouseHover = true;
-    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
 }
 
 
@@ -352,6 +350,4 @@ void QvkCameraSurface_wl::leaveEvent(QEvent *event )
 {
     Q_UNUSED(event)
     mouseHover = false;
-    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
 }
-
