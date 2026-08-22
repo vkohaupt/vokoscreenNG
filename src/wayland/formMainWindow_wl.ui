@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
-    <height>506</height>
+    <width>871</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,7 +52,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../screencast.qrc">
             <normaloff>:/pictures/screencast/monitor.png</normaloff>:/pictures/screencast/monitor.png</iconset>
           </property>
           <property name="iconSize">
@@ -87,7 +87,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../screencast.qrc">
             <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
           </property>
           <property name="iconSize">
@@ -122,7 +122,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../screencast.qrc">
             <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
           </property>
           <property name="iconSize">
@@ -157,7 +157,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../screencast.qrc">
             <normaloff>:/pictures/screencast/convert.png</normaloff>:/pictures/screencast/convert.png</iconset>
           </property>
           <property name="iconSize">
@@ -192,7 +192,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="../screencast.qrc">
             <normaloff>:/pictures/log/log.png</normaloff>:/pictures/log/log.png</iconset>
           </property>
           <property name="iconSize">
@@ -271,7 +271,7 @@
             </property>
             <widget class="QWidget" name="tabScreen">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/screencast/monitor.png</normaloff>:/pictures/screencast/monitor.png</iconset>
              </attribute>
              <attribute name="title">
@@ -338,7 +338,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset>
+                       <iconset resource="../screencast.qrc">
                         <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                       </property>
                      </widget>
@@ -461,8 +461,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>426</width>
-                          <height>84</height>
+                          <width>422</width>
+                          <height>90</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -567,7 +567,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="icon">
-                        <iconset>
+                        <iconset resource="../screencast.qrc">
                          <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                        </property>
                       </widget>
@@ -620,102 +620,19 @@
                    </property>
                    <item>
                     <layout class="QGridLayout" name="gridLayoutFormatCodecs">
-                     <item row="1" column="3" alignment="Qt::AlignmentFlag::AlignRight">
-                      <widget class="QToolButton" name="help_screencast_nomousecursor">
-                       <property name="toolTip">
-                        <string>Help</string>
-                       </property>
-                       <property name="text">
-                        <string notr="true">Help</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="1">
-                      <layout class="QHBoxLayout" name="horizontalLayout_23">
+                     <item row="2" column="1">
+                      <layout class="QVBoxLayout" name="verticalLayout_30">
                        <property name="leftMargin">
                         <number>6</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_16">
+                        <widget class="QLabel" name="label_17">
                          <property name="text">
-                          <string notr="true">H.264</string>
+                          <string notr="true">mkv</string>
                          </property>
                         </widget>
                        </item>
-                       <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_openh264">
-                         <property name="spacing">
-                          <number>6</number>
-                         </property>
-                         <item alignment="Qt::AlignmentFlag::AlignVCenter">
-                          <widget class="QLabel" name="label_36">
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>28</width>
-                             <height>28</height>
-                            </size>
-                           </property>
-                           <property name="text">
-                            <string notr="true"/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap>:/pictures/screencast/compress.png</pixmap>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QToolButton" name="toolButtonOpenh264Reset">
-                           <property name="toolTip">
-                            <string>Reset</string>
-                           </property>
-                           <property name="text">
-                            <string notr="true"/>
-                           </property>
-                           <property name="icon">
-                            <iconset>
-                             <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
                       </layout>
-                     </item>
-                     <item row="2" column="3" alignment="Qt::AlignmentFlag::AlignRight">
-                      <widget class="QToolButton" name="help_screencast_format">
-                       <property name="toolTip">
-                        <string>Help</string>
-                       </property>
-                       <property name="text">
-                        <string notr="true">Help</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="0">
-                      <widget class="QLabel" name="labelVideoCodec">
-                       <property name="text">
-                        <string>Videocodec</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
-                      <widget class="QLabel" name="labelFormat">
-                       <property name="text">
-                        <string>Format</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                       </property>
-                      </widget>
                      </item>
                      <item row="1" column="1">
                       <widget class="QFrame" name="frameFrames">
@@ -750,7 +667,7 @@
                            <string notr="true"/>
                           </property>
                           <property name="icon">
-                           <iconset>
+                           <iconset resource="../screencast.qrc">
                             <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                           </property>
                          </widget>
@@ -768,29 +685,87 @@
                        </layout>
                       </widget>
                      </item>
-                     <item row="1" column="2">
-                      <widget class="QFrame" name="frame">
-                       <layout class="QHBoxLayout" name="horizontalLayout_3">
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <item>
-                         <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-                          <property name="text">
-                           <string>Do not record mouse cursor</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
+                     <item row="3" column="3">
+                      <widget class="QToolButton" name="help_screencast_videocodec">
+                       <property name="toolTip">
+                        <string>Help</string>
+                       </property>
+                       <property name="text">
+                        <string notr="true">Help</string>
+                       </property>
                       </widget>
                      </item>
-                     <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
-                      <widget class="QLabel" name="labelFrames">
+                     <item row="1" column="3" alignment="Qt::AlignmentFlag::AlignRight">
+                      <widget class="QToolButton" name="help_screencast_nomousecursor">
+                       <property name="toolTip">
+                        <string>Help</string>
+                       </property>
                        <property name="text">
-                        <string>Frames</string>
+                        <string notr="true">Help</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1" colspan="2">
+                      <layout class="QHBoxLayout" name="horizontalLayout_23">
+                       <property name="leftMargin">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_16">
+                         <property name="text">
+                          <string notr="true">H.264</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_openh264">
+                         <item alignment="Qt::AlignmentFlag::AlignVCenter">
+                          <widget class="QLabel" name="label_36">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>28</width>
+                             <height>28</height>
+                            </size>
+                           </property>
+                           <property name="text">
+                            <string notr="true"/>
+                           </property>
+                           <property name="pixmap">
+                            <pixmap resource="../screencast.qrc">:/pictures/screencast/compress.png</pixmap>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QToolButton" name="toolButtonOpenh264Reset">
+                           <property name="toolTip">
+                            <string>Reset</string>
+                           </property>
+                           <property name="text">
+                            <string notr="true"/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../screencast.qrc">
+                             <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+                      <widget class="QLabel" name="labelFormat">
+                       <property name="text">
+                        <string>Format</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -813,46 +788,61 @@
                        </property>
                       </spacer>
                      </item>
-                     <item row="2" column="1">
-                      <layout class="QVBoxLayout" name="verticalLayout_30">
-                       <property name="leftMargin">
-                        <number>6</number>
+                     <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+                      <widget class="QLabel" name="labelFrames">
+                       <property name="text">
+                        <string>Frames</string>
                        </property>
-                       <item>
-                        <widget class="QLabel" name="label_17">
-                         <property name="text">
-                          <string notr="true">mkv</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                       </property>
+                      </widget>
                      </item>
-                     <item row="3" column="3">
-                      <layout class="QVBoxLayout" name="verticalLayout_29">
-                       <item alignment="Qt::AlignmentFlag::AlignRight">
-                        <widget class="QToolButton" name="help_screencast_videocodec">
-                         <property name="toolTip">
-                          <string>Help</string>
-                         </property>
-                         <property name="text">
-                          <string notr="true">Help</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
+                     <item row="2" column="3" alignment="Qt::AlignmentFlag::AlignRight">
+                      <widget class="QToolButton" name="help_screencast_format">
+                       <property name="toolTip">
+                        <string>Help</string>
+                       </property>
+                       <property name="text">
+                        <string notr="true">Help</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="2">
+                      <widget class="QFrame" name="frame">
+                       <layout class="QHBoxLayout" name="horizontalLayout_3">
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+                          <property name="text">
+                           <string>Do not record mouse cursor</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="labelVideoCodec">
+                       <property name="text">
+                        <string>Videocodec</string>
+                       </property>
+                      </widget>
                      </item>
                      <item row="0" column="3">
                       <spacer name="horizontalSpacer">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
-                       <property name="sizeType">
-                        <enum>QSizePolicy::Policy::Preferred</enum>
-                       </property>
                        <property name="sizeHint" stdset="0">
                         <size>
                          <width>40</width>
-                         <height>5</height>
+                         <height>10</height>
                         </size>
                        </property>
                       </spacer>
@@ -929,88 +919,31 @@
                 <property name="bottomMargin">
                  <number>10</number>
                 </property>
-                <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_Upate_tab_2">
-                  <property name="text">
-                   <string notr="true">TextLabel</string>
+                <item row="4" column="0">
+                 <spacer name="verticalSpacer_22">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
                   </property>
-                  <property name="openExternalLinks">
-                   <bool>true</bool>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
                   </property>
-                 </widget>
+                 </spacer>
                 </item>
                 <item row="1" column="0">
                  <layout class="QGridLayout" name="gridLayout_9">
                   <property name="topMargin">
                    <number>10</number>
                   </property>
-                  <item row="2" column="3">
-                   <widget class="QLabel" name="label_30">
+                  <item row="0" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoRecordTime">
                     <property name="text">
-                     <string notr="true">KB</string>
+                     <string notr="true">00:00:00</string>
                     </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="1">
-                   <widget class="QLabel" name="label_29">
-                    <property name="text">
-                     <string>Frames</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="2" colspan="2">
-                   <widget class="QLabel" name="labelInfoAudiocodec">
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QLabel" name="label_19">
-                    <property name="text">
-                     <string>Free disk space:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="1">
-                   <widget class="QLabel" name="label_27">
-                    <property name="text">
-                     <string>Audiocodec</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="8" column="2" colspan="2">
-                   <widget class="QLabel" name="labelInfoFrames">
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="1">
-                   <widget class="QLabel" name="label_31">
-                    <property name="text">
-                     <string>Format</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QLabel" name="label_33">
-                    <property name="text">
-                     <string>Record Time:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="2" colspan="2">
-                   <widget class="QLabel" name="labelInfoFormat">
-                    <property name="text">
-                     <string notr="true">mkv</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLabel" name="label_20">
-                    <property name="text">
-                     <string>Video size:</string>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -1024,10 +957,86 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="label_33">
+                    <property name="text">
+                     <string>Record Time:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoFrames">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="2">
+                   <spacer name="verticalSpacer_5">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="label_20">
+                    <property name="text">
+                     <string>Video size:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoVideocodec">
+                    <property name="text">
+                     <string notr="true">H.264</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QLabel" name="label_32">
+                    <property name="text">
+                     <string notr="true">MB</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoFormat">
+                    <property name="text">
+                     <string notr="true">mkv</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QLabel" name="label_31">
+                    <property name="text">
+                     <string>Format</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="QLabel" name="label_29">
+                    <property name="text">
+                     <string>Frames</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="6" column="1">
                    <widget class="QLabel" name="label_28">
                     <property name="text">
                      <string>Videocodec</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="3">
+                   <widget class="QLabel" name="label_30">
+                    <property name="text">
+                     <string notr="true">KB</string>
                     </property>
                    </widget>
                   </item>
@@ -1041,23 +1050,6 @@
                     </property>
                     <property name="orientation">
                      <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="2" colspan="2">
-                   <widget class="QLabel" name="labelInfoRecordTime">
-                    <property name="text">
-                     <string notr="true">00:00:00</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="3">
-                   <widget class="QLabel" name="label_32">
-                    <property name="text">
-                     <string notr="true">MB</string>
                     </property>
                    </widget>
                   </item>
@@ -1077,27 +1069,38 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="6" column="2" colspan="2">
-                   <widget class="QLabel" name="labelInfoVideocodec">
+                  <item row="7" column="1">
+                   <widget class="QLabel" name="label_27">
                     <property name="text">
-                     <string notr="true">H.264</string>
+                     <string>Audiocodec</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="9" column="2">
-                   <spacer name="verticalSpacer_5">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Vertical</enum>
+                  <item row="7" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoAudiocodec">
+                    <property name="text">
+                     <string notr="true"/>
                     </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="label_19">
+                    <property name="text">
+                     <string>Free disk space:</string>
                     </property>
-                   </spacer>
+                   </widget>
                   </item>
                  </layout>
+                </item>
+                <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                 <widget class="QLabel" name="label_Upate_tab_2">
+                  <property name="text">
+                   <string notr="true">TextLabel</string>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
                 </item>
                 <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
                  <widget class="QLabel" name="label_18">
@@ -1106,26 +1109,13 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
-                 <spacer name="verticalSpacer_22">
-                  <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
                </layout>
               </item>
              </layout>
             </widget>
             <widget class="QWidget" name="tabMisc">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/screencast/preferences-system.png</normaloff>:/pictures/screencast/preferences-system.png</iconset>
              </attribute>
              <attribute name="title">
@@ -1193,7 +1183,7 @@
                         <string notr="true">...</string>
                        </property>
                        <property name="icon">
-                        <iconset>
+                        <iconset resource="../screencast.qrc">
                          <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                        </property>
                       </widget>
@@ -1231,7 +1221,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="pixmap">
-                      <pixmap>:/pictures/screencast/world.png</pixmap>
+                      <pixmap resource="../screencast.qrc">:/pictures/screencast/world.png</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -1273,7 +1263,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="pixmap">
-                      <pixmap>:/pictures/screencast/information.png</pixmap>
+                      <pixmap resource="../screencast.qrc">:/pictures/screencast/information.png</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -1386,7 +1376,7 @@
             </widget>
             <widget class="QWidget" name="tabAvailable">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/screencast/supported-formats.png</normaloff>:/pictures/screencast/supported-formats.png</iconset>
              </attribute>
              <attribute name="title">
@@ -1454,8 +1444,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>478</width>
-                     <height>386</height>
+                     <width>467</width>
+                     <height>395</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1498,7 +1488,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="pixmap">
-                     <pixmap>:/pictures/screencast/accept.png</pixmap>
+                     <pixmap resource="../screencast.qrc">:/pictures/screencast/accept.png</pixmap>
                     </property>
                     <property name="scaledContents">
                      <bool>true</bool>
@@ -1544,7 +1534,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="pixmap">
-                     <pixmap>:/pictures/screencast/missing.png</pixmap>
+                     <pixmap resource="../screencast.qrc">:/pictures/screencast/missing.png</pixmap>
                     </property>
                     <property name="scaledContents">
                      <bool>true</bool>
@@ -1622,7 +1612,7 @@
             </widget>
             <widget class="QWidget" name="tab">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/screencast/help-about.png</normaloff>:/pictures/screencast/help-about.png</iconset>
              </attribute>
              <attribute name="title">
@@ -1669,7 +1659,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap>:/pictures/screencast/author.png</pixmap>
+                   <pixmap resource="../screencast.qrc">:/pictures/screencast/author.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -2153,7 +2143,7 @@
             </property>
             <widget class="QWidget" name="tabCamera">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
              </attribute>
              <attribute name="title">
@@ -2232,7 +2222,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>:/pictures/systray/magnification.png</pixmap>
+                        <pixmap resource="../screencast.qrc">:/pictures/systray/magnification.png</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -2258,7 +2248,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>:/pictures/camera/temperature.png</pixmap>
+                        <pixmap resource="../screencast.qrc">:/pictures/camera/temperature.png</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -2314,7 +2304,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>:/pictures/camera/window-resize.png</pixmap>
+                        <pixmap resource="../screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -2420,7 +2410,7 @@
                           <string notr="true"/>
                          </property>
                          <property name="icon">
-                          <iconset>
+                          <iconset resource="../screencast.qrc">
                            <normaloff>:/pictures/camera/window-rectangle-off.png</normaloff>
                            <normalon>:/pictures/camera/window-rectangle-on.png</normalon>:/pictures/camera/window-rectangle-off.png</iconset>
                          </property>
@@ -2466,7 +2456,7 @@
                           <string notr="true"/>
                          </property>
                          <property name="icon">
-                          <iconset>
+                          <iconset resource="../screencast.qrc">
                            <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
                            <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
                          </property>
@@ -2509,7 +2499,7 @@
                           <string notr="true"/>
                          </property>
                          <property name="icon">
-                          <iconset>
+                          <iconset resource="../screencast.qrc">
                            <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
                            <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
                          </property>
@@ -2575,7 +2565,7 @@
                           <string notr="true"/>
                          </property>
                          <property name="icon">
-                          <iconset>
+                          <iconset resource="../screencast.qrc">
                            <normaloff>:/pictures/camera/flip-vertical-off.png</normaloff>
                            <normalon>:/pictures/camera/flip-vertical-on.png</normalon>:/pictures/camera/flip-vertical-off.png</iconset>
                          </property>
@@ -2615,7 +2605,7 @@
                           <string notr="true"/>
                          </property>
                          <property name="icon">
-                          <iconset>
+                          <iconset resource="../screencast.qrc">
                            <normaloff>:/pictures/camera/flip-horizontal-off.png</normaloff>
                            <normalon>:/pictures/camera/flip-horizontal-on.png</normalon>:/pictures/camera/flip-horizontal-off.png</iconset>
                          </property>
@@ -2736,7 +2726,7 @@
             </property>
             <widget class="QWidget" name="tab_2">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
              </attribute>
              <attribute name="title">
@@ -2784,7 +2774,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="icon">
-                     <iconset>
+                     <iconset resource="../screencast.qrc">
                       <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                     </property>
                    </widget>
@@ -2836,7 +2826,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="icon">
-                     <iconset>
+                     <iconset resource="../screencast.qrc">
                       <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                     </property>
                    </widget>
@@ -2874,7 +2864,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="icon">
-                     <iconset>
+                     <iconset resource="../screencast.qrc">
                       <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                     </property>
                    </widget>
@@ -2993,7 +2983,7 @@
             </property>
             <widget class="QWidget" name="tab_5">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/screencast/convert.png</normaloff>:/pictures/screencast/convert.png</iconset>
              </attribute>
              <attribute name="title">
@@ -3075,7 +3065,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset>
+                       <iconset resource="../screencast.qrc">
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3169,7 +3159,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset>
+                       <iconset resource="../screencast.qrc">
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3262,7 +3252,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset>
+                       <iconset resource="../screencast.qrc">
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3344,7 +3334,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset>
+                       <iconset resource="../screencast.qrc">
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3415,7 +3405,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap>:/pictures/convert/convertTo.png</pixmap>
+                   <pixmap resource="../screencast.qrc">:/pictures/convert/convertTo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3458,7 +3448,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap>:/pictures/convert/convertTo.png</pixmap>
+                   <pixmap resource="../screencast.qrc">:/pictures/convert/convertTo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3501,7 +3491,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap>:/pictures/convert/convertTo.png</pixmap>
+                   <pixmap resource="../screencast.qrc">:/pictures/convert/convertTo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3595,7 +3585,7 @@
             </property>
             <widget class="QWidget" name="tabLog">
              <attribute name="icon">
-              <iconset>
+              <iconset resource="../screencast.qrc">
                <normaloff>:/pictures/log/log.png</normaloff>:/pictures/log/log.png</iconset>
              </attribute>
              <attribute name="title">
@@ -3684,10 +3674,12 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../screencast.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
