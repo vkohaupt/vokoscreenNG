@@ -1510,3 +1510,75 @@ void QvkMainWindow_wl::slot_Continue()
         }
     }
 }
+
+
+void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
+{
+    QString audio_codec = "";
+    if (ui->comboBoxAudioCodec->isEnabled() == true){
+        audio_codec = ui->comboBoxAudioCodec->currentText();
+    }
+
+    QFileInfo fileInfo(filePath);
+    QString path = fileInfo.path();
+
+    QString VK_Pipeline;
+    if (audio_codec == ""){
+        QString fileNameMP4 = fileInfo.baseName() + ".mp4";
+        VK_Pipeline = "filesrc location=" + filePath +
+                " ! matroskademux" +
+                " ! h264parse" +
+                " ! queue" +
+                " ! mp4mux name=mux" +
+                " ! filesink location=" + path + "/" + fileNameMP4;
+    }
+
+    // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
+    // mp4mux name=mux ! filesink location=test2.mp4
+    // demux.video_0 ! queue ! h264parse ! mux.
+    // demux.audio_0 ! queue ! mpegaudioparse ! mux.
+    if (audio_codec == "MPEG"){
+        QString fileNameMP4 = fileInfo.baseName() + ".mp4";
+        VK_Pipeline = "filesrc location=" + filePath +
+                " ! matroskademux name=demux mp4mux name=mux" +
+                " ! filesink location=" + path + "/" + fileNameMP4 + " "
+                                                                     "demux.video_0 ! queue ! h264parse ! mux." + " " +
+                "demux.audio_0 ! queue ! mpegaudioparse ! mux.";
+    }
+
+    // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
+    // mp4mux name=mux ! filesink location=test2.mp4
+    // demux.video_0 ! queue ! h264parse ! mux.
+    // demux.audio_0 ! queue ! opusparse ! mux.
+    if (audio_codec == "Opus"){
+        QString fileNameMP4 = fileInfo.baseName() + ".mp4";
+        VK_Pipeline = "filesrc location=" + filePath +
+                " ! matroskademux name=demux mp4mux name=mux" +
+                " ! filesink location=" + path + "/" + fileNameMP4 + " "
+                                                                     "demux.video_0 ! queue ! h264parse ! mux." + " " +
+                "demux.audio_0 ! queue ! opusparse ! mux.";
+    }
+
+    qDebug().noquote() << global::nameOutput << VK_Pipeline;
+
+    QByteArray byteArray = VK_Pipeline.toUtf8();
+    const gchar *line = byteArray.constData();
+    GError *error = nullptr;
+    GstElement *pipeline = gst_parse_launch(line, &error);
+
+    //GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
+    //gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message_convert_mp4, this, nullptr );
+    //gst_object_unref( bus );
+
+    // Start playing
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    if (ret == GST_STATE_CHANGE_FAILURE)   { qDebug().noquote() << global::nameOutput << "[Convert] MP4 was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+    if (ret == GST_STATE_CHANGE_SUCCESS)   { qDebug().noquote() << global::nameOutput << "[Convert] MP4 was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+    if (ret == GST_STATE_CHANGE_ASYNC)     { qDebug().noquote() << global::nameOutput << "[Convert] MP4 was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+    if (ret == GST_STATE_CHANGE_NO_PREROLL){ qDebug().noquote() << global::nameOutput << "[Convert] MP4 was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if (ret == GST_STATE_CHANGE_FAILURE)   {
+        qDebug().noquote() << global::nameOutput << "[Convert] Unable to set the pipeline to the playing state.";
+        gst_object_unref(pipeline);
+        return;
+    }
+}

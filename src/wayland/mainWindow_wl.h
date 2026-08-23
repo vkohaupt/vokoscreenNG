@@ -132,6 +132,8 @@ private Q_SLOTS:
 
     void slot_languageChanged(int);
 
+    void slot_remux_mkv_to_mp4(QString filePath);
+
 
 protected:
     void closeEvent(QCloseEvent *event);
