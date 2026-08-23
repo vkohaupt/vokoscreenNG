@@ -420,7 +420,7 @@
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Comeza minimizado</translation>
+        <translation>Minimizar a aplicación ao abrila</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
@@ -452,7 +452,7 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imaxes das pestanas</translation>
+        <translation>Crear imaxes das lapelas</translation>
     </message>
     <message>
         <source>License information</source>
@@ -515,7 +515,7 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imaxes das pestanas</translation>
+        <translation>Crear imaxes das lapelas</translation>
     </message>
     <message>
         <source>License information</source>
