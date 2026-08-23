@@ -659,14 +659,6 @@
         <source>Minimized when recording starts</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Manual</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>license</name>

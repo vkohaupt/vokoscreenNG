@@ -657,6 +657,14 @@
         <source>Minimized when recording starts</source>
         <translation>Minimaliseren zodra opname start</translation>
     </message>
+    <message>
+        <source>Automatic</source>
+        <translation>Automatisch</translation>
+    </message>
+    <message>
+        <source>Manual</source>
+        <translation>Handmatig</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

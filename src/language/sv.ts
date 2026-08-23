@@ -657,6 +657,14 @@
         <source>Minimized when recording starts</source>
         <translation>Minimerad när inspelning startar</translation>
     </message>
+    <message>
+        <source>Automatic</source>
+        <translation>Automagiskt</translation>
+    </message>
+    <message>
+        <source>Manual</source>
+        <translation>Manuellt</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
