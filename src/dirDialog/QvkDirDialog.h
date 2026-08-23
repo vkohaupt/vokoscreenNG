@@ -27,6 +27,8 @@ private:
 private slots:
 
 protected:
+
+}
 #endif
 
 
@@ -54,8 +56,8 @@ private slots:
     void slot_clicked( QModelIndex );
 
 protected:
-#endif
 
 };
+#endif
 
 #endif // QVKDIRDIALOG_H
