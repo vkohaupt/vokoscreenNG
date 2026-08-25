@@ -1,0 +1,90 @@
+id: com.github.vkohaupt.vokoscreenNG
+runtime: org.kde.Platform
+runtime-version: 6.11
+sdk: org.kde.Sdk
+base: io.qt.qtwebengine.BaseApp
+base-version: '6.10'
+command: vokoscreenNG
+rename-desktop-file: vokoscreenNG.desktop
+rename-appdata-file: vokoscreenNG.appdata.xml
+rename-icon: vokoscreenNG
+
+finish-args:
+  - --device=all
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --filesystem=home
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=org.freedesktop.Flatpak
+  - --filesystem=xdg-run/pipewire-0
+  - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
+
+modules:
+  - name: gstreamer-plugins-bas
+    buildsystem: meson
+    sources:
+      - type: archive
+#        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-base-1.26.10.tar.xz
+        url: https://linuxecke.volkoh.de/vokoscreen/download/flatpak/gst-plugins-base-1.26.11.tar.xz
+        sha256: fc50f885d41f5d0407ce0876ec7235d9e7b82d48db2f4bc72c5f244a4ac79263
+
+#  gstreamer-plugins-good wird benötigt da in GStreamer 1.26.10 ximagesrc nicht vorhanden ist
+  - name: gstreamer-plugins-good
+    buildsystem: meson
+    sources:
+      - type: archive
+#        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.10.tar.xz
+        url: https://linuxecke.volkoh.de/vokoscreen/download/flatpak/gst-plugins-good-1.26.11.tar.xz
+        sha256: 001deb0876d5d743cd3448abf74a27adec3fd850012fcb1b00994861bd6c1145
+
+#   Für das kompilieren von gstreamer-plugins-bad wird als runtime der openh264 codec benötigt
+  - name: openh264
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/cisco/openh264.git
+        tag: v2.6.0
+        commit: 652bdb7719f30b52b08e506645a7322ff1b2cc6f
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
+        #branch: v2.6.0
+
+#   gstreamer-plugins-bad beinhaltet openh264enc
+  - name: gstreamer-plugins-bad
+    buildsystem: meson
+    sources:
+      - type: archive
+#        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.10.tar.xz
+        url: https://linuxecke.volkoh.de/vokoscreen/download/flatpak/gst-plugins-bad-1.26.11.tar.xz
+        sha256: 110fb82795f0e569b1e27b12ab9699d35c7762e1ff4db95335d6ac8d1442af3d
+
+  - name: vokoscreenNG
+    buildsystem: qmake
+    subdir: src
+    build-options:
+      env:
+        QMAKEPATH: /app # WICHTIG: qmake Basis-Pfad setzen
+    config-opts:
+      - QMAKE_INCDIR+=/app/include/QtWebEngine # Header-Pfade hinzufügen
+      - QMAKE_INCDIR+=/app/include/QtWebEngineCore
+      - QMAKE_INCDIR+=/app/include/QtWebEngineWidgets
+    post-install:
+      - install -Dm755 vokoscreenNG ${FLATPAK_DEST}/bin/vokoscreenNG
+      - install -Dm644 applications/vokoscreenNG.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/vokoscreenNG.png
+      - install -Dm644 applications/vokoscreenNG.desktop ${FLATPAK_DEST}/share/applications/vokoscreenNG.desktop
+      - install -Dm644 ../vokoscreenNG.appdata.xml ${FLATPAK_DEST}/share/metainfo/vokoscreenNG.appdata.xml
+#    sources:
+#      - type: git
+#        url: https://github.com/vkohaupt/vokoscreenNG.git
+#        branch: 3.0
+#      - type: file
+#        path: vokoscreenNG.appdata.xml
+    sources:
+       - type: dir
+         path: "/home/alf/Programmieren/vokoscreenNG/"
+       - type: file
+         path: vokoscreenNG.appdata.xml

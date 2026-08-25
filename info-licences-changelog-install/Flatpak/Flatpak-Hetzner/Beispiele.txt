@@ -1,0 +1,41 @@
+# Rechte auflisten
+flatpak info --show-permissions com.github.vkohaupt.vokoscreenNG
+
+
+# Rechte zurücksetzen die explizit gesetzt wurden
+flatpak override --reset com.github.vkohaupt.vokoscreenNG
+
+
+# Startet Programm aus branch stable oder master
+flatpak run --branch=stable com.github.vkohaupt.vokoscreenNG
+flatpak run --branch=master com.github.vkohaupt.vokoscreenNG
+
+
+# Wenn zwei Versionen installiert sind wird abgefragt welche gelöscht werden soll
+flatpak uninstall com.github.vkohaupt.vokoscreenNG
+
+
+# Löscht Profil und Programm
+flatpak uninstall --delete-data com.github.vkohaupt.vokoscreenNG
+
+
+# Löscht ungenutzte Laufzeitumgebungen und Profile
+flatpak uninstall --unused --delete-data
+
+
+# Verwendete Laufzeitumgebung anzeigen
+flatpak list --app --columns=application,runtime
+
+
+# Unterstützung mit pkg-config auflisten
+1. flatpak run org.freedesktop.Sdk//23.08
+2. pkg-config --list-all
+
+
+flatpak run org.kde.Sdk//6.6
+pkg-config --list-all
+
+
+# Sorgt dafür das Binarys auf dem Host ausgeführt werden
+# Zum Beispiel pipewire --version
+flatpak override --user --talk-name=org.freedesktop.Flatpak com.github.vkohaupt.vokoscreenNG

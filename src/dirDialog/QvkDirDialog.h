@@ -34,7 +34,7 @@ protected:
 
 #ifdef Q_OS_UNIX
 namespace Ui {
-class QvkDirDialog;
+    class QvkDirDialog;
 }
 
 class QvkDirDialog : public QDialog
