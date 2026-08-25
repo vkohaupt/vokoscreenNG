@@ -457,7 +457,7 @@ void QvkConvert_mkv_mp4_wl::on_discovered_cb (GstDiscoverer *discoverer, GstDisc
     }
 
     if (result != GST_DISCOVERER_OK) {
-        g_printerr ("[vokoscreenNG] This URI cannot be played\n");
+        g_printerr ("[vokoscreenNG] This URI cannot be played '%s'\n", uri);
         return;
     }
 
