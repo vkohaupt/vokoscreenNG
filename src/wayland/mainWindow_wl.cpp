@@ -1123,6 +1123,8 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + ".mkv";
     stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 
+    muxerVideoFilename = ui->lineEditVideoPath->text() + "/" + newVideoFilename;
+
     QString VK_Pipeline = stringList.join( " ! " );
     VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
     VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
@@ -1196,6 +1198,9 @@ void QvkMainWindow_wl::slot_stop()
         hide();
         show();
     }
+
+
+    slot_remux_mkv_to_mp4(muxerVideoFilename);
 }
 
 
@@ -1514,8 +1519,10 @@ void QvkMainWindow_wl::slot_Continue()
 
 void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
 {
+    qDebug().noquote();
+
     QString audio_codec = "";
-    if (ui->comboBoxAudioCodec->isEnabled() == true){
+    if (VK_getSelectedAudioDevice().empty() == false){
         audio_codec = ui->comboBoxAudioCodec->currentText();
     }
 
@@ -1537,12 +1544,12 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
     // mp4mux name=mux ! filesink location=test2.mp4
     // demux.video_0 ! queue ! h264parse ! mux.
     // demux.audio_0 ! queue ! mpegaudioparse ! mux.
-    if (audio_codec == "MPEG"){
+    if (audio_codec == "mpeg"){
         QString fileNameMP4 = fileInfo.baseName() + ".mp4";
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux name=demux mp4mux name=mux" +
-                " ! filesink location=" + path + "/" + fileNameMP4 + " "
-                                                                     "demux.video_0 ! queue ! h264parse ! mux." + " " +
+                " ! filesink location=" + path + "/" + fileNameMP4 + " " +
+                "demux.video_0 ! queue ! h264parse ! mux." + " " +
                 "demux.audio_0 ! queue ! mpegaudioparse ! mux.";
     }
 
@@ -1550,16 +1557,16 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
     // mp4mux name=mux ! filesink location=test2.mp4
     // demux.video_0 ! queue ! h264parse ! mux.
     // demux.audio_0 ! queue ! opusparse ! mux.
-    if (audio_codec == "Opus"){
+    if (audio_codec == "opus"){
         QString fileNameMP4 = fileInfo.baseName() + ".mp4";
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux name=demux mp4mux name=mux" +
-                " ! filesink location=" + path + "/" + fileNameMP4 + " "
-                                                                     "demux.video_0 ! queue ! h264parse ! mux." + " " +
+                " ! filesink location=" + path + "/" + fileNameMP4 + " " +
+                "demux.video_0 ! queue ! h264parse ! mux." + " " +
                 "demux.audio_0 ! queue ! opusparse ! mux.";
     }
 
-    qDebug().noquote() << global::nameOutput << VK_Pipeline;
+    qDebug().noquote() << global::nameOutput << "[Convert]" << VK_Pipeline;
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();

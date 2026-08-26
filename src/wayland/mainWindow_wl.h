@@ -105,6 +105,8 @@ private:
 
     QString whatWasClicked;
 
+    QString muxerVideoFilename = "";
+
 public Q_SLOTS:
 
 
