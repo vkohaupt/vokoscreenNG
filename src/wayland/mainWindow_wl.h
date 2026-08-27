@@ -106,6 +106,8 @@ private:
     QString whatWasClicked;
 
     QString muxerVideoFilename = "";
+    static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer user_data);
+
 
 public Q_SLOTS:
 
