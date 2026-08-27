@@ -1199,8 +1199,9 @@ void QvkMainWindow_wl::slot_stop()
         show();
     }
 
-
-    slot_remux_mkv_to_mp4(muxerVideoFilename);
+    if (ui->comboBoxFormat->currentText() == "mp4"){
+        slot_remux_mkv_to_mp4(muxerVideoFilename);
+    }
 }
 
 
