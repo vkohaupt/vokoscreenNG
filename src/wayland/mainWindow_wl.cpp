@@ -25,9 +25,10 @@
 #include <QGuiApplication>
 #include <QDesktopServices>
 #include <QProcess>
-#include <QTimer>
+#include <QTime>
 #include <QImageWriter>
 #include <QCheckBox>
+#include <QByteArray>
 
 // Snapshot
 #include <QDBusConnection>
@@ -1526,18 +1527,18 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
     switch(GST_MESSAGE_TYPE (message))
     {
     case GST_MESSAGE_ERROR:{
-        qDebug().noquote() << global::nameOutput << "[Remux] GST_MESSAGE_ERROR";
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_ERROR";
         break;
     }
     case GST_MESSAGE_EOS:{
-        qDebug().noquote() << global::nameOutput << "[Remux] GST_MESSAGE_EOS";
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_EOS";
         QTime timeEnd = QTime::currentTime();
-        int timeDiv = timeStart.msecsTo(timeEnd);
-        qDebug().noquote() << global::nameOutput << "[Remux]" << timeDiv << "ms";
+        qreal timeDiv = timeStart.msecsTo(timeEnd);
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4" << timeDiv/1000 << "sec";
         break;
     }
     case GST_MESSAGE_STREAM_START:{
-        qDebug().noquote() << global::nameOutput << "[Remux] GST_MESSAGE_STREAM_START";
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_STREAM_START";
         timeStart = QTime::currentTime();
         break;
     }
