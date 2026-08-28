@@ -669,6 +669,14 @@ void QvkMainWindow_wl::set_Connects()
 
     connect(ui->pushButton_log_openfolder, &QPushButton::clicked, this, [=](){slot_log_folder();});
     connect(ui->pushButton_log_refresh,    &QPushButton::clicked, this, [=](){slot_log_refresh();});
+
+
+    // Signal von Gstreamer abfangen und als Nachricht anzeigen
+     connect(this, &QvkMainWindow_wl::signal_gst_eos, this, [](const QString &msg) {
+         QMessageBox::information(nullptr, "MKV to MP4", msg);
+     });
+
+
 }
 
 
@@ -1519,11 +1527,13 @@ void QvkMainWindow_wl::slot_Continue()
 }
 
 //----------------------------------------------------------------------------------------------------------
-QTime timeStart;
 GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer user_data)
 {
     Q_UNUSED(bus);
-    Q_UNUSED(user_data)
+    static QTime timeStart;
+
+    QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(user_data);
+
     switch(GST_MESSAGE_TYPE (message))
     {
     case GST_MESSAGE_ERROR:{
@@ -1534,7 +1544,15 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
         qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_EOS";
         QTime timeEnd = QTime::currentTime();
         qreal timeDiv = timeStart.msecsTo(timeEnd);
-        qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4" << timeDiv/1000 << "sec";
+        QString msg = "[Remux] mkv to mp4 in " + QString::number(timeDiv/1000) + " seconds";
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 in" << timeDiv/1000 << "seconds";
+
+        // WICHTIG: Signal über einen Thread-Wechsel (QueuedConnection) senden.
+        // Qt erledigt das automatisch, wenn Signal und Slot in verschiedenen Threads leben,
+        // oder wenn wir invokeMethod nutzen:
+        QMetaObject::invokeMethod(self, [self, msg]() {
+            emit self->signal_gst_eos(msg);
+        }, Qt::QueuedConnection);
         break;
     }
     case GST_MESSAGE_STREAM_START:{
