@@ -106,10 +106,10 @@ private:
     QString whatWasClicked;
 
     QString muxerVideoFilename = "";
-    static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer user_data);
-    static GstBusSyncReply call_bus_set_state_to_null(GstBus *bus, GstMessage *message, gpointer m_pipeline);
+    static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer data);
+//    static GstBusSyncReply call_bus_set_state_to_null(GstBus *bus, GstMessage *message, gpointer m_pipeline);
     bool isFileOpenByAnyProcess(const QString &targetFilePath);
-
+    GstElement *pipelineMP4;
 
 public Q_SLOTS:
 

@@ -1540,39 +1540,10 @@ static gboolean set_pipeline_null_idle(gpointer data) {
 }
 
 
-GstBusSyncReply QvkMainWindow_wl::call_bus_set_state_to_null(GstBus *bus, GstMessage *message, gpointer m_pipeline)
-{
-    Q_UNUSED(bus);
-    GstElement *pipeline = GST_ELEMENT(m_pipeline);
-
-    switch(GST_MESSAGE_TYPE (message))
-    {
-    case GST_MESSAGE_EOS:{
-        g_idle_add(set_pipeline_null_idle, pipeline);
-        break;
-    }
-    case GST_MESSAGE_STATE_CHANGED:{
-        if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
-            GstState old_state, new_state, pending;
-            gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
-            qDebug() << "[Remux] Pipeline state changed from"
-                     << gst_element_state_get_name(old_state)
-                     << "to" << gst_element_state_get_name(new_state);
-        }
-        break;
-    }
-    default:
-        break;
-    }
-    return GST_BUS_PASS;
-}
-
-
-GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer user_data)
+GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus);
     static QTime timeStart;
-    QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(user_data);
 
     switch(GST_MESSAGE_TYPE (message))
     {
@@ -1581,24 +1552,46 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
         break;
     }
     case GST_MESSAGE_EOS:{
+        // ---------------- Begin pipeline auf null setzen -----------------------------
+        QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(data);
+        GstElement *pipeline = self->pipelineMP4;
+        g_idle_add(set_pipeline_null_idle, pipeline);
+        // ---------------- End pipeline auf null setzen -----------------------------
+
+        // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
         qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_EOS";
         QTime timeEnd = QTime::currentTime();
         qreal timeDiv = timeStart.msecsTo(timeEnd);
         QString msg = "[Remux] mkv to mp4 in " + QString::number(timeDiv/1000) + " seconds";
         qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 in" << timeDiv/1000 << "seconds";
-
         // WICHTIG: Signal über einen Thread-Wechsel (QueuedConnection) senden.
         // Qt erledigt das automatisch, wenn Signal und Slot in verschiedenen Threads leben,
         // oder wenn wir invokeMethod nutzen:
         QMetaObject::invokeMethod(self, [self, msg]() {
             emit self->signal_gst_eos(msg);
         }, Qt::QueuedConnection);
+        // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
 
         break;
     }
     case GST_MESSAGE_STREAM_START:{
+        // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
         qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_STREAM_START";
         timeStart = QTime::currentTime();
+        // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
+
+        break;
+    }
+    case GST_MESSAGE_STATE_CHANGED:{
+        QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(data);
+        GstElement *pipeline = self->pipelineMP4;
+        if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
+            GstState old_state, new_state, pending;
+            gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
+            qDebug() << "[Remux] Pipeline state changed from"
+                     << gst_element_state_get_name(old_state)
+                     << "to" << gst_element_state_get_name(new_state);
+        }
         break;
     }
     default:
@@ -1662,11 +1655,12 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
     GError *error = nullptr;
-    GstElement *pipelineMP4  = gst_parse_launch(line, &error);
+//    GstElement *pipelineMP4  = gst_parse_launch(line, &error);
+    this->pipelineMP4  = gst_parse_launch(line, &error);
 
     GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipelineMP4));
-    //gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_message_convert_mp4, this, nullptr);
-    gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_set_state_to_null, pipelineMP4, nullptr);
+    gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_message_convert_mp4, this, nullptr);
+    //gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_set_state_to_null, pipelineMP4, nullptr);
     gst_object_unref(bus);
 
     // Start playing
