@@ -1588,9 +1588,9 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
         if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
             GstState old_state, new_state, pending;
             gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
-            qDebug() << "[Remux] Pipeline state changed from"
-                     << gst_element_state_get_name(old_state)
-                     << "to" << gst_element_state_get_name(new_state);
+            qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 Pipeline state changed from"
+                               << gst_element_state_get_name(old_state)
+                               << "to" << gst_element_state_get_name(new_state);
         }
         break;
     }
@@ -1655,12 +1655,10 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
     GError *error = nullptr;
-//    GstElement *pipelineMP4  = gst_parse_launch(line, &error);
     this->pipelineMP4  = gst_parse_launch(line, &error);
 
     GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipelineMP4));
     gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_message_convert_mp4, this, nullptr);
-    //gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_set_state_to_null, pipelineMP4, nullptr);
     gst_object_unref(bus);
 
     // Start playing
@@ -1676,11 +1674,6 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
     }
 }
 
-
-#include <QDir>
-#include <QFileInfo>
-#include <QString>
-#include <QStringList>
 
 // Prüft, ob eine bestimmte Datei aktuell von IRGENDEINEM Prozess im System geöffnet ist.
 // @param targetFilePath Der absolute Pfad zur zu prüfenden Datei.
