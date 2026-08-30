@@ -672,11 +672,15 @@ void QvkMainWindow_wl::set_Connects()
 
 
     // Signal von Gstreamer abfangen und als Nachricht anzeigen
-     connect(this, &QvkMainWindow_wl::signal_gst_eos, this, [](const QString &msg) {
-         QMessageBox::information(nullptr, "MKV to MP4", msg);
-     });
-
-
+    connect(this, &QvkMainWindow_wl::signal_gst_eos, this, [=](const QString &msg){
+        QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
+        vkShowMessage_wl->set_StatusIcon(":/pictures/status/information.png");
+        //vkShowMessage_wl->set_Image( filePath_new );
+        vkShowMessage_wl->set_timeOut(10000);
+        vkShowMessage_wl->showMessage("");
+        vkShowMessage_wl->set_WindowTitle("Remux MKV to MP4");
+        vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
+    });
 }
 
 

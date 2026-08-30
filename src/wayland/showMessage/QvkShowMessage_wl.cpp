@@ -141,9 +141,11 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     statusPixmap = statusPixmap.scaled( statusPixmapSize, statusPixmapSize, Qt::KeepAspectRatio, Qt::SmoothTransformation );
     painterWindowPixmap.drawPixmap( 20, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - statusPixmapSize/2, statusPixmap );
 
-    QPixmap imagePixmap( image );
-    imagePixmap = imagePixmap.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterWindowPixmap.drawPixmap( 100, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - statusPixmapSize/2, imagePixmap );
+    QPixmap imagePixmap(image);
+    if (imagePixmap.isNull() == false){
+        imagePixmap = imagePixmap.scaled(300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        painterWindowPixmap.drawPixmap(100, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - statusPixmapSize/2, imagePixmap);
+    }
 
     painterWindowPixmap.drawPixmap( drawWindowWidth-pixmapDuration.size().width()-6, titelLineHeight+6, pixmapDuration );
 
@@ -213,9 +215,9 @@ void QvkShowMessage_wl::mouseReleaseEvent( QMouseEvent *event )
 }
 
 
-void QvkShowMessage_wl::set_folderPath( QString text )
+void QvkShowMessage_wl::set_folderPath(QString path)
 {
-    folderPath = text;
+    folderPath = path;
 }
 
 

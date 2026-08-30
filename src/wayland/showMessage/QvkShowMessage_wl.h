@@ -41,7 +41,7 @@ public:
     void set_StatusIcon( QString m_statusIcon );
     void set_Image( QString m_image );
     void set_timeOut( qreal value );
-    void set_folderPath( QString text );
+    void set_folderPath(QString path);
     void set_WindowTitle( QString title );
 
 
