@@ -1531,27 +1531,11 @@ void QvkMainWindow_wl::slot_Continue()
 }
 
 //------------------------------------ Begin MP4 Remux ----------------------------------------------------------------------
-/*
-struct PipelineIdleData {
-    GstElement *pipeline;
-    QvkMainWindow_wl *mainWindow;
-};
-*/
 
-static gboolean set_pipeline_null_idle(gpointer data)
+gboolean QvkMainWindow_wl::set_pipeline_null_idle(gpointer data)
 {
     GstElement *pipeline = GST_ELEMENT(data);
     gst_element_set_state(pipeline, GST_STATE_NULL);
-/*
-    QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(data);
-    bool bo = self->is_FileOpenByAnyProcess(self->muxerVideoFilename);
-    qDebug().noquote() << global::nameOutput << "File is open" << bo;
-    if (bo == false){
-        QMetaObject::invokeMethod(self, [self](){
-            emit self->signal_delete_mkv();
-        }, Qt::QueuedConnection);
-    }
-*/
     gst_object_unref(pipeline);
     return G_SOURCE_REMOVE;
 }
