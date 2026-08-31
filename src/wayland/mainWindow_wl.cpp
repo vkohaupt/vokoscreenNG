@@ -1531,14 +1531,27 @@ void QvkMainWindow_wl::slot_Continue()
 }
 
 //------------------------------------ Begin MP4 Remux ----------------------------------------------------------------------
+/*
+struct PipelineIdleData {
+    GstElement *pipeline;
+    QvkMainWindow_wl *mainWindow;
+};
+*/
 
-static gboolean set_pipeline_null_idle(gpointer data) {
-    if (!data){
-        return G_SOURCE_REMOVE;
-    }
+static gboolean set_pipeline_null_idle(gpointer data)
+{
     GstElement *pipeline = GST_ELEMENT(data);
     gst_element_set_state(pipeline, GST_STATE_NULL);
-    qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 set pipeline tu NULL";
+/*
+    QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(data);
+    bool bo = self->is_FileOpenByAnyProcess(self->muxerVideoFilename);
+    qDebug().noquote() << global::nameOutput << "File is open" << bo;
+    if (bo == false){
+        QMetaObject::invokeMethod(self, [self](){
+            emit self->signal_delete_mkv();
+        }, Qt::QueuedConnection);
+    }
+*/
     gst_object_unref(pipeline);
     return G_SOURCE_REMOVE;
 }
@@ -1571,7 +1584,7 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
         // WICHTIG: Signal über einen Thread-Wechsel (QueuedConnection) senden.
         // Qt erledigt das automatisch, wenn Signal und Slot in verschiedenen Threads leben,
         // oder wenn wir invokeMethod nutzen:
-        QMetaObject::invokeMethod(self, [self, msg]() {
+        QMetaObject::invokeMethod(self, [self, msg](){
             emit self->signal_gst_eos(msg);
         }, Qt::QueuedConnection);
         // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
@@ -1592,10 +1605,18 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
         if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
             GstState old_state, new_state, pending;
             gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
-            qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 Pipeline state changed from"
+            qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 Pipeline state changed from:"
                                << gst_element_state_get_name(old_state)
                                << "to" << gst_element_state_get_name(new_state);
         }
+
+        GstState old_state, new_state, pending;
+        gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
+        if (new_state == GST_STATE_NULL){
+            bool bo = is_FileOpenByAnyProcess(self->muxerVideoFilename);
+            qDebug() << "File is open:" << bo;
+        }
+
         break;
     }
     default:
@@ -1632,7 +1653,7 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
     // mp4mux name=mux ! filesink location=test2.mp4
     // demux.video_0 ! queue ! h264parse ! mux.
     // demux.audio_0 ! queue ! mpegaudioparse ! mux.
-    if (audio_codec == "mpeg"){
+    if (audio_codec == "mp3"){
         QString fileNameMP4 = fileInfo.baseName() + ".mp4";
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux name=demux mp4mux name=mux" +
@@ -1683,7 +1704,8 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
 // @param targetFilePath Der absolute Pfad zur zu prüfenden Datei.
 // @return true, wenn die Datei geöffnet ist, sonst false.
 
-bool QvkMainWindow_wl::isFileOpenByAnyProcess(const QString &targetFilePath) {
+bool QvkMainWindow_wl::is_FileOpenByAnyProcess(QString targetFilePath)
+{
     // Sicherstellen, dass wir den absoluten, bereinigten Pfad vergleichen
     QString cleanTargetPath = QFileInfo(targetFilePath).absoluteFilePath();
     if (cleanTargetPath.isEmpty()) return false;
@@ -1709,13 +1731,14 @@ bool QvkMainWindow_wl::isFileOpenByAnyProcess(const QString &targetFilePath) {
         // Alle File Descriptors (Symlinks) in diesem Ordner auflisten
         QStringList fds = fdDir.entryList(QDir::Files | QDir::System | QDir::NoDotAndDotDot);
 
-        for (const QString &fd : fds) {
-            QString linkPath = fdDir.absoluteFilePath(fd);
+        for (int i = 0; i < fds.count(); ++i) {
+            QString linkPath = fdDir.absoluteFilePath(fds[i]);
 
             // QFileInfo::symLinkTarget() liest aus, wohin der Symlink im System zeigt
             QString openedFile = QFileInfo(linkPath).symLinkTarget();
 
             if (openedFile == cleanTargetPath) {
+                qDebug() << "This file is open:" << openedFile;
                 return true; // Gefunden! Ein Prozess hat diese Datei offen.
             }
         }

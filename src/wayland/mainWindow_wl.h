@@ -56,7 +56,6 @@ public:
     QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl;
     QvkHelpBrowser_wl *vkHelpBrowser_wl;
 
-
 private:
     QvkSettings_wl vkSettings_wl;
     QTranslator translator;
@@ -106,9 +105,13 @@ private:
     QString whatWasClicked;
 
     QString muxerVideoFilename = "";
+//    static gboolean set_pipeline_null_idle(PipelineIdleData data);
     static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer data);
-    bool isFileOpenByAnyProcess(const QString &targetFilePath);
+    static bool is_FileOpenByAnyProcess(QString targetFilePath);
     GstElement *pipelineMP4;
+
+    QString getPipelineStructure(GstElement *pipeline);
+
 
 public Q_SLOTS:
 
@@ -148,7 +151,9 @@ protected:
 Q_SIGNALS:
     void signal_newVideoFilename(QString filename);
     void signal_beginRecordTime(QString time);
-    void signal_gst_eos(QString value);
+    void signal_gst_eos(QString msg);
+    void signal_delete_mkv();
+
 
 };
 
