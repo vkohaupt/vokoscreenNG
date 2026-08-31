@@ -1641,9 +1641,9 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
         QString fileNameMP4 = fileInfo.baseName() + ".mp4";
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux name=demux mp4mux name=mux" +
-                " ! filesink location=" + path + "/" + fileNameMP4 + " " +
+                " ! filesink location=\"" + path + "/" + fileNameMP4 + "\" " +
                 "demux.video_0 ! queue ! h264parse ! mux.video_0" + " " +
-                "demux.audio_0 ! queue ! mpegaudioparse ! mux._audio_0";
+                "demux.audio_0 ! queue ! mpegaudioparse ! mux.audio_0";
     }
 
     // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
@@ -1654,7 +1654,7 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
         QString fileNameMP4 = fileInfo.baseName() + ".mp4";
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux name=demux mp4mux name=mux" +
-                " ! filesink location=" + path + "/" + fileNameMP4 + " " +
+                " ! filesink location=\"" + path + "/" + fileNameMP4 + "\" " +
                 "demux.video_0 ! queue ! h264parse ! mux.video_0" + " " +
                 "demux.audio_0 ! queue ! opusparse ! mux.audio_0";
     }
