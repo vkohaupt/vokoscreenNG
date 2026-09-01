@@ -1597,8 +1597,21 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
         GstState old_state, new_state, pending;
         gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
         if (new_state == GST_STATE_NULL){
-            bool bo = is_FileOpenByAnyProcess(self->muxerVideoFilename);
-            qDebug() << "File is open:" << bo;
+            QString muxerVideoFilename_MKV = self->muxerVideoFilename;
+            QString muxerVideoFilename_MP4 = self->muxerVideoFilename;;
+            muxerVideoFilename_MP4.replace(".mkv", ".mp4");
+            bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_MP4);
+            qDebug().noquote() << global::nameOutput << "[Remux] File not open:" << muxerVideoFilename_MP4;
+            if (bo == false){
+                QFile file(muxerVideoFilename_MKV);
+                if (file.exists() == true){
+                    if (file.remove() == true){
+                        qDebug().noquote() << global::nameOutput << "[Remux]" << muxerVideoFilename_MKV << "was deleted";
+                    }else{
+                        qDebug().noquote() << global::nameOutput << "[Remux]" << muxerVideoFilename_MKV << "could not be deleted";
+                    }
+                }
+            }
         }
 
         break;
