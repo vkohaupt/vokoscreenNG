@@ -1604,14 +1604,20 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
             QFile file(muxerVideoFilename_MKV);
             if (file.exists() == true){
                 bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_MP4);
-                qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 File is not open and ready to use:" << muxerVideoFilename_MP4;
+                qDebug().noquote() << global::nameOutput
+                                   << "[Remux] mkv to mp4 File is not open and ready to use:"
+                                   << muxerVideoFilename_MP4;
                 if (bo == false){
                     QFile file(muxerVideoFilename_MKV);
                     if (file.exists() == true){
                         if (file.remove() == true){
-                            qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 File was deleted:" << muxerVideoFilename_MKV;
+                            qDebug().noquote() << global::nameOutput
+                                               << "[Remux] mkv to mp4 File was deleted:"
+                                               << muxerVideoFilename_MKV;
                         }else{
-                            qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 File could not be deleted:" << muxerVideoFilename_MKV;
+                            qDebug().noquote() << global::nameOutput
+                                               << "[Remux] mkv to mp4 File could not be deleted:"
+                                               << muxerVideoFilename_MKV;
                         }
                     }
                 }
