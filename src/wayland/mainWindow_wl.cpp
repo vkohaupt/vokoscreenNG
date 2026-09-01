@@ -1600,15 +1600,19 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
             QString muxerVideoFilename_MKV = self->muxerVideoFilename;
             QString muxerVideoFilename_MP4 = self->muxerVideoFilename;;
             muxerVideoFilename_MP4.replace(".mkv", ".mp4");
-            bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_MP4);
-            qDebug().noquote() << global::nameOutput << "[Remux] File not open:" << muxerVideoFilename_MP4;
-            if (bo == false){
-                QFile file(muxerVideoFilename_MKV);
-                if (file.exists() == true){
-                    if (file.remove() == true){
-                        qDebug().noquote() << global::nameOutput << "[Remux]" << muxerVideoFilename_MKV << "was deleted";
-                    }else{
-                        qDebug().noquote() << global::nameOutput << "[Remux]" << muxerVideoFilename_MKV << "could not be deleted";
+
+            QFile file(muxerVideoFilename_MKV);
+            if (file.exists() == true){
+                bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_MP4);
+                qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 File is not open and ready to use:" << muxerVideoFilename_MP4;
+                if (bo == false){
+                    QFile file(muxerVideoFilename_MKV);
+                    if (file.exists() == true){
+                        if (file.remove() == true){
+                            qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 File was deleted:" << muxerVideoFilename_MKV;
+                        }else{
+                            qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 File could not be deleted:" << muxerVideoFilename_MKV;
+                        }
                     }
                 }
             }
