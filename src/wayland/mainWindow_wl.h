@@ -16,7 +16,6 @@
 #include "QvkInformation_wl.h"
 #include "QvkImageFromTabs_wl.h"
 #include "QvkCameraController_wl.h"
-#include "QvkConvert_mkv_mp4_wl.h"
 #include "QvkAudioPipewireController_wl.h"
 #include "QvkHelpBrowser_wl.h"
 
@@ -53,7 +52,6 @@ public:
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
     QvkSystray_wl *vkSystray;
     QvkCameraController_wl *vkCameraController_wl = nullptr;
-    QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl;
     QvkHelpBrowser_wl *vkHelpBrowser_wl;
 
 private:
@@ -113,10 +111,10 @@ private:
     QString getPipelineStructure(GstElement *pipeline);
 
 
-public Q_SLOTS:
+public slots:
 
 
-private Q_SLOTS:
+private slots:
     void slot_pre_portal_start();
     void slot_portal_start();
     void slot_portal_dialog_aborted();
@@ -148,7 +146,7 @@ protected:
     void changeEvent(QEvent *event);
 
 
-Q_SIGNALS:
+signals:
     void signal_newVideoFilename(QString filename);
     void signal_beginRecordTime(QString time);
     void signal_gst_eos(QString msg);

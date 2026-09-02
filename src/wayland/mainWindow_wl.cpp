@@ -139,8 +139,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->label_Upate_tab_2->hide();
     //    ui->widgetLanguageAndHelp->setVisible( false );
 
-
-    vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl( ui );
     new QvkConvert_mkv_gif_wl( ui );
     new QvkConvert_mkv_to_webm_wl( ui );
     new QvkConvert_mkv_repair_wl( ui );
