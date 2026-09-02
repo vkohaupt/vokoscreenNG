@@ -153,8 +153,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         font.setPointSize(fontSize);
         painterText.setFont(font);
         painterText.setPen(Qt::black);
-        QRect rect(0, 0, widthText, heightText);
-        painterText.drawText(rect, Qt::AlignCenter, text);
+        painterText.drawText(pixmapText.rect(), Qt::AlignCenter, text);
     }
     painterText.end();
     painterWindowPixmap.drawPixmap(80, 60, pixmapText);
