@@ -677,7 +677,7 @@ void QvkMainWindow_wl::set_Connects()
         vkShowMessage_wl->set_StatusIcon(":/pictures/status/information.png");
         //vkShowMessage_wl->set_Image( filePath_new );
         vkShowMessage_wl->set_timeOut(10000);
-        vkShowMessage_wl->showMessage("");
+        vkShowMessage_wl->set_text("");
         vkShowMessage_wl->set_WindowTitle("Remux MKV to MP4");
         vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
     });
@@ -749,7 +749,7 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
                     vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
                     vkShowMessage_wl->set_Image( filePath_new );
                     vkShowMessage_wl->set_timeOut( 10000 );
-                    vkShowMessage_wl->showMessage( "" );
+                    vkShowMessage_wl->set_text("");
                     vkShowMessage_wl->set_WindowTitle( "Snapshot" );
                     vkShowMessage_wl->set_folderPath( path_to_snapshot_folder );
                 }

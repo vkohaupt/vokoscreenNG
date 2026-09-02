@@ -37,7 +37,7 @@ class QvkShowMessage_wl: public QDialog
 
 public:
     QvkShowMessage_wl();
-    void showMessage( QString text );
+    void set_text(QString text);
     void set_StatusIcon( QString m_statusIcon );
     void set_Image( QString m_image );
     void set_timeOut( qreal value );

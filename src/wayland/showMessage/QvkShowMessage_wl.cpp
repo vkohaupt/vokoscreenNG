@@ -51,6 +51,8 @@ QvkShowMessage_wl::QvkShowMessage_wl()
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( timerInterval );
     connect(timer, &QTimer::timeout, this, [=](){slot_durationButton();});
+    degreeStep = 360 / timeOut * timerInterval;
+    timer->start();
 }
 
 
@@ -221,12 +223,9 @@ void QvkShowMessage_wl::set_folderPath(QString path)
 }
 
 
-void QvkShowMessage_wl::showMessage( QString text )
+void QvkShowMessage_wl::set_text(QString text)
 {
     Q_UNUSED(text)
-    degreeStep = 360 / timeOut * timerInterval;
-    timer->start();
-    show();
 }
 
 
