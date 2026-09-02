@@ -675,9 +675,9 @@ void QvkMainWindow_wl::set_Connects()
     connect(this, &QvkMainWindow_wl::signal_gst_eos, this, [=](const QString &msg){
         QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
         vkShowMessage_wl->set_StatusIcon(":/pictures/status/information.png");
-        //vkShowMessage_wl->set_Image( filePath_new );
         vkShowMessage_wl->set_timeOut(10000);
-        vkShowMessage_wl->set_text("");
+        QString m_text = msg.section(" ", 0, 0) + "\n" + msg.section(" ", 1, 4) + "\n" + msg.section(" ", 5, 100);
+        vkShowMessage_wl->set_text(m_text);
         vkShowMessage_wl->set_WindowTitle("Remux MKV to MP4");
         vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
     });

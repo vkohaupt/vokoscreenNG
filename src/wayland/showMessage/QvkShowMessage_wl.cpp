@@ -125,18 +125,40 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     pixmapUrlSize = pixmapUrl.size();
     QPainter painterUrl;
     painterUrl.begin( &pixmapUrl );
-      int fontSize = 11;
-      QFont font;
-      font.setPointSize( fontSize );
-      font.setUnderline( true );
-      painterUrl.setFont( font );
-      painterUrl.setPen( Qt::blue );
-      QString folder = tr( "Folder" );
-      QFontMetrics fontMetrics( font );
-      int textWidth = fontMetrics.horizontalAdvance( folder );
-      painterUrl.drawText( ( pixmapUrlSize.width()-textWidth )/2, 16, folder );
+    {
+        int fontSize = 11;
+        QFont font;
+        font.setPointSize( fontSize );
+        font.setUnderline( true );
+        painterUrl.setFont( font );
+        painterUrl.setPen( Qt::blue );
+        QString folder = tr( "Folder" );
+        QFontMetrics fontMetrics( font );
+        int textWidth = fontMetrics.horizontalAdvance( folder );
+        painterUrl.drawText( ( pixmapUrlSize.width()-textWidth )/2, 16, folder );
+    }
     painterUrl.end();
     painterWindowPixmap.drawPixmap( 30, 30, pixmapUrl );
+
+    // Text
+    int widthText = 200;
+    int heightText = 80;
+    QPixmap pixmapText(widthText, heightText);
+    pixmapText.fill(Qt::transparent);
+    QPainter painterText;
+    {
+        painterText.begin(&pixmapText);
+        int fontSize = 11;
+        QFont font;
+        font.setPointSize(fontSize);
+        painterText.setFont(font);
+        painterText.setPen(Qt::black);
+        QRect rect(0, 0, widthText, heightText);
+        painterText.drawText(rect, Qt::AlignCenter, text);
+    }
+    painterText.end();
+    painterWindowPixmap.drawPixmap(80, 60, pixmapText);
+
 
     QPixmap statusPixmap( statusIcon );
     int statusPixmapSize = 48;
