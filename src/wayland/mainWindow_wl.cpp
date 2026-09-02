@@ -679,7 +679,7 @@ void QvkMainWindow_wl::set_Connects()
         QString m_text = msg.section(" ", 0, 0).replace(msg.section(" ", 0, 0), "Convert");
                 m_text = m_text + "\n" + msg.section(" ", 1, 4) + "\n" + msg.section(" ", 5, 100);
         vkShowMessage_wl->set_text(m_text);
-        vkShowMessage_wl->set_WindowTitle("Remux MKV to MP4");
+        vkShowMessage_wl->set_WindowTitle(global::name + " " + global::version);
         vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
     });
 }
