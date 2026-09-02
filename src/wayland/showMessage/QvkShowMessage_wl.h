@@ -37,7 +37,7 @@ class QvkShowMessage_wl: public QDialog
 
 public:
     QvkShowMessage_wl();
-    void set_text(QString text);
+    void set_text(QString m_text);
     void set_StatusIcon( QString m_statusIcon );
     void set_Image( QString m_image );
     void set_timeOut( qreal value );
@@ -66,6 +66,7 @@ private:
     QSize pixmapUrlSize;
     int titelLineHeight = 24;
     QString windowTitle;
+    QString text;
 
 
 private slots:

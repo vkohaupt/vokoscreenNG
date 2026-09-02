@@ -223,9 +223,9 @@ void QvkShowMessage_wl::set_folderPath(QString path)
 }
 
 
-void QvkShowMessage_wl::set_text(QString text)
+void QvkShowMessage_wl::set_text(QString m_text)
 {
-    Q_UNUSED(text)
+    text = m_text;
 }
 
 
