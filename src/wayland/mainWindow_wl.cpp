@@ -303,7 +303,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         language = language.trimmed();
         ui->comboBoxLanguage->addItem( sortList.at(x), language );
     }
-    connect( ui->comboBoxLanguage, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_languageChanged(int) ) );
+    connect(ui->comboBoxLanguage,
+            &QComboBox::currentIndexChanged,
+            this,
+            [=](int index){
+        slot_languageChanged(index);
+    });
 
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
