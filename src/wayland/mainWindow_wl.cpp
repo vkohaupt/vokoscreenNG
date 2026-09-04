@@ -1650,7 +1650,7 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux" +
                 " ! h264parse" +
-                " ! queue" +
+                " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600" +
                 " ! mp4mux name=mux" +
                 " ! filesink location=" + path + "/" + fileNameMP4;
     }
@@ -1664,8 +1664,8 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux name=demux mp4mux name=mux" +
                 " ! filesink location=\"" + path + "/" + fileNameMP4 + "\" " +
-                "demux.video_0 ! queue ! h264parse ! mux.video_0" + " " +
-                "demux.audio_0 ! queue ! mpegaudioparse ! mux.audio_0";
+                "demux.video_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! h264parse ! mux.video_0" + " " +
+                "demux.audio_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! mpegaudioparse ! mux.audio_0";
     }
 
     // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
@@ -1677,8 +1677,8 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux name=demux mp4mux name=mux" +
                 " ! filesink location=\"" + path + "/" + fileNameMP4 + "\" " +
-                "demux.video_0 ! queue ! h264parse ! mux.video_0" + " " +
-                "demux.audio_0 ! queue ! opusparse ! mux.audio_0";
+                "demux.video_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! h264parse ! mux.video_0" + " " +
+                "demux.audio_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! opusparse ! mux.audio_0";
     }
 
     qDebug().noquote() << global::nameOutput << "[Remux]" << VK_Pipeline;
