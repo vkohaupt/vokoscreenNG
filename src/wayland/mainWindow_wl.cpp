@@ -1721,7 +1721,6 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
 // Prüft, ob eine bestimmte Datei aktuell von IRGENDEINEM Prozess im System geöffnet ist.
 // @param targetFilePath Der absolute Pfad zur zu prüfenden Datei.
 // @return true, wenn die Datei geöffnet ist, sonst false.
-
 bool QvkMainWindow_wl::is_FileOpenByAnyProcess(QString targetFilePath)
 {
     // Sicherstellen, dass wir den absoluten, bereinigten Pfad vergleichen
@@ -1756,7 +1755,7 @@ bool QvkMainWindow_wl::is_FileOpenByAnyProcess(QString targetFilePath)
             QString openedFile = QFileInfo(linkPath).symLinkTarget();
 
             if (openedFile == cleanTargetPath) {
-                qDebug() << "This file is open:" << openedFile;
+                qDebug().noquote() << global::nameOutput << "This file is open:" << openedFile;
                 return true; // Gefunden! Ein Prozess hat diese Datei offen.
             }
         }
