@@ -275,6 +275,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     }
     vkCameraController_wl->init();
 
+    // Wenn Stop geklickt wurde geht Signal an Systray
+
+
     // Sprachen in ComboBox einlesen
     QDir dirLanguage( ":/language", "*.qm" );
     QStringList listLanguage;
@@ -612,22 +615,22 @@ void QvkMainWindow_wl::set_Connects()
     connect(vkRegionMargins_wl,  &QvkRegionMargins_wl::signal_regionMargins, this, [=](){slot_portal_start();});
 
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){slot_stop();});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->pushButtonStop->setDisabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->pushButtonStart->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->pushButtonPause->setDisabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastFullscreen->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastWindow->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastArea->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->frameVideoPath->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->frame_video->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->frame_audio->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->frame_3->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->pushButtonStop->setDisabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->pushButtonStart->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->pushButtonPause->setDisabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->radioButtonScreencastFullscreen->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->radioButtonScreencastWindow->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->radioButtonScreencastArea->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frameVideoPath->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frame_video->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frame_audio->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frame_3->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){
         if (ui->radioButtonScreencastArea->isChecked() == true){
             ui->toolButtonScreencastAreaReset->setEnabled(true);
         };
     });
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){portal_wl->slot_stopScreenCast();});
+    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){portal_wl->slot_stopScreenCast();});
 
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){slot_Pause();});
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonPause->hide();});
@@ -1219,6 +1222,9 @@ void QvkMainWindow_wl::slot_stop()
     if (ui->comboBoxFormat->currentText() == "mp4"){
         slot_remux_mkv_to_mp4(muxerVideoFilename);
     }
+    if (ui->comboBoxFormat->currentText() == "mkv"){
+        emit signal_gstPipelineFinished();
+    }
 }
 
 
@@ -1623,6 +1629,7 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
                                                << "[Remux] mkv to mp4 File could not be deleted:"
                                                << muxerVideoFilename_MKV;
                         }
+                        emit self->signal_gstPipelineFinished();
                     }
                 }
             }
