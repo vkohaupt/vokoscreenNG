@@ -81,11 +81,11 @@ void QvkSystray_wl::init()
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){slot_setSystrayIcon();});
 
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){startAction->setEnabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){stopAction->setDisabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){pauseAction->setDisabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){slot_setSystrayIcon();});
+    connect(this, &QvkSystray_wl::signal_gstPipelineFinished, this, [=](){startAction->setEnabled(true);});
+    connect(this, &QvkSystray_wl::signal_gstPipelineFinished, this, [=](){stopAction->setDisabled(true);});
+    connect(this, &QvkSystray_wl::signal_gstPipelineFinished, this, [=](){pauseAction->setDisabled(true);});
+    connect(this, &QvkSystray_wl::signal_gstPipelineFinished, this, [=](){continueAction->setDisabled(true);});
+    connect(this, &QvkSystray_wl::signal_gstPipelineFinished, this, [=](){slot_setSystrayIcon();});
 
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){startAction->setDisabled(true);});
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){stopAction->setDisabled(true);});
@@ -124,6 +124,12 @@ void QvkSystray_wl::init()
     setToolTip( global::name );
 
     setMenuText();
+}
+
+
+void QvkSystray_wl::slot_gstPipelineFinished()
+{
+    emit signal_gstPipelineFinished();
 }
 
 

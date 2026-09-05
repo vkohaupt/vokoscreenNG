@@ -59,6 +59,7 @@ public slots:
     void slot_closeSystray();
     void slot_setSystrayIcon();
     void slot_setRecordIcon();
+    void slot_gstPipelineFinished();
 
 
 private slots:
@@ -72,6 +73,7 @@ protected:
 signals:
     void signal_SystemtrayIsClose();
     void signal_cameraOnOff(QCheckBox *checkBoxOnOff);
+    void signal_gstPipelineFinished();
 
 };
 

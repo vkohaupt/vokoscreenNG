@@ -165,117 +165,123 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     }
     qDebug().noquote();
 
-    vkCameraController_wl = new QvkCameraController_wl( ui );
-    {
-        vkSystray = new QvkSystray_wl( ui );
-        if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
-            vkSystray->init();
-            connect(ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [this](bool value){vkSystray->setVisible(value);});
-            connect(vkSystray, &QvkSystray_wl::signal_SystemtrayIsClose, vkSystray, [this](){show(); close();});
-            connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
-                if(isHidden() == false){
-                    show(); hide();
-                }else{
-                    show();
-                }
-            });
+    vkCameraController_wl = new QvkCameraController_wl(ui);
 
-            // Camera checked oder unchecked muß nun an das richtige Menü im Systray gesendet werden
-            // Ok funktioniert
-            connect(vkCameraController_wl,
-                    &QvkCameraController_wl::signal_forSystrayCameraOnOff,
-                    vkSystray,
-                    [this](QCheckBox *checkBox){
-                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-                for(int i = 0; i < listAction.count(); i++ ){
-                    QAction *action = listAction.at(i);
-                    if(checkBox->objectName() == action->data()){
-                        action->setChecked(checkBox->isChecked());
-                        break;
+    vkSystray = new QvkSystray_wl(ui);
+    if (QSystemTrayIcon::isSystemTrayAvailable() == true){
+        vkSystray->init();
+        connect(ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [this](bool value){vkSystray->setVisible(value);});
+        connect(vkSystray, &QvkSystray_wl::signal_SystemtrayIsClose, vkSystray, [this](){show(); close();});
+        connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
+            if(isHidden() == false){
+                show(); hide();
+            }else{
+                show();
+            }
+        });
+
+        // Camera checked oder unchecked muß nun an das richtige Menü im Systray gesendet werden
+        // Ok funktioniert
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(checkBox->objectName() == action->data()){
+                    action->setChecked(checkBox->isChecked());
+                    break;
+                }
+            }
+        });
+
+        // Disable all other cameras wenn camera is checked
+        // Ok funktioniert
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(checkBox->objectName() != action->data()){
+                    if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
+                        action->setDisabled(true);
                     }
                 }
-            });
+            }
+        });
 
-            // Disable all other cameras wenn camera is checked
-            // Ok funktioniert
-            connect(vkCameraController_wl,
-                    &QvkCameraController_wl::signal_forSystrayCameraOnOff,
-                    vkSystray,
-                    [this](QCheckBox *checkBox){
-                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-                for(int i = 0; i < listAction.count(); i++ ){
-                    QAction *action = listAction.at(i);
-                    if(checkBox->objectName() != action->data()){
-                        if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
-                            action->setDisabled(true);
-                        }
+        // Enable all cameras wenn camera is unchecked -
+        // OK funktioniert
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(checkBox->isChecked() == false){
+                    if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
+                        action->setEnabled(true);
                     }
                 }
-            });
+            }
+        });
 
-            // Enable all cameras wenn camera is unchecked -
-            // OK funktioniert
-            connect(vkCameraController_wl,
-                    &QvkCameraController_wl::signal_forSystrayCameraOnOff,
-                    vkSystray,
-                    [this](QCheckBox *checkBox){
-                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-                for(int i = 0; i < listAction.count(); i++ ){
-                    QAction *action = listAction.at(i);
-                    if(checkBox->isChecked() == false){
-                        if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
-                            action->setEnabled(true);
-                        }
-                    }
+        // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
+        // OK funktioniert
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraAdded,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            vkSystray->set_cameraAdded(checkBox);
+        });
+
+        // Signal wird an Systray geschickt wenn eine Camera entfernt wurde
+        // Ok funktioniert
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraRemoved,
+                vkSystray,
+                [this](QString value){
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(value.section(":::", 0, 0) == action->data().toString().section("_", 1, 1)){
+                    action->deleteLater();
+                    break;
                 }
-            });
+            }
+        });
 
-            // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
-            // OK funktioniert
-            connect(vkCameraController_wl,
-                    &QvkCameraController_wl::signal_forSystrayCameraAdded,
-                    vkSystray,
-                    [this](QCheckBox *checkBox){
-                vkSystray->set_cameraAdded(checkBox);
-            });
-
-            // Signal wird an Systray geschickt wenn eine Camera entfernt wurde
-            // Ok funktioniert
-            connect(vkCameraController_wl,
-                    &QvkCameraController_wl::signal_forSystrayCameraRemoved,
-                    vkSystray,
-                    [this](QString value){
-                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-                for(int i = 0; i < listAction.count(); i++ ){
-                    QAction *action = listAction.at(i);
-                    if(value.section(":::", 0, 0) == action->data().toString().section("_", 1, 1)){
-                        action->deleteLater();
-                        break;
-                    }
+        // Signal ON OFF kommt von Systray
+        // Ok funktioniert
+        connect(vkSystray,
+                &QvkSystray_wl::signal_cameraOnOff,
+                vkSystray,
+                [this](QCheckBox *checkBoxSystray){
+            QCheckBox *checkBox = nullptr;
+            QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+            for(int i = 0; i < listCheckBox.count(); i++){
+                checkBox = listCheckBox.at(i);
+                if(checkBox->objectName() == checkBoxSystray->objectName()){
+                    checkBox->click();
+                    break;
                 }
-            });
+            }
+        });
 
-            // Signal ON OFF kommt von Systray
-            // Ok funktioniert
-            connect(vkSystray,
-                    &QvkSystray_wl::signal_cameraOnOff,
-                    vkSystray,
-                    [this](QCheckBox *checkBoxSystray){
-                QCheckBox *checkBox = nullptr;
-                QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
-                for(int i = 0; i < listCheckBox.count(); i++){
-                    checkBox = listCheckBox.at(i);
-                    if(checkBox->objectName() == checkBoxSystray->objectName()){
-                        checkBox->click();
-                        break;
-                    }
-                }
-            });
-        }
+        // Wenn Stop geklickt wurde geht Signal an Systray
+        connect(this,
+                &QvkMainWindow_wl::signal_gstPipelineFinished,
+                vkSystray,
+                [=](){
+            vkSystray->slot_gstPipelineFinished();
+        });
     }
-    vkCameraController_wl->init();
 
-    // Wenn Stop geklickt wurde geht Signal an Systray
+    vkCameraController_wl->init();
 
 
     // Sprachen in ComboBox einlesen
