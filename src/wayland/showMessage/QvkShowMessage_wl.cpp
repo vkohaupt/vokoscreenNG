@@ -39,8 +39,6 @@
 #include <QRectF>
 #include <QFont>
 
-#include <QWindow>
-
 QvkShowMessage_wl::QvkShowMessage_wl()
 {
     setAttribute( Qt::WA_TranslucentBackground, true );
@@ -89,7 +87,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterWindowPixmap.drawRect( 0, 0, drawWindowWidth, drawWindowHeight );
 
     // Titelzeile
-    brush.setColor( Qt::lightGray );
+    brush.setColor( QColor("#3DAEE9") );
     brush.setStyle( Qt::SolidPattern );
     painterWindowPixmap.fillRect( 0, 0, drawWindowWidth, titelLineHeight, brush );
     QPixmap logoPixmap( ":/pictures/logo/logo.png" );
@@ -164,7 +162,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     int leftAreaWidth = 70;
     int leftAreaHeight = drawWindowHeight - titelLineHeight;
     QPixmap pixmapLeftArea(leftAreaWidth, leftAreaHeight);
-    pixmapLeftArea.fill(QColor(Qt::lightGray).lighter(120));
+    pixmapLeftArea.fill(QColor("#9ED6F4"));
     QPainter painterLeftArea;
     {
         painterLeftArea.begin(&pixmapLeftArea);
