@@ -686,7 +686,7 @@ void QvkMainWindow_wl::set_Connects()
     // Signal von Gstreamer abfangen und als Nachricht anzeigen
     connect(this, &QvkMainWindow_wl::signal_gst_eos, this, [=](const QString &msg){
         QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
-        vkShowMessage_wl->set_StatusIcon(":/pictures/status/information.png");
+        vkShowMessage_wl->set_StatusIcon(":/pictures/screencast/monitor.png");
         vkShowMessage_wl->set_timeOut(10000);
         QString m_text = msg.section(" ", 0, 0).replace(msg.section(" ", 0, 0), "Convert");
                 m_text = m_text + "\n" + msg.section(" ", 1, 4) + "\n" + msg.section(" ", 5, 100);
@@ -759,7 +759,7 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
 
                 if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                     QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
-                    vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
+                    vkShowMessage_wl->set_StatusIcon( ":/pictures/snapshot/snapshot.png" );
                     vkShowMessage_wl->set_Image( filePath_new );
                     vkShowMessage_wl->set_timeOut( 10000 );
                     vkShowMessage_wl->set_text("");

@@ -39,6 +39,8 @@
 #include <QRectF>
 #include <QFont>
 
+#include <QWindow>
+
 QvkShowMessage_wl::QvkShowMessage_wl()
 {
     setAttribute( Qt::WA_TranslucentBackground, true );
@@ -154,20 +156,33 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterText.setFont(font);
         painterText.setPen(Qt::black);
         painterText.drawText(pixmapText.rect(), Qt::AlignCenter, text);
+        painterText.end();
     }
-    painterText.end();
     painterWindowPixmap.drawPixmap(80, 60, pixmapText);
 
+    // Bereich linke Seite die ein Icon beherbergt
+    int leftAreaWidth = 70;
+    int leftAreaHeight = drawWindowHeight - titelLineHeight;
+    QPixmap pixmapLeftArea(leftAreaWidth, leftAreaHeight);
+    pixmapLeftArea.fill(QColor(Qt::lightGray).lighter(120));
+    QPainter painterLeftArea;
+    {
+        painterLeftArea.begin(&pixmapLeftArea);
+        QPixmap statusPixmap(statusIcon);
+        int pictureSize = 48;
+        int x = pixmapLeftArea.width()/2 - pictureSize/2;
+        int y = pixmapLeftArea.height()/2 - pictureSize/2;
+        statusPixmap = statusPixmap.scaled(pictureSize, pictureSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        painterLeftArea.drawPixmap(x, y, statusPixmap);
+        painterLeftArea.end();
+    }
+    painterWindowPixmap.drawPixmap(0, titelLineHeight, pixmapLeftArea);
 
-    QPixmap statusPixmap( statusIcon );
-    int statusPixmapSize = 48;
-    statusPixmap = statusPixmap.scaled( statusPixmapSize, statusPixmapSize, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterWindowPixmap.drawPixmap( 20, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - statusPixmapSize/2, statusPixmap );
-
+    // Hier wird das Bild von z.b Snapshot angezeigt
     QPixmap imagePixmap(image);
     if (imagePixmap.isNull() == false){
         imagePixmap = imagePixmap.scaled(300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-        painterWindowPixmap.drawPixmap(100, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - statusPixmapSize/2, imagePixmap);
+        painterWindowPixmap.drawPixmap(100, 36 + (drawWindowHeight-titelLineHeight)/2 - imagePixmap.height()/2, imagePixmap);
     }
 
     painterWindowPixmap.drawPixmap( drawWindowWidth-pixmapDuration.size().width()-6, titelLineHeight+6, pixmapDuration );
