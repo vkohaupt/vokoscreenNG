@@ -96,38 +96,37 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterWindowPixmap.setPen( Qt::black );
     painterWindowPixmap.drawText( 1+30, 16, windowTitle );
 
-    // CloseButton in Titelzeile
+    // Begin CloseButton in Titelzeile
     QColor color;
-    if ( isOverCloseButton == true ) {
+    if (isOverCloseButton == true){
         color = Qt::red;
-    } else {
+    }else{
         color = Qt::white;
     }
-    QPixmap pixmapCloseButton( titelLineHeight, titelLineHeight );
-    pixmapCloseButton.fill( Qt::transparent );
-    QPainter painterCloseButton;
-    painterCloseButton.begin( &pixmapCloseButton );
-    painterCloseButton.setRenderHint( QPainter::Antialiasing, true );
-    painterCloseButton.setRenderHint( QPainter::SmoothPixmapTransform, true );
-    pen.setColor( color );
-    pen.setWidth( 2 );
-    painterCloseButton.setPen( pen );
-    painterCloseButton.translate( 12, 12 );
-    painterCloseButton.rotate( 45 );
-    painterCloseButton.drawLine( -6,  0, 6, 0 ); // Horizontal
-    painterCloseButton.drawLine(  0, -6, 0, 6 ); // Vertikal
-    painterWindowPixmap.drawPixmap( drawWindowWidth-titelLineHeight, 0, pixmapCloseButton );
-    painterCloseButton.end();
-
+    QPixmap pixmapCloseButton(titelLineHeight, titelLineHeight);
+    pixmapCloseButton.fill(Qt::transparent);
+    QPainter painterCloseButton(&pixmapCloseButton);
+    {
+        painterCloseButton.setRenderHint(QPainter::Antialiasing, true);
+        painterCloseButton.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        pen.setColor(color);
+        pen.setWidth(2);
+        painterCloseButton.setPen(pen);
+        painterCloseButton.translate(12, 12);
+        painterCloseButton.rotate(45);
+        painterCloseButton.drawLine(-6,  0, 6, 0); // Horizontal
+        painterCloseButton.drawLine(0, -6, 0, 6); // Vertikal
+        painterWindowPixmap.drawPixmap(drawWindowWidth-titelLineHeight, 0, pixmapCloseButton);
+    }
+    // Ende CloseButton in Titelzeile
 
     // Begin Bereich linke Seite die ein Icon beherbergt
     int leftAreaWidth = 70;
     int leftAreaHeight = drawWindowHeight - titelLineHeight;
     QPixmap pixmapLeftArea(leftAreaWidth, leftAreaHeight);
     pixmapLeftArea.fill(QColor("#9ED6F4"));
-    QPainter painterLeftArea;
+    QPainter painterLeftArea(&pixmapLeftArea);
     {
-        painterLeftArea.begin(&pixmapLeftArea);
         painterLeftArea.setRenderHint(QPainter::Antialiasing, true);
         painterLeftArea.setRenderHint(QPainter::SmoothPixmapTransform, true);
         QPixmap statusPixmap(statusIcon);
@@ -136,7 +135,6 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         int y = pixmapLeftArea.height()/2 - pictureSize/2;
         statusPixmap = statusPixmap.scaled(pictureSize, pictureSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
         painterLeftArea.drawPixmap(x, y, statusPixmap);
-        painterLeftArea.end();
     }
     painterWindowPixmap.drawPixmap(0, titelLineHeight, pixmapLeftArea);
     // Ende Bereich linke Seite
@@ -153,15 +151,13 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     int rightAreaHight = drawWindowHeight - titelLineHeight;
     QPixmap pixmapRightArea(rightAreaWidth, rightAreaHight);
     pixmapRightArea.fill(Qt::transparent);
-    QPainter painterRightArea;
+    QPainter painterRightArea(&pixmapRightArea);
     {
-        painterRightArea.begin(&pixmapRightArea);
         painterRightArea.setRenderHint(QPainter::Antialiasing, true);
         painterRightArea.setRenderHint(QPainter::SmoothPixmapTransform, true);
         int x = pixmapRightArea.width()/2 - pixmapDuration.width()/2;
         int y = pixmapRightArea.height()/3 - pixmapDuration.height()/2;
         painterRightArea.drawPixmap(x, y, pixmapDuration);
-        painterRightArea.end();
     }
     painterWindowPixmap.drawPixmap(drawWindowWidth - rightAreaWidth, titelLineHeight, pixmapRightArea);
     // Ende Bereich rechte Seite
