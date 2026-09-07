@@ -63,7 +63,8 @@ private:
     bool isOverCloseButton = false;
     QString folderPath;
     bool isOverUrl = false;
-    QSize pixmapUrlSize;
+    QSize urlAreaPixmapSize;
+    QSize leftAreaSize;
     int titelLineHeight = 24;
     QString windowTitle;
     QString text;

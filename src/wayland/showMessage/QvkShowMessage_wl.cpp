@@ -123,20 +123,21 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     // Begin Bereich linke Seite die ein Icon beherbergt
     int leftAreaWidth = 70;
     int leftAreaHeight = drawWindowHeight - titelLineHeight;
-    QPixmap pixmapLeftArea(leftAreaWidth, leftAreaHeight);
-    pixmapLeftArea.fill(QColor("#9ED6F4"));
-    QPainter painterLeftArea(&pixmapLeftArea);
+    QPixmap leftAreaPixmap(leftAreaWidth, leftAreaHeight);
+    leftAreaPixmap.fill(QColor("#9ED6F4"));
+    leftAreaSize = leftAreaPixmap.size();
+    QPainter painterLeftArea(&leftAreaPixmap);
     {
         painterLeftArea.setRenderHint(QPainter::Antialiasing, true);
         painterLeftArea.setRenderHint(QPainter::SmoothPixmapTransform, true);
         QPixmap statusPixmap(statusIcon);
         int pictureSize = 48;
-        int x = pixmapLeftArea.width()/2 - pictureSize/2;
-        int y = pixmapLeftArea.height()/2 - pictureSize/2;
+        int x = leftAreaPixmap.width()/2 - pictureSize/2;
+        int y = leftAreaPixmap.height()/2 - pictureSize/2;
         statusPixmap = statusPixmap.scaled(pictureSize, pictureSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
         painterLeftArea.drawPixmap(x, y, statusPixmap);
     }
-    painterWindowPixmap.drawPixmap(0, titelLineHeight, pixmapLeftArea);
+    painterWindowPixmap.drawPixmap(0, titelLineHeight, leftAreaPixmap);
     // Ende Bereich linke Seite
 
     // Hier wird das Bild von z.b Snapshot angezeigt
@@ -149,26 +150,26 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     // Begin Bereich rechte Seite hier wird die Dauer angezeigt
     int rightAreaWidth = 26;
     int rightAreaHight = drawWindowHeight - titelLineHeight;
-    QPixmap pixmapRightArea(rightAreaWidth, rightAreaHight);
-    pixmapRightArea.fill(Qt::transparent);
-    QPainter painterRightArea(&pixmapRightArea);
+    QPixmap rightAreaPixmap(rightAreaWidth, rightAreaHight);
+    rightAreaPixmap.fill(Qt::transparent);
+    QPainter painterRightArea(&rightAreaPixmap);
     {
         painterRightArea.setRenderHint(QPainter::Antialiasing, true);
         painterRightArea.setRenderHint(QPainter::SmoothPixmapTransform, true);
-        int x = pixmapRightArea.width()/2 - pixmapDuration.width()/2;
-        int y = pixmapRightArea.height()/3 - pixmapDuration.height()/2;
+        int x = rightAreaPixmap.width()/2 - pixmapDuration.width()/2;
+        int y = rightAreaPixmap.height()/3 - pixmapDuration.height()/2;
         painterRightArea.drawPixmap(x, y, pixmapDuration);
     }
-    painterWindowPixmap.drawPixmap(drawWindowWidth - rightAreaWidth, titelLineHeight, pixmapRightArea);
+    painterWindowPixmap.drawPixmap(drawWindowWidth - rightAreaWidth, titelLineHeight, rightAreaPixmap);
     // Ende Bereich rechte Seite
 
     // Begin Bereich Url für Ordner
     int urlAreaWidth = drawWindowWidth - rightAreaWidth - leftAreaWidth;
     int urlAreaHeight = 36;
-    QPixmap pixmapUrl(urlAreaWidth, urlAreaHeight);
-    pixmapUrl.fill(Qt::transparent);
-    pixmapUrlSize = pixmapUrl.size();
-    QPainter painterUrl(&pixmapUrl);
+    QPixmap urlAreaPixmap(urlAreaWidth, urlAreaHeight);
+    urlAreaPixmap.fill(Qt::transparent);
+    urlAreaPixmapSize = urlAreaPixmap.size();
+    QPainter painterUrl(&urlAreaPixmap);
     {
         painterUrl.setRenderHint(QPainter::Antialiasing, true);
         painterUrl.setRenderHint(QPainter::SmoothPixmapTransform, true);
@@ -179,9 +180,9 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterUrl.setFont(font);
         painterUrl.setPen(Qt::blue);
         QString folder = tr("Folder");
-        painterUrl.drawText(pixmapUrl.rect(), Qt::AlignCenter, folder);
+        painterUrl.drawText(urlAreaPixmap.rect(), Qt::AlignCenter, folder);
     }
-    painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight, pixmapUrl);
+    painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight, urlAreaPixmap);
     // Ende Bereich Url für Ordner
 
     // Begin Bereich für Text
@@ -232,11 +233,11 @@ void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
         isOverCloseButton = false;
     }
 
-    // Path to Folder
-    int m_x = width()-marginScreenEdge-drawWindowWidth+(drawWindowWidth-pixmapUrlSize.width())/2;
-    int m_y = height()-marginScreenEdge-drawWindowHeight+titelLineHeight+6;
-    int m_with = pixmapUrlSize.width();
-    int m_height = pixmapUrlSize.height();
+    // Bereich URL
+    int m_x = width()-marginScreenEdge-drawWindowWidth+leftAreaSize.width();
+    int m_y = height()-marginScreenEdge-drawWindowHeight+titelLineHeight;
+    int m_with = urlAreaPixmapSize.width();
+    int m_height = urlAreaPixmapSize.height();
     if ( QRect( m_x, m_y, m_with, m_height ).contains( event->position().toPoint() ) == true ) {
         isOverUrl = true;
         QCursor cursor( Qt::PointingHandCursor );
