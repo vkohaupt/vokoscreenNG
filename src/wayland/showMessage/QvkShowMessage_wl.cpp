@@ -160,7 +160,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     }
     painterWindowPixmap.drawPixmap(80, 60, pixmapText);
 
-    // Bereich linke Seite die ein Icon beherbergt
+    // Begin Bereich linke Seite die ein Icon beherbergt
     int leftAreaWidth = 70;
     int leftAreaHeight = drawWindowHeight - titelLineHeight;
     QPixmap pixmapLeftArea(leftAreaWidth, leftAreaHeight);
@@ -179,6 +179,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterLeftArea.end();
     }
     painterWindowPixmap.drawPixmap(0, titelLineHeight, pixmapLeftArea);
+    // Ende Bereich linke Seite
 
     // Hier wird das Bild von z.b Snapshot angezeigt
     QPixmap imagePixmap(image);
@@ -187,7 +188,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterWindowPixmap.drawPixmap(100, 36 + (drawWindowHeight-titelLineHeight)/2 - imagePixmap.height()/2, imagePixmap);
     }
 
-    // Bereich rechte Seite hier wird die Dauer angezeigt
+    // Begin Bereich rechte Seite hier wird die Dauer angezeigt
     int rightAreaWidth = 26;
     int rightAreaHight = drawWindowHeight - titelLineHeight;
     QPixmap pixmapRightArea(rightAreaWidth, rightAreaHight);
@@ -203,22 +204,23 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterRightArea.end();
     }
     painterWindowPixmap.drawPixmap(drawWindowWidth - rightAreaWidth, titelLineHeight, pixmapRightArea);
+    // Ende Bereich rechte Seite
 
     painterWindowPixmap.end();
     // End Pixmap window.
 
-    // Nun wird das fertige Fenster übertragen
+    // Nun wird das fertige Fenster ins Pixmap übertragen
     painterPixmap.drawPixmap( width()-drawWindowWidth-marginScreenEdge, height()-drawWindowHeight-marginScreenEdge, windowPixmap );
     painterPixmap.end();
 
     QPainter painter;
-    painter.begin( this );
-    painter.setRenderHint( QPainter::Antialiasing, true );
-    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-    painter.drawPixmap( QPointF( 0, 0 ), pixmap );
+    painter.begin(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+    painter.drawPixmap(QPointF(0, 0), pixmap);
     painter.end();
 
-    setMask( pixmap.mask() );
+    setMask(pixmap.mask());
 }
 
 
