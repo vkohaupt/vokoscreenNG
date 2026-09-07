@@ -168,7 +168,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 
     // Begin Bereich Url für Ordner
     int urlAreaWidth = drawWindowWidth - rightAreaWidth - leftAreaWidth;
-    int urlAreaHeight = 20;
+    int urlAreaHeight = 36;
     QPixmap pixmapUrl(urlAreaWidth, urlAreaHeight);
     pixmapUrl.fill(Qt::transparent);
     pixmapUrlSize = pixmapUrl.size();
@@ -184,10 +184,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterUrl.setFont(font);
         painterUrl.setPen(Qt::blue);
         QString folder = tr("Folder");
-        QFontMetrics fontMetrics(font);
-        int textWidth = fontMetrics.horizontalAdvance(folder);
-        int x = urlAreaWidth/2 - textWidth/2;
-        painterUrl.drawText(x, 16, folder);
+        painterUrl.drawText(pixmapUrl.rect(), Qt::AlignCenter, folder);
     }
     painterUrl.end();
     painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight, pixmapUrl);
