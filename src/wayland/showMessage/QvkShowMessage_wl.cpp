@@ -119,25 +119,6 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterWindowPixmap.drawPixmap( drawWindowWidth-titelLineHeight, 0, pixmapCloseButton );
     painterCloseButton.end();
 
-    // Text
-    int widthText = 200;
-    int heightText = 80;
-    QPixmap pixmapText(widthText, heightText);
-    pixmapText.fill(Qt::transparent);
-    QPainter painterText;
-    {
-        painterText.begin(&pixmapText);
-        painterText.setRenderHint(QPainter::Antialiasing, true);
-        painterText.setRenderHint(QPainter::SmoothPixmapTransform, true);
-        int fontSize = 11;
-        QFont font;
-        font.setPointSize(fontSize);
-        painterText.setFont(font);
-        painterText.setPen(Qt::black);
-        painterText.drawText(pixmapText.rect(), Qt::AlignCenter, text);
-        painterText.end();
-    }
-    painterWindowPixmap.drawPixmap(80, 60, pixmapText);
 
     // Begin Bereich linke Seite die ein Icon beherbergt
     int leftAreaWidth = 70;
@@ -185,7 +166,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterWindowPixmap.drawPixmap(drawWindowWidth - rightAreaWidth, titelLineHeight, pixmapRightArea);
     // Ende Bereich rechte Seite
 
-    // Begin Url für Ordner
+    // Begin Bereich Url für Ordner
     int urlAreaWidth = drawWindowWidth - rightAreaWidth - leftAreaWidth;
     int urlAreaHeight = 20;
     QPixmap pixmapUrl(urlAreaWidth, urlAreaHeight);
@@ -210,7 +191,28 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     }
     painterUrl.end();
     painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight, pixmapUrl);
-    // Ende Url für Ordner
+    // Ende Bereich Url für Ordner
+
+    // Begin Bereich für Text
+    int  textAreaWidth = drawWindowWidth - rightAreaWidth - leftAreaWidth;
+    int  textAreaHeight = drawWindowHeight - titelLineHeight - urlAreaHeight;
+    QPixmap pixmapAreaText(textAreaWidth, textAreaHeight);
+    pixmapAreaText.fill(Qt::transparent);
+    QPainter painterAreaText;
+    {
+        painterAreaText.begin(&pixmapAreaText);
+        painterAreaText.setRenderHint(QPainter::Antialiasing, true);
+        painterAreaText.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        int fontSize = 11;
+        QFont font;
+        font.setPointSize(fontSize);
+        painterAreaText.setFont(font);
+        painterAreaText.setPen(Qt::black);
+        painterAreaText.drawText(pixmapAreaText.rect(), Qt::AlignCenter, text);
+        painterAreaText.end();
+    }
+    painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight + urlAreaHeight, pixmapAreaText);
+    // Ende Bereich für Text
 
     painterWindowPixmap.end();
     // End Pixmap window.
