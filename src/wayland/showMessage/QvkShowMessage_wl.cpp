@@ -148,6 +148,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     QPainter painterText;
     {
         painterText.begin(&pixmapText);
+        painterText.setRenderHint(QPainter::Antialiasing, true);
+        painterText.setRenderHint(QPainter::SmoothPixmapTransform, true);
         int fontSize = 11;
         QFont font;
         font.setPointSize(fontSize);
@@ -166,6 +168,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     QPainter painterLeftArea;
     {
         painterLeftArea.begin(&pixmapLeftArea);
+        painterLeftArea.setRenderHint(QPainter::Antialiasing, true);
+        painterLeftArea.setRenderHint(QPainter::SmoothPixmapTransform, true);
         QPixmap statusPixmap(statusIcon);
         int pictureSize = 48;
         int x = pixmapLeftArea.width()/2 - pictureSize/2;
@@ -183,7 +187,22 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterWindowPixmap.drawPixmap(100, 36 + (drawWindowHeight-titelLineHeight)/2 - imagePixmap.height()/2, imagePixmap);
     }
 
-    painterWindowPixmap.drawPixmap( drawWindowWidth-pixmapDuration.size().width()-6, titelLineHeight+6, pixmapDuration );
+    // Bereich rechte Seite hier wird die Dauer angezeigt
+    int rightAreaWidth = 26;
+    int rightAreaHight = drawWindowHeight - titelLineHeight;
+    QPixmap pixmapRightArea(rightAreaWidth, rightAreaHight);
+    pixmapRightArea.fill(Qt::transparent);
+    QPainter painterRightArea;
+    {
+        painterRightArea.begin(&pixmapRightArea);
+        painterRightArea.setRenderHint(QPainter::Antialiasing, true);
+        painterRightArea.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        int x = pixmapRightArea.width()/2 - pixmapDuration.width()/2;
+        int y = pixmapRightArea.height()/3 - pixmapDuration.height()/2;
+        painterRightArea.drawPixmap(x, y, pixmapDuration);
+        painterRightArea.end();
+    }
+    painterWindowPixmap.drawPixmap(drawWindowWidth - rightAreaWidth, titelLineHeight, pixmapRightArea);
 
     painterWindowPixmap.end();
     // End Pixmap window.
