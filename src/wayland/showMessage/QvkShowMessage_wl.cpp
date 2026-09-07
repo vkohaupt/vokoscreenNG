@@ -41,60 +41,60 @@
 
 QvkShowMessage_wl::QvkShowMessage_wl()
 {
-    setAttribute( Qt::WA_TranslucentBackground, true );
-    setWindowFlags( Qt::FramelessWindowHint );
-    setMouseTracking( true );
+    setAttribute(Qt::WA_TranslucentBackground, true);
+    setWindowFlags(Qt::FramelessWindowHint);
+    setMouseTracking(true);
 
     showMaximized();
 
     timer = new QTimer();
-    timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( timerInterval );
+    timer->setTimerType(Qt::PreciseTimer);
+    timer->setInterval(timerInterval);
     connect(timer, &QTimer::timeout, this, [=](){slot_durationButton();});
     degreeStep = 360 / timeOut * timerInterval;
     timer->start();
 }
 
 
-void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
+void QvkShowMessage_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
 
-    QPixmap pixmap( width(), height() );
-    pixmap.fill( Qt::transparent );
+    QPixmap pixmap(width(), height());
+    pixmap.fill(Qt::transparent);
 
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
-    painterPixmap.setRenderHint( QPainter::Antialiasing, true );
-    painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painterPixmap.setRenderHint(QPainter::Antialiasing, true);
+    painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
 
     // Begin Pixmap window. Hier wird alles gezeichnet und zum Schluß ins painterPixmap übertragen
     drawWindowWidth = 300;
     drawWindowHeight = 130 + titelLineHeight ; // Inhalt Fenster + titelLineHeight
-    QPixmap windowPixmap( drawWindowWidth, drawWindowHeight );
+    QPixmap windowPixmap(drawWindowWidth, drawWindowHeight);
     QPainter painterWindowPixmap;
-    painterWindowPixmap.begin( &windowPixmap );
-    painterWindowPixmap.setRenderHint( QPainter::Antialiasing, true );
-    painterWindowPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painterWindowPixmap.begin(&windowPixmap);
+    painterWindowPixmap.setRenderHint(QPainter::Antialiasing, true);
+    painterWindowPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
     QPen pen;
     QBrush brush;
-    brush.setColor( Qt::white );
-    brush.setStyle( Qt::SolidPattern );
-    pen.setWidth( 0 );
-    pen.setColor( Qt::darkGray );
-    painterWindowPixmap.setBrush( brush );
-    painterWindowPixmap.setPen( pen );
-    painterWindowPixmap.drawRect( 0, 0, drawWindowWidth, drawWindowHeight );
+    brush.setColor(Qt::white);
+    brush.setStyle(Qt::SolidPattern);
+    pen.setWidth(0);
+    pen.setColor(Qt::darkGray);
+    painterWindowPixmap.setBrush(brush);
+    painterWindowPixmap.setPen(pen);
+    painterWindowPixmap.drawRect(0, 0, drawWindowWidth, drawWindowHeight);
 
     // Titelzeile
-    brush.setColor( QColor("#3DAEE9") );
-    brush.setStyle( Qt::SolidPattern );
-    painterWindowPixmap.fillRect( 0, 0, drawWindowWidth, titelLineHeight, brush );
-    QPixmap logoPixmap( ":/pictures/logo/logo.png" );
-    logoPixmap = logoPixmap.scaled( 22, 22, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterWindowPixmap.drawPixmap( 1, 1, logoPixmap );
-    painterWindowPixmap.setPen( Qt::black );
-    painterWindowPixmap.drawText( 1+30, 16, windowTitle );
+    brush.setColor(QColor("#3DAEE9"));
+    brush.setStyle(Qt::SolidPattern);
+    painterWindowPixmap.fillRect(0, 0, drawWindowWidth, titelLineHeight, brush);
+    QPixmap logoPixmap(":/pictures/logo/logo.png");
+    logoPixmap = logoPixmap.scaled(22, 22, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    painterWindowPixmap.drawPixmap(1, 1, logoPixmap);
+    painterWindowPixmap.setPen(Qt::black);
+    painterWindowPixmap.drawText(1+30, 16, windowTitle);
 
     // Begin CloseButton in Titelzeile
     QColor color;
@@ -190,9 +190,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     int  textAreaHeight = drawWindowHeight - titelLineHeight - urlAreaHeight;
     QPixmap pixmapAreaText(textAreaWidth, textAreaHeight);
     pixmapAreaText.fill(Qt::transparent);
-    QPainter painterAreaText;
+    QPainter painterAreaText(&pixmapAreaText);
     {
-        painterAreaText.begin(&pixmapAreaText);
         painterAreaText.setRenderHint(QPainter::Antialiasing, true);
         painterAreaText.setRenderHint(QPainter::SmoothPixmapTransform, true);
         int fontSize = 11;
@@ -201,7 +200,6 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         painterAreaText.setFont(font);
         painterAreaText.setPen(Qt::black);
         painterAreaText.drawText(pixmapAreaText.rect(), Qt::AlignCenter, text);
-        painterAreaText.end();
     }
     painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight + urlAreaHeight, pixmapAreaText);
     // Ende Bereich für Text
@@ -213,18 +211,18 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterPixmap.drawPixmap( width()-drawWindowWidth-marginScreenEdge, height()-drawWindowHeight-marginScreenEdge, windowPixmap );
     painterPixmap.end();
 
-    QPainter painter;
-    painter.begin(this);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    painter.drawPixmap(QPointF(0, 0), pixmap);
-    painter.end();
+    QPainter painter(this);
+    {
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.drawPixmap(QPointF(0, 0), pixmap);
+    }
 
     setMask(pixmap.mask());
 }
 
 
-void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
+void QvkShowMessage_wl::mouseMoveEvent(QMouseEvent *event)
 {
     // Closebutton
     if ( QRect( width()-marginScreenEdge-20, height()-marginScreenEdge-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
@@ -249,7 +247,7 @@ void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
 }
 
 
-void QvkShowMessage_wl::leaveEvent( QEvent *event )
+void QvkShowMessage_wl::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event)
     isOverCloseButton = false;
@@ -257,17 +255,17 @@ void QvkShowMessage_wl::leaveEvent( QEvent *event )
 }
 
 
-void QvkShowMessage_wl::mouseReleaseEvent( QMouseEvent *event )
+void QvkShowMessage_wl::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
-    if ( isOverCloseButton == true ) {
+    if (isOverCloseButton == true){
         timer->stop();
         close();
     }
 
-    if ( isOverUrl == true ) {
+    if (isOverUrl == true){
         const QString path = "file:///" + folderPath;
-        QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode) );
+        QDesktopServices::openUrl(QUrl( path, QUrl::TolerantMode));
     }
 }
 
@@ -284,25 +282,25 @@ void QvkShowMessage_wl::set_text(QString m_text)
 }
 
 
-void QvkShowMessage_wl::set_StatusIcon( QString m_statusIcon )
+void QvkShowMessage_wl::set_StatusIcon(QString m_statusIcon)
 {
     statusIcon = m_statusIcon;
 }
 
 
-void QvkShowMessage_wl::set_Image( QString m_image )
+void QvkShowMessage_wl::set_Image(QString m_image)
 {
     image = m_image;
 }
 
 
-void QvkShowMessage_wl::set_WindowTitle( QString title )
+void QvkShowMessage_wl::set_WindowTitle(QString title)
 {
     windowTitle = title;
 }
 
 
-void QvkShowMessage_wl::set_timeOut( qreal value )
+void QvkShowMessage_wl::set_timeOut(qreal value)
 {
     timeOut = value;
 }
@@ -310,41 +308,41 @@ void QvkShowMessage_wl::set_timeOut( qreal value )
 
 void QvkShowMessage_wl::slot_durationButton()
 {
-    if ( underMouse() == true ) {
+    if (underMouse() == true){
         degree = degreeStep;
     }
 
     int h = 16;
-    QPixmap pixmap( h+2, h+2 );
-    pixmap.fill( Qt::transparent );
+    QPixmap pixmap(h+2, h+2);
+    pixmap.fill(Qt::transparent);
 
-    QPainter painter;
-    painter.begin( &pixmap );
-    painter.setRenderHint( QPainter::Antialiasing, true );
-    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-    painter.setOpacity( 1.0 );
+    QPainter painter(&pixmap);
+    {
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.setOpacity(1.0);
 
-    QPen pen;
-    pen.setColor( Qt::black );
-    pen.setWidth( 1 );
-    painter.setPen( pen );
-    painter.drawEllipse( QRectF( 1, 1, h, h ) );
+        QPen pen;
+        pen.setColor(Qt::black);
+        pen.setWidth(1);
+        painter.setPen(pen);
+        painter.drawEllipse(QRectF(1, 1, h, h));
 
-    pen.setColor( Qt::black );
-    pen.setWidth( 1 );
-    painter.setPen( pen );
-    QBrush brush;
-    brush.setStyle( Qt::SolidPattern );
-    brush.setColor( QString( "#3daee9" ) );
-    painter.setBrush( brush );
-    degree = degree - degreeStep;
-    painter.drawPie( 1, 1, h, h, 90*16, degree*16 );
-    painter.end();
+        pen.setColor(Qt::black);
+        pen.setWidth(1);
+        painter.setPen(pen);
+        QBrush brush;
+        brush.setStyle(Qt::SolidPattern);
+        brush.setColor(QString("#3daee9"));
+        painter.setBrush(brush);
+        degree = degree - degreeStep;
+        painter.drawPie(1, 1, h, h, 90*16, degree*16);
+    }
 
     pixmapDuration = pixmap;
     repaint();
 
-    if ( degree <= -360 ) {
+    if (degree <= -360){
         timer->stop();
         close();
     }
