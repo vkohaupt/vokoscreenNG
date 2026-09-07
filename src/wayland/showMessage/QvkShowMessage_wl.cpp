@@ -172,8 +172,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     QPixmap pixmapUrl(urlAreaWidth, urlAreaHeight);
     pixmapUrl.fill(Qt::transparent);
     pixmapUrlSize = pixmapUrl.size();
-    QPainter painterUrl;
-    painterUrl.begin(&pixmapUrl);
+    QPainter painterUrl(&pixmapUrl);
     {
         painterUrl.setRenderHint(QPainter::Antialiasing, true);
         painterUrl.setRenderHint(QPainter::SmoothPixmapTransform, true);
@@ -186,7 +185,6 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
         QString folder = tr("Folder");
         painterUrl.drawText(pixmapUrl.rect(), Qt::AlignCenter, folder);
     }
-    painterUrl.end();
     painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight, pixmapUrl);
     // Ende Bereich Url für Ordner
 
