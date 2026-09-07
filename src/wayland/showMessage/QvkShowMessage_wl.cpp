@@ -119,27 +119,6 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterWindowPixmap.drawPixmap( drawWindowWidth-titelLineHeight, 0, pixmapCloseButton );
     painterCloseButton.end();
 
-    // Url für Ordner Bilder
-    QPixmap pixmapUrl( drawWindowWidth - 60, 20 );
-    pixmapUrl.fill( Qt::transparent );
-    pixmapUrlSize = pixmapUrl.size();
-    QPainter painterUrl;
-    painterUrl.begin( &pixmapUrl );
-    {
-        int fontSize = 11;
-        QFont font;
-        font.setPointSize( fontSize );
-        font.setUnderline( true );
-        painterUrl.setFont( font );
-        painterUrl.setPen( Qt::blue );
-        QString folder = tr( "Folder" );
-        QFontMetrics fontMetrics( font );
-        int textWidth = fontMetrics.horizontalAdvance( folder );
-        painterUrl.drawText( ( pixmapUrlSize.width()-textWidth )/2, 16, folder );
-    }
-    painterUrl.end();
-    painterWindowPixmap.drawPixmap( 30, 30, pixmapUrl );
-
     // Text
     int widthText = 200;
     int heightText = 80;
@@ -205,6 +184,33 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     }
     painterWindowPixmap.drawPixmap(drawWindowWidth - rightAreaWidth, titelLineHeight, pixmapRightArea);
     // Ende Bereich rechte Seite
+
+    // Begin Url für Ordner
+    int urlAreaWidth = drawWindowWidth - rightAreaWidth - leftAreaWidth;
+    int urlAreaHeight = 20;
+    QPixmap pixmapUrl(urlAreaWidth, urlAreaHeight);
+    pixmapUrl.fill(Qt::transparent);
+    pixmapUrlSize = pixmapUrl.size();
+    QPainter painterUrl;
+    painterUrl.begin(&pixmapUrl);
+    {
+        painterUrl.setRenderHint(QPainter::Antialiasing, true);
+        painterUrl.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        int fontSize = 11;
+        QFont font;
+        font.setPointSize(fontSize);
+        font.setUnderline(true);
+        painterUrl.setFont(font);
+        painterUrl.setPen(Qt::blue);
+        QString folder = tr("Folder");
+        QFontMetrics fontMetrics(font);
+        int textWidth = fontMetrics.horizontalAdvance(folder);
+        int x = urlAreaWidth/2 - textWidth/2;
+        painterUrl.drawText(x, 16, folder);
+    }
+    painterUrl.end();
+    painterWindowPixmap.drawPixmap(leftAreaWidth, titelLineHeight, pixmapUrl);
+    // Ende Url für Ordner
 
     painterWindowPixmap.end();
     // End Pixmap window.
