@@ -1062,6 +1062,39 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *mes
 }
 
 
+/*
+rate-control=quality (0): Schaltet die automatische Begrenzung ab und zwingt den Encoder,
+sich rein auf das visuelle Ergebnis zu konzentrieren.
+
+gop-size: Ein höherer Abstand zwischen den Schlüsselbildern (Keyframes) erhöht die Qualität
+bei gleichbleibender Bitrate drastisch, da weniger speicherintensive I-Frames erzeugt werden.
+
+complexity=high (2): Aktiviert alle erweiterten Algorithmen des Encoders, um das Bild sauberer
+zu berechnen (kostet etwas mehr CPU).
+
+slice-num=1: Verhindert, dass das Bild in unabhängige Streifen (Slices) zerlegt wird.
+Ein einziges Slice liefert die beste Bildqualität.
+
+        // 1. Qualitäts-Modus aktivieren (0 = Quality, 1 = Bitrate)
+        g_object_set(G_OBJECT(encoder), "rate-control", 0, NULL);
+
+        // 2. Ziel-Bitrate extrem hoch ansetzen (Wert in Bits pro Sekunde, z.B. 25 Mbit/s)
+        g_object_set(G_OBJECT(encoder), "bitrate", 25000000, NULL);
+
+        // 3. Maximale Berechnungs-Komplexität für das beste Bild (0 = Low, 1 = Medium, 2 = High)
+        g_object_set(G_OBJECT(encoder), "complexity", 2, NULL);
+
+        // 4. GOP-Größe erhöhen (z.B. alle 90 Bilder ein Keyframe bei 30fps = alle 3 Sekunden)
+        g_object_set(G_OBJECT(encoder), "gop-size", 90, NULL);
+
+        // 5. Slice-Anzahl auf 1 setzen (keine Zerstückelung des Bildes)
+        g_object_set(G_OBJECT(encoder), "slice-num", 1, NULL);
+
+        // 6. Adaptive Quantisierung einschalten (optimiert Details basierend auf Bewegung)
+        g_object_set(G_OBJECT(encoder), "adaptive-quantization", TRUE, NULL);
+    }
+*/
+
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
@@ -1077,8 +1110,11 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << "videorate";
     stringList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
-    stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
+//    stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
+    stringList << "video/x-raw, profile=high, format=I420, colorimetry=2:4:5:1, framerate=" + QString::number( sliderFrames->value() ) + "/1";
 
+/*
+    // Alte Pipeline
     QString value;
     QStringList list;
     list << "openh264enc" ;
@@ -1088,6 +1124,24 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     list << "complexity=low";
     list << "multi-thread=" + QString::number( 0 );
     list << "slice-mode=auto"; // Number of slices equal to number of threads
+    value = list.join( " " );
+    value.append( " ! h264parse" );
+    stringList << value;
+*/
+
+    // Neue Pipeline
+    QString value;
+    QStringList list;
+    list << "openh264enc" ;
+    list << "qp-min=" + QString::number( sliderOpenh264->value() );
+    list << "qp-max=" + QString::number( sliderOpenh264->value() );
+    list << "usage-type=screen";
+    list << "complexity=high";
+    list << "rate-control=quality";
+    list << "slice-mode=1";
+    list << "adaptive-quantization=true";
+    list << "enable-frame-skip=false";
+    list << "multi-thread=" + QString::number( 0 );
     value = list.join( " " );
     value.append( " ! h264parse" );
     stringList << value;
