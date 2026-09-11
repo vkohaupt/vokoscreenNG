@@ -1108,7 +1108,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
     stringList << "videorate";
-    stringList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
+    stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
 //    stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
     stringList << "video/x-raw, profile=high, format=I420, colorimetry=2:4:5:1, framerate=" + QString::number( sliderFrames->value() ) + "/1";
@@ -1141,6 +1141,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     list << "slice-mode=1";
     list << "adaptive-quantization=true";
     list << "enable-frame-skip=false";
+    list << "enable-denoise=false";
     list << "multi-thread=" + QString::number( 0 );
     value = list.join( " " );
     value.append( " ! h264parse" );
@@ -1148,7 +1149,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
     // Only if one or more audiodevice is selected
     if ( ( VK_getSelectedAudioDevice().count() > 0 ) and ( ui->comboBoxAudioCodec->count() > 0 ) ) {
-        stringList << "queue";
+        stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
         stringList << "mux.";
     }
 
@@ -1159,9 +1160,9 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
         stringList << "audioconvert";
         stringList << "audiorate";
         stringList << "audio/x-raw, channels=2";
-        stringList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
+        stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
         stringList << ui->comboBoxAudioCodec->currentData().toString();
-        stringList << "queue";
+        stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
         stringList << "mux.";
     }
 
@@ -1174,15 +1175,15 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
                 stringList << "pipewiresrc target-object=" + VK_getSelectedAudioDevice().at(x).section(":::", 0, 0);
                 stringList << "audioconvert";
                 stringList << "audioresample";
-                stringList << "queue";
+                stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
                 stringList << "mix.";
             }
             stringList << "audiomixer name=mix";
             stringList << "audioconvert";
             stringList << "audiorate";
-            stringList << "queue";
+            stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
             stringList << ui->comboBoxAudioCodec->currentData().toString();
-            stringList << "queue";
+            stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
             stringList << "mux.";
         } else {
             for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ ) {
@@ -1190,7 +1191,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
                 stringList << "audio/x-raw,channels=2";
                 stringList << "audioconvert";
                 stringList << "audioresample";
-                stringList << "queue";
+                stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
                 stringList << ui->comboBoxAudioCodec->currentData().toString();
                 stringList << "mux.";
             }
