@@ -1104,7 +1104,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
     qDebug().noquote();
 
-    // Original stringList
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
@@ -1124,7 +1123,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
 */
 
-    // Alte Pipeline
     QString value;
     QStringList list;
     list << "openh264enc" ;
