@@ -1104,16 +1104,26 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
     qDebug().noquote();
 
+    // Original stringList
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
     stringList << "videorate";
     stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
-//    stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
-    stringList << "video/x-raw, profile=high, format=I420, colorimetry=2:4:5:1, framerate=" + QString::number( sliderFrames->value() ) + "/1";
+    stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
 
 /*
+    // StringList zum erzeugen von einer sehr großen Datei
+    QStringList stringList;
+    stringList << "videotestsrc num-buffers=1000";  // Generiert 100.000 Frames (simuliert riesige Datei)
+    stringList << "video/x-raw,width=3840,height=2360,framerate=60/1"; // 4K Auflösung @ 60 FPS 3840 × 2160 Pixel
+    stringList << "videoconvert";
+    stringList << "videorate";
+    stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
+    if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
+*/
+
     // Alte Pipeline
     QString value;
     QStringList list;
@@ -1124,25 +1134,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     list << "complexity=low";
     list << "multi-thread=" + QString::number( 0 );
     list << "slice-mode=auto"; // Number of slices equal to number of threads
-    value = list.join( " " );
-    value.append( " ! h264parse" );
-    stringList << value;
-*/
-
-    // Neue Pipeline
-    QString value;
-    QStringList list;
-    list << "openh264enc" ;
-    list << "qp-min=" + QString::number( sliderOpenh264->value() );
-    list << "qp-max=" + QString::number( sliderOpenh264->value() );
-    list << "usage-type=screen";
-    list << "complexity=high";
-    list << "rate-control=quality";
-    list << "slice-mode=1";
-    list << "adaptive-quantization=true";
-    list << "enable-frame-skip=false";
-    list << "enable-denoise=false";
-    list << "multi-thread=" + QString::number( 0 );
     value = list.join( " " );
     value.append( " ! h264parse" );
     stringList << value;
