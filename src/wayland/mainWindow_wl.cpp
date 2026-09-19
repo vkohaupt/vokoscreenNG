@@ -274,7 +274,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
         // Wenn Stop geklickt wurde geht Signal an Systray
         connect(this,
-                &QvkMainWindow_wl::signal_gstPipelineFinished,
+                &QvkMainWindow_wl::signal_gst_pipeline_finished,
                 vkSystray,
                 [=](){
             vkSystray->slot_gstPipelineFinished();
@@ -621,22 +621,22 @@ void QvkMainWindow_wl::set_Connects()
     connect(vkRegionMargins_wl,  &QvkRegionMargins_wl::signal_regionMargins, this, [=](){slot_portal_start();});
 
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){slot_stop();});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->pushButtonStop->setDisabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->pushButtonStart->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->pushButtonPause->setDisabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->radioButtonScreencastFullscreen->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->radioButtonScreencastWindow->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->radioButtonScreencastArea->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frameVideoPath->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frame_video->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frame_audio->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){ui->frame_3->setEnabled(true);});
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->pushButtonStop->setDisabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->pushButtonStart->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->pushButtonPause->setDisabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->radioButtonScreencastFullscreen->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->radioButtonScreencastWindow->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->radioButtonScreencastArea->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->frameVideoPath->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->frame_video->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->frame_audio->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){ui->frame_3->setEnabled(true);});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){
         if (ui->radioButtonScreencastArea->isChecked() == true){
             ui->toolButtonScreencastAreaReset->setEnabled(true);
         };
     });
-    connect(this, &QvkMainWindow_wl::signal_gstPipelineFinished, this, [=](){portal_wl->slot_stopScreenCast();});
+    connect(this, &QvkMainWindow_wl::signal_gst_pipeline_finished, this, [=](){portal_wl->slot_stopScreenCast();});
 
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){slot_Pause();});
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonPause->hide();});
@@ -1103,7 +1103,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
     qDebug().noquote();
-
+/*
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
@@ -1111,17 +1111,17 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
+*/
 
-/*
     // StringList zum erzeugen von einer sehr großen Datei
     QStringList stringList;
-    stringList << "videotestsrc num-buffers=1000";  // Generiert 100.000 Frames (simuliert riesige Datei)
+    stringList << "videotestsrc num-buffers=3000";  // Generiert 100.000 Frames (simuliert riesige Datei)
     stringList << "video/x-raw,width=3840,height=2360,framerate=60/1"; // 4K Auflösung @ 60 FPS 3840 × 2160 Pixel
     stringList << "videoconvert";
     stringList << "videorate";
     stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
-*/
+
 
     QString value;
     QStringList list;
@@ -1273,7 +1273,7 @@ void QvkMainWindow_wl::slot_stop()
         slot_remux_mkv_to_mp4(muxerVideoFilename);
     }
     if (ui->comboBoxFormat->currentText() == "mkv"){
-        emit signal_gstPipelineFinished();
+        emit signal_gst_pipeline_finished();
     }
 }
 
@@ -1608,6 +1608,20 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
 
     switch(GST_MESSAGE_TYPE (message))
     {
+    case GST_MESSAGE_ELEMENT:{
+        QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(data);
+        const GstStructure *structure = gst_message_get_structure(message);
+        qDebug() << gst_structure_to_string(structure);
+        if (gst_structure_has_name(structure, "progress")){
+            gint percent = 0;
+            if (gst_structure_get_int(structure, "percent", &percent)){
+                QMetaObject::invokeMethod(self, [self, percent](){
+                    emit self->signal_gst_progressbar_convert_mp4(percent);
+                }, Qt::QueuedConnection);
+            }
+        }
+        break;
+    }
     case GST_MESSAGE_ERROR:{
         qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_ERROR";
         break;
@@ -1679,7 +1693,7 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message_convert_mp4(GstBus *bus, GstM
                                                << "[Remux] mkv to mp4 File could not be deleted:"
                                                << muxerVideoFilename_MKV;
                         }
-                        emit self->signal_gstPipelineFinished();
+                        emit self->signal_gst_pipeline_finished();
                     }
                 }
             }
@@ -1712,6 +1726,7 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux" +
                 " ! h264parse" +
+                " ! progressreport name=prog_report update-freq=1 silent=true" +
                 " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600" +
                 " ! mp4mux name=mux" +
                 " ! filesink location=" + path + "/" + fileNameMP4;
@@ -1749,6 +1764,14 @@ void QvkMainWindow_wl::slot_remux_mkv_to_mp4(QString filePath)
     const gchar *line = byteArray.constData();
     GError *error = nullptr;
     this->pipelineMP4  = gst_parse_launch(line, &error);
+
+
+    // progressreport anweisen, ELEMENT-Nachrichten auf den Bus zu werfen
+    GstElement *progressreport = gst_bin_get_by_name(GST_BIN(pipelineMP4), "prog_report");
+    if (progressreport) {
+        g_object_set(progressreport, "do-query", FALSE, nullptr);
+        gst_object_unref(progressreport);
+    }
 
     GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipelineMP4));
     gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_message_convert_mp4, this, nullptr);

@@ -150,8 +150,8 @@ signals:
     void signal_newVideoFilename(QString filename);
     void signal_beginRecordTime(QString time);
     void signal_gst_eos(QString msg);
-    void signal_gstPipelineFinished();
-
+    void signal_gst_pipeline_finished();
+    void signal_gst_progressbar_convert_mp4(int value);
 
 };
 
