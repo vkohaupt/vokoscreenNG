@@ -14,4 +14,8 @@ private slots:
 private:
     GstElement* m_pipeline;
     QTimer* m_timer;
+
+signals:
+    void progressChanged(int pos_ms, int dur_ms);
+
 };

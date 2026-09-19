@@ -1,4 +1,4 @@
-#include "pipeline_worker.h"
+#include "QvkConvert_progressbar_mkv_mp4_wl.h"
 #include <QDebug>
 #include <QTimer>
 
@@ -27,13 +27,12 @@ void PipelineWorker::onTick100ms() {
     if (gst_element_query_position(m_pipeline, GST_FORMAT_TIME, &current_position) &&
         gst_element_query_duration(m_pipeline, GST_FORMAT_TIME, &total_duration))
     {
-        // Umrechnung von Nanosekunden in Millisekunden für Qt
+        // Umrechnung von Nanosekunden in Millisekunden
         qint64 pos_ms = current_position / 1000000;
         qint64 dur_ms = total_duration / 1000000;
 
         qDebug() << "Fortschritt [100ms Takt]:" << pos_ms << "ms /" << dur_ms << "ms";
 
-        // Hier können Sie ein Qt-Signal emiten, um z.B. eine QProgressBar zu aktualisieren:
         emit progressChanged(pos_ms, dur_ms);
     }
 }
