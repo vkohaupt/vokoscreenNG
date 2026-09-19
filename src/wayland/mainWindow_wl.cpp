@@ -1115,7 +1115,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
     // StringList zum erzeugen von einer sehr großen Datei
     QStringList stringList;
-    stringList << "videotestsrc num-buffers=3000";  // Generiert 100.000 Frames (simuliert riesige Datei)
+    stringList << "videotestsrc num-buffers=1000";  // Generiert 100.000 Frames (simuliert riesige Datei)
     stringList << "video/x-raw,width=3840,height=2360,framerate=60/1"; // 4K Auflösung @ 60 FPS 3840 × 2160 Pixel
     stringList << "videoconvert";
     stringList << "videorate";
@@ -1234,7 +1234,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     emit signal_newVideoFilename( newVideoFilename );
 }
 
-
 void QvkMainWindow_wl::slot_stop()
 {
     // wait for EOS
@@ -1274,7 +1273,15 @@ void QvkMainWindow_wl::slot_stop()
     }
 
     if (ui->comboBoxFormat->currentText() == "mp4"){
-        slot_remux_mkv_to_mp4(muxerVideoFilename);
+        if (vkConvert_mkv_mp4_wl == nullptr){
+            vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl(ui);
+            connect(vkConvert_mkv_mp4_wl,
+                    &QvkConvert_mkv_mp4_wl::signal_gst_pipeline_finished,
+                    this,
+                    [=](){emit signal_gst_pipeline_finished();
+            });
+        }
+        vkConvert_mkv_mp4_wl->slot_remux_mkv_to_mp4(muxerVideoFilename);
     }
 
 }
@@ -1591,7 +1598,7 @@ void QvkMainWindow_wl::slot_Continue()
         }
     }
 }
-
+/*
 //------------------------------------ Begin MP4 Remux ----------------------------------------------------------------------
 
 gboolean QvkMainWindow_wl::set_pipeline_null_idle(gpointer data)
@@ -1840,3 +1847,4 @@ bool QvkMainWindow_wl::is_FileOpenByAnyProcess(QString targetFilePath)
 }
 
 //------------------------------------ End MP4 Remux ----------------------------------------------------------------------
+*/
