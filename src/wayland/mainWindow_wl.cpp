@@ -1269,12 +1269,14 @@ void QvkMainWindow_wl::slot_stop()
         show();
     }
 
-    if (ui->comboBoxFormat->currentText() == "mp4"){
-        slot_remux_mkv_to_mp4(muxerVideoFilename);
-    }
     if (ui->comboBoxFormat->currentText() == "mkv"){
         emit signal_gst_pipeline_finished();
     }
+
+    if (ui->comboBoxFormat->currentText() == "mp4"){
+        slot_remux_mkv_to_mp4(muxerVideoFilename);
+    }
+
 }
 
 
