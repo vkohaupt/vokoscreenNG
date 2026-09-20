@@ -45,7 +45,7 @@ private:
     static gboolean set_pipeline_null_idle(gpointer data);
     static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer data);
     static bool is_FileOpenByAnyProcess(QString targetFilePath);
-    GstElement *pipelineMP4;
+    GstElement *pipelineMP4 = nullptr;
 
 
 public slots:
