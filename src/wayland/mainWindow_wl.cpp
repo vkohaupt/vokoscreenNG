@@ -1269,7 +1269,8 @@ void QvkMainWindow_wl::slot_stop()
                 emit signal_gst_pipeline_finished();
             });
 
-            // Signal von Gstreamer empfangen und als Nachricht anzeigen
+            // Die benötigte Zeit für das remuxen von mkv zu mp4 wird hier
+            // mittels eines Dialog angezeigt.
             connect(vkConvert_mkv_mp4_wl,
                     &QvkConvert_mkv_mp4_wl::signal_gst_eos,
                     this,
