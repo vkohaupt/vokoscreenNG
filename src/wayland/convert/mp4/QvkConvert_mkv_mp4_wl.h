@@ -27,6 +27,7 @@
 
 #include <QWidget>
 #include <QString>
+#include <QStringList>
 
 #include <gst/gst.h>
 

@@ -31,6 +31,8 @@
 #include <QDir>
 #include <QString>
 #include <QStringList>
+#include <QList>
+#include <QCheckBox>
 
 QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl(Ui_formMainWindow_wl *m_ui)
 {
@@ -42,7 +44,6 @@ QvkConvert_mkv_mp4_wl::~QvkConvert_mkv_mp4_wl()
 {
 }
 
-//------------------------------------ Begin MP4 Remux ----------------------------------------------------------------------
 
 gboolean QvkConvert_mkv_mp4_wl::set_pipeline_null_idle(gpointer data)
 {
@@ -308,4 +309,3 @@ QStringList QvkConvert_mkv_mp4_wl::get_SelectedAudioDevice()
     }
     return list;
 }
-//------------------------------------ End MP4 Remux ----------------------------------------------------------------------
