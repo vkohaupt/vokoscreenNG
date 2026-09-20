@@ -681,19 +681,6 @@ void QvkMainWindow_wl::set_Connects()
 
     connect(ui->pushButton_log_openfolder, &QPushButton::clicked, this, [=](){slot_log_folder();});
     connect(ui->pushButton_log_refresh,    &QPushButton::clicked, this, [=](){slot_log_refresh();});
-
-
-    // Signal von Gstreamer abfangen und als Nachricht anzeigen
-    connect(this, &QvkMainWindow_wl::signal_gst_eos, this, [=](const QString &msg){
-        QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
-        vkShowMessage_wl->set_StatusIcon(":/pictures/screencast/monitor.png");
-        vkShowMessage_wl->set_timeOut(10000);
-        QString m_text = msg.section(" ", 0, 0).replace(msg.section(" ", 0, 0), "Convert");
-                m_text = m_text + "\n" + msg.section(" ", 1, 4) + "\n" + msg.section(" ", 5, 100);
-        vkShowMessage_wl->set_text(m_text);
-        vkShowMessage_wl->set_WindowTitle(global::name + " " + global::version);
-        vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
-    });
 }
 
 
@@ -1278,12 +1265,28 @@ void QvkMainWindow_wl::slot_stop()
             connect(vkConvert_mkv_mp4_wl,
                     &QvkConvert_mkv_mp4_wl::signal_gst_pipeline_finished,
                     this,
-                    [=](){emit signal_gst_pipeline_finished();
+                    [=](){
+                emit signal_gst_pipeline_finished();
             });
+
+            // Signal von Gstreamer empfangen und als Nachricht anzeigen
+            connect(vkConvert_mkv_mp4_wl,
+                    &QvkConvert_mkv_mp4_wl::signal_gst_eos,
+                    this,
+                    [=](const QString &msg){
+                QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
+                vkShowMessage_wl->set_StatusIcon(":/pictures/screencast/monitor.png");
+                vkShowMessage_wl->set_timeOut(10000);
+                QString m_text = msg.section(" ", 0, 0).replace(msg.section(" ", 0, 0), "Convert");
+                m_text = m_text + "\n" + msg.section(" ", 1, 4) + "\n" + msg.section(" ", 5, 100);
+                vkShowMessage_wl->set_text(m_text);
+                vkShowMessage_wl->set_WindowTitle(global::name + " " + global::version);
+                vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
+            });
+
         }
         vkConvert_mkv_mp4_wl->slot_remux_mkv_to_mp4(muxerVideoFilename);
     }
-
 }
 
 
