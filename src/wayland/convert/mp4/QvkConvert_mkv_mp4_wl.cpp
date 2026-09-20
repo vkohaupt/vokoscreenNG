@@ -110,6 +110,10 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4(GstBus *bus,
         break;
     }
     case GST_MESSAGE_STATE_CHANGED:{
+        // Nach Abschluß des remuxen wird die mkv gelöscht.
+        // Dabei muß sichergestellt sein das GST_STATE_NULL für die MP4 Pipeline erreicht wurde.
+        // Und mit der Funktion is_FileOpenByAnyProcess wird überprüft das ja kein Process
+        // mehr auf die MP4 zugreift.
         QvkConvert_mkv_mp4_wl *self = static_cast<QvkConvert_mkv_mp4_wl*>(data);
         GstElement *pipeline = self->pipelineMP4;
         if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
