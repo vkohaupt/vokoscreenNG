@@ -28,6 +28,7 @@
 #include <QWidget>
 #include <QString>
 #include <QStringList>
+#include <QTimer>
 
 #include <gst/gst.h>
 
@@ -47,19 +48,22 @@ private:
     static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer data);
     static bool is_FileOpenByAnyProcess(QString targetFilePath);
     GstElement *pipelineMP4 = nullptr;
-
+    QTimer *m_timer;
 
 public slots:
     void slot_remux_mkv_to_mp4(QString filePath);
 
 
 private slots:
+    void slot_onTick100ms();
 
 
 signals:
     void signal_gst_eos(QString msg);
     void signal_gst_pipeline_finished();
     void signal_gst_progressbar_convert_mp4(int value);
+
+    void signal_gst_stream_start_progressbar();
 
 
 protected:

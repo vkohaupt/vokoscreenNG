@@ -33,15 +33,59 @@
 #include <QStringList>
 #include <QList>
 #include <QCheckBox>
+#include <QTimer>
 
 QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl(Ui_formMainWindow_wl *m_ui)
 {
     ui = m_ui;
+
+    m_timer = new QTimer(this);
+    connect(this,
+            &QvkConvert_mkv_mp4_wl::signal_gst_stream_start_progressbar,
+            this,
+            [=](){
+        m_timer->start(100);
+    });
+
+    connect(this,
+            &QvkConvert_mkv_mp4_wl::signal_gst_eos,
+            this,
+            [=](){
+        m_timer->stop();
+    });
+
+    connect(m_timer,
+            &QTimer::timeout,
+            this,
+            &QvkConvert_mkv_mp4_wl::slot_onTick100ms);
 }
 
 
 QvkConvert_mkv_mp4_wl::~QvkConvert_mkv_mp4_wl()
 {
+}
+
+
+void QvkConvert_mkv_mp4_wl::slot_onTick100ms()
+{
+    if (!pipelineMP4){
+        return;
+    }
+
+    gint64 current_position = 0;
+    gint64 total_duration = 0;
+
+    // Position im GST_FORMAT_TIME (Nanosekunden) abfragen
+    if (gst_element_query_position(pipelineMP4, GST_FORMAT_TIME, &current_position) &&
+            gst_element_query_duration(pipelineMP4, GST_FORMAT_TIME, &total_duration))
+    {
+        // Umrechnung von Nanosekunden in Millisekunden
+        qint64 pos_ms = current_position / 1000000;
+        qint64 dur_ms = total_duration / 1000000;
+
+        qDebug().noquote() << global::nameOutput << "Fortschritt [100ms Takt]:" << pos_ms << "ms /" << dur_ms << "ms";
+        // emit progressChanged(pos_ms, dur_ms);
+    }
 }
 
 
@@ -62,7 +106,7 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4(GstBus *bus,
     switch(GST_MESSAGE_TYPE (message))
     {
     case GST_MESSAGE_ELEMENT:{
-        QvkConvert_mkv_mp4_wl *self = static_cast<QvkConvert_mkv_mp4_wl*>(data);
+        /*        QvkConvert_mkv_mp4_wl *self = static_cast<QvkConvert_mkv_mp4_wl*>(data);
         const GstStructure *structure = gst_message_get_structure(message);
         qDebug() << gst_structure_to_string(structure);
         if (gst_structure_has_name(structure, "progress")){
@@ -73,6 +117,7 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4(GstBus *bus,
                 }, Qt::QueuedConnection);
             }
         }
+*/
         break;
     }
     case GST_MESSAGE_ERROR:{
@@ -107,6 +152,14 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4(GstBus *bus,
         qDebug().noquote() << global::nameOutput << "[Remux] mkv to mp4 GST_MESSAGE_STREAM_START";
         timeStart = QTime::currentTime();
         // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
+
+        // ---------------- Begin emit für Progressbar ----------------------------------
+        QvkConvert_mkv_mp4_wl *self = static_cast<QvkConvert_mkv_mp4_wl*>(data);
+        QMetaObject::invokeMethod(self, [self](){
+            emit self->signal_gst_stream_start_progressbar();
+        }, Qt::QueuedConnection);
+        // ---------------- End emit für Progressbar ----------------------------------
+
 
         break;
     }
