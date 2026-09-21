@@ -104,13 +104,6 @@ private:
     QString whatWasClicked;
 
     QString muxerVideoFilename = "";
-/*    static gboolean set_pipeline_null_idle(gpointer data);
-    static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer data);
-    static bool is_FileOpenByAnyProcess(QString targetFilePath);
-    GstElement *pipelineMP4;
-
-    QString getPipelineStructure(GstElement *pipeline);
-*/
 
     QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl = nullptr;
 
@@ -141,8 +134,6 @@ private slots:
 
     void slot_languageChanged(int);
 
-//    void slot_remux_mkv_to_mp4(QString filePath);
-
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -154,7 +145,6 @@ signals:
     void signal_beginRecordTime(QString time);
     void signal_gst_eos(QString msg);
     void signal_gst_pipeline_finished();
-//    void signal_gst_progressbar_convert_mp4(int value);
 
 };
 
