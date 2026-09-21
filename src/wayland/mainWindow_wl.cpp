@@ -341,14 +341,16 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent Begin close";
-    /*
-    QList<QvkLevelMeterController_wl *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController_wl *>();
-    for ( int i = 0; i < list.count(); i++ ) {
-        QvkLevelMeterController_wl *vkLevelMeterController = list.at(i);
-        vkLevelMeterController->vkLevelMeter->stop();
-        qDebug().noquote() << global::nameOutput << "Stop levelmeter on:" << vkLevelMeterController->objectName();
+
+    // Audio Levelmeter ausschalten da das Programm zum Schluß hin sonst abstürtzt.
+    QList<QToolButton *> list = ui->scrollAreaAudioDevice->findChildren<QToolButton *>();
+    for(int i = 0; i < list.count(); i++){
+        QToolButton *toolButton = list.at(i);
+        if (toolButton->isChecked()){
+            toolButton->click();
+        }
     }
-*/
+
     ui->pushButtonStop->click();
     vkSettings_wl.saveAll( ui, this );
     vkSettings_wl.saveAreaScreencast( vkRegionChoise_wl->get_XRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),
