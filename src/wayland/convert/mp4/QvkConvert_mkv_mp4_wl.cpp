@@ -84,9 +84,9 @@ void QvkConvert_mkv_mp4_wl::slot_onTick100ms()
         qreal dur_ms = total_duration / 1000000;
 
         // Umrechnen in Prozent
-        qreal percent = 100/dur_ms*pos_ms;
+        qreal percent = 100 / dur_ms * pos_ms;
 
-        // Ein Sihnal mit den Prozenten als Parameter auslösen
+        // Ein Signal mit den Prozenten als Parameter auslösen
         emit signal_progress_changed(percent);
     }
 }
@@ -308,28 +308,28 @@ bool QvkConvert_mkv_mp4_wl::is_FileOpenByAnyProcess(QString targetFilePath)
     // Wir suchen nur nach Ordnern, die rein aus Zahlen bestehen (Prozess-IDs)
     QStringList pidDirs = procDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
-    for (const QString &pid : pidDirs) {
+    for(const QString &pid : pidDirs){
         bool isNumber;
         pid.toInt(&isNumber);
-        if (!isNumber) continue; // Überspringe Ordner wie /proc/driver, /proc/sys etc.
+        if (!isNumber){continue;} // Überspringe Ordner wie /proc/driver, /proc/sys etc.
 
         // Pfad zum File-Descriptor-Ordner des Prozesses (z.B. /proc/1234/fd)
         QString fdPath = QString("/proc/%1/fd").arg(pid);
         QDir fdDir(fdPath);
 
         // Falls wir keine Leserechte für den Prozess haben (z.B. Root-Prozesse)
-        if (!fdDir.exists()) continue;
+        if (!fdDir.exists()){continue;}
 
         // Alle File Descriptors (Symlinks) in diesem Ordner auflisten
         QStringList fds = fdDir.entryList(QDir::Files | QDir::System | QDir::NoDotAndDotDot);
 
-        for (int i = 0; i < fds.count(); ++i) {
+        for(int i = 0; i < fds.count(); ++i){
             QString linkPath = fdDir.absoluteFilePath(fds[i]);
 
             // QFileInfo::symLinkTarget() liest aus, wohin der Symlink im System zeigt
             QString openedFile = QFileInfo(linkPath).symLinkTarget();
 
-            if (openedFile == cleanTargetPath) {
+            if (openedFile == cleanTargetPath){
                 qDebug().noquote() << global::nameOutput << "This file is open:" << openedFile;
                 return true; // Gefunden! Ein Prozess hat diese Datei offen.
             }
@@ -344,9 +344,9 @@ QStringList QvkConvert_mkv_mp4_wl::get_SelectedAudioDevice()
 {
     QStringList list;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+    for(int i = 0; i < listQCheckBox.count(); i++){
         QCheckBox *checkBox = listQCheckBox.at(i);
-        if ( checkBox->checkState() == Qt::Checked ) {
+        if (checkBox->checkState() == Qt::Checked){
             list << checkBox->accessibleName();
         }
     }
