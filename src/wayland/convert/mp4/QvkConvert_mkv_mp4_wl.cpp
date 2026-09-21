@@ -80,11 +80,14 @@ void QvkConvert_mkv_mp4_wl::slot_onTick100ms()
             gst_element_query_duration(pipelineMP4, GST_FORMAT_TIME, &total_duration))
     {
         // Umrechnung von Nanosekunden in Millisekunden
-        qint64 pos_ms = current_position / 1000000;
-        qint64 dur_ms = total_duration / 1000000;
+        qreal pos_ms = current_position / 1000000;
+        qreal dur_ms = total_duration / 1000000;
 
-        qDebug().noquote() << global::nameOutput << "Fortschritt [100ms Takt]:" << pos_ms << "ms /" << dur_ms << "ms";
-        // emit progressChanged(pos_ms, dur_ms);
+        // Umrechnen in Prozent
+        qreal percent = 100/dur_ms*pos_ms;
+
+        // Ein Sihnal mit den Prozenten als Parameter auslösen
+        emit signal_progress_changed(percent);
     }
 }
 
@@ -106,18 +109,6 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4(GstBus *bus,
     switch(GST_MESSAGE_TYPE (message))
     {
     case GST_MESSAGE_ELEMENT:{
-        /*        QvkConvert_mkv_mp4_wl *self = static_cast<QvkConvert_mkv_mp4_wl*>(data);
-        const GstStructure *structure = gst_message_get_structure(message);
-        qDebug() << gst_structure_to_string(structure);
-        if (gst_structure_has_name(structure, "progress")){
-            gint percent = 0;
-            if (gst_structure_get_int(structure, "percent", &percent)){
-                QMetaObject::invokeMethod(self, [self, percent](){
-                    emit self->signal_gst_progressbar_convert_mp4(percent);
-                }, Qt::QueuedConnection);
-            }
-        }
-*/
         break;
     }
     case GST_MESSAGE_ERROR:{
@@ -238,7 +229,6 @@ void QvkConvert_mkv_mp4_wl::slot_remux_mkv_to_mp4(QString filePath)
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux" +
                 " ! h264parse" +
-                " ! progressreport name=prog_report update-freq=1 silent=true" +
                 " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600" +
                 " ! mp4mux name=mux" +
                 " ! filesink location=" + path + "/" + fileNameMP4;

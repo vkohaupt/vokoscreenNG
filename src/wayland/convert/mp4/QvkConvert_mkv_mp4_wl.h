@@ -62,8 +62,8 @@ signals:
     void signal_gst_eos(QString msg);
     void signal_gst_pipeline_finished();
     void signal_gst_progressbar_convert_mp4(int value);
-
     void signal_gst_stream_start_progressbar();
+    void signal_progress_changed(qreal percent);
 
 
 protected:
