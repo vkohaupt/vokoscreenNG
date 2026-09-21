@@ -300,7 +300,9 @@ bool QvkConvert_mkv_mp4_wl::is_FileOpenByAnyProcess(QString targetFilePath)
 {
     // Sicherstellen, dass wir den absoluten, bereinigten Pfad vergleichen
     QString cleanTargetPath = QFileInfo(targetFilePath).absoluteFilePath();
-    if (cleanTargetPath.isEmpty()) return false;
+    if (cleanTargetPath.isEmpty()){
+        return false;
+    }
 
     // 1. Das /proc Verzeichnis öffnen
     QDir procDir("/proc");
@@ -311,14 +313,19 @@ bool QvkConvert_mkv_mp4_wl::is_FileOpenByAnyProcess(QString targetFilePath)
     for(const QString &pid : pidDirs){
         bool isNumber;
         pid.toInt(&isNumber);
-        if (!isNumber){continue;} // Überspringe Ordner wie /proc/driver, /proc/sys etc.
+        // Überspringe Ordner wie /proc/driver, /proc/sys etc.
+        if (!isNumber){
+            continue;
+        }
 
         // Pfad zum File-Descriptor-Ordner des Prozesses (z.B. /proc/1234/fd)
         QString fdPath = QString("/proc/%1/fd").arg(pid);
         QDir fdDir(fdPath);
 
         // Falls wir keine Leserechte für den Prozess haben (z.B. Root-Prozesse)
-        if (!fdDir.exists()){continue;}
+        if (!fdDir.exists()){
+            continue;
+        }
 
         // Alle File Descriptors (Symlinks) in diesem Ordner auflisten
         QStringList fds = fdDir.entryList(QDir::Files | QDir::System | QDir::NoDotAndDotDot);
