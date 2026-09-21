@@ -1104,7 +1104,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
     // StringList zum erzeugen von einer sehr großen Datei
     QStringList stringList;
-    stringList << "videotestsrc num-buffers=3000";  // Generiert 100.000 Frames (simuliert riesige Datei)
+    stringList << "videotestsrc num-buffers=1000";  // Generiert 100.000 Frames (simuliert riesige Datei)
     stringList << "video/x-raw,width=3840,height=2360,framerate=60/1"; // 4K Auflösung @ 60 FPS 3840 × 2160 Pixel
     stringList << "videoconvert";
     stringList << "videorate";
