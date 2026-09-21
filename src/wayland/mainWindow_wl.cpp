@@ -1287,7 +1287,14 @@ void QvkMainWindow_wl::slot_stop()
                 vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
             });
 
+            connect(vkConvert_mkv_mp4_wl,
+                    &QvkConvert_mkv_mp4_wl::signal_progress_changed,
+                    this,
+                    [=](qreal percent){
+                qDebug() << "---------------------------------------" << percent;
+            });
         }
+
         vkConvert_mkv_mp4_wl->slot_remux_mkv_to_mp4(muxerVideoFilename);
     }
 }

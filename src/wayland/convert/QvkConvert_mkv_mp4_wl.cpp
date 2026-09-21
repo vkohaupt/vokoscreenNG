@@ -52,6 +52,7 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl(Ui_formMainWindow_wl *m_ui)
             this,
             [=](){
         m_timer->stop();
+        emit signal_progress_changed(100);
     });
 
     connect(m_timer,
