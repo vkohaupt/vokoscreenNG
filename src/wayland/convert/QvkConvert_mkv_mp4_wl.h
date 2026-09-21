@@ -48,7 +48,8 @@ private:
     static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer data);
     static bool is_FileOpenByAnyProcess(QString targetFilePath);
     GstElement *pipelineMP4 = nullptr;
-    QTimer *m_timer;
+    QTimer *m_timer = nullptr;
+
 
 public slots:
     void slot_remux_mkv_to_mp4(QString filePath);

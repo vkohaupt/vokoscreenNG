@@ -18,7 +18,7 @@
 #include "QvkCameraController_wl.h"
 #include "QvkAudioPipewireController_wl.h"
 #include "QvkHelpBrowser_wl.h"
-#include "mp4/QvkConvert_mkv_mp4_wl.h"
+#include "QvkConvert_mkv_mp4_wl.h"
 
 
 #include <QMainWindow>
