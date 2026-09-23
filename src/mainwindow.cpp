@@ -1813,7 +1813,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "qp-min=" + QString::number( sliderOpenh264->value() );
         list << "qp-max=" + QString::number( sliderOpenh264->value() );
         list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
-        list << "complexity=low";
+        list << "complexity=high";
         list << "multi-thread=" + QString::number( 0 );
         list << "slice-mode=auto"; // Number of slices equal to number of threads
         value = list.join( " " );
@@ -1827,7 +1827,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         QStringList list;
         list << "gifenc";
         list << "speed=30";
-//        list << "min-force-key-unit-interval=3000000000";
         if ( ui->checkBoxGifLoop->isChecked() ) {
             list << "repeat=-1";
         } else {

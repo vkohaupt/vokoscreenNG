@@ -52,7 +52,6 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl(Ui_formMainWindow_wl *m_ui)
             this,
             [=](){
         m_timer->stop();
-        emit signal_progress_changed(100);
     });
 
     connect(m_timer,
@@ -119,6 +118,13 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4(GstBus *bus,
     case GST_MESSAGE_EOS:{
         // ---------------- Begin pipeline auf null setzen -----------------------------
         QvkConvert_mkv_mp4_wl *self = static_cast<QvkConvert_mkv_mp4_wl*>(data);
+
+
+        QMetaObject::invokeMethod(self, [self](){
+            emit self->signal_progress_changed(100);
+        }, Qt::QueuedConnection);
+
+
         GstElement *pipeline = self->pipelineMP4;
         g_idle_add(set_pipeline_null_idle, pipeline);
         // ---------------- End pipeline auf null setzen -----------------------------

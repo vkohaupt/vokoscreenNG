@@ -1092,7 +1092,8 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
     qDebug().noquote();
-/*
+
+
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
@@ -1100,17 +1101,17 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
-*/
 
+/*
     // StringList zum erzeugen von einer sehr großen Datei
     QStringList stringList;
-    stringList << "videotestsrc num-buffers=1000";  // Generiert 100.000 Frames (simuliert riesige Datei)
+    stringList << "videotestsrc num-buffers=10000";  // Generiert 100.000 Frames (simuliert riesige Datei)
     stringList << "video/x-raw,width=3840,height=2360,framerate=60/1"; // 4K Auflösung @ 60 FPS 3840 × 2160 Pixel
     stringList << "videoconvert";
     stringList << "videorate";
     stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
-
+*/
 
     QString value;
     QStringList list;
@@ -1176,13 +1177,22 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
         }
     }
 
-    stringList << "matroskamux name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
+    if (ui->comboBoxFormat->currentText() == "mkv"){
+        stringList << "matroskamux name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
+    }
+    if (ui->comboBoxFormat->currentText() == "mp4"){
+        stringList << "mp4mux name=mux fragment-duration=2000";
+    }
+
     stringList.removeAll( "" );
 
-    QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + ".mkv";
+    QString newVideoFilename =
+            global::name +
+            "-" +
+            QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) +
+            "." +
+            ui->comboBoxFormat->currentText();
     stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
-
-    muxerVideoFilename = ui->lineEditVideoPath->text() + "/" + newVideoFilename;
 
     QString VK_Pipeline = stringList.join( " ! " );
     VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
@@ -1257,46 +1267,7 @@ void QvkMainWindow_wl::slot_stop()
         show();
     }
 
-    if (ui->comboBoxFormat->currentText() == "mkv"){
-        emit signal_gst_pipeline_finished();
-    }
-
-    if (ui->comboBoxFormat->currentText() == "mp4"){
-        if (vkConvert_mkv_mp4_wl == nullptr){
-            vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl(ui);
-            connect(vkConvert_mkv_mp4_wl,
-                    &QvkConvert_mkv_mp4_wl::signal_gst_pipeline_finished,
-                    this,
-                    [=](){
-                emit signal_gst_pipeline_finished();
-            });
-
-            // Die benötigte Zeit für das remuxen von mkv zu mp4 wird hier
-            // mittels eines Dialog angezeigt.
-            connect(vkConvert_mkv_mp4_wl,
-                    &QvkConvert_mkv_mp4_wl::signal_gst_eos,
-                    this,
-                    [=](const QString &msg){
-                QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
-                vkShowMessage_wl->set_StatusIcon(":/pictures/screencast/monitor.png");
-                vkShowMessage_wl->set_timeOut(10000);
-                QString m_text = msg.section(" ", 0, 0).replace(msg.section(" ", 0, 0), "Convert");
-                m_text = m_text + "\n" + msg.section(" ", 1, 4) + "\n" + msg.section(" ", 5, 100);
-                vkShowMessage_wl->set_text(m_text);
-                vkShowMessage_wl->set_WindowTitle(global::name + " " + global::version);
-                vkShowMessage_wl->set_folderPath(ui->lineEditVideoPath->text());
-            });
-
-            connect(vkConvert_mkv_mp4_wl,
-                    &QvkConvert_mkv_mp4_wl::signal_progress_changed,
-                    this,
-                    [=](qreal percent){
-                qDebug() << "---------------------------------------" << percent;
-            });
-        }
-
-        vkConvert_mkv_mp4_wl->slot_remux_mkv_to_mp4(muxerVideoFilename);
-    }
+    emit signal_gst_pipeline_finished();
 }
 
 
