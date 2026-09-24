@@ -626,18 +626,7 @@
                         <number>6</number>
                        </property>
                        <item>
-                        <widget class="QComboBox" name="comboBoxFormat">
-                         <item>
-                          <property name="text">
-                           <string notr="true">mkv</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string notr="true">mp4</string>
-                          </property>
-                         </item>
-                        </widget>
+                        <widget class="QComboBox" name="comboBoxFormat"/>
                        </item>
                       </layout>
                      </item>
@@ -3561,7 +3550,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

@@ -15,6 +15,7 @@
 #include <QSize>
 #include <QSpacerItem>
 #include <QSizePolicy>
+#include <QComboBox>
 
 #include <gst/gst.h>
 
@@ -26,8 +27,17 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     set_muxer_to_available_or_unavailable();
     set_videoencoder_to_available_or_unavailable();
     set_audioencoder_to_available_or_unavailable();
-    set_available_AudioCodecs_in_Combobox();
 
+    // GUI
+//    connect(ui->comboBoxFormat, SIGNAL(currentTextChanged(const QString)), this, SLOT(slot_set_available_VideoCodecs_in_Combobox(const QString)));
+    connect(ui->comboBoxFormat,
+            &QComboBox::currentTextChanged,
+            this,
+            [=](const QString value){
+        slot_set_available_AudioCodecs_in_Combobox(value);
+    });
+
+    set_available_muxer_in_ComboBox();
     set_available_formatVideoAudoicodec_in_tab();
 
     qDebug();
@@ -105,6 +115,32 @@ void QvkContainerController_wl::set_videoencoder_to_available_or_unavailable()
 }
 
 
+void QvkContainerController_wl::set_available_muxer_in_ComboBox()
+{
+    for ( int i = 0; i < vkContainer_wl->get_Containers().count(); i++ ) {
+        if ( vkContainer_wl->get_Containers().at(i)->get_Available() == true ) {
+            QIcon icon;
+            if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "mkv" ){
+                icon = QIcon( ":/pictures/screencast/strip-mkv.png" );
+            }
+            if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "avi" ){
+                icon = QIcon( ":/pictures/screencast/strip-avi.png" );
+            }
+            if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "webm" ){
+                icon = QIcon( ":/pictures/screencast/strip-webm.png" );
+            }
+            if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "mp4" ){
+                icon = QIcon( ":/pictures/screencast/strip-mp4.png" );
+            }
+            if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "mov" ){
+                icon = QIcon( ":/pictures/screencast/strip-mov.png" );
+            }
+            ui->comboBoxFormat->addItem(icon, vkContainer_wl->get_Containers().at(i)->get_Suffix(), vkContainer_wl->get_Containers().at(i)->get_Muxer());
+        }
+    }
+}
+
+
 void QvkContainerController_wl::set_audioencoder_to_available_or_unavailable()
 {
     for ( int i = 0; i < vkContainer_wl->get_Containers().count(); i++ )
@@ -130,14 +166,14 @@ void QvkContainerController_wl::set_audioencoder_to_available_or_unavailable()
 /*
  * Insert audio-encoder and audio-name from container in audiocodec Combobox
  */
-void QvkContainerController_wl::set_available_AudioCodecs_in_Combobox()
+void QvkContainerController_wl::slot_set_available_AudioCodecs_in_Combobox(const QString suffix)
 {
     ui->comboBoxAudioCodec->clear();
-    QList<Container_wl::AudioCodec_wl> list = vkContainer_wl->get_AudioCodecs( "mkv" );
-    if ( !list.empty() ) {
-        for ( int i = 0; i < list.count(); i++ ) {
-            if ( list.at(i).available == true ) {
-                ui->comboBoxAudioCodec->addItem( list.at(i).name, list.at(i).encoder );
+    QList<Container_wl::AudioCodec_wl> list = vkContainer_wl->get_AudioCodecs(suffix);
+    if (!list.empty()){
+        for (int i = 0; i < list.count(); i++){
+            if (list.at(i).available == true){
+                ui->comboBoxAudioCodec->addItem(list.at(i).name, list.at(i).encoder);
             }
         }
     }
