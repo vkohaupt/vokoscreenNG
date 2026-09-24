@@ -95,9 +95,13 @@ QvkContainer_wl::QvkContainer_wl(QObject *parent) : QObject(parent)
     MP4->add_AudioCodec( "opusenc", "opus" );
     MP4->add_AudioCodec( "lamemp3enc", "mp3" );
 
+    Container_wl *GIF = new Container_wl( "gifenc", "gif" );
+    GIF->add_VideoCodec( "gifenc", "gif" );
+
     Containers = new QList<Container_wl*>;
     Containers->append( MKV );
     Containers->append( MP4 );
+    Containers->append( GIF );
 }
 
 /*!

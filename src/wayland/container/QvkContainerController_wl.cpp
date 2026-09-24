@@ -28,7 +28,6 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     set_videoencoder_to_available_or_unavailable();
     set_audioencoder_to_available_or_unavailable();
 
-    // GUI
 //    connect(ui->comboBoxFormat, SIGNAL(currentTextChanged(const QString)), this, SLOT(slot_set_available_VideoCodecs_in_Combobox(const QString)));
     connect(ui->comboBoxFormat,
             &QComboBox::currentTextChanged,
@@ -134,6 +133,9 @@ void QvkContainerController_wl::set_available_muxer_in_ComboBox()
             }
             if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "mov" ){
                 icon = QIcon( ":/pictures/screencast/strip-mov.png" );
+            }
+            if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "gif" ){
+                icon = QIcon( ":/pictures/screencast/strip-gif.png" );
             }
             ui->comboBoxFormat->addItem(icon, vkContainer_wl->get_Containers().at(i)->get_Suffix(), vkContainer_wl->get_Containers().at(i)->get_Muxer());
         }
