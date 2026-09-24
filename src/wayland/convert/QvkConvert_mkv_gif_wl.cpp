@@ -22,53 +22,42 @@
 
 #include "global.h"
 #include "QvkConvert_mkv_gif_wl.h"
-#include "QvkFileDialog.h"
 
-#include <QDebug>
-#include <QLineEdit>
-#include <QPalette>
-#include <QColor>
-#include <QTimer>
-#include <QStringList>
-#include <QStandardPaths>
-#include <QDialog>
+#include <QTime>
+#include <QMetaObject>
+#include <QFile>
+#include <QFileInfo>
 #include <QByteArray>
-#include <QMessageBox>
+#include <QDir>
+#include <QString>
+#include <QStringList>
+#include <QList>
+#include <QCheckBox>
+#include <QTimer>
 
-QString convert_video_codec_gif;
-int counterConvertGIF = 0;
-QLineEdit *lineEditConvertGIF;
-
-QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( Ui_formMainWindow_wl *vk_ui )
+QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
 {
-    ui = vk_ui;
-    lineEditConvertGIF = new QLineEdit;
-    connect(lineEditConvertGIF, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_gif();});
-    connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_gif();});
-    connect(ui->pushButton_convert_mkv_to_gif, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_gif();});
+    ui = m_ui;
 
-    // Hintergrundfarbe für Widget setzen
-    QPalette palette_1 = ui->pushButton_convert_mkv_to_gif->palette();
-    palette_1.setColor( QPalette::Window, QColor( QColor( 239, 240, 241 ) ) );
-    ui->widget_convert_mkv_to_gif->setAutoFillBackground( true );
-    ui->widget_convert_mkv_to_gif->setPalette( palette_1 );
+    m_timer = new QTimer(this);
+    connect(this,
+            &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
+            this,
+            [=](){
+        m_timer->start(100);
+    });
 
-    // Hintergrundfarbe für label setzen
-    QPalette palette_2 = ui->label_convert_mkv_to_gif->palette();
-    palette_2.setColor( QPalette::Window, QColor( QColor( 239, 240, 241 ) ) );
-    ui->label_convert_mkv_to_gif->setAutoFillBackground( true );
-    ui->label_convert_mkv_to_gif->setPalette( palette_2 );
+    connect(this,
+            &QvkConvert_mkv_gif_wl::signal_gst_eos,
+            this,
+            [=](){
+        m_timer->stop();
+    });
 
-    // Hintergrundfarbe für Widget und Label in Variable für späteren gebrauch
-    paletteConvertWidget = ui->pushButton_convert_mkv_to_gif->palette();
-    paletteConvertLabel = ui->label_convert_mkv_to_gif->palette();
-
-    connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, [=](){slot_discover_start();});
-
-    timer = new QTimer;
-    timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 200 );
-    connect( timer, &QTimer::timeout, this, [=](){slot_timer();});
+    connect(m_timer,
+            &QTimer::timeout,
+            this,
+            &QvkConvert_mkv_gif_wl::slot_onTick100ms);
 }
 
 
@@ -77,415 +66,303 @@ QvkConvert_mkv_gif_wl::~QvkConvert_mkv_gif_wl()
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_timer()
+void QvkConvert_mkv_gif_wl::slot_onTick100ms()
 {
-    gint64 duration;
-    gst_element_query_duration( pipeline, GST_FORMAT_TIME, &duration );
+    if (!pipelineGIF){
+        return;
+    }
 
-    gint64 currentTime;
-    gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime );
+    gint64 current_position = 0;
+    gint64 total_duration = 0;
 
-    qint64 prozent = 100 / ( duration / 1000 / 1000 / 1000 ) * ( currentTime / 1000 / 1000 / 1000 );
+    // Position im GST_FORMAT_TIME (Nanosekunden) abfragen
+    if (gst_element_query_position(pipelineGIF, GST_FORMAT_TIME, &current_position) &&
+            gst_element_query_duration(pipelineGIF, GST_FORMAT_TIME, &total_duration))
+    {
+        // Umrechnung von Nanosekunden in Millisekunden
+        qreal pos_ms = current_position / 1000000;
+        qreal dur_ms = total_duration / 1000000;
 
-    ui->label_convert_mkv_to_gif->setText( QString::number( prozent ) + " %" );
-}
+        // Umrechnen in Prozent
+        qreal percent = 100 / dur_ms * pos_ms;
 
-
-void QvkConvert_mkv_gif_wl::slot_lineEdit_Convert_eos_gif()
-{
-    QPalette palette_1 = ui->pushButton_convert_mkv_to_gif->palette();
-    palette_1.setColor( QPalette::Window, QColor( Qt::green ) );
-    ui->widget_convert_mkv_to_gif->setAutoFillBackground( true );
-    ui->widget_convert_mkv_to_gif->setPalette( palette_1 );
-
-    QPalette palette_2 = ui->label_convert_mkv_to_gif->palette();
-    palette_2.setColor( QPalette::Window, QColor( Qt::green ) );
-    ui->label_convert_mkv_to_gif->setAutoFillBackground( true );
-    ui->label_convert_mkv_to_gif->setPalette( palette_2 );
-    ui->label_convert_mkv_to_gif->setText( "File was successfully converted" );
-
-    ui->toolButton_convert_dialog_mkv_to_gif->setDisabled( false );
-    ui->pushButton_convert_mkv_to_gif->setDisabled( false );
-
-    timer->stop();
-    ui->label_convert_mkv_to_gif->setText( "100 %" );
-}
-
-
-void QvkConvert_mkv_gif_wl::slot_convert_openfiledialog_mkv_to_gif()
-{
-    QString pathFile;
-    QvkFileDialog vkFileDialog( this );
-    QStringList list( { "video/x-matroska" } );
-    vkFileDialog.setMimeTypeFilters( list );
-    vkFileDialog.setModal( true );
-    vkFileDialog.setVideoPath( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-    if ( vkFileDialog.exec() == QDialog::Accepted ) {
-        if ( !vkFileDialog.selectedFiles().empty() ) {
-            pathFile = vkFileDialog.selectedFiles().at(0);
-            ui->lineEdit_convert_mkv_to_gif->setText( pathFile );
-            ui->pushButton_convert_mkv_to_gif->setEnabled( true );
-            ui->label_convert_mkv_to_gif->setText( "Please start convert" );
-
-            ui->widget_convert_mkv_to_gif->setAutoFillBackground( true );
-            ui->widget_convert_mkv_to_gif->setPalette( paletteConvertWidget );
-
-            ui->label_convert_mkv_to_gif->setAutoFillBackground( true );
-            ui->label_convert_mkv_to_gif->setPalette( paletteConvertLabel );
-        }
+        // Ein Signal mit den Prozenten als Parameter auslösen
+        emit signal_progress_changed(percent);
     }
 }
 
 
-GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif( GstBus *bus, GstMessage *message, gpointer user_data )
+gboolean QvkConvert_mkv_gif_wl::set_pipeline_null_idle(gpointer data)
+{
+    GstElement *pipeline = GST_ELEMENT(data);
+    gst_element_set_state(pipeline, GST_STATE_NULL);
+    gst_object_unref(pipeline);
+    return G_SOURCE_REMOVE;
+}
+
+
+GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus);
-    Q_UNUSED(user_data)
+    static QTime timeStart;
+
     switch(GST_MESSAGE_TYPE (message))
     {
-    case GST_MESSAGE_ERROR:
-        qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_ERROR";
-        break;
-    case GST_MESSAGE_EOS: {
-        qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_EOS";
-        counterConvertGIF++;
-        lineEditConvertGIF->setText( QString::number( counterConvertGIF ) );
+    case GST_MESSAGE_ELEMENT:{
         break;
     }
-    case GST_MESSAGE_DURATION_CHANGED:
-        qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_DURATION_CHANGED";
+    case GST_MESSAGE_ERROR:{
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif GST_MESSAGE_ERROR";
         break;
-    case GST_MESSAGE_STEP_DONE:
-        qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_STEP_DONE";
+    }
+    case GST_MESSAGE_EOS:{
+        // ---------------- Begin pipeline auf null setzen -----------------------------
+        QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
+
+
+        QMetaObject::invokeMethod(self, [self](){
+            emit self->signal_progress_changed(100);
+        }, Qt::QueuedConnection);
+
+
+        GstElement *pipeline = self->pipelineGIF;
+        g_idle_add(set_pipeline_null_idle, pipeline);
+        // ---------------- End pipeline auf null setzen -----------------------------
+
+        // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif GST_MESSAGE_EOS";
+        QTime timeEnd = QTime::currentTime();
+        qreal timeDiv = timeStart.msecsTo(timeEnd);
+        QString msg = "[Remux] mkv to gif in " + QString::number(timeDiv/1000) + " seconds";
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif in" << timeDiv/1000 << "seconds";
+        // WICHTIG: Signal über einen Thread-Wechsel (QueuedConnection) senden.
+        // Qt erledigt das automatisch, wenn Signal und Slot in verschiedenen Threads leben,
+        // oder wenn wir invokeMethod nutzen:
+        QMetaObject::invokeMethod(self, [self, msg](){
+            emit self->signal_gst_eos(msg);
+        }, Qt::QueuedConnection);
+        // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
+
         break;
-    case GST_MESSAGE_TAG:
-        qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_TAG";
+    }
+    case GST_MESSAGE_STREAM_START:{
+        // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif GST_MESSAGE_STREAM_START";
+        timeStart = QTime::currentTime();
+        // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
+
+        // ---------------- Begin emit für Progressbar ----------------------------------
+        QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
+        QMetaObject::invokeMethod(self, [self](){
+            emit self->signal_gst_stream_start_progressbar();
+        }, Qt::QueuedConnection);
+        // ---------------- End emit für Progressbar ----------------------------------
+
+
         break;
-    case GST_MESSAGE_STATE_CHANGED:
-        // qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_STATE_CHANGED";
-        break;
-    case GST_MESSAGE_STREAM_START:
-        qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_STREAM_START";
-        break;
-    case GST_MESSAGE_APPLICATION:
-    {
-        qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_APPLICATION";
+    }
+    case GST_MESSAGE_STATE_CHANGED:{
+        // Nach Abschluß des remuxen wird die mkv gelöscht.
+        // Dabei muß sichergestellt sein das GST_STATE_NULL für die gif Pipeline erreicht wurde.
+        // Und mit der Funktion is_FileOpenByAnyProcess wird überprüft das ja kein Process
+        // mehr auf die gif zugreift.
+        QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
+        GstElement *pipeline = self->pipelineGIF;
+        if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
+            GstState old_state, new_state, pending;
+            gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
+            qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif Pipeline state changed from:"
+                               << gst_element_state_get_name(old_state)
+                               << "to" << gst_element_state_get_name(new_state);
+        }
+
+        GstState old_state, new_state, pending;
+        gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
+        if (new_state == GST_STATE_NULL){
+            QString muxerVideoFilename_MKV = self->muxerVideoFilename;
+            QString muxerVideoFilename_gif = self->muxerVideoFilename;;
+            muxerVideoFilename_gif.replace(".mkv", ".gif");
+
+            QFile file(muxerVideoFilename_MKV);
+            if (file.exists() == true){
+                bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_gif);
+                qDebug().noquote() << global::nameOutput
+                                   << "[Remux] mkv to gif File is not open and ready to use:"
+                                   << muxerVideoFilename_gif;
+                if (bo == false){
+                    QFile file(muxerVideoFilename_MKV);
+                    if (file.exists() == true){
+                        if (file.remove() == true){
+                            qDebug().noquote() << global::nameOutput
+                                               << "[Remux] mkv to gif File was deleted:"
+                                               << muxerVideoFilename_MKV;
+                        }else{
+                            qDebug().noquote() << global::nameOutput
+                                               << "[Remux] mkv to gif File could not be deleted:"
+                                               << muxerVideoFilename_MKV;
+                        }
+                        emit self->signal_gst_pipeline_finished();
+                    }
+                }
+            }
+        }
+
         break;
     }
     default:
         break;
     }
-
     return GST_BUS_PASS;
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif()
+void QvkConvert_mkv_gif_wl::slot_remux_mkv_to_gif(QString filePath)
 {
-    QString video_codec;
-    if ( convert_video_codec_gif.contains( "H264" ) ) {
-        video_codec = "H264";
+    qDebug().noquote();
+
+    muxerVideoFilename = filePath;
+
+    QString audio_codec = "";
+    if (get_SelectedAudioDevice().empty() == false){
+        audio_codec = ui->comboBoxAudioCodec->currentText();
     }
 
-    qDebug().noquote() << global::nameOutput << "[Convert] Detected video codec" << video_codec;
+    QFileInfo fileInfo(filePath);
+    QString path = fileInfo.path();
 
-    if ( video_codec == "H264" ) {
-        ui->toolButton_convert_dialog_mkv_to_gif->setDisabled( true );
-        ui->pushButton_convert_mkv_to_gif->setDisabled( true );
-
-        // Hintergrundfarbe für Widget setzen
-        QPalette palette_1 = ui->pushButton_convert_mkv_to_gif->palette();
-        palette_1.setColor( QPalette::Window, QColor( QColor( 239, 240, 241 ) ) );
-        ui->pushButton_convert_mkv_to_gif->setAutoFillBackground( true );
-        ui->pushButton_convert_mkv_to_gif->setPalette( palette_1 );
-        // Hintergrundfarbe für label setzen
-        QPalette palette_2 = ui->label_convert_mkv_to_gif->palette();
-        palette_2.setColor( QPalette::Window, QColor( QColor( 239, 240, 241 ) ) );
-        ui->label_convert_mkv_to_gif->setAutoFillBackground( true );
-        ui->label_convert_mkv_to_gif->setPalette( palette_2 );
-        ui->label_convert_mkv_to_gif->setText( "Please wait" );
-
-        QString filePath = ui->lineEdit_convert_mkv_to_gif->text();
-        QFileInfo fileInfo( filePath );
-        QString path = fileInfo.path();
-
-        // gst-launch-1.0 -ev filesrc location=/home/vk/Videos/vokoscreenNG-ohne-audio.mkv
-        // ! matroskademux
-        // ! h264parse
-        // ! openh264dec
-        // ! queue
-        // ! videoconvert
-        // ! gifenc speed=30 repeat=-1
-        // ! filesink location=test2.gif
-        QString VK_Pipeline;
-        QString fileNameGIF = fileInfo.baseName() + ".gif";
+    QString VK_Pipeline;
+    if (audio_codec == ""){
+        QString fileNamegif = fileInfo.baseName() + ".gif";
         VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux" +
                 " ! h264parse" +
-                " ! openh264dec" +
-                " ! queue" +
-                " ! videoconvert" +
-                " ! gifenc speed=30 repeat=-1" +
-                " ! filesink location=" + path + "/" + fileNameGIF;
-
-        qDebug().noquote() << global::nameOutput << VK_Pipeline;
-
-        QByteArray byteArray = VK_Pipeline.toUtf8();
-        const gchar *line = byteArray.constData();
-        GError *error = nullptr;
-        pipeline = gst_parse_launch( line, &error );
-
-        GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message_convert_gif, this, nullptr );
-        gst_object_unref( bus );
-
-        // Startet die Fortschrittanzeige in Prozent
-        timer->start();
-
-        // Start playing
-        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "[Convert] GIF was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
-        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "[Convert] GIF was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "[Convert] GIF was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
-        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "[Convert] GIF was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
-        if ( ret == GST_STATE_CHANGE_FAILURE )
-        {
-            qDebug().noquote() << global::nameOutput << "[Convert] Unable to set the pipeline to the playing state.";
-            gst_object_unref( pipeline );
-            return;
-        }
-    } else {
-        QString text = "Only videos with H.264 video codec can convert.";
-        qDebug().noquote() << global::nameOutput << "[Convert]" << "Convert failed";
-        qDebug().noquote() << global::nameOutput << "[Convert]" << text;
-
-        QMessageBox msgBox( ui->centralwidget );
-        msgBox.setModal( true );
-        msgBox.setIcon( QMessageBox::Warning );
-        QString space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        msgBox.setText( space + "<b>Convert failed</b>" + space );
-        msgBox.setInformativeText( text );
-        msgBox.exec();
-    }
-}
-
-
-// Print a tag in a human-readable format (name: value)
-void QvkConvert_mkv_gif_wl::print_tag_foreach(const GstTagList *tags, const gchar *tag, gpointer user_data )
-{
-    GValue val = { 0, 0 };
-    gchar *str;
-    gint depth = GPOINTER_TO_INT( user_data );
-
-    gst_tag_list_copy_value( &val, tags, tag );
-
-    if ( G_VALUE_HOLDS_STRING( &val ) ) {
-        str = g_value_dup_string( &val );
-    } else {
-        str = gst_value_serialize( &val );
+                " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600" +
+                " ! gifmux name=mux" +
+                " ! filesink location=" + path + "/" + fileNamegif;
     }
 
-    //  g_print( "%*s%s: %s\n", 2 * depth, " ", gst_tag_get_nick (tag), str ); // Übersetzung
-    g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ", tag, str );  // English
-
-    QString m_tag = tag;
-    QString m_str = str;
-    if ( m_tag == "video-codec" ) {
-        convert_video_codec_gif = m_str;
+    // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
+    // gifmux name=mux ! filesink location=test2.gif
+    // demux.video_0 ! queue ! h264parse ! mux.
+    // demux.audio_0 ! queue ! mpegaudioparse ! mux.
+    if (audio_codec == "mp3"){
+        QString fileNamegif = fileInfo.baseName() + ".gif";
+        VK_Pipeline = "filesrc location=" + filePath +
+                " ! matroskademux name=demux gifmux name=mux" +
+                " ! filesink location=\"" + path + "/" + fileNamegif + "\" " +
+                "demux.video_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! h264parse ! mux.video_0" + " " +
+                "demux.audio_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! mpegaudioparse ! mux.audio_0";
     }
 
-    g_free( str );
-
-    g_value_unset( &val );
-}
-
-// Print information regarding a stream
-void QvkConvert_mkv_gif_wl::print_stream_info(GstDiscovererStreamInfo *info, gint depth)
-{
-    gchar *desc = nullptr;
-    GstCaps *caps;
-    const GstTagList *tags;
-
-    caps = gst_discoverer_stream_info_get_caps( info );
-
-    if ( caps ) {
-        if ( gst_caps_is_fixed( caps ) ) {
-            desc = gst_pb_utils_get_codec_description( caps );
-        } else {
-            desc = gst_caps_to_string (caps);
-        }
-        gst_caps_unref( caps );
+    // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
+    // gifmux name=mux ! filesink location=test2.gif
+    // demux.video_0 ! queue ! h264parse ! mux.
+    // demux.audio_0 ! queue ! opusparse ! mux.
+    if (audio_codec == "opus"){
+        QString fileNamegif = fileInfo.baseName() + ".gif";
+        VK_Pipeline = "filesrc location=" + filePath +
+                " ! matroskademux name=demux gifmux name=mux" +
+                " ! filesink location=\"" + path + "/" + fileNamegif + "\" " +
+                "demux.video_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! h264parse ! mux.video_0" + " " +
+                "demux.audio_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! opusparse ! mux.audio_0";
     }
 
-    g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ",
-             gst_discoverer_stream_info_get_stream_type_nick( info ),
-             ( desc ? desc : "" ) );
+    qDebug().noquote() << global::nameOutput << "[Remux]" << VK_Pipeline;
 
-    if ( desc ) {
-        g_free( desc );
-        desc = nullptr;
+    QByteArray byteArray = VK_Pipeline.toUtf8();
+    const gchar *line = byteArray.constData();
+    GError *error = nullptr;
+    this->pipelineGIF  = gst_parse_launch(line, &error);
+
+
+    // progressreport anweisen, ELEMENT-Nachrichten auf den Bus zu werfen
+    GstElement *progressreport = gst_bin_get_by_name(GST_BIN(pipelineGIF), "prog_report");
+    if (progressreport) {
+        g_object_set(progressreport, "do-query", FALSE, nullptr);
+        gst_object_unref(progressreport);
     }
 
-    tags = gst_discoverer_stream_info_get_tags( info );
-    if ( tags ) {
-        g_print( "[vokoscreenNG] %*sTags:\n", 2 * ( depth + 1 ), " " );
-        gst_tag_list_foreach( tags, print_tag_foreach, GINT_TO_POINTER( depth + 2 ) );
-    }
-}
+    GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipelineGIF));
+    gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_message_convert_gif, this, nullptr);
+    gst_object_unref(bus);
 
-// Print information regarding a stream and its substreams, if any
-void QvkConvert_mkv_gif_wl::print_topology(GstDiscovererStreamInfo *info, gint depth)
-{
-    GstDiscovererStreamInfo *next;
-
-    if (!info)
-        return;
-
-    print_stream_info (info, depth);
-
-    next = gst_discoverer_stream_info_get_next (info);
-    if (next) {
-        print_topology (next, depth + 1);
-        gst_discoverer_stream_info_unref (next);
-    } else if (GST_IS_DISCOVERER_CONTAINER_INFO (info)) {
-        GList *tmp, *streams;
-
-        streams =
-                gst_discoverer_container_info_get_streams (GST_DISCOVERER_CONTAINER_INFO
-                                                           (info));
-        for (tmp = streams; tmp; tmp = tmp->next) {
-            GstDiscovererStreamInfo *tmpinf = (GstDiscovererStreamInfo *) tmp->data;
-            print_topology (tmpinf, depth + 1);
-        }
-        gst_discoverer_stream_info_list_free (streams);
-    }
-}
-
-// This function is called every time the discoverer has information regarding
-// one of the URIs we provided.
-void QvkConvert_mkv_gif_wl::on_discovered_cb(GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomDataGIF *data)
-{
-    Q_UNUSED(discoverer)
-    Q_UNUSED(data)
-    GstDiscovererResult result;
-    const gchar *uri;
-    const GstTagList *tags;
-    GstDiscovererStreamInfo *sinfo;
-
-    uri = gst_discoverer_info_get_uri (info);
-    result = gst_discoverer_info_get_result (info);
-    switch (result) {
-    case GST_DISCOVERER_URI_INVALID:
-        g_print ("[vokoscreenNG] Invalid URI '%s'\n", uri);
-        break;
-    case GST_DISCOVERER_ERROR:
-        g_print ("[vokoscreenNG] Discoverer error: %s\n", err->message);
-        break;
-    case GST_DISCOVERER_TIMEOUT:
-        g_print ("[vokoscreenNG] Timeout\n");
-        break;
-    case GST_DISCOVERER_BUSY:
-        g_print ("[vokoscreenNG] Busy\n");
-        break;
-    case GST_DISCOVERER_MISSING_PLUGINS:{
-        const GstStructure *s;
-        gchar *str;
-
-        s = gst_discoverer_info_get_misc (info);
-        str = gst_structure_to_string (s);
-
-        g_print ("[vokoscreenNG] Missing plugins: %s\n", str);
-        g_free (str);
-        break;
-    }
-    case GST_DISCOVERER_OK:
-        g_print ("[vokoscreenNG] Discovered '%s'\n", uri);
-        break;
-    }
-
-    if (result != GST_DISCOVERER_OK) {
-        g_printerr ("[vokoscreenNG] This URI cannot be played\n");
+    // Start playing
+    GstStateChangeReturn ret = gst_element_set_state( pipelineGIF, GST_STATE_PLAYING );
+    if (ret == GST_STATE_CHANGE_FAILURE)   { qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+    if (ret == GST_STATE_CHANGE_SUCCESS)   { qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+    if (ret == GST_STATE_CHANGE_ASYNC)     { qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+    if (ret == GST_STATE_CHANGE_NO_PREROLL){ qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if (ret == GST_STATE_CHANGE_FAILURE)   {
+        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif unable to set the pipeline to the playing state.";
+        gst_object_unref(pipelineGIF);
         return;
     }
-
-    // If we got no error, show the retrieved information
-
-    g_print( "\n[vokoscreenNG] Duration: %" GST_TIME_FORMAT "\n", GST_TIME_ARGS( gst_discoverer_info_get_duration( info ) ) );
-
-    tags = gst_discoverer_info_get_tags (info);
-    if (tags) {
-        g_print ("[vokoscreenNG] Tags:\n");
-        gst_tag_list_foreach (tags, print_tag_foreach, GINT_TO_POINTER (1));
-    }
-
-    g_print ("[vokoscreenNG] Seekable: %s\n", (gst_discoverer_info_get_seekable (info) ? "yes" : "no"));
-
-    g_print ("\n");
-
-    sinfo = gst_discoverer_info_get_stream_info (info);
-    if (!sinfo)
-        return;
-
-    g_print ("[vokoscreenNG] Stream information:\n");
-
-    print_topology (sinfo, 1);
-
-    gst_discoverer_stream_info_unref (sinfo);
-
-    g_print ("\n");
-}
-
-// This function is called when the discoverer has finished examining all the URIs we provided.
-void QvkConvert_mkv_gif_wl::on_finished_cb(GstDiscoverer *discoverer, CustomDataGIF *data)
-{
-    Q_UNUSED(discoverer)
-    g_print( "[vokoscreenNG] Finished discovering\n\n" );
-    g_main_loop_quit( data->loop );
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_discover_start()
+// Prüft, ob eine bestimmte Datei aktuell von IRGENDEINEM Prozess im System geöffnet ist.
+// @param targetFilePath Der absolute Pfad zur zu prüfenden Datei.
+// @return true, wenn die Datei geöffnet ist, sonst false.
+bool QvkConvert_mkv_gif_wl::is_FileOpenByAnyProcess(QString targetFilePath)
 {
-    CustomDataGIF data;
-    GError *err = nullptr;
-
-    QString file = "file://" + ui->lineEdit_convert_mkv_to_gif->text();
-    QByteArray byteArray = file.toUtf8();
-    gchar *uri = byteArray.data();
-
-    // Initialize cumstom data structure
-    memset (&data, 0, sizeof (data));
-
-    // Instantiate the Discoverer
-    data.discoverer = gst_discoverer_new (5 * GST_SECOND, &err);
-    if (!data.discoverer) {
-        g_print ("[vokoscreenNG] Error creating discoverer instance: %s\n", err->message);
-        g_clear_error (&err);
-        //    return -1;
+    // Sicherstellen, dass wir den absoluten, bereinigten Pfad vergleichen
+    QString cleanTargetPath = QFileInfo(targetFilePath).absoluteFilePath();
+    if (cleanTargetPath.isEmpty()){
+        return false;
     }
 
-    // Connect to the interesting signals
-    g_signal_connect (data.discoverer, "discovered", G_CALLBACK (on_discovered_cb), &data);
-    g_signal_connect (data.discoverer, "finished", G_CALLBACK (on_finished_cb), &data);
+    // 1. Das /proc Verzeichnis öffnen
+    QDir procDir("/proc");
 
-    // Start the discoverer process (nothing to do yet)
-    gst_discoverer_start (data.discoverer);
+    // Wir suchen nur nach Ordnern, die rein aus Zahlen bestehen (Prozess-IDs)
+    QStringList pidDirs = procDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
-    // Add a request to process asynchronously the URI passed through the command line
-    if (!gst_discoverer_discover_uri_async (data.discoverer, uri)) {
-        g_print ("[vokoscreenNG] Failed to start discovering URI '%s'\n", uri);
-        g_object_unref (data.discoverer);
-        //    return -1;
+    for(const QString &pid : pidDirs){
+        bool isNumber;
+        pid.toInt(&isNumber);
+        // Überspringe Ordner wie /proc/driver, /proc/sys etc.
+        if (!isNumber){
+            continue;
+        }
+
+        // Pfad zum File-Descriptor-Ordner des Prozesses (z.B. /proc/1234/fd)
+        QString fdPath = QString("/proc/%1/fd").arg(pid);
+        QDir fdDir(fdPath);
+
+        // Falls wir keine Leserechte für den Prozess haben (z.B. Root-Prozesse)
+        if (!fdDir.exists()){
+            continue;
+        }
+
+        // Alle File Descriptors (Symlinks) in diesem Ordner auflisten
+        QStringList fds = fdDir.entryList(QDir::Files | QDir::System | QDir::NoDotAndDotDot);
+
+        for(int i = 0; i < fds.count(); ++i){
+            QString linkPath = fdDir.absoluteFilePath(fds[i]);
+
+            // QFileInfo::symLinkTarget() liest aus, wohin der Symlink im System zeigt
+            QString openedFile = QFileInfo(linkPath).symLinkTarget();
+
+            if (openedFile == cleanTargetPath){
+                qDebug().noquote() << global::nameOutput << "This file is open:" << openedFile;
+                return true; // Gefunden! Ein Prozess hat diese Datei offen.
+            }
+        }
     }
 
-    // Create a GLib Main Loop and set it to run, so we can wait for the signals
-    data.loop = g_main_loop_new (nullptr, FALSE);
-    g_main_loop_run (data.loop);
+    return false; // Keine Übereinstimmung im gesamten System gefunden
+}
 
-    // Stop the discoverer process
-    gst_discoverer_stop (data.discoverer);
 
-    // Free resources
-    g_object_unref (data.discoverer);
-    g_main_loop_unref (data.loop);
+QStringList QvkConvert_mkv_gif_wl::get_SelectedAudioDevice()
+{
+    QStringList list;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    for(int i = 0; i < listQCheckBox.count(); i++){
+        QCheckBox *checkBox = listQCheckBox.at(i);
+        if (checkBox->checkState() == Qt::Checked){
+            list << checkBox->accessibleName();
+        }
+    }
+    return list;
 }

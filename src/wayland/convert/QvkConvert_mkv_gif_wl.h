@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2024 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -26,62 +26,48 @@
 #include "ui_formMainWindow_wl.h"
 
 #include <QWidget>
-#include <QPalette>
+#include <QString>
+#include <QStringList>
 #include <QTimer>
 
-//----------------------------------------- Begin discover ----------------------------------------------------------------------------
-
-// https://github.com/GStreamer/gst-docs/blob/master/examples/tutorials/basic-tutorial-9.c
-#include <string.h>
 #include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-
-// Structure to contain all our information, so we can pass it around
-typedef struct _CustomDataGIF
-{
-    GstDiscoverer *discoverer;
-    GMainLoop *loop;
-} CustomDataGIF;
-
-//----------------------------------------- End discover ----------------------------------------------------------------------------
 
 
 class QvkConvert_mkv_gif_wl: public QWidget
 {
     Q_OBJECT
 public:
-    QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *vk_ui );
+    QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui);
     virtual ~QvkConvert_mkv_gif_wl();
 
 
 private:
-    static GstBusSyncReply call_bus_message_convert_gif(GstBus *bus, GstMessage *message, gpointer user_data);
-    static void print_tag_foreach(const GstTagList *tags, const gchar *tag, gpointer user_data);
-    static void print_stream_info (GstDiscovererStreamInfo * info, gint depth);
-    static void print_topology(GstDiscovererStreamInfo *info, gint depth);
-    static void on_discovered_cb(GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomDataGIF *data);
-    static void on_finished_cb(GstDiscoverer *discoverer, CustomDataGIF *data);
-    QPalette paletteConvertWidget;
-    QPalette paletteConvertLabel;
-    QTimer *timer;
-    GstElement *pipeline = nullptr;
+    QStringList get_SelectedAudioDevice();
+    QString muxerVideoFilename = "";
+    static gboolean set_pipeline_null_idle(gpointer data);
+    static GstBusSyncReply call_bus_message_convert_gif(GstBus *bus, GstMessage *message, gpointer data);
+    static bool is_FileOpenByAnyProcess(QString targetFilePath);
+    GstElement *pipelineGIF = nullptr;
+    QTimer *m_timer = nullptr;
 
 
 public slots:
+    void slot_remux_mkv_to_gif(QString filePath);
 
 
 private slots:
-    void slot_convert_openfiledialog_mkv_to_gif();
-    void slot_convert_mkv_to_gif();
-    void slot_lineEdit_Convert_eos_gif();
-    void slot_discover_start();
-    void slot_timer();
+    void slot_onTick100ms();
 
 
 signals:
+    void signal_gst_eos(QString msg);
+    void signal_gst_pipeline_finished();
+    void signal_gst_progressbar_convert_gif(int value);
+    void signal_gst_stream_start_progressbar();
+    void signal_progress_changed(qreal percent);
 
 
-protected:  
+protected:
 
 
 private:
