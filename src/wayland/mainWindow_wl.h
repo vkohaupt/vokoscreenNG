@@ -100,6 +100,7 @@ private:
 
     QString whatWasClicked;
 
+    QString newConvertVideoFileName = "";
 
 public slots:
 

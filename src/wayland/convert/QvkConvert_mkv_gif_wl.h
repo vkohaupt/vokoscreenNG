@@ -42,7 +42,6 @@ public:
 
 
 private:
-    QStringList get_SelectedAudioDevice();
     QString muxerVideoFilename = "";
     static gboolean set_pipeline_null_idle(gpointer data);
     static GstBusSyncReply call_bus_message_convert_gif(GstBus *bus, GstMessage *message, gpointer data);
@@ -52,7 +51,7 @@ private:
 
 
 public slots:
-    void slot_remux_mkv_to_gif(QString filePath);
+    void slot_convert_mkv_to_gif(QString filePath);
 
 
 private slots:

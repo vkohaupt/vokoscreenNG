@@ -1176,7 +1176,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
         }
     }
 
-    if (ui->comboBoxFormat->currentText() == "mkv"){
+    if ((ui->comboBoxFormat->currentText() == "mkv") or (ui->comboBoxFormat->currentText() == "gif")){
         stringList << "matroskamux name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
     }
     if (ui->comboBoxFormat->currentText() == "mp4"){
@@ -1185,13 +1185,27 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
     stringList.removeAll( "" );
 
-    QString newVideoFilename =
-            global::name +
-            "-" +
-            QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) +
-            "." +
-            ui->comboBoxFormat->currentText();
-    stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
+    QString newVideoFilename;
+    if ((ui->comboBoxFormat->currentText() == "mkv") or (ui->comboBoxFormat->currentText() == "mp4")){
+        newVideoFilename = global::name +
+                "-" +
+                QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) +
+                "." +
+                ui->comboBoxFormat->currentText();
+        stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
+    }
+
+    if (ui->comboBoxFormat->currentText() == "gif"){
+        newVideoFilename = global::name +
+                "-" +
+                QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) +
+                ".mkv";
+        stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
+    }
+
+
+    newConvertVideoFileName = ui->lineEditVideoPath->text() + "/" + newVideoFilename;
+
 
     QString VK_Pipeline = stringList.join( " ! " );
     VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
@@ -1267,6 +1281,13 @@ void QvkMainWindow_wl::slot_stop()
     }
 
     emit signal_gst_pipeline_finished();
+
+    if ( ui->comboBoxFormat->currentText() == "gif"){
+        QvkConvert_mkv_gif_wl *vkConvert_mkv_gif_wl = new QvkConvert_mkv_gif_wl(ui);
+        vkConvert_mkv_gif_wl->slot_convert_mkv_to_gif(newConvertVideoFileName);
+    }
+
+
 }
 
 

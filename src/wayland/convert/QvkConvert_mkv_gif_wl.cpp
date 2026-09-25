@@ -112,7 +112,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         break;
     }
     case GST_MESSAGE_ERROR:{
-        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif GST_MESSAGE_ERROR";
+        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif GST_MESSAGE_ERROR";
         break;
     }
     case GST_MESSAGE_EOS:{
@@ -130,11 +130,11 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         // ---------------- End pipeline auf null setzen -----------------------------
 
         // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
-        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif GST_MESSAGE_EOS";
+        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif GST_MESSAGE_EOS";
         QTime timeEnd = QTime::currentTime();
         qreal timeDiv = timeStart.msecsTo(timeEnd);
-        QString msg = "[Remux] mkv to gif in " + QString::number(timeDiv/1000) + " seconds";
-        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif in" << timeDiv/1000 << "seconds";
+        QString msg = "[Convert] mkv to gif in " + QString::number(timeDiv/1000) + " seconds";
+        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif in" << timeDiv/1000 << "seconds";
         // WICHTIG: Signal über einen Thread-Wechsel (QueuedConnection) senden.
         // Qt erledigt das automatisch, wenn Signal und Slot in verschiedenen Threads leben,
         // oder wenn wir invokeMethod nutzen:
@@ -147,7 +147,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
     }
     case GST_MESSAGE_STREAM_START:{
         // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
-        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif GST_MESSAGE_STREAM_START";
+        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif GST_MESSAGE_STREAM_START";
         timeStart = QTime::currentTime();
         // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
 
@@ -171,7 +171,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
             GstState old_state, new_state, pending;
             gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
-            qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif Pipeline state changed from:"
+            qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif Pipeline state changed from:"
                                << gst_element_state_get_name(old_state)
                                << "to" << gst_element_state_get_name(new_state);
         }
@@ -180,25 +180,25 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
         if (new_state == GST_STATE_NULL){
             QString muxerVideoFilename_MKV = self->muxerVideoFilename;
-            QString muxerVideoFilename_gif = self->muxerVideoFilename;;
-            muxerVideoFilename_gif.replace(".mkv", ".gif");
+            QString muxerVideoFilename_GIF = self->muxerVideoFilename;;
+            muxerVideoFilename_GIF.replace(".mkv", ".gif");
 
             QFile file(muxerVideoFilename_MKV);
             if (file.exists() == true){
-                bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_gif);
+                bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_GIF);
                 qDebug().noquote() << global::nameOutput
-                                   << "[Remux] mkv to gif File is not open and ready to use:"
-                                   << muxerVideoFilename_gif;
+                                   << "[Convert] mkv to gif File is not open and ready to use:"
+                                   << muxerVideoFilename_GIF;
                 if (bo == false){
                     QFile file(muxerVideoFilename_MKV);
                     if (file.exists() == true){
                         if (file.remove() == true){
                             qDebug().noquote() << global::nameOutput
-                                               << "[Remux] mkv to gif File was deleted:"
+                                               << "[Convert] mkv to gif File was deleted:"
                                                << muxerVideoFilename_MKV;
                         }else{
                             qDebug().noquote() << global::nameOutput
-                                               << "[Remux] mkv to gif File could not be deleted:"
+                                               << "[Convert] mkv to gif File could not be deleted:"
                                                << muxerVideoFilename_MKV;
                         }
                         emit self->signal_gst_pipeline_finished();
@@ -216,58 +216,35 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_remux_mkv_to_gif(QString filePath)
+void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(QString filePath)
 {
     qDebug().noquote();
-
     muxerVideoFilename = filePath;
-
-    QString audio_codec = "";
-    if (get_SelectedAudioDevice().empty() == false){
-        audio_codec = ui->comboBoxAudioCodec->currentText();
-    }
 
     QFileInfo fileInfo(filePath);
     QString path = fileInfo.path();
 
+    // gst-launch-1.0 -ev filesrc location=/home/vk/Videos/vokoscreenNG-ohne-audio.mkv
+    // ! matroskademux
+    // ! h264parse
+    // ! openh264dec
+    // ! queue
+    // ! videoconvert
+    // ! gifenc speed=30 repeat=-1
+    // ! filesink location=test2.gif
     QString VK_Pipeline;
-    if (audio_codec == ""){
-        QString fileNamegif = fileInfo.baseName() + ".gif";
-        VK_Pipeline = "filesrc location=" + filePath +
-                " ! matroskademux" +
-                " ! h264parse" +
-                " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600" +
-                " ! gifmux name=mux" +
-                " ! filesink location=" + path + "/" + fileNamegif;
-    }
+    QString fileNameGIF = fileInfo.baseName() + ".gif";
+    VK_Pipeline = "filesrc location=\"" + filePath + "\""
+            " ! matroskademux" +
+            " ! h264parse" +
+            " ! openh264dec" +
+            " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600" +
+            " ! videoconvert" +
+            " ! gifenc speed=30 repeat=-1" +
+            " ! filesink location=\"" + path + "/" + fileNameGIF + "\"";
 
-    // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
-    // gifmux name=mux ! filesink location=test2.gif
-    // demux.video_0 ! queue ! h264parse ! mux.
-    // demux.audio_0 ! queue ! mpegaudioparse ! mux.
-    if (audio_codec == "mp3"){
-        QString fileNamegif = fileInfo.baseName() + ".gif";
-        VK_Pipeline = "filesrc location=" + filePath +
-                " ! matroskademux name=demux gifmux name=mux" +
-                " ! filesink location=\"" + path + "/" + fileNamegif + "\" " +
-                "demux.video_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! h264parse ! mux.video_0" + " " +
-                "demux.audio_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! mpegaudioparse ! mux.audio_0";
-    }
 
-    // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
-    // gifmux name=mux ! filesink location=test2.gif
-    // demux.video_0 ! queue ! h264parse ! mux.
-    // demux.audio_0 ! queue ! opusparse ! mux.
-    if (audio_codec == "opus"){
-        QString fileNamegif = fileInfo.baseName() + ".gif";
-        VK_Pipeline = "filesrc location=" + filePath +
-                " ! matroskademux name=demux gifmux name=mux" +
-                " ! filesink location=\"" + path + "/" + fileNamegif + "\" " +
-                "demux.video_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! h264parse ! mux.video_0" + " " +
-                "demux.audio_0 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600 ! opusparse ! mux.audio_0";
-    }
-
-    qDebug().noquote() << global::nameOutput << "[Remux]" << VK_Pipeline;
+    qDebug().noquote() << global::nameOutput << "[Convert]" << VK_Pipeline;
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
@@ -288,12 +265,12 @@ void QvkConvert_mkv_gif_wl::slot_remux_mkv_to_gif(QString filePath)
 
     // Start playing
     GstStateChangeReturn ret = gst_element_set_state( pipelineGIF, GST_STATE_PLAYING );
-    if (ret == GST_STATE_CHANGE_FAILURE)   { qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
-    if (ret == GST_STATE_CHANGE_SUCCESS)   { qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-    if (ret == GST_STATE_CHANGE_ASYNC)     { qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
-    if (ret == GST_STATE_CHANGE_NO_PREROLL){ qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if (ret == GST_STATE_CHANGE_FAILURE)   { qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+    if (ret == GST_STATE_CHANGE_SUCCESS)   { qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+    if (ret == GST_STATE_CHANGE_ASYNC)     { qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+    if (ret == GST_STATE_CHANGE_NO_PREROLL){ qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
     if (ret == GST_STATE_CHANGE_FAILURE)   {
-        qDebug().noquote() << global::nameOutput << "[Remux] mkv to gif unable to set the pipeline to the playing state.";
+        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif unable to set the pipeline to the playing state.";
         gst_object_unref(pipelineGIF);
         return;
     }
@@ -351,18 +328,4 @@ bool QvkConvert_mkv_gif_wl::is_FileOpenByAnyProcess(QString targetFilePath)
     }
 
     return false; // Keine Übereinstimmung im gesamten System gefunden
-}
-
-
-QStringList QvkConvert_mkv_gif_wl::get_SelectedAudioDevice()
-{
-    QStringList list;
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for(int i = 0; i < listQCheckBox.count(); i++){
-        QCheckBox *checkBox = listQCheckBox.at(i);
-        if (checkBox->checkState() == Qt::Checked){
-            list << checkBox->accessibleName();
-        }
-    }
-    return list;
 }
