@@ -138,7 +138,13 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->label_Upate_tab_2->hide();
     //    ui->widgetLanguageAndHelp->setVisible( false );
 
-    new QvkConvert_mkv_gif_wl( ui );
+    vkConvert_mkv_gif_wl = new QvkConvert_mkv_gif_wl( ui );
+    connect(vkConvert_mkv_gif_wl,
+            &QvkConvert_mkv_gif_wl::signal_gst_progressbar_convert_gif,
+            this,
+            [=](int percent){
+        qDebug() << "-----" << percent;
+    });
     new QvkConvert_mkv_to_webm_wl( ui );
     new QvkConvert_mkv_repair_wl( ui );
 
@@ -1283,7 +1289,7 @@ void QvkMainWindow_wl::slot_stop()
     emit signal_gst_pipeline_finished();
 
     if ( ui->comboBoxFormat->currentText() == "gif"){
-        QvkConvert_mkv_gif_wl *vkConvert_mkv_gif_wl = new QvkConvert_mkv_gif_wl(ui);
+    //    QvkConvert_mkv_gif_wl *vkConvert_mkv_gif_wl = new QvkConvert_mkv_gif_wl(ui);
         vkConvert_mkv_gif_wl->slot_convert_mkv_to_gif(newConvertVideoFileName);
     }
 

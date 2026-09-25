@@ -18,6 +18,7 @@
 #include "QvkCameraController_wl.h"
 #include "QvkAudioPipewireController_wl.h"
 #include "QvkHelpBrowser_wl.h"
+#include "QvkConvert_mkv_gif_wl.h"
 
 #include <QMainWindow>
 #include <QWidget>
@@ -101,6 +102,8 @@ private:
     QString whatWasClicked;
 
     QString newConvertVideoFileName = "";
+
+    QvkConvert_mkv_gif_wl *vkConvert_mkv_gif_wl;
 
 public slots:
 

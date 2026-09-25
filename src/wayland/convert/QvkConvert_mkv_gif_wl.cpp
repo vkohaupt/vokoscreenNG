@@ -111,7 +111,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
     case GST_MESSAGE_ELEMENT:{
         QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
          const GstStructure *structure = gst_message_get_structure(message);
-         qDebug() << gst_structure_to_string(structure);
+         //qDebug() << gst_structure_to_string(structure);
          if (gst_structure_has_name(structure, "progress")){
              gint percent = 0;
              if (gst_structure_get_int(structure, "percent", &percent)){
@@ -250,7 +250,7 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(QString filePath)
             " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600"
             " ! h264parse"
             " ! openh264dec"
-            " ! progressreport update-freq=1"
+            " ! progressreport update-freq=1 silent=true"
             " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600"
             " ! videoconvert"
             " ! gifenc speed=30 repeat=-1"
