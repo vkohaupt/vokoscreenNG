@@ -56,7 +56,7 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
     connect(ui->pushButtonPause,    &QPushButton::clicked, this, [=](){timerRecord->stop();});
     connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){timerRecord->start();});
 
-    // Frames, Format, Codecs
+    // Audiocodec,
     connect(ui->comboBoxAudioCodec,
             &QComboBox::currentTextChanged,
             this,
@@ -64,6 +64,15 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
         slot_Audiocodec(value);
     });
 
+    // Format
+    connect(ui->comboBoxFormat,
+            &QComboBox::currentTextChanged,
+            this,
+            [=](QString format){
+        ui->labelInfoFormat->setText(format);
+    });
+
+    // Frames
     QList<QSlider *> listSlider = ui->centralwidget->findChildren<QSlider *>();
     for (int i = 0; i < listSlider.count(); i++){
         QSlider *slider = listSlider.at(i);
@@ -72,7 +81,7 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
                     &QvkSpezialSlider::valueChanged,
                     this,
                     [this](int value){
-                slot_Frames(value);
+                ui->labelInfoFrames->setText(QString::number(value));
             });
         }
     }
@@ -101,29 +110,23 @@ void QvkInformation_wl::slot_displayRecordTime()
 }
 
 
-void QvkInformation_wl::slot_Audiocodec( QString value )
+void QvkInformation_wl::slot_Audiocodec(QString codec)
 {
     bool bo = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+    for (int i = 0; i < listCheckBox.count(); i++){
         QCheckBox *checkBox = listCheckBox.at(i);
-        if ( checkBox->checkState() == Qt::Checked ) {
+        if (checkBox->checkState() == Qt::Checked){
             bo = true;
             break;
         }
     }
 
-    if ( bo == false ) {
-        ui->labelInfoAudiocodec->setText( "------" );
+    if (bo == false){
+        ui->labelInfoAudiocodec->setText("------");
     } else {
-        ui->labelInfoAudiocodec->setText( value );
+        ui->labelInfoAudiocodec->setText(codec);
     }
-}
-
-
-void QvkInformation_wl::slot_Frames( int value )
-{
-    ui->labelInfoFrames->setText( QString::number( value ) );
 }
 
 

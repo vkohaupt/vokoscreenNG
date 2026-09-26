@@ -44,8 +44,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void slot_StorageInfo();
     void slot_displayRecordTime();
-    void slot_Audiocodec( QString value );
-    void slot_Frames( int value );
+    void slot_Audiocodec(QString codec );
 
 
 Q_SIGNALS:
