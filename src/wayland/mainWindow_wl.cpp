@@ -145,6 +145,15 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             [=](int percent){
         qDebug() << "-----" << percent;
     });
+
+    connect(vkConvert_mkv_gif_wl,
+            &QvkConvert_mkv_gif_wl::signal_gst_pipeline_finished,
+            this,
+            [=](){
+        this->signal_gst_pipeline_finished();
+    });
+
+
     new QvkConvert_mkv_to_webm_wl( ui );
     new QvkConvert_mkv_repair_wl( ui );
 
@@ -1286,10 +1295,11 @@ void QvkMainWindow_wl::slot_stop()
         show();
     }
 
-    emit signal_gst_pipeline_finished();
+    if ((ui->comboBoxFormat->currentText() == "mkv") or (ui->comboBoxFormat->currentText() == "mp4")){
+        emit signal_gst_pipeline_finished();
+    }
 
     if ( ui->comboBoxFormat->currentText() == "gif"){
-    //    QvkConvert_mkv_gif_wl *vkConvert_mkv_gif_wl = new QvkConvert_mkv_gif_wl(ui);
         vkConvert_mkv_gif_wl->slot_convert_mkv_to_gif(newConvertVideoFileName);
     }
 
