@@ -60,8 +60,8 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
     connect(ui->comboBoxAudioCodec,
             &QComboBox::currentTextChanged,
             this,
-            [this](QString value){
-        slot_Audiocodec(value);
+            [this](QString codec){
+        slot_Audiocodec(codec);
     });
 
     // Format
@@ -70,6 +70,11 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
             this,
             [=](QString format){
         ui->labelInfoFormat->setText(format);
+
+        if (format == "gif")
+            ui->frame_audio->setDisabled(true);
+        else
+            ui->frame_audio->setEnabled(true);
     });
 
     // Frames
