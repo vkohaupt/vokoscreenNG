@@ -1308,8 +1308,6 @@ void QvkMainWindow_wl::slot_stop()
     if ( ui->comboBoxFormat->currentText() == "gif"){
         vkConvert_mkv_gif_wl->slot_convert_mkv_to_gif(newConvertVideoFileName);
     }
-
-
 }
 
 
@@ -1322,7 +1320,11 @@ void QvkMainWindow_wl::slot_portal_dialog_aborted()
     ui->radioButtonScreencastArea->setEnabled( true );
     ui->frameVideoPath->setEnabled( true );
     ui->frame_video->setEnabled( true );
-    ui->frame_audio->setEnabled( true );
+    if (ui->comboBoxFormat->currentText() == "gif"){
+        ui->frame_audio->setDisabled(true);
+    }else{
+        ui->frame_audio->setEnabled(true);
+    }
     ui->frame_3->setEnabled( true );
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         ui->toolButtonScreencastAreaReset->setEnabled( true );
