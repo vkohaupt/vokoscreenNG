@@ -153,6 +153,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         this->signal_gst_pipeline_finished();
     });
 
+    connect(vkConvert_mkv_gif_wl,
+            &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
+            this, [=](){
+        ui->pushButtonStop->setDisabled(true);
+        ui->pushButtonPause->setDisabled(true);
+    });
 
     new QvkConvert_mkv_to_webm_wl( ui );
     new QvkConvert_mkv_repair_wl( ui );
