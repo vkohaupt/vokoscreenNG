@@ -38,6 +38,13 @@
     </message>
 </context>
 <context>
+    <name>QvkConvertDialog_wl</name>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
