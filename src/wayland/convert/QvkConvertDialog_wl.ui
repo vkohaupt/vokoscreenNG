@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string notr="true">Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../../screencast.qrc">
+    <normaloff>:/pictures/logo/logo.png</normaloff>:/pictures/logo/logo.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="2">
     <spacer name="horizontalSpacer_3">
@@ -52,7 +56,7 @@
       </size>
      </property>
      <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
+      <enum>QFrame::Shape::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Shadow::Raised</enum>
@@ -118,6 +122,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../screencast.qrc"/>
+ </resources>
  <connections/>
 </ui>
