@@ -65,6 +65,13 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             this,
             &QvkConvert_mkv_gif_wl::slot_onTick100ms);
 
+    connect(this,
+            &QvkConvert_mkv_gif_wl::signal_progress_changed,
+            this,
+            [=](qreal percent){
+        qDebug() << percent*100;
+        vkConvertDialog_wl->ui->progressBar->setValue(percent*100);
+    });
 
 
     connect(this,
@@ -78,7 +85,7 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             &QvkConvert_mkv_gif_wl::signal_gst_progressbar_convert_gif,
             this,
             [=](int percent){
-        vkConvertDialog_wl->ui->progressBar->setValue(percent);
+//        vkConvertDialog_wl->ui->progressBar->setValue(percent);
     });
 }
 
