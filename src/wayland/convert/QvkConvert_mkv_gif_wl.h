@@ -24,6 +24,7 @@
 #define QVKCONVERT_MKV_GIF_WL_H
 
 #include "ui_formMainWindow_wl.h"
+#include "QvkConvertDialog_wl.h"
 
 #include <QWidget>
 #include <QString>
@@ -48,7 +49,6 @@ private:
     static bool is_FileOpenByAnyProcess(QString targetFilePath);
     GstElement *pipelineGIF = nullptr;
     QTimer *m_timer = nullptr;
-
 
 public slots:
     void slot_convert_mkv_to_gif(QString filePath);

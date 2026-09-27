@@ -21,7 +21,11 @@
  */
 
 #include "global.h"
+#include "QvkConvertDialog_wl.h"
 #include "QvkConvert_mkv_gif_wl.h"
+
+#include "ui_QvkConvertDialog_wl.h"
+
 
 #include <QTime>
 #include <QMetaObject>
@@ -38,6 +42,8 @@
 QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
 {
     ui = m_ui;
+
+    QvkConvertDialog_wl *vkConvertDialog_wl = new QvkConvertDialog_wl();
 
     m_timer = new QTimer(this);
     connect(this,
@@ -58,6 +64,22 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             &QTimer::timeout,
             this,
             &QvkConvert_mkv_gif_wl::slot_onTick100ms);
+
+
+
+    connect(this,
+            &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
+            this,
+            [=](){
+        vkConvertDialog_wl->show();
+    });
+
+    connect(this,
+            &QvkConvert_mkv_gif_wl::signal_gst_progressbar_convert_gif,
+            this,
+            [=](int percent){
+        vkConvertDialog_wl->ui->progressBar->setValue(percent);
+    });
 }
 
 
