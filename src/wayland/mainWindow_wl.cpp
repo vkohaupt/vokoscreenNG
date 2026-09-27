@@ -138,14 +138,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->label_Upate_tab_2->hide();
     //    ui->widgetLanguageAndHelp->setVisible( false );
 
-    vkConvert_mkv_gif_wl = new QvkConvert_mkv_gif_wl( ui );
-    connect(vkConvert_mkv_gif_wl,
-            &QvkConvert_mkv_gif_wl::signal_gst_progressbar_convert_gif,
-            this,
-            [=](int percent){
-        qDebug() << "-----" << percent;
-    });
-
+    vkConvert_mkv_gif_wl = new QvkConvert_mkv_gif_wl(ui);
     connect(vkConvert_mkv_gif_wl,
             &QvkConvert_mkv_gif_wl::signal_gst_pipeline_finished,
             this,

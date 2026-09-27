@@ -50,6 +50,7 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
             this,
             [=](){
+        vkConvertDialog_wl->ui->progressBar->setValue(0);
         m_timer->start(100);
     });
 
@@ -58,6 +59,7 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             this,
             [=](){
         m_timer->stop();
+        vkConvertDialog_wl->ui->progressBar->setValue(10000);
     });
 
     connect(m_timer,
@@ -69,7 +71,8 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             &QvkConvert_mkv_gif_wl::signal_progress_changed,
             this,
             [=](qreal percent){
-        qDebug() << percent*100;
+        // Die ProgressBar hat einen Maxwert von 10000 damit der Balken filigran ansteigt.
+        // Daher werden die Prozentzahlen mit 100 Multipliziert.
         vkConvertDialog_wl->ui->progressBar->setValue(percent*100);
     });
 
@@ -158,13 +161,6 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
     case GST_MESSAGE_EOS:{
         // ---------------- Begin pipeline auf null setzen -----------------------------
         QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
-
-
-        QMetaObject::invokeMethod(self, [self](){
-            emit self->signal_progress_changed(100);
-        }, Qt::QueuedConnection);
-
-
         GstElement *pipeline = self->pipelineGIF;
         g_idle_add(set_pipeline_null_idle, pipeline);
         // ---------------- End pipeline auf null setzen -----------------------------
@@ -197,7 +193,6 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
             emit self->signal_gst_stream_start_progressbar();
         }, Qt::QueuedConnection);
         // ---------------- End emit für Progressbar ----------------------------------
-
 
         break;
     }
@@ -279,7 +274,7 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(QString filePath)
             " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600"
             " ! h264parse"
             " ! openh264dec"
-            " ! progressreport update-freq=1 silent=true"
+            " ! progressreport update-freq=1 silent=true" // progressreport wird nicht benutzt
             " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600"
             " ! videoconvert"
             " ! gifenc speed=30 repeat=-1"
