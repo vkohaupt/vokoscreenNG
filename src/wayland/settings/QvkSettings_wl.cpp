@@ -74,7 +74,6 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
         }
 
         if ( ( toolButton->objectName() == ui->toolButtonSnapshot->objectName() ) or
-             ( toolButton->objectName() == ui->toolButtonConvert->objectName() ) or
              ( toolButton->objectName() == ui->toolButtonCamera->objectName() ) or
              ( toolButton->objectName() == ui->toolButtonLog->objectName() )
              ) {

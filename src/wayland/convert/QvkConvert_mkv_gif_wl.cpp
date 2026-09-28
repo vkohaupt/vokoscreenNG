@@ -88,6 +88,7 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             &QvkConvert_mkv_gif_wl::signal_gst_progressbar_convert_gif,
             this,
             [=](int percent){
+        Q_UNUSED(percent)
 //        vkConvertDialog_wl->ui->progressBar->setValue(percent);
     });
 }

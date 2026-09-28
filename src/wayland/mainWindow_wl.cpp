@@ -1,8 +1,6 @@
 #include "mainWindow_wl.h"
 #include "QvkShowMessage_wl.h"
 #include "QvkConvert_mkv_gif_wl.h"
-#include "QvkConvert_mkv_to_webm_wl.h"
-#include "QvkConvert_mkv_repair_wl.h"
 #include "QvkAudioPipewireController_wl.h"
 
 #include "global.h"
@@ -74,8 +72,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
     connect( ui->toolButtonCamera,     &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
     connect( ui->toolButtonSnapshot,   &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(2); } );
-    connect( ui->toolButtonConvert,    &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(3); } );
-    connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(4);
+//    connect( ui->toolButtonConvert,    &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(3); } );
+    connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(3);
         slot_log_refresh();
     } );
     ui->tabWidgetSideBar->tabBar()->hide();
@@ -152,9 +150,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         ui->pushButtonStop->setDisabled(true);
         ui->pushButtonPause->setDisabled(true);
     });
-
-    new QvkConvert_mkv_to_webm_wl( ui );
-    new QvkConvert_mkv_repair_wl( ui );
 
     QList<QScreen *> screen = QGuiApplication::screens();
     if ( !screen.empty() ) {
@@ -596,7 +591,6 @@ void QvkMainWindow_wl::set_CornerWidget()
     list << ui->tabWidgetScreencast;
     list << ui->tabWidgetCamera;
     list << ui->tabWidgetSnapshot;
-    list << ui->tabWidgetConvert;
     list << ui->tabWidgetLog;
 
     QString cornerPicture;
