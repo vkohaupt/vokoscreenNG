@@ -1025,39 +1025,42 @@ QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
 
 
 //---------------------------------------------------------------------------------------------------
-GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
+GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *message, gpointer data )
 {
     Q_UNUSED(bus);
-    //Q_UNUSED(user_data)
-    switch (GST_MESSAGE_TYPE (message)) {
+    switch (GST_MESSAGE_TYPE (message)){
     case GST_MESSAGE_ERROR:
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
         break;
     case GST_MESSAGE_EOS:{
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_EOS";
-        QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(user_data);
+        QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(data);
         QMetaObject::invokeMethod(self, [self, message](){
             emit self->signal_gst_eos();
         }, Qt::QueuedConnection);
         break;
     }
-    case GST_MESSAGE_DURATION_CHANGED:
+    case GST_MESSAGE_DURATION_CHANGED:{
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_DURATION_CHANGED";
         break;
-    case GST_MESSAGE_STEP_DONE:
+    }
+    case GST_MESSAGE_STEP_DONE:{
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STEP_DONE";
         break;
-    case GST_MESSAGE_TAG:
+    }
+    case GST_MESSAGE_TAG:{
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_TAG";
         break;
-    case GST_MESSAGE_STATE_CHANGED:
+    }
+    case GST_MESSAGE_STATE_CHANGED:{
         //qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STATE_CHANGED";
         break;
-    case GST_MESSAGE_STREAM_START:
+    }
+    case GST_MESSAGE_STREAM_START:{
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STREAM_START";
         break;
-    case GST_MESSAGE_APPLICATION:
-    {
+    }
+    case GST_MESSAGE_APPLICATION:{
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_APPLICATION";
         break;
     }
