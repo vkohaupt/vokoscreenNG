@@ -1053,7 +1053,16 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *mes
         break;
     }
     case GST_MESSAGE_STATE_CHANGED:{
-        //qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STATE_CHANGED";
+        QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(data);
+        GstElement *pipelineSelf = self->pipeline;
+        if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipelineSelf)){
+            GstState old_state, new_state, pending;
+            gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
+            qDebug().noquote() << global::nameOutput << "Pipeline state changed from:"
+                               << gst_element_state_get_name(old_state)
+                               << "to" << gst_element_state_get_name(new_state);
+        }
+
         break;
     }
     case GST_MESSAGE_STREAM_START:{
