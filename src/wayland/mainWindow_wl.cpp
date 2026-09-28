@@ -1021,7 +1021,6 @@ QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
 }
 
 
-QMessageBox *msgBox;
 //---------------------------------------------------------------------------------------------------
 GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
 {
@@ -1032,10 +1031,8 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *mes
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
         break;
     case GST_MESSAGE_EOS:
-    {qDebug().noquote() << global::nameOutput << "GST_MESSAGE_EOS";
-        msgBox->setText("The document has been modified.");
-        msgBox->exec();
-        break; }
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_EOS";
+        break;
     case GST_MESSAGE_DURATION_CHANGED:
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_DURATION_CHANGED";
         break;
@@ -1238,10 +1235,9 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     GError *error = nullptr;
     pipeline = gst_parse_launch( line, &error );
 
-    // Da ist irgendwo ein Bug, stürzt bei STOP ab
-    //    GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-    //    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, nulptr );
-    //    gst_object_unref( bus );
+    GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
+    gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_message, this, nullptr);
+    gst_object_unref(bus);
 
     // Start playing
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
