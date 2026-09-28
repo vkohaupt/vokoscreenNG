@@ -49,8 +49,8 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
 
     // Recorded time
     timerRecord = new QTimer(this);
-    timerRecord->setTimerType( Qt::PreciseTimer );
-    timerRecord->setInterval( 1000 );
+    timerRecord->setTimerType(Qt::PreciseTimer);
+    timerRecord->setInterval(1000);
     connect(timerRecord,            &QTimer::timeout,      this, [=](){slot_displayRecordTime();});
     connect(ui->pushButtonStop,     &QPushButton::clicked, this, [=](){timerRecord->stop();});
     connect(ui->pushButtonPause,    &QPushButton::clicked, this, [=](){timerRecord->stop();});
@@ -71,10 +71,11 @@ QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
             [=](QString format){
         ui->labelInfoFormat->setText(format);
 
-        if (format == "gif")
+        if (format == "gif"){
             ui->frame_audio->setDisabled(true);
-        else
+        }else{
             ui->frame_audio->setEnabled(true);
+        }
     });
 
     // Frames
@@ -101,6 +102,7 @@ QvkInformation_wl::~QvkInformation_wl()
 void QvkInformation_wl::slot_beginRecordTime(QString beginTime)
 {
     Q_UNUSED(beginTime)
+    ui->labelInfoRecordTime->setText("00:00:00");
     sumTime = 0;
     timerRecord->start();
 }
@@ -108,9 +110,9 @@ void QvkInformation_wl::slot_beginRecordTime(QString beginTime)
 
 void QvkInformation_wl::slot_displayRecordTime()
 {
-    QTime time( 0, 0, 0, 0 );
+    QTime time(0, 0, 0, 0);
     sumTime = sumTime + 1000;
-    ui->labelInfoRecordTime->setText( time.addMSecs( sumTime ).toString( "hh:mm:ss" ) );
+    ui->labelInfoRecordTime->setText(time.addMSecs(sumTime).toString("hh:mm:ss" ));
     return;
 }
 
@@ -135,7 +137,7 @@ void QvkInformation_wl::slot_Audiocodec(QString codec)
 }
 
 
-void QvkInformation_wl::slot_newVideoFilename( QString filename )
+void QvkInformation_wl::slot_newVideoFilename(QString filename)
 {
     newVideoFilename = filename;
 }
@@ -143,22 +145,22 @@ void QvkInformation_wl::slot_newVideoFilename( QString filename )
 
 void QvkInformation_wl::slot_StorageInfo()
 {
-    QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
+    QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text());
     storage.refresh();
-    ui->labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
+    ui->labelFreeSize->setText(QString::number(storage.bytesAvailable()/1024/1024));
 
-    QDir dir( ui->lineEditVideoPath->text() );
+    QDir dir(ui->lineEditVideoPath->text());
     QStringList filters;
     filters << newVideoFilename;
-    QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
+    QStringList videoFileList = dir.entryList(filters, QDir::Files, QDir::Time);
 
-    if ( !videoFileList.empty() ) {
+    if (!videoFileList.empty()){
         QString string;
-        string.append( ui->lineEditVideoPath->text() );
-        string.append( "/" );
-        string.append( videoFileList.at( 0 ) );
-        QFileInfo file( string );
+        string.append(ui->lineEditVideoPath->text());
+        string.append("/");
+        string.append(videoFileList.at(0));
+        QFileInfo file(string);
         file.refresh();
-        ui->labelVideoSize->setText( QString::number( file.size()/1024 ) );
+        ui->labelVideoSize->setText(QString::number(file.size()/1024));
     }
 }
