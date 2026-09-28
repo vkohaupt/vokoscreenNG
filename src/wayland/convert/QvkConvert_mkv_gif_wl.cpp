@@ -155,7 +155,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         break;
     }
     case GST_MESSAGE_ERROR:{
-        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif GST_MESSAGE_ERROR";
+        qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] GST_MESSAGE_ERROR";
         break;
     }
     case GST_MESSAGE_EOS:{
@@ -166,11 +166,11 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         // ---------------- End pipeline auf null setzen -----------------------------
 
         // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
-        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif GST_MESSAGE_EOS";
+        qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] GST_MESSAGE_EOS";
         QTime timeEnd = QTime::currentTime();
         qreal timeDiv = timeStart.msecsTo(timeEnd);
-        QString msg = "[Convert] mkv to gif in " + QString::number(timeDiv/1000) + " seconds";
-        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif in" << timeDiv/1000 << "seconds";
+        QString msg = "[Convert] [mkv to gif] in " + QString::number(timeDiv/1000) + " seconds";
+        qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] in" << timeDiv/1000 << "seconds";
         // WICHTIG: Signal über einen Thread-Wechsel (QueuedConnection) senden.
         // Qt erledigt das automatisch, wenn Signal und Slot in verschiedenen Threads leben,
         // oder wenn wir invokeMethod nutzen:
@@ -183,7 +183,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
     }
     case GST_MESSAGE_STREAM_START:{
         // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
-        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif GST_MESSAGE_STREAM_START";
+        qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] GST_MESSAGE_STREAM_START";
         timeStart = QTime::currentTime();
         // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
 
@@ -206,7 +206,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         if (GST_MESSAGE_SRC(message) == GST_OBJECT(pipeline)){
             GstState old_state, new_state, pending;
             gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
-            qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif Pipeline state changed from:"
+            qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] Pipeline state changed from:"
                                << gst_element_state_get_name(old_state)
                                << "to" << gst_element_state_get_name(new_state);
         }
@@ -221,19 +221,21 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
             QFile file(muxerVideoFilename_MKV);
             if (file.exists() == true){
                 bool bo = is_FileOpenByAnyProcess(muxerVideoFilename_GIF);
-                qDebug().noquote() << global::nameOutput
-                                   << "[Convert] mkv to gif File is not open and ready to use:"
-                                   << muxerVideoFilename_GIF;
+                if (bo == false){
+                    qDebug().noquote() << global::nameOutput
+                                       << "[Convert] [mkv to gif] File is not open and ready to use:"
+                                       << muxerVideoFilename_GIF;
+                }
                 if (bo == false){
                     QFile file(muxerVideoFilename_MKV);
                     if (file.exists() == true){
                         if (file.remove() == true){
                             qDebug().noquote() << global::nameOutput
-                                               << "[Convert] mkv to gif File was deleted:"
+                                               << "[Convert] [mkv to gif] File was deleted:"
                                                << muxerVideoFilename_MKV;
                         }else{
                             qDebug().noquote() << global::nameOutput
-                                               << "[Convert] mkv to gif File could not be deleted:"
+                                               << "[Convert] [mkv to gif] File could not be deleted:"
                                                << muxerVideoFilename_MKV;
                         }
                         emit self->signal_gst_pipeline_finished();
@@ -301,12 +303,12 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(QString filePath)
 
     // Start playing
     GstStateChangeReturn ret = gst_element_set_state( pipelineGIF, GST_STATE_PLAYING );
-    if (ret == GST_STATE_CHANGE_FAILURE)   { qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
-    if (ret == GST_STATE_CHANGE_SUCCESS)   { qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-    if (ret == GST_STATE_CHANGE_ASYNC)     { qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
-    if (ret == GST_STATE_CHANGE_NO_PREROLL){ qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if (ret == GST_STATE_CHANGE_FAILURE)   { qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif]" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+    if (ret == GST_STATE_CHANGE_SUCCESS)   { qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif]" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+    if (ret == GST_STATE_CHANGE_ASYNC)     { qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif]" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+    if (ret == GST_STATE_CHANGE_NO_PREROLL){ qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif]" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
     if (ret == GST_STATE_CHANGE_FAILURE)   {
-        qDebug().noquote() << global::nameOutput << "[Convert] mkv to gif unable to set the pipeline to the playing state.";
+        qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] unable to set the pipeline to the playing state.";
         gst_object_unref(pipelineGIF);
         return;
     }
