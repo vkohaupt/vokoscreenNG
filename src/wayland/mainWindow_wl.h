@@ -141,7 +141,7 @@ protected:
 signals:
     void signal_newVideoFilename(QString filename);
     void signal_beginRecordTime(QString time);
-    void signal_gst_eos(QString msg);
+    void signal_gst_eos();
     void signal_gst_pipeline_finished();
 
 };

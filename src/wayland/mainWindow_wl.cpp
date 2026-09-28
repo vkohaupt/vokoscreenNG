@@ -690,6 +690,15 @@ void QvkMainWindow_wl::set_Connects()
 
     connect(ui->pushButton_log_openfolder, &QPushButton::clicked, this, [=](){slot_log_folder();});
     connect(ui->pushButton_log_refresh,    &QPushButton::clicked, this, [=](){slot_log_refresh();});
+
+    connect(this, &QvkMainWindow_wl::signal_gst_eos, this, [=](){
+        if ((ui->comboBoxFormat->currentText() == "mkv") or (ui->comboBoxFormat->currentText() == "mp4")){
+            emit signal_gst_pipeline_finished();
+        }
+        if (ui->comboBoxFormat->currentText() == "gif"){
+            vkConvert_mkv_gif_wl->slot_convert_mkv_to_gif(newConvertVideoFileName);
+        }
+    });
 }
 
 
@@ -1019,14 +1028,19 @@ QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
 GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus);
-    Q_UNUSED(user_data)
+    //Q_UNUSED(user_data)
     switch (GST_MESSAGE_TYPE (message)) {
     case GST_MESSAGE_ERROR:
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
         break;
-    case GST_MESSAGE_EOS:
+    case GST_MESSAGE_EOS:{
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_EOS";
+        QvkMainWindow_wl *self = static_cast<QvkMainWindow_wl*>(user_data);
+        QMetaObject::invokeMethod(self, [self, message](){
+            emit self->signal_gst_eos();
+        }, Qt::QueuedConnection);
         break;
+    }
     case GST_MESSAGE_DURATION_CHANGED:
         qDebug().noquote() << global::nameOutput << "GST_MESSAGE_DURATION_CHANGED";
         break;
@@ -1282,14 +1296,6 @@ void QvkMainWindow_wl::slot_stop()
         qDebug().noquote() << global::nameOutput << "[Screencast]" << "Minimized this window is checked";
         hide();
         show();
-    }
-
-    if ((ui->comboBoxFormat->currentText() == "mkv") or (ui->comboBoxFormat->currentText() == "mp4")){
-        emit signal_gst_pipeline_finished();
-    }
-
-    if ( ui->comboBoxFormat->currentText() == "gif"){
-        vkConvert_mkv_gif_wl->slot_convert_mkv_to_gif(newConvertVideoFileName);
     }
 }
 
