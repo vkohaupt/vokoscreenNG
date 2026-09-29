@@ -1260,16 +1260,42 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     gst_object_unref(bus);
 
     // Start playing
-    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-    if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
-    if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-    if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
-    if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
-    if ( ret == GST_STATE_CHANGE_FAILURE )
-    {
-        qDebug().noquote() << global::nameOutput << "Unable to set the pipeline to the playing state.";
-        gst_object_unref( pipeline );
-        return;
+    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    switch (ret){
+        case GST_STATE_CHANGE_FAILURE:{
+                qDebug().noquote() << global::nameOutput
+                                   << "Start was clicked"
+                                   << "GST_STATE_CHANGE_FAILURE. Unable to set the pipeline to the playing state."
+                                   << "Returncode ="
+                                   << ret; // 0
+                gst_object_unref(pipeline);
+                return;
+            }
+        case GST_STATE_CHANGE_SUCCESS:{
+                qDebug().noquote() << global::nameOutput
+                                   << "Start was clicked"
+                                   << "GST_STATE_CHANGE_SUCCESS. The state was changed synchronously!"
+                                   << "Returncode ="
+                                   << ret; // 1
+                break;
+            }
+        case GST_STATE_CHANGE_ASYNC:{
+                // Hier wartet man oft mit gst_element_get_state() auf den Erfolg
+                qDebug().noquote() << global::nameOutput
+                                   << "Start was clicked"
+                                   << "GST_STATE_CHANGE_ASYNC. info: State transition is proceeding asynchronously (prerolling)..."
+                                   << "Returncode ="
+                                   << ret; // 2
+                break;
+            }
+        case GST_STATE_CHANGE_NO_PREROLL:{
+                qDebug().noquote() << global::nameOutput
+                                   << "Start was clicked"
+                                   << "GST_STATE_CHANGE_NO_PREROLL"
+                                   << "Returncode ="
+                                   << ret; // 3
+                break;
+            }
     }
 
     emit signal_beginRecordTime( QTime::currentTime().toString( "hh:mm:ss" ) );
