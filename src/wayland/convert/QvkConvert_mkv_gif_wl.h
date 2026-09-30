@@ -31,6 +31,7 @@
 #include <QStringList>
 #include <QTimer>
 #include <QTime>
+#include <QDateTime>
 
 #include <gst/gst.h>
 
@@ -52,7 +53,6 @@ private:
     GstElement *pipelineGIF = nullptr;
     QTimer *m_timer = nullptr;
     QTime remaining_time_start;
-
     qint64 oldTime = QDateTime::currentSecsSinceEpoch();
 
 

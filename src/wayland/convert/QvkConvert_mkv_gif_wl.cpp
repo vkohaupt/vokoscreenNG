@@ -143,7 +143,7 @@ void QvkConvert_mkv_gif_wl::slot_onTick100ms()
         // Ein Signal mit den Prozenten als Parameter auslösen
         emit signal_progress_changed(percent);
 
-        // Zum ermitteln der zu verbleibenden Zeit
+        // EIn signal zum ermitteln der zu verbleibenden Zeit
         emit signal_gst_stream_position_duration(pos_ms, dur_ms);
     }
 }
