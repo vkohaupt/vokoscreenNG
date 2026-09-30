@@ -47,7 +47,7 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
 
     m_timer = new QTimer(this);
     connect(this,
-            &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
+            &QvkConvert_mkv_gif_wl::signal_gst_stream_start,
             this,
             [=](){
         vkConvertDialog_wl->show();
@@ -167,7 +167,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         // ---------------- Begin emit für Progressbar ----------------------------------
         QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
         QMetaObject::invokeMethod(self, [self](){
-            emit self->signal_gst_stream_start_progressbar();
+            emit self->signal_gst_stream_start();
         }, Qt::QueuedConnection);
         // ---------------- End emit für Progressbar ----------------------------------
 

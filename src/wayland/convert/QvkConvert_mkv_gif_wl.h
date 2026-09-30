@@ -63,7 +63,7 @@ private slots:
 signals:
     void signal_gst_eos(QString msg);
     void signal_gst_pipeline_finished();
-    void signal_gst_stream_start_progressbar();
+    void signal_gst_stream_start();
     void signal_progress_changed(qreal percent);
 
 

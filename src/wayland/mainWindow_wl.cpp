@@ -144,7 +144,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     });
 
     connect(vkConvert_mkv_gif_wl,
-            &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
+            &QvkConvert_mkv_gif_wl::signal_gst_stream_start,
             this, [=](){
         ui->pushButtonStop->setDisabled(true);
         ui->pushButtonPause->setDisabled(true);
