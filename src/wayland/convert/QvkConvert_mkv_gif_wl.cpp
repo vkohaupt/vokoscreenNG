@@ -38,6 +38,7 @@
 #include <QList>
 #include <QCheckBox>
 #include <QTimer>
+#include <QDateTime>
 
 QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
 {
@@ -78,6 +79,39 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             &QTimer::timeout,
             this,
             &QvkConvert_mkv_gif_wl::slot_onTick100ms);
+
+
+    // Ab hier wird die zu verbleibende Zeit ermittelt
+    connect(this,
+            &QvkConvert_mkv_gif_wl::signal_gst_stream_start_time,
+            this,
+            [=](QTime time){
+        remaining_time_start = time;
+    });
+
+    connect(this,
+            &QvkConvert_mkv_gif_wl::signal_gst_stream_position_duration,
+            this,
+            [=](qreal pos, qreal dur){
+            // Division durch Null verhindern (falls das Signal bei Start pos = 0 liefert)
+            if (pos <= 0){return;}
+
+            qreal remaining_time_div = remaining_time_start.msecsTo(QTime::currentTime());
+            qreal aa = remaining_time_div / pos * dur;
+            int verbleibendeZeit = (int)((aa - remaining_time_div)/1000);
+            QTime time(0,0,0);
+            QTime t(0,0,0);
+            t = time.addSecs(verbleibendeZeit);
+
+            // Verbleibende Zeit sollte nur einmal in der Sekunde angezeigt werden.
+            // Alle 100ms ist zu oft da es zu arg flackert.
+            qint64 newTime = QDateTime::currentSecsSinceEpoch();;
+            if((newTime - oldTime) >= 1 ){
+                oldTime = QDateTime::currentSecsSinceEpoch();
+                vkConvertDialog_wl->ui->labelRamainingTime->setText(t.toString("hh:mm:ss"));
+            }
+    });
+    // Ende verbleibende Zeit
 }
 
 
@@ -108,6 +142,9 @@ void QvkConvert_mkv_gif_wl::slot_onTick100ms()
 
         // Ein Signal mit den Prozenten als Parameter auslösen
         emit signal_progress_changed(percent);
+
+        // Zum ermitteln der zu verbleibenden Zeit
+        emit signal_gst_stream_position_duration(pos_ms, dur_ms);
     }
 }
 
@@ -168,6 +205,9 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
         QMetaObject::invokeMethod(self, [self](){
             emit self->signal_gst_stream_start();
+
+            // Zum ermitteln der zu verbleibenden Zeit
+            emit self->signal_gst_stream_start_time(timeStart);
         }, Qt::QueuedConnection);
         // ---------------- End emit für Progressbar ----------------------------------
 

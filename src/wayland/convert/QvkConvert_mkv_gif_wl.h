@@ -30,6 +30,7 @@
 #include <QString>
 #include <QStringList>
 #include <QTimer>
+#include <QTime>
 
 #include <gst/gst.h>
 
@@ -50,6 +51,9 @@ private:
     static bool is_FileOpenByAnyProcess(QString targetFilePath);
     GstElement *pipelineGIF = nullptr;
     QTimer *m_timer = nullptr;
+    QTime remaining_time_start;
+
+    qint64 oldTime = QDateTime::currentSecsSinceEpoch();
 
 
 public slots:
@@ -65,6 +69,8 @@ signals:
     void signal_gst_pipeline_finished();
     void signal_gst_stream_start();
     void signal_progress_changed(qreal percent);
+    void signal_gst_stream_start_time(QTime timeStart);
+    void signal_gst_stream_position_duration(qreal pos_ms, qreal dur_ms);
 
 
 protected:
