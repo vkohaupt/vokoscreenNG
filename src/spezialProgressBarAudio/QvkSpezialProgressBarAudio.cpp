@@ -2,7 +2,6 @@
 #include "QvkSpezialProgressBarAudio.h"
 
 #include <QDebug>
-#include <QCheckBox>
 #include <QList>
 #include <QScrollArea>
 #include <QColor>
@@ -10,6 +9,9 @@
 #include <QPixmap>
 #include <QPen>
 #include <QBrush>
+#include <QMouseEvent>
+#include <QPaintEvent>
+#include <QProgressBar>
 
 QvkSpezialProgressBarAudio::QvkSpezialProgressBarAudio( QProgressBar *parent ) : QProgressBar( parent )
 {

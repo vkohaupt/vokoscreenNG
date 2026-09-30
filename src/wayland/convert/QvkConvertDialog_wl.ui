@@ -87,13 +87,13 @@
    <item row="4" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <property name="leftMargin">
-      <number>9</number>
+      <number>10</number>
      </property>
      <property name="topMargin">
       <number>6</number>
      </property>
      <property name="rightMargin">
-      <number>9</number>
+      <number>10</number>
      </property>
      <property name="bottomMargin">
       <number>0</number>
