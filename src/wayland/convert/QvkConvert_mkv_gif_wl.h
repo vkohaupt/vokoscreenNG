@@ -43,12 +43,14 @@ public:
 
 
 private:
+    Ui_formMainWindow_wl *ui;
     QString muxerVideoFilename = "";
     static gboolean set_pipeline_null_idle(gpointer data);
     static GstBusSyncReply call_bus_message_convert_gif(GstBus *bus, GstMessage *message, gpointer data);
     static bool is_FileOpenByAnyProcess(QString targetFilePath);
     GstElement *pipelineGIF = nullptr;
     QTimer *m_timer = nullptr;
+
 
 public slots:
     void slot_convert_mkv_to_gif(QString filePath);
@@ -63,14 +65,9 @@ signals:
     void signal_gst_pipeline_finished();
     void signal_gst_stream_start_progressbar();
     void signal_progress_changed(qreal percent);
-    void signal_gst_progressbar_convert_gif(qreal percent);
 
 
 protected:
-
-
-private:
-    Ui_formMainWindow_wl *ui;
 
 
 };

@@ -50,6 +50,8 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
             this,
             [=](){
+        vkConvertDialog_wl->show();
+        vkConvertDialog_wl->ui->pushButtonClose->setDisabled(true);
         vkConvertDialog_wl->ui->progressBar->setValue(0);
         m_timer->start(100);
     });
@@ -60,12 +62,8 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
             [=](){
         m_timer->stop();
         vkConvertDialog_wl->ui->progressBar->setValue(10000);
+        vkConvertDialog_wl->ui->pushButtonClose->setEnabled(true);
     });
-
-    connect(m_timer,
-            &QTimer::timeout,
-            this,
-            &QvkConvert_mkv_gif_wl::slot_onTick100ms);
 
     connect(this,
             &QvkConvert_mkv_gif_wl::signal_progress_changed,
@@ -76,21 +74,10 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *m_ui)
         vkConvertDialog_wl->ui->progressBar->setValue(percent*100);
     });
 
-
-    connect(this,
-            &QvkConvert_mkv_gif_wl::signal_gst_stream_start_progressbar,
+    connect(m_timer,
+            &QTimer::timeout,
             this,
-            [=](){
-        vkConvertDialog_wl->show();
-    });
-
-    connect(this,
-            &QvkConvert_mkv_gif_wl::signal_gst_progressbar_convert_gif,
-            this,
-            [=](int percent){
-        Q_UNUSED(percent)
-//        vkConvertDialog_wl->ui->progressBar->setValue(percent);
-    });
+            &QvkConvert_mkv_gif_wl::slot_onTick100ms);
 }
 
 
@@ -142,17 +129,6 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
     switch(GST_MESSAGE_TYPE (message))
     {
     case GST_MESSAGE_ELEMENT:{
-        QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
-         const GstStructure *structure = gst_message_get_structure(message);
-         //qDebug() << gst_structure_to_string(structure);
-         if (gst_structure_has_name(structure, "progress")){
-             gint percent = 0;
-             if (gst_structure_get_int(structure, "percent", &percent)){
-                 QMetaObject::invokeMethod(self, [self, percent](){
-                     emit self->signal_gst_progressbar_convert_gif(percent);
-                 }, Qt::QueuedConnection);
-             }
-         }
         break;
     }
     case GST_MESSAGE_ERROR:{

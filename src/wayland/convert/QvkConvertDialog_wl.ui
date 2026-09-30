@@ -36,7 +36,7 @@
      <item>
       <widget class="QPushButton" name="pushButtonClose">
        <property name="text">
-        <string notr="true"/>
+        <string notr="true">Close</string>
        </property>
       </widget>
      </item>
