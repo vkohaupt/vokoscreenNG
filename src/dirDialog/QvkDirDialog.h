@@ -28,7 +28,7 @@ private slots:
 
 protected:
 
-}
+};
 #endif
 
 
