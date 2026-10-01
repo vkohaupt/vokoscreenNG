@@ -17,8 +17,8 @@
 <file>pictures/camera/window-rectangle-on.png</file>
 <file>pictures/camera/window-resize.png</file>
 <file>pictures/convert/convertTo.png</file>
-<file>pictures/convert/mkv.png</file>
 <file>pictures/convert/gif.png</file>
+<file>pictures/convert/mkv.png</file>
 <file>pictures/cornerWidget/linux-flatpak.png</file>
 <file>pictures/cornerWidget/linux.png</file>
 <file>pictures/cornerWidget/wayland-flatpak.png</file>
@@ -281,6 +281,7 @@
 <file>language/pt_BR.qm</file>
 <file>language/pt_PT.qm</file>
 <file>language/pt.qm</file>
+<file>language/ro_RO.qm</file>
 <file>language/ro.qm</file>
 <file>language/ru_RU.qm</file>
 <file>language/ru.qm</file>

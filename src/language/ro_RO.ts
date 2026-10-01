@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ro">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ro_RO">
 <context>
     <name>QvkAudioController</name>
     <message>
@@ -24,15 +24,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Setare încheiată cu succes</translation>
+        <translation>Setare efectuată cu succes.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Închide fereastra și repornește VokoscreenNG </translation>
+        <translation>Închideți această fereastră și reporniți vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Bucura-te de VokoscreenNG</translation>
+        <translation>Simte-te bine cu vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -60,41 +60,41 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Manager de fișiere lipsă</translation>
+        <translation>Manager de fișiere lipsă.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Va rog să instalați un manager de fișiere</translation>
+        <translation>Instalați un manager de fișiere.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Manager de fișiere lipsă</translation>
+        <translation>Manager de fișiere lipsă.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Va rog să instalați un manager de fișiere</translation>
+        <translation>Instalați un manager de fișiere.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Atenţie</translation>
+        <translation>Atenție</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Spațiu insuficient pentru înregistrare</translation>
+        <translation>Înregistrarea nu a fost pornită, spațiu  pe disc insuficient.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Spațiu pe disc la limită</translation>
+        <translation>S-a atins limita de spațiu liber pe disc.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limită spaţiu liber pe disc</translation>
+        <translation>Limită de spațiu liber pe disc</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -102,7 +102,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Înregistrare oprită, lipsă spațiu liber pe disc</translation>
+        <translation>Înregistrarea a fost oprită, spațiu liber pe disc insuficient.</translation>
     </message>
 </context>
 <context>
@@ -110,11 +110,11 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Manager de fișiere lipsă</translation>
+        <translation>Manager de fișiere lipsă.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Va rog să instalați un manager de fișiere</translation>
+        <translation>Instalați un manager de fișiere.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -153,11 +153,11 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Manager de fișiere lipsă</translation>
+        <translation>Manager de fișiere lipsă.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Va rog să instalați un manager de fișiere</translation>
+        <translation>Instalați un manager de fișiere.</translation>
     </message>
 </context>
 <context>
@@ -192,11 +192,11 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Manager de fișiere lipsă</translation>
+        <translation>Manager de fișiere lipsă.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Va rog să instalați un manager de fișiere</translation>
+        <translation>Instalați un manager de fișiere.</translation>
     </message>
 </context>
 <context>
@@ -264,7 +264,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation>Resetare</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -276,19 +276,19 @@
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Dimensiune video:</translation>
+        <translation>Mărime fișier video:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Spațiu liber pe disc</translation>
+        <translation>Spațiu liber pe disc:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informaţii</translation>
+        <translation>Informație</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Timp înregistrare:</translation>
+        <translation>Timp de înregistrare:</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -324,7 +324,7 @@
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Pornește timpul</translation>
+        <translation>Pornește cronometrul</translation>
     </message>
     <message>
         <source>Stop recording after</source>
@@ -344,23 +344,23 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Calea fișierului video</translation>
+        <translation>Calea video</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limită spaţiu liber pe disc</translation>
+        <translation>Limită de spațiu liber pe disc</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Arată în tava de sistem</translation>
+        <translation>Afișează în zona de notificare</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Secunde înainte să pornească înregistrarea</translation>
+        <translation>Secunde pauză înainte de înregistrare</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Se caută actualizări</translation>
+        <translation>Verifică dacă există actualizări</translation>
     </message>
     <message>
         <source>Help</source>
@@ -408,7 +408,7 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Pornește ultima înregistrare</translation>
+        <translation>Rulează ultima înregistrare</translation>
     </message>
     <message>
         <source>Open folder</source>
@@ -416,7 +416,7 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizează în timpul înregistrării</translation>
+        <translation>Minimizat la începerea înregistrării</translation>
     </message>
     <message>
         <source>Starts minimized</source>
@@ -424,11 +424,11 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Resetează setările la următoarea pornire</translation>
+        <translation>Resetează toate setările la următoarea pornire</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Drepturi de autor și licență din imagini</translation>
+        <translation>Drepturi de autor și licență pentru imagini</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -436,7 +436,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Înregistrare de ecran</translation>
     </message>
     <message>
         <source>Player</source>
@@ -452,7 +452,7 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Creați imagini cu file</translation>
+        <translation>Creează imagini cu file</translation>
     </message>
     <message>
         <source>License information</source>
@@ -472,15 +472,15 @@
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tastele de comandă rapidă alocate.</translation>
+        <translation>Taste rapide atribuite.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Comandă rapidă de la tastatură nu a fost atribuită sau atribuită de mai multe ori.</translation>
+        <translation>Tasta rapidă nu este atribuită sau este atribuită de mai multe ori.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Dacă arată atribuit, dar nu funcționează, este folosit de un alt program.</translation>
+        <translation>Dacă apare ca fiind atribuită, dar nu funcționează, înseamnă că este utilizată de un alt program.</translation>
     </message>
     <message>
         <source>Snapshot</source>
@@ -488,15 +488,15 @@
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Calea către imagine</translation>
+        <translation>Cale imagine</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Ascunde fereastra</translation>
+        <translation>Ascunde această fereastră</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Secunde înainte de înregistrare</translation>
+        <translation>Secunde de așteptare înainte de înregistrare</translation>
     </message>
     <message>
         <source>Window</source>
@@ -511,11 +511,11 @@
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Drepturi de autor și licență din imagini</translation>
+        <translation>Drepturi de autor și licență pentru imagini</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Creați imagini cu file</translation>
+        <translation>Creează imagini cu file</translation>
     </message>
     <message>
         <source>License information</source>
@@ -523,27 +523,27 @@
     </message>
     <message>
         <source>ON</source>
-        <translation>Pornit</translation>
+        <translation>PORNIT</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Oprit</translation>
+        <translation>OPRIT</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Timp înregistrare:</translation>
+        <translation>Timp de înregistrare:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Dimensiune video:</translation>
+        <translation>Mărime fișier video:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Spațiu liber pe disc</translation>
+        <translation>Spațiu liber pe disc:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informaţii</translation>
+        <translation>Informație</translation>
     </message>
     <message>
         <source>Window</source>
@@ -587,11 +587,11 @@
     </message>
     <message>
         <source>Folder</source>
-        <translation>Folder</translation>
+        <translation>Dosar</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Nu înregistra cursorul de maus</translation>
+        <translation>Nu înregistra cursorul mouse-ului</translation>
     </message>
     <message>
         <source>Audiocodec</source>
@@ -615,19 +615,19 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Secunde înainte să pornească înregistrarea</translation>
+        <translation>Secundă pauză înainte de înregistrare</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation>Resetare</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Ascunde fereastra</translation>
+        <translation>Ascunde această fereastră</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Secunde înainte de înregistrare</translation>
+        <translation>Secunde de așteptare înainte de înregistrare</translation>
     </message>
     <message>
         <source>Automatically</source>
@@ -643,11 +643,11 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Arată în tava de sistem</translation>
+        <translation>Afișează în zona de notificare</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Resetează setările la următoarea pornire</translation>
+        <translation>Resetează toate setările la următoarea pornire</translation>
     </message>
     <message>
         <source>Snapshot</source>
@@ -655,14 +655,14 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizează în timpul înregistrării</translation>
+        <translation>Minimizat la pornirea înregistrării</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Drepturi de autor și licență din imagini</translation>
+        <translation>Drepturi de autor și licență pentru imagini</translation>
     </message>
 </context>
 <context>
