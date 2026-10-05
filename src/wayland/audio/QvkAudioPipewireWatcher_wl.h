@@ -54,6 +54,7 @@ protected:
   
   
 signals:
+    void signal_audio_added_removed(QString device);
 
 
 };

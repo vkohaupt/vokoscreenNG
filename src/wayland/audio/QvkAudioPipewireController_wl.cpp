@@ -43,14 +43,14 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
     global::listChildren = new QList<QLineEdit*>();
 
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
-    global::lineEditAudioPipewireWatcher_wl = new QLineEdit;
-    connect(global::lineEditAudioPipewireWatcher_wl,
-            &QLineEdit::textChanged,
+
+    vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
+    connect(vkAudioPipewireWatcher_wl,
+            &QvkAudioPipewireWatcher_wl::signal_audio_added_removed,
             this,
             [=](QString value){
         slot_pluggedInOutDevice(value);
     });
-    vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
 }
 
 

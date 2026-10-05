@@ -68,12 +68,18 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
             QString api = QString( gst_structure_get_string( structure, "device.api" ) );
             QString action = "[Audio-device-added]";
             QString device = QString( gst_structure_get_string( structure, "node.name" ) );
-            global::lineEditAudioPipewireWatcher_wl->setText( deviceID + ":::" +
-                                                              description + ":::" +
-                                                              type + ":::" +
-                                                              api + ":::" +
-                                                              action + ":::" +
-                                                              device );
+
+            QString string = deviceID + ":::" +
+                    description + ":::" +
+                    type + ":::" +
+                    api + ":::" +
+                    action + ":::" +
+                    device;
+            QvkAudioPipewireWatcher_wl *self = static_cast<QvkAudioPipewireWatcher_wl*>(user_data);
+            QMetaObject::invokeMethod(self, [self, string](){
+                emit self->signal_audio_added_removed(string);
+            }, Qt::QueuedConnection);
+
         }
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
@@ -99,12 +105,18 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
         QString api = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
         QString device = QString( gst_structure_get_string( structure, "node.name" ) );
-        global::lineEditAudioPipewireWatcher_wl->setText( deviceID + ":::" +
-                                                          description + ":::" +
-                                                          type + ":::" +
-                                                          api + ":::" +
-                                                          action + ":::" +
-                                                          device );
+
+        QString string = deviceID + ":::" +
+                description + ":::" +
+                type + ":::" +
+                api + ":::" +
+                action + ":::" +
+                device;
+        QvkAudioPipewireWatcher_wl *self = static_cast<QvkAudioPipewireWatcher_wl*>(user_data);
+        QMetaObject::invokeMethod(self, [self, string](){
+            emit self->signal_audio_added_removed(string);
+        }, Qt::QueuedConnection);
+
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
         break;
