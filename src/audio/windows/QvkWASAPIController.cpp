@@ -44,11 +44,18 @@ QvkWASAPIController::QvkWASAPIController( Ui_formMainWindow *ui_mainwindow )
     global::listChildren = new QList<QLineEdit*>();
 
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
-    global::lineEditWASAPIWatcher = new QLineEdit;
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
-    connect( global::lineEditWASAPIWatcher, SIGNAL( textChanged(QString) ), this, SLOT( slot_pluggedInOutDevice(QString) ) );
+
+
     vkWASAPIWatcher = new QvkWASAPIWatcher( ui );
+    connect(vkWASAPIWatcher,
+            &QvkWASAPIWatcher::signal_audio_added_removed,
+            this,
+            [=](QString value){
+                slot_pluggedInOutDevice(value);
+            });
+
     slot_audioDeviceSelected();
 }
 

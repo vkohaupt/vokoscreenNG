@@ -36,10 +36,9 @@ QvkWASAPIWatcher::~QvkWASAPIWatcher()
 {}
 
 
-GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *message, gpointer user_data )
+GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *message, gpointer data )
 {
     Q_UNUSED(bus)
-    Q_UNUSED(user_data)
 
     switch ( GST_MESSAGE_TYPE( message ) ) {
     case GST_MESSAGE_DEVICE_ADDED:
@@ -61,7 +60,17 @@ GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *messa
                 type = "Source";
             }
             QString action = "[Audio-device-added]";
-            global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
+
+            QString string = device + ":::" +
+                             name + ":::" +
+                             type + ":::" +
+                             api + ":::" +
+                             action;
+            QvkWASAPIWatcher *self = static_cast<QvkWASAPIWatcher*>(data);
+            QMetaObject::invokeMethod(self, [self, string](){
+                emit self->signal_audio_added_removed(string);
+            }, Qt::QueuedConnection);
+
         }
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
@@ -84,7 +93,17 @@ GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *messa
         }
         QString api  = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
-        global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
+
+        QString string = device + ":::" +
+                         name + ":::" +
+                         type + ":::" +
+                         api + ":::" +
+                         action;
+        QvkWASAPIWatcher *self = static_cast<QvkWASAPIWatcher*>(data);
+        QMetaObject::invokeMethod(self, [self, string](){
+            emit self->signal_audio_added_removed(string);
+        }, Qt::QueuedConnection);
+
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
         break;

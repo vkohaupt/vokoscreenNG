@@ -36,7 +36,7 @@ public:
     QvkWASAPIWatcher(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkWASAPIWatcher();
     void startWASAPIMonitoring();
-    static GstBusSyncReply my_WASAPI_func( GstBus *bus, GstMessage *message, gpointer user_data );
+    static GstBusSyncReply my_WASAPI_func(GstBus *bus, GstMessage *message, gpointer data );
 
 
 public slots:
@@ -53,6 +53,7 @@ protected:
   
   
 signals:
+    void signal_audio_added_removed(QString device);
 
 
 };
