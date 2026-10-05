@@ -45,13 +45,14 @@ public slots:
 private:
     GstElement *pipeline;
     QString m_deviceID = "";
-    static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer index);
+    static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data);
 
 
 private slots:
 
 
 signals:
+    void signal_levelmeter(qreal db);
 
 };
 

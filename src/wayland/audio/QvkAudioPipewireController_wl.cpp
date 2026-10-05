@@ -40,8 +40,6 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
 {
     ui = ui_mainwindow;
 
-    global::listChildren = new QList<QLineEdit*>();
-
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
 
     vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
@@ -129,11 +127,6 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
             if ( vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == deviceID ) {
                 vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->deleteLater();
                 vkAudioPipewireSingle_wl->deleteLater();
-
-                QLineEdit *LineEdit = global::listChildren->at(i);
-                qDebug().noquote() << global::nameOutput << "[Audio] Remove" << LineEdit->objectName();
-                global::listChildren->removeAt(i);
-
                 qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << deviceID << description << device;
                 break;
             }

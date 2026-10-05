@@ -25,7 +25,6 @@
 
 #include "ui_formMainWindow_wl.h"
 #include "QvkAudioPipewireWatcher_wl.h"
-//#include "QvkSpezialProgressBarAudio.h"
 
 #include <QObject>
 #include <QCheckBox>

@@ -23,7 +23,7 @@ public:
     ~QvkAudioPipewireSingle_wl();
     void init(QString string);
     void set_GUIui(Ui_formMainWindow_wl *ui);
-    QvkAudioPipewireLevelMeter_wl *vkAudioPipewireLevelMeter_wl;
+    QvkAudioPipewireLevelMeter_wl *vkAudioPipewireLevelMeter_wl = nullptr;
 
 
 public slots:

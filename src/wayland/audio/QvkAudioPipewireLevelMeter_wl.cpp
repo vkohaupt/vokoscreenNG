@@ -32,7 +32,6 @@
 
 #define GLIB_DISABLE_DEPRECATION_WARNINGS
 
-
 QvkAudioPipewireLevelMeter_wl::QvkAudioPipewireLevelMeter_wl()
 {
 }
@@ -43,7 +42,7 @@ QvkAudioPipewireLevelMeter_wl::~QvkAudioPipewireLevelMeter_wl()
 }
 
 
-gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer index)
+gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus)
     // Dies wird zum testen benötigt
@@ -78,21 +77,11 @@ gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage 
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow( 10, rms_dB / 20 );
 
-                for ( int x = 0; x < global::listChildren->count(); x++ ) {
-                    QLineEdit *lineEdit = global::listChildren->at(x);
-                    if (lineEdit->objectName().section("_", 1, 1) == QString::number((qint64)index)){
-                        lineEdit->setText( QString::number(rms) );
-                        // Dies wird zum testen benötigt
-                        /*QTime current = QTime::currentTime();
-                        QString currentTime = current.toString();
-                        printf("%s %s  %f \n",
-                               currentTime.toLatin1().data(),
-                               QString::number((qint64)index).toLatin1().data(),
-                               rms);
-                        fflush(stdout);*/
-                        break;
-                    }
-                }
+                qreal db = rms;
+                QvkAudioPipewireLevelMeter_wl *self = static_cast<QvkAudioPipewireLevelMeter_wl*>(data);
+                QMetaObject::invokeMethod(self, [self, db](){
+                    emit self->signal_levelmeter(db);
+                }, Qt::QueuedConnection);
             }
         }
     }
@@ -150,8 +139,7 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
 
     bus = gst_element_get_bus (pipeline);
 
-    gint64 msg = index.toInt();
-    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, nullptr );
+    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, this, nullptr );
     gst_object_unref(bus);
 
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );

@@ -37,7 +37,7 @@ public:
     QvkAudioPipewireWatcher_wl(Ui_formMainWindow_wl *ui_mainwindow);
     virtual ~QvkAudioPipewireWatcher_wl();
     void startAudioPipewireMonitoring();
-    static GstBusSyncReply my_AudioPipewire_func( GstBus *bus, GstMessage *message, gpointer user_data );
+    static GstBusSyncReply my_AudioPipewire_func(GstBus *bus, GstMessage *message, gpointer data );
 
 
 public slots:

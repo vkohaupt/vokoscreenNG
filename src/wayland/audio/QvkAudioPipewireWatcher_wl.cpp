@@ -36,10 +36,9 @@ QvkAudioPipewireWatcher_wl::~QvkAudioPipewireWatcher_wl()
 {}
 
 
-GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, GstMessage *message, gpointer user_data)
+GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus)
-    Q_UNUSED(user_data)
 
     switch ( GST_MESSAGE_TYPE( message ) ) {
     case GST_MESSAGE_DEVICE_ADDED:
@@ -75,7 +74,7 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
                     api + ":::" +
                     action + ":::" +
                     device;
-            QvkAudioPipewireWatcher_wl *self = static_cast<QvkAudioPipewireWatcher_wl*>(user_data);
+            QvkAudioPipewireWatcher_wl *self = static_cast<QvkAudioPipewireWatcher_wl*>(data);
             QMetaObject::invokeMethod(self, [self, string](){
                 emit self->signal_audio_added_removed(string);
             }, Qt::QueuedConnection);
@@ -112,7 +111,7 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
                 api + ":::" +
                 action + ":::" +
                 device;
-        QvkAudioPipewireWatcher_wl *self = static_cast<QvkAudioPipewireWatcher_wl*>(user_data);
+        QvkAudioPipewireWatcher_wl *self = static_cast<QvkAudioPipewireWatcher_wl*>(data);
         QMetaObject::invokeMethod(self, [self, string](){
             emit self->signal_audio_added_removed(string);
         }, Qt::QueuedConnection);
