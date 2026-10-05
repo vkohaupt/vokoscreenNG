@@ -35,7 +35,7 @@ class QvkAudioPipewireLevelMeter_wl : public QObject
 public:
     QvkAudioPipewireLevelMeter_wl();
     ~QvkAudioPipewireLevelMeter_wl();
-    void start(QString device, QString myname, QString index );
+    void start(QString device, QString myname);
     void stop();
 
 

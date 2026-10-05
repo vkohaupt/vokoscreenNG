@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QFrame>
 #include <QMouseEvent>
-#include <QShowEvent>
 
 #include "QvkAudioPipewireLevelMeter_wl.h"
 

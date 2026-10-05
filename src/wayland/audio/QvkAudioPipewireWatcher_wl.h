@@ -27,6 +27,7 @@
 #include "ui_formMainWindow_wl.h"
 
 #include <QObject>
+#include <QString>
 
 class QvkAudioPipewireWatcher_wl: public QObject
 {

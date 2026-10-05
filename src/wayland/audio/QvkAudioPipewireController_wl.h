@@ -27,7 +27,7 @@
 #include "QvkAudioPipewireWatcher_wl.h"
 
 #include <QObject>
-#include <QCheckBox>
+#include <QString>
 
 class QvkAudioPipewireController_wl: public QObject
 {

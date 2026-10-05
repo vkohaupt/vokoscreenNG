@@ -36,13 +36,13 @@
 #include <QLineEdit>
 #include <QFrame>
 
-QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_wl *ui_mainwindow )
+QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_wl *ui_mainwindow)
 {
     ui = ui_mainwindow;
 
-    ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
+    ui->verticalLayoutAudioDevices->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
-    vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
+    vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl(ui);
     connect(vkAudioPipewireWatcher_wl,
             &QvkAudioPipewireWatcher_wl::signal_audio_added_removed,
             this,
@@ -61,35 +61,35 @@ void QvkAudioPipewireController_wl::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+    for(int i = 0; i < listCheckBox.count(); i++){
         QCheckBox *checkBox = listCheckBox.at(i);
-        if ( checkBox->checkState() == Qt::Checked ) {
+        if (checkBox->checkState() == Qt::Checked){
             value = true;
             break;
         }
     }
-    emit signal_haveAudioDeviceSelected( value );
+    emit signal_haveAudioDeviceSelected(value);
 }
 
 
-void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
+void QvkAudioPipewireController_wl::slot_pluggedInOutDevice(QString string)
 {
-    QString deviceID    = string.section( ":::", 0, 0 ); // DeviceID
-    QString description = string.section( ":::", 1, 1 ); // Beschreibung
-    QString type        = string.section( ":::", 2, 2 ); // Microphone or speaker
-    QString api         = string.section( ":::", 3, 3 ); // alsa
-    QString action      = string.section( ":::", 4, 4 ); // Action: Added or removed
-    QString device      = string.section( ":::", 5, 5 ); // DeviceName
+    QString deviceID    = string.section(":::", 0, 0); // DeviceID
+    QString description = string.section(":::", 1, 1); // Beschreibung
+    QString type        = string.section(":::", 2, 2); // Microphone or speaker
+    QString api         = string.section(":::", 3, 3); // alsa
+    QString action      = string.section(":::", 4, 4); // Action: Added or removed
+    QString device      = string.section(":::", 5, 5); // DeviceName
     Q_UNUSED(api)
     Q_UNUSED(type)
 
-    if ( deviceID == "" ) {
+    if (deviceID == ""){
         qDebug().noquote() << global::nameOutput << "[Audio] DeviceID is empty -> return";
         return;
     }
 
     QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl;
-    if ( action == "[Audio-device-added]" ) {
+    if (action == "[Audio-device-added]"){
         qDebug().noquote() << global::nameOutput << "[Audio][Controller]"
                            << deviceID
                            << "Added:"
@@ -97,7 +97,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
                            << device;
         vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
         vkAudioPipewireSingle_wl->set_GUIui(ui);
-        vkAudioPipewireSingle_wl->setObjectName("AudioPipewireSingle__" + deviceID  );
+        vkAudioPipewireSingle_wl->setObjectName("AudioPipewireSingle__" + deviceID);
         ui->verticalLayoutAudioDevices->addWidget(vkAudioPipewireSingle_wl);
         vkAudioPipewireSingle_wl->init(string);
         connect(vkAudioPipewireSingle_wl,
@@ -120,11 +120,11 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         });
     }
 
-    if ( action == "[Audio-device-removed]" ) {
+    if (action == "[Audio-device-removed]"){
         QList<QvkAudioPipewireSingle_wl *> listQvkAudioPipewireSingle_wl = ui->scrollAreaAudioDevice->findChildren<QvkAudioPipewireSingle_wl *>();
-        for ( int i = 0; i < listQvkAudioPipewireSingle_wl.count(); i++ ) {
+        for(int i = 0; i < listQvkAudioPipewireSingle_wl.count(); i++){
             QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = listQvkAudioPipewireSingle_wl.at(i);
-            if ( vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == deviceID ) {
+            if (vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == deviceID){
                 vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->deleteLater();
                 vkAudioPipewireSingle_wl->deleteLater();
                 qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << deviceID << description << device;

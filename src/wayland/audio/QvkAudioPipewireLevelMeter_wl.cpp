@@ -90,8 +90,7 @@ gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage 
 }
 
 
-// Für den dritten Parameter index nehmen wir ebenfalls die deviceID da diese eindeutig ist.
-void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QString index)
+void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname)
 {
     GstElement *audiosrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
