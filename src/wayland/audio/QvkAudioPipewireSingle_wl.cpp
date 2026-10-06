@@ -100,12 +100,15 @@ void QvkAudioPipewireSingle_wl::init(QString string)
         ui->progressBarAudioDevice->setValue(value * 1000);
     });
 
-    vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter");
-
     QvkSettings_wl vkSettings_wl;
     bool bo = vkSettings_wl.readAudioDevice(ui->checkBoxAudioDevice->objectName());
     if (bo == true){
         ui->checkBoxAudioDevice->click();
+    }
+
+    bo = vkSettings_wl.readAudioDevice(ui->toolButtonAudioLevelmeter->objectName());
+    if (bo == true){
+        ui->toolButtonAudioLevelmeter->click();
     }
 }
 

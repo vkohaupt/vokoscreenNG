@@ -73,6 +73,7 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
             continue;
         }
 
+        // Button auf linker Seitenleiste. Es soll immer der erste Reiter angezeigt werden
         if ( ( toolButton->objectName() == ui->toolButtonSnapshot->objectName() ) or
              ( toolButton->objectName() == ui->toolButtonCamera->objectName() ) or
              ( toolButton->objectName() == ui->toolButtonLog->objectName() )
