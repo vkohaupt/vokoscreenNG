@@ -24,8 +24,6 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QLineEdit>
-#include <QTime>
 
 #include <string.h>
 #include <math.h>
