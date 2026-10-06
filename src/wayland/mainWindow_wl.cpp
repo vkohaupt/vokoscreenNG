@@ -349,15 +349,6 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent Begin close";
 
-    // Audio Levelmeter ausschalten da das Programm zum Schluß hin sonst abstürtzt.
-    QList<QToolButton *> list = ui->scrollAreaAudioDevice->findChildren<QToolButton *>();
-    for(int i = 0; i < list.count(); i++){
-        QToolButton *toolButton = list.at(i);
-        if (toolButton->isChecked()){
-            toolButton->click();
-        }
-    }
-
     ui->pushButtonStop->click();
     vkSettings_wl.saveAll( ui, this );
     vkSettings_wl.saveAreaScreencast( vkRegionChoise_wl->get_XRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),
@@ -380,6 +371,15 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     vkSystray->deleteLater();
 
     vkHelpBrowser_wl->set_close();
+
+    // Audio Levelmeter ausschalten da das Programm zum Schluß hin sonst abstürtzt.
+    QList<QToolButton *> list = ui->scrollAreaAudioDevice->findChildren<QToolButton *>();
+    for(int i = 0; i < list.count(); i++){
+        QToolButton *toolButton = list.at(i);
+        if (toolButton->isChecked()){
+            toolButton->click();
+        }
+    }
 
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
 }
