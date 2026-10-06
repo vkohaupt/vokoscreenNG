@@ -24,17 +24,11 @@
 #include "QvkAudioPipewireController_wl.h"
 #include "QvkAudioPipewireSingle_wl.h"
 
+#include <QString>
 #include <QDebug>
-#include <QPainter>
 #include <QCheckBox>
-#include <QLabel>
-#include <QStringList>
-#include <QHBoxLayout>
-#include <QIcon>
-#include <QSize>
 #include <QList>
-#include <QLineEdit>
-#include <QFrame>
+#include <QToolButton>
 
 QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_wl *ui_mainwindow)
 {

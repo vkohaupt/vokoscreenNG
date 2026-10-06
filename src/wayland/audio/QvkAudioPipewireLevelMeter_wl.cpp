@@ -24,6 +24,7 @@
 #include "global.h"
 
 #include <QDebug>
+#include <QMetaObject>
 
 #include <string.h>
 #include <math.h>

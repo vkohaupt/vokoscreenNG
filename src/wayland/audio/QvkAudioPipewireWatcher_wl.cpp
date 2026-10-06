@@ -24,6 +24,7 @@
 #include "global.h"
 
 #include <QString>
+#include <QMetaObject>
 
 QvkAudioPipewireWatcher_wl::QvkAudioPipewireWatcher_wl( Ui_formMainWindow_wl *ui_mainwindow )
 {

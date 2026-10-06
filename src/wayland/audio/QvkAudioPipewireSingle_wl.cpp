@@ -8,7 +8,7 @@
 #include <QSize>
 #include <QIcon>
 #include <QMouseEvent>
-#include <QLineEdit>
+#include <QToolButton>
 
 QvkAudioPipewireSingle_wl::QvkAudioPipewireSingle_wl(QWidget *parent) :
     QFrame(parent),
