@@ -121,6 +121,17 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice(QString string)
     }
 
     if (action == "[Audio-device-removed]"){
+        // Audio Levelmeter ausschalten da das Programm sonst abstürtzt.
+        QList<QToolButton *> list = ui->scrollAreaAudioDevice->findChildren<QToolButton *>();
+        for(int i = 0; i < list.count(); i++){
+            QToolButton *toolButton = list.at(i);
+            if(toolButton->objectName().section("--", 1, 1) == device){
+                if (toolButton->isChecked()){
+                    toolButton->click();
+                }
+            }
+        }
+
         QList<QvkAudioPipewireSingle_wl *> listQvkAudioPipewireSingle_wl = ui->scrollAreaAudioDevice->findChildren<QvkAudioPipewireSingle_wl *>();
         for(int i = 0; i < listQvkAudioPipewireSingle_wl.count(); i++){
             QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = listQvkAudioPipewireSingle_wl.at(i);
