@@ -112,7 +112,7 @@ private:
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
     QString VK_getCapsFilter();
-    QString VK_getMuxer();
+    QString VK_getMuxerOptions();
     QString Vk_get_Videocodec_Encoder();
     QString VK_scale();
 

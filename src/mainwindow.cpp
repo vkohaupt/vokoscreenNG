@@ -1992,16 +1992,18 @@ QString QvkMainWindow::VK_get_AudioSystem()
 #endif
 
 
-QString QvkMainWindow::VK_getMuxer()
+QString QvkMainWindow::VK_getMuxerOptions()
 {
     QString value = ui->comboBoxFormat->currentData().toString();
-    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" ) {
+    if (value == "matroskamux"){
         value = ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
-    } else {
-        value = ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
 
-    if ( ui->comboBoxFormat->currentData().toString() == "gifenc" ) {
+    if (value == "mp4mux"){
+        value = ui->comboBoxFormat->currentData().toString() + " name=mux fragment-duration=2000";
+    }
+
+    if (value == "gifenc" ){
         value = "";
     }
 
@@ -2161,7 +2163,7 @@ void QvkMainWindow::slot_Start()
         VK_PipelineList << "mux.";
     }
 
-    VK_PipelineList << VK_getMuxer();
+    VK_PipelineList << VK_getMuxerOptions();
     VK_PipelineList.removeAll( "" );
 
     QString newVideoFilename;
