@@ -99,7 +99,7 @@ void QvkAudioWindowsSingle::init(QString string)
             [=](qreal value){
         ui->progressBarAudioDevice->setValue(value * 1000);
     });
-
+/*
     QvkSettings vkSettings;
     bool bo = vkSettings.readAudioDevice(ui->checkBoxAudioDevice->objectName());
     if (bo == true){
@@ -110,10 +110,11 @@ void QvkAudioWindowsSingle::init(QString string)
     if (bo == true){
         ui->toolButtonAudioLevelmeter->click();
     }
+*/
 }
 
 
-void QvkAudioWindowsSingle_wl::mouseReleaseEvent( QMouseEvent *event )
+void QvkAudioWindowsSingle::mouseReleaseEvent( QMouseEvent *event )
 {
     if( event->button() == Qt::LeftButton) {
         if ( event->type() == QMouseEvent::MouseButtonRelease ) {

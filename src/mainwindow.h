@@ -46,7 +46,7 @@
 
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
-  #include "QvkWASAPIController.h"
+  #include "QvkAudioWindowsController.h"
 #endif
 
 #include <QMainWindow>
@@ -78,7 +78,7 @@ public:
     QvkAudioController *vkAudioController;
 #endif
 #ifdef Q_OS_WIN
-    QvkWASAPIController *vkWASAPIController;
+    QvkAudioWindowsController *vkAudioWindowsController;
 #endif
     QvkSpezialSlider *sliderFrames;
     QvkMagnifierController *vkMagnifierController;

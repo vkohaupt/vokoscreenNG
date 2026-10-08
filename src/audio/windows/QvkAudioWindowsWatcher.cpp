@@ -47,34 +47,26 @@ GstBusSyncReply QvkAudioWindowsWatcher::my_AudioWindows_func(GstBus *bus, GstMes
         GstDevice *gstDevice;
         gst_message_parse_device_added( message, &gstDevice );
         GstStructure *structure = gst_device_get_properties( gstDevice );
-        QString mediaClass = QString( gst_structure_get_string( structure, "media.class" ) );
-        // Accept real hardware nodes (Audio/Source, Audio/Sink) and PipeWire virtual
-        // nodes, but skip internal Stream/* followers (e.g. capture.* filter-chain
-        // nodes) that would otherwise duplicate their parent source. Before 4.10.0
-        // the PulseAudio path listed every source; the GstDeviceMonitor migration
-        // narrowed this to device.api == "alsa" and dropped virtual microphones.
-        if ( mediaClass == "Audio/Source" or mediaClass == "Audio/Sink" ) {
-            QString deviceID = QString( gst_structure_get_string( structure, "object.serial" ) );
-            QString description = QString( gst_structure_get_string( structure, "node.description" ) );
-            QString capture = QString( gst_structure_get_string( structure, "api.alsa.pcm.stream" ) );
+        QString api = QString( gst_structure_get_string( structure, "device.api" ) );
+        QString device_id = QString( gst_structure_get_string( structure, "device.id" ) );
+        if ( ( api == "wasapi2" ) and ( device_id.contains( "}.{" ) ) ) {
+            QString device = QString( gst_structure_get_string( structure, "device.id" ) );
+            QString description = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
+            gboolean boolValue;
+            gst_structure_get_boolean( structure, "wasapi2.device.loopback", &boolValue ) ;
             QString type;
-            if( capture == "capture" ) {
-                type = "Source";
-            } else if ( mediaClass == "Audio/Source" ) {
-                type = "Source";
-            } else {
+            if( boolValue ) {
                 type = "Playback";
+            } else {
+                type = "Source";
             }
-            QString api = QString( gst_structure_get_string( structure, "device.api" ) );
             QString action = "[Audio-device-added]";
-            QString device = QString( gst_structure_get_string( structure, "node.name" ) );
 
-            QString string = deviceID + ":::" +
-                    description + ":::" +
-                    type + ":::" +
-                    api + ":::" +
-                    action + ":::" +
-                    device;
+            QString string = device + ":::" +
+                             description + ":::" +
+                             type + ":::" +
+                             api + ":::" +
+                             action;
             QvkAudioWindowsWatcher *self = static_cast<QvkAudioWindowsWatcher*>(data);
             QMetaObject::invokeMethod(self, [self, string](){
                 emit self->signal_audio_added_removed(string);
@@ -90,35 +82,31 @@ GstBusSyncReply QvkAudioWindowsWatcher::my_AudioWindows_func(GstBus *bus, GstMes
         GstDevice *gstDevice;
         gst_message_parse_device_removed( message, &gstDevice );
         GstStructure *structure = gst_device_get_properties( gstDevice );
-        QString deviceID = QString( gst_structure_get_string( structure, "object.serial" ) );
-        QString description = QString( gst_structure_get_string( structure, "node.description" ) );
-        QString capture = QString( gst_structure_get_string( structure, "api.alsa.pcm.stream" ) );
-        QString mediaClass = QString( gst_structure_get_string( structure, "media.class" ) );
+        QString device = QString( gst_structure_get_string( structure, "device.id" ) );
+        QString description = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
+        gboolean boolValue;
+        gst_structure_get_boolean( structure, "wasapi2.device.loopback", &boolValue ) ;
         QString type;
-        if( capture == "capture" ) {
-            type = "Source";
-        } else if ( mediaClass == "Audio/Source" ) {
-            type = "Source";
-        } else {
+        if( boolValue ) {
             type = "Playback";
+        } else {
+            type = "Source";
         }
-        QString api = QString( gst_structure_get_string( structure, "device.api" ) );
+        QString api  = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
-        QString device = QString( gst_structure_get_string( structure, "node.name" ) );
 
-        QString string = deviceID + ":::" +
-                description + ":::" +
-                type + ":::" +
-                api + ":::" +
-                action + ":::" +
-                device;
+        QString string = device + ":::" +
+                         description + ":::" +
+                         type + ":::" +
+                         api + ":::" +
+                         action;
         QvkAudioWindowsWatcher *self = static_cast<QvkAudioWindowsWatcher*>(data);
         QMetaObject::invokeMethod(self, [self, string](){
             emit self->signal_audio_added_removed(string);
         }, Qt::QueuedConnection);
 
-        gst_structure_free( structure );
-        gst_object_unref( gstDevice );
+        gst_structure_free(structure);
+        gst_object_unref(gstDevice);
         break;
     }
     default:
@@ -132,12 +120,11 @@ GstBusSyncReply QvkAudioWindowsWatcher::my_AudioWindows_func(GstBus *bus, GstMes
 void QvkAudioWindowsWatcher::startAudioWindowsMonitoring()
 {
     GstDeviceMonitor *monitor = gst_device_monitor_new();
-    GstBus *bus = gst_device_monitor_get_bus( monitor );
-    GstCaps *caps = gst_caps_new_empty_simple( "audio/x-raw" );
-    // Wenn das Source weggelassen wird, werden alle Audiogeräte angezeigt
-    gst_device_monitor_add_filter( monitor, "Audio", caps );
-    gst_caps_unref( caps );
-    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_AudioWindows_func, this, nullptr );
-    gst_object_unref( bus );
-    gst_device_monitor_start( monitor );
+    GstBus *bus = gst_device_monitor_get_bus(monitor);
+    GstCaps *caps = gst_caps_new_empty_simple("audio/x-raw");
+    gst_device_monitor_add_filter(monitor, "Audio/Source", caps);
+    gst_caps_unref(caps);
+    gst_bus_set_sync_handler(bus, (GstBusSyncHandler)my_AudioWindows_func, this, nullptr);
+    gst_object_unref(bus);
+    gst_device_monitor_start(monitor);
 }

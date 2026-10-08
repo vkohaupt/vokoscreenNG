@@ -47,7 +47,7 @@
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
-#include <QvkLevelMeterController.h>
+//#include <QvkLevelMeterController.h>
 #include "QvkSpezialCheckbox.h"
 #include "QvkCameraOneController.h"
 
@@ -467,11 +467,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
-    vkWASAPIController = new QvkWASAPIController( ui );
-    connect( vkWASAPIController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
-    connect( vkWASAPIController, &QvkWASAPIController::signal_newAudioDevice, this, [=](QCheckBox *checkBox){
-        vkSettings.readWASAPIAudioDevice(checkBox);
-    });
+    vkAudioWindowsController = new QvkAudioWindowsController( ui );
+    connect( vkAudioWindowsController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+//    connect( vkWASAPIController, &QvkAudioWindowsController::signal_newAudioDevice, this, [=](QCheckBox *checkBox){
+//        vkSettings.readWASAPIAudioDevice(checkBox);
+//    });
 #endif
 
 #ifdef Q_OS_UNIX
@@ -1875,7 +1875,7 @@ void QvkMainWindow::slot_preStart()
 #ifdef Q_OS_WIN
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and
          ( sliderScreencastCountDown->value() > 0 ) and
-         ( vkWASAPIController->wantCountdown == true ) )
+         ( vkAudioWindowsController->wantCountdown == true ) )
 #endif
 #ifdef Q_OS_UNIX
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
@@ -1937,7 +1937,7 @@ void QvkMainWindow::slot_preStart()
 #ifdef Q_OS_WIN
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and
          ( sliderScreencastCountDown->value() > 0 ) and
-         ( vkWASAPIController->wantCountdown == true ) )
+         ( vkAudioWindowsController->wantCountdown == true ) )
 #endif
 #ifdef Q_OS_UNIX
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )

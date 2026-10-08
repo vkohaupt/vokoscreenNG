@@ -36,9 +36,9 @@ QvkAudioWindowsController::QvkAudioWindowsController(Ui_formMainWindow *ui_mainw
 
     ui->verticalLayoutAudioDevices->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
-    vkAudioWindowsWatcher = new QvkAudioPipewireWatcher_wl(ui);
-    connect(vkAudioWindowsWatcher_wl,
-            &QvkAudioWindowsWatcher_wl::signal_audio_added_removed,
+    vkAudioWindowsWatcher = new QvkAudioWindowsWatcher(ui);
+    connect(vkAudioWindowsWatcher,
+            &QvkAudioWindowsWatcher::signal_audio_added_removed,
             this,
             [=](QString value){
         slot_pluggedInOutDevice(value);
@@ -82,7 +82,7 @@ void QvkAudioWindowsController::slot_pluggedInOutDevice(QString string)
         return;
     }
 
-    QvkAudioWindowsSingle *vkAudioPipewireSingle;
+    QvkAudioWindowsSingle *vkAudioWindowsSingle;
     if (action == "[Audio-device-added]"){
         qDebug().noquote() << global::nameOutput << "[Audio][Controller]"
                            << deviceID
@@ -91,17 +91,15 @@ void QvkAudioWindowsController::slot_pluggedInOutDevice(QString string)
                            << device;
         vkAudioWindowsSingle = new QvkAudioWindowsSingle();
         vkAudioWindowsSingle->set_GUIui(ui);
-        vkAudioWindowsSingle->setObjectName("AudioPipewireSingle__" + deviceID);
+        vkAudioWindowsSingle->setObjectName("AudioWindowsSingle__" + deviceID);
         ui->verticalLayoutAudioDevices->addWidget(vkAudioWindowsSingle);
         vkAudioWindowsSingle->init(string);
-        connect(vkAudioWindowsSingle_wl,
+        connect(vkAudioWindowsSingle,
                 &QvkAudioWindowsSingle::signal_haveAudioDeviceSelected,
                 this,
                 [=](bool value){
             ui->labelAudioCodec->setEnabled(value);
             ui->comboBoxAudioCodec->setEnabled(value);
-            ui->checkBoxSeparatedAudioTracks->setEnabled(value);
-            ui->toolButtonSeparatedAudioTracksReset->setEnabled(value);
         });
         connect(this,
                 &QvkAudioWindowsController::signal_haveAudioDeviceSelected,
@@ -109,8 +107,6 @@ void QvkAudioWindowsController::slot_pluggedInOutDevice(QString string)
                 [=](bool value){
             ui->labelAudioCodec->setEnabled(value);
             ui->comboBoxAudioCodec->setEnabled(value);
-            ui->checkBoxSeparatedAudioTracks->setEnabled(value);
-            ui->toolButtonSeparatedAudioTracksReset->setEnabled(value);
         });
     }
 
@@ -126,12 +122,12 @@ void QvkAudioWindowsController::slot_pluggedInOutDevice(QString string)
             }
         }
 
-        QList<QvkAudioWindowsSingle *> listQvkAudioWindowsSingle = ui->scrollAreaAudioDevice->findChildren<QvkAudioPipewireSingle_wl *>();
+        QList<QvkAudioWindowsSingle *> listQvkAudioWindowsSingle = ui->scrollAreaAudioDevice->findChildren<QvkAudioWindowsSingle *>();
         for(int i = 0; i < listQvkAudioWindowsSingle.count(); i++){
-            QvkAudioWindowsSingle *vkAudioWindowsSingle_wl = listQvkAudioWindowsSingle.at(i);
-            if (vkAudioWindowsSingle_wl->objectName().section("__", 1, 1) == deviceID){
-                vkAudioWindowsSingle_wl->vkAudioPipewireLevelMeter_wl->deleteLater();
-                vkAudioWindowsSingle_wl->deleteLater();
+            QvkAudioWindowsSingle *vkAudioWindowsSingle = listQvkAudioWindowsSingle.at(i);
+            if (vkAudioWindowsSingle->objectName().section("__", 1, 1) == deviceID){
+                vkAudioWindowsSingle->vkAudioWindowsLevelMeter->deleteLater();
+                vkAudioWindowsSingle->deleteLater();
                 qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << deviceID << description << device;
                 break;
             }

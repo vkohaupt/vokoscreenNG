@@ -41,7 +41,7 @@ QvkAudioWindowsLevelMeter::~QvkAudioWindowsLevelMeter()
 }
 
 
-gboolean QvkAudioWindowsLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer data)
+gboolean QvkAudioWindowsLevelMeter::message_handler(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus)
     // Dies wird zum testen benötigt
