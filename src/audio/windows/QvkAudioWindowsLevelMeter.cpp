@@ -85,7 +85,6 @@ gboolean QvkAudioWindowsLevelMeter::message_handler(GstBus *bus, GstMessage *mes
 // deviceID ist z.b. "{0.0.1.00000000}.{f2236533-cf83-45b3-88f0-753d1bd26e60}"
 void QvkAudioWindowsLevelMeter::start(QString deviceID)
 {
-    qDebug() << "00000000000000000000" << deviceID;
     GstElement *audiosrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
     GstBus *bus;

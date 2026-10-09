@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>845</width>
-    <height>580</height>
+    <height>466</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -581,8 +581,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>404</width>
-                       <height>125</height>
+                       <width>459</width>
+                       <height>115</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -2530,8 +2530,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>411</width>
-                   <height>436</height>
+                   <width>464</width>
+                   <height>333</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -6738,7 +6738,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
