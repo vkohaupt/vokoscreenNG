@@ -76,7 +76,7 @@ void QvkAudioWindowsSingle::init(QString string)
              this,
              [=](bool value){
         if ( value == true ){
-            vkAudioWindowsLevelMeter->start(deviceID, "Levelmeter");
+            vkAudioWindowsLevelMeter->start(deviceID);
         }
         if ( value == false ){
             vkAudioWindowsLevelMeter->stop();

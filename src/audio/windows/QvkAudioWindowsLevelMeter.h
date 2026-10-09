@@ -35,7 +35,7 @@ class QvkAudioWindowsLevelMeter : public QObject
 public:
     QvkAudioWindowsLevelMeter();
     ~QvkAudioWindowsLevelMeter();
-    void start(QString device, QString myname);
+    void start(QString device);
     void stop();
 
 

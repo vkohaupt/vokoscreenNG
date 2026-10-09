@@ -467,8 +467,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
-    vkAudioWindowsController = new QvkAudioWindowsController( ui );
-    connect( vkAudioWindowsController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+    vkAudioWindowsController = new QvkAudioWindowsController(ui);
+    //   connect( vkAudioWindowsController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+    connect(vkAudioWindowsController,
+            &QvkAudioWindowsController::signal_haveAudioDeviceSelected,
+            this, [=](bool bo){
+                slot_haveAudioDeviceSelected(bo);
+            });
+
 //    connect( vkWASAPIController, &QvkAudioWindowsController::signal_newAudioDevice, this, [=](QCheckBox *checkBox){
 //        vkSettings.readWASAPIAudioDevice(checkBox);
 //    });
