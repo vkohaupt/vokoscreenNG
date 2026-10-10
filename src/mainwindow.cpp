@@ -475,7 +475,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                 slot_haveAudioDeviceSelected(bo);
             });
 
-//    connect( vkWASAPIController, &QvkAudioWindowsController::signal_newAudioDevice, this, [=](QCheckBox *checkBox){
+//    connect( vkAudioWindowsController, &QvkAudioWindowsController::signal_newAudioDevice, this, [=](QCheckBox *checkBox){
 //        vkSettings.readWASAPIAudioDevice(checkBox);
 //    });
 #endif
@@ -1009,16 +1009,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
-
-    // Vorerst deaktiviert stürtzt beim speichern ab
-    /*
-    QList<QvkLevelMeterController *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
-    for ( int i = 0; i < list.count(); i++ ) {
-        QvkLevelMeterController *vkLevelMeterController = list.at(i);
-        vkLevelMeterController->vkLevelMeter->stop();
-        qDebug().noquote() << global::nameOutput << "Stop levelmeter on:" << vkLevelMeterController->objectName();
-    }
-    */
 
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )

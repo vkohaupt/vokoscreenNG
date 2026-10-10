@@ -98,18 +98,18 @@ void QvkAudioWindowsSingle::init(QString string)
             [=](qreal value){
         ui->progressBarAudioDevice->setValue(value * 1000);
     });
-/*
+
     QvkSettings vkSettings;
-    bool bo = vkSettings.readAudioDevice(ui->checkBoxAudioDevice->objectName());
+    bool bo = vkSettings.readAudioWindowsDevice(ui->checkBoxAudioDevice->objectName());
     if (bo == true){
         ui->checkBoxAudioDevice->click();
     }
 
-    bo = vkSettings.readAudioDevice(ui->toolButtonAudioLevelmeter->objectName());
+    bo = vkSettings.readAudioWindowsDevice(ui->toolButtonAudioLevelmeter->objectName());
     if (bo == true){
         ui->toolButtonAudioLevelmeter->click();
     }
-*/
+
 }
 
 

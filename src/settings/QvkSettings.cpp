@@ -798,12 +798,14 @@ void QvkSettings::readShowclickColor( QvkShowClick *vkShowClick )
     settings.endGroup();
 }
 
-
-void QvkSettings::readWASAPIAudioDevice(QCheckBox *checkBox)
+bool QvkSettings::readAudioWindowsDevice(QString device)
 {
-    // checkBox->objectName() ist "checkboxAudioDevice-XX"
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr );
-    if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
-        checkBox->click();
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr);
+    bool bo = false;
+    if (settings.value(device, false ).toBool() == true){
+        bo = true;
+    }else{
+        bo = false;
     }
+    return bo;
 }

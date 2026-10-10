@@ -59,6 +59,9 @@ public:
 
     void readWASAPIAudioDevice(QCheckBox *checkBox);
 
+    bool readAudioWindowsDevice(QString device);
+
+
     QString getFileName();
     QString getVideoPath();
     QString getPicturePath();
