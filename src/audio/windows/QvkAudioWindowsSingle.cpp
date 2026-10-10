@@ -38,7 +38,6 @@ void QvkAudioWindowsSingle::init(QString string)
     QString type        = string.section( ":::", 2, 2 ); // Microphone or speaker
     QString api         = string.section( ":::", 3, 3 ); // alsa
     QString action      = string.section( ":::", 4, 4 ); // Action: Added or removed
-    QString device      = string.section( ":::", 5, 5 ); // DeviceName
     Q_UNUSED(api)
     Q_UNUSED(action)
 
@@ -50,23 +49,23 @@ void QvkAudioWindowsSingle::init(QString string)
 
     ui->checkBoxAudioDevice->setAccessibleName(string);
     // Hier wird das device mit "--" benötigt wegen Settings
-    ui->checkBoxAudioDevice->setObjectName(ui->checkBoxAudioDevice->objectName() + "--" + device);
+    ui->checkBoxAudioDevice->setObjectName(ui->checkBoxAudioDevice->objectName() + "--" + deviceID);
     ui->checkBoxAudioDevice->setToolTip(tr("Select one or more devices"));
     ui->checkBoxAudioDevice->setText("");
-    ui->checkBoxAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
+    ui->checkBoxAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + description);
 
     ui->labelAudioDevice->setObjectName(ui->labelAudioDevice->objectName() + "_" + deviceID);
     if ( description.length() > 45 ){
         description = description.first(45);
     }
     ui->labelAudioDevice->setText(description);
-    ui->labelAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
+    ui->labelAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + description);
 
     ui->progressBarAudioDevice->setObjectName(ui->progressBarAudioDevice->objectName() + "_" + deviceID);
     ui->progressBarAudioDevice->setValue(0);
-    ui->progressBarAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
+    ui->progressBarAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + description);
 
-    ui->toolButtonAudioLevelmeter->setObjectName(ui->toolButtonAudioLevelmeter->objectName() + "--" + device);
+    ui->toolButtonAudioLevelmeter->setObjectName(ui->toolButtonAudioLevelmeter->objectName() + "--" + deviceID);
     ui->toolButtonAudioLevelmeter->setToolTip(ui->toolButtonAudioLevelmeter->objectName());
 
     vkAudioWindowsLevelMeter = new QvkAudioWindowsLevelMeter;
