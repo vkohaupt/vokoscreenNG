@@ -476,8 +476,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_UNIX
-    vkAudioController = new QvkAudioController( ui );
-    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+    vkAudioController = new QvkAudioController(ui);
+    connect(vkAudioController,
+            &QvkAudioController::signal_haveAudioDeviceSelected,
+            this, [=](bool bo){
+                slot_haveAudioDeviceSelected(bo);
+            });
     vkAudioController->init();
 #endif
 
