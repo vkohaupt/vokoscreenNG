@@ -21,7 +21,6 @@
  */
 
 #include <QString>
-#include <QLineEdit>
 
 namespace global
 {
@@ -29,5 +28,4 @@ namespace global
     extern QString nameOutput;
     extern QString version;
     extern int showclickCounter;
-    extern QList<QLineEdit*> *listChildren;
 }

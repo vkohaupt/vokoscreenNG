@@ -124,7 +124,6 @@ private:
     QStringList videoFormatsList;
 
     void VK_set_available_Formats_in_Combox();
-//    QString VK_get_AudioSystem();
     QStringList VK_getSelectedAudioDevice();
     QStringList VK_getSelectedAudioDeviceName();
 
