@@ -100,12 +100,12 @@ void QvkAudioWindowsSingle::init(QString string)
     });
 
     QvkSettings vkSettings;
-    bool bo = vkSettings.readAudioWindowsDevice(ui->checkBoxAudioDevice->objectName());
+    bool bo = vkSettings.readAudioDevice(ui->checkBoxAudioDevice->objectName());
     if (bo == true){
         ui->checkBoxAudioDevice->click();
     }
 
-    bo = vkSettings.readAudioWindowsDevice(ui->toolButtonAudioLevelmeter->objectName());
+    bo = vkSettings.readAudioDevice(ui->toolButtonAudioLevelmeter->objectName());
     if (bo == true){
         ui->toolButtonAudioLevelmeter->click();
     }
