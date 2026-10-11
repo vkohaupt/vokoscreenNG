@@ -53,7 +53,7 @@
 
 #ifdef Q_OS_UNIX
   #include "QvkScreenManager.h"
-  #include <pulse/pulseaudio.h>
+//  #include <pulse/pulseaudio.h>
 #endif
 
 #ifdef Q_OS_WIN
@@ -260,7 +260,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
 #ifdef Q_OS_UNIX
-    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
+//    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
 #endif
     qDebug().noquote() << global::nameOutput << "Virtual Maschine:" << vkVirtual->isVirtualMaschine();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
@@ -476,13 +476,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_UNIX
-    vkAudioController = new QvkAudioController(ui);
+    vkAudioController = new QvkAudioPipewireController(ui);
     connect(vkAudioController,
-            &QvkAudioController::signal_haveAudioDeviceSelected,
+            &QvkAudioPipewireController::signal_haveAudioDeviceSelected,
             this, [=](bool bo){
                 slot_haveAudioDeviceSelected(bo);
             });
-    vkAudioController->init();
 #endif
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked(bool) ), this, SLOT( slot_framesReset() ) );
@@ -1758,7 +1757,8 @@ void QvkMainWindow::VK_gst_Elements_available()
 #endif
 #ifdef Q_OS_UNIX
     list << "ximagesrc";
-    list << "pulsesrc";
+    list << "pipewiresrc";
+//    list << "pulsesrc";
 #endif
     list << "queue";
     list << "capsfilter";
@@ -1978,14 +1978,14 @@ void QvkMainWindow::slot_startCounter( bool value )
     }
 }
 
-
+/*
 #ifdef Q_OS_UNIX
 QString QvkMainWindow::VK_get_AudioSystem()
 {
     return "pulsesrc";
 }
 #endif
-
+*/
 
 QString QvkMainWindow::VK_getMuxerOptions()
 {
@@ -2082,6 +2082,7 @@ void QvkMainWindow::slot_Start()
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
         #ifdef Q_OS_UNIX
+        /*
             VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) )
                                                    .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(0) ).replace( " ", "-") );
             VK_PipelineList << "audio/x-raw, channels=2";
@@ -2090,6 +2091,15 @@ void QvkMainWindow::slot_Start()
             VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
             VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
             VK_PipelineList << "queue";
+            VK_PipelineList << "mux.";
+        */
+            VK_PipelineList << "pipewiresrc target-object=" + VK_getSelectedAudioDevice().at(0).section(":::", 0, 0);
+            VK_PipelineList << "audioconvert";
+            VK_PipelineList << "audiorate";
+            VK_PipelineList << "audio/x-raw, channels=2";
+            VK_PipelineList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
+            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+            VK_PipelineList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
             VK_PipelineList << "mux.";
         #endif
 
@@ -2119,11 +2129,18 @@ void QvkMainWindow::slot_Start()
         for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
         {
             #ifdef Q_OS_UNIX
+/*
                 VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) )
                                                        .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(x) ).replace( " ", "-") );
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "audioresample";
                 VK_PipelineList << "queue";
+                VK_PipelineList << "mix.";
+*/
+                VK_PipelineList << "pipewiresrc target-object=" + VK_getSelectedAudioDevice().at(x).section(":::", 0, 0);
+                VK_PipelineList << "audioconvert";
+                VK_PipelineList << "audioresample";
+                VK_PipelineList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
                 VK_PipelineList << "mix.";
             #endif
 

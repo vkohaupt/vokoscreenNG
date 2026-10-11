@@ -41,7 +41,7 @@
 #include "QvkLicenses.h"
 
 #ifdef Q_OS_UNIX
-  #include "QvkAudioController.h"
+  #include "QvkAudioPipewireController.h"
 #endif
 
 #ifdef Q_OS_WIN
@@ -75,7 +75,7 @@ public:
     QvkRegionChoise *vkRegionChoise;
     QvkSystray *vkSystray;
 #ifdef Q_OS_UNIX
-    QvkAudioController *vkAudioController;
+    QvkAudioPipewireController *vkAudioController;
 #endif
 #ifdef Q_OS_WIN
     QvkAudioWindowsController *vkAudioWindowsController;
@@ -124,7 +124,7 @@ private:
     QStringList videoFormatsList;
 
     void VK_set_available_Formats_in_Combox();
-    QString VK_get_AudioSystem();
+//    QString VK_get_AudioSystem();
     QStringList VK_getSelectedAudioDevice();
     QStringList VK_getSelectedAudioDeviceName();
 
