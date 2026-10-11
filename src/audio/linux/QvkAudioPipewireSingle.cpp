@@ -99,7 +99,7 @@ void QvkAudioPipewireSingle::init(QString string)
             [=](qreal value){
         ui->progressBarAudioDevice->setValue(value * 1000);
     });
-/*
+
     QvkSettings vkSettings;
     bool bo = vkSettings.readAudioDevice(ui->checkBoxAudioDevice->objectName());
     if (bo == true){
@@ -110,7 +110,7 @@ void QvkAudioPipewireSingle::init(QString string)
     if (bo == true){
         ui->toolButtonAudioLevelmeter->click();
     }
-*/
+
 }
 
 

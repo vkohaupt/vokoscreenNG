@@ -809,3 +809,16 @@ bool QvkSettings::readAudioWindowsDevice(QString device)
     }
     return bo;
 }
+
+
+bool QvkSettings::readAudioDevice(QString device)
+{
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, global::name, global::name, nullptr);
+    bool bo = false;
+    if (settings.value(device, false ).toBool() == true){
+        bo = true;
+    }else{
+        bo = false;
+    }
+    return bo;
+}
