@@ -1189,6 +1189,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
             stringList << "audiomixer name=mix";
             stringList << "audioconvert";
             stringList << "audiorate";
+            stringList << "audio/x-raw, channels=2";
             stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
             stringList << ui->comboBoxAudioCodec->currentData().toString();
             stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
