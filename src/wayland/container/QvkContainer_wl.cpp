@@ -89,6 +89,8 @@ QvkContainer_wl::QvkContainer_wl(QObject *parent) : QObject(parent)
     MKV->add_VideoCodec( "openh264enc", "H.264" );
     MKV->add_AudioCodec( "opusenc", "opus" );
     MKV->add_AudioCodec( "lamemp3enc", "mp3" );
+    MKV->add_AudioCodec( "flacenc", "flac" );
+    MKV->add_AudioCodec( "vorbisenc", "vorbis" );
 
     Container_wl *MP4 = new Container_wl( "mp4mux", "mp4" );
     MP4->add_VideoCodec( "openh264enc", "H.264" );
