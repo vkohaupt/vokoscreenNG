@@ -1160,7 +1160,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
                   .append(" resend-last=true")
                   .append(" keepalive-time=" + QString::number(1000 / sliderFrames->value()));
     stringList << "videoconvert";
-    stringList << "videorate skip-to-first=false drop-only=false";
+    stringList << "videorate";
     stringList << "queue max-size-buffers=0 max-size-time=2000000000 max-size-bytes=0";
     if (ui->radioButtonScreencastArea->isChecked()){stringList << get_Area_Videocrop();}
     stringList << "video/x-raw, framerate=" + QString::number(sliderFrames->value()) + "/1";
