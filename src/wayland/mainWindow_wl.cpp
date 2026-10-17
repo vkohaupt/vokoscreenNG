@@ -1129,6 +1129,10 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     (zuletzt gecachten) Frame sofort noch einmal in die Pipeline schiebt,
     wenn die Desktop-Oberfläche keine neuen Änderungen meldet.
 
+    keepalive-time=40:
+    Steuert das periodische Senden des letzten Video- oder Audio-Frames (Buffers),
+    falls vom Quellgerät oder Server über einen längeren Zeitraum keine neuen Daten empfangen werden.
+
     max-size-time=2000000000 (2 Sekunden):
     Der Wert wird in Nanosekunden angegeben.
     2.000.000.000 Nanosekunden entsprechen exakt 2 Sekunden Pufferzeit.
@@ -1153,9 +1157,10 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
                   .append(" path=")
                   .append("\"" + vk_path + "\"")
                   .append(" do-timestamp=true")
-                  .append(" resend-last=true");
+                  .append(" resend-last=true")
+                  .append(" keepalive-time=" + QString::number(1000 / sliderFrames->value()));
     stringList << "videoconvert";
-    stringList << "videorate";
+    stringList << "videorate skip-to-first=false drop-only=false";
     stringList << "queue max-size-buffers=0 max-size-time=2000000000 max-size-bytes=0";
     if (ui->radioButtonScreencastArea->isChecked()){stringList << get_Area_Videocrop();}
     stringList << "video/x-raw, framerate=" + QString::number(sliderFrames->value()) + "/1";
