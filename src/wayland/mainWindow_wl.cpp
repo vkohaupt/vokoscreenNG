@@ -1122,16 +1122,45 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
     qDebug().noquote();
 
+    /*
+    resend-last=true:
+    Diese Eigenschaft gehört nativ zu pipewiresrc.
+    Sie sorgt dafür, dass PipeWire den exakt gleichen
+    (zuletzt gecachten) Frame sofort noch einmal in die Pipeline schiebt,
+    wenn die Desktop-Oberfläche keine neuen Änderungen meldet.
 
+    max-size-time=2000000000 (2 Sekunden):
+    Der Wert wird in Nanosekunden angegeben.
+    2.000.000.000 Nanosekunden entsprechen exakt 2 Sekunden Pufferzeit.
+    Wenn Ihr System (z. B. durch den Encoder) kurz ausgelastet ist,
+    kann die Queue Bilder von bis zu 2 Sekunden zwischenspeichern,
+    ohne dass die Aufnahme abbricht oder Frames verloren gehen.
+
+    max-size-buffers=0 (Deaktiviert):
+    Wir limitieren nicht nach der Anzahl der Bilder.
+    Da Sie bei 10 fps in 2 Sekunden genau 20 Frames haben,
+    regelt das Zeitlimit dies bereits perfekt.
+
+    max-size-bytes=0 (Deaktiviert):
+    Wir limitieren nicht nach der Speichergröße in Bytes.
+    Da Bildschirminhalte mal sehr einfach (Terminal = wenige Bytes)
+    und mal sehr komplex (Video/Spiel = viele Bytes) sind,
+    ist ein Byte-Limit hier gefährlich und kann zum vorzeitigen Blockieren führen.
+    */
     QStringList stringList;
-    stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
+    stringList << QString("pipewiresrc fd=")
+                  .append(vk_fd)
+                  .append(" path=")
+                  .append("\"" + vk_path + "\"")
+                  .append(" do-timestamp=true")
+                  .append(" resend-last=true");
     stringList << "videoconvert";
     stringList << "videorate";
-    stringList << "queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600";
-    if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
-    stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
+    stringList << "queue max-size-buffers=0 max-size-time=2000000000 max-size-bytes=0";
+    if (ui->radioButtonScreencastArea->isChecked()){stringList << get_Area_Videocrop();}
+    stringList << "video/x-raw, framerate=" + QString::number(sliderFrames->value()) + "/1";
 
-/*
+    /*
     // StringList zum erzeugen von einer sehr großen Datei
     QStringList stringList;
     stringList << "videotestsrc num-buffers=10000";  // Generiert 100.000 Frames (simuliert riesige Datei)
