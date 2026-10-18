@@ -70,8 +70,8 @@ void QvkCameraWatcher_wl::init()
             tmpList.append(cameras.at(i).id() + ":::" + cameras.at(i).description());
         }
 
-        int index = 0;
         if(tmpList.count() < stringListDevices.count()){
+            int index = 0;
             for(int i = 0; i < stringListDevices.count(); i++){
                 QString id_and_description = stringListDevices.at(i);
                 if(!tmpList.contains(id_and_description)){

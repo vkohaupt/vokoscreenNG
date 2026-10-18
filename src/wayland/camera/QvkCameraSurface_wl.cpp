@@ -177,8 +177,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     }
     painterPixmap.end();
 
-    pixmap = QPixmap::fromImage(image);
-
+    QPixmap pixmap = QPixmap::fromImage(image);
     QPainter painter;
     painter.begin(this);
     {

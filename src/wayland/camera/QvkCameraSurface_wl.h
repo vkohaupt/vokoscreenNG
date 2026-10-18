@@ -43,10 +43,7 @@ public:
     virtual ~QvkCameraSurface_wl();
     Ui_formMainWindow_wl *GuiUi;
     void set_GUIui(Ui_formMainWindow_wl *ui);
-
-    QPixmap pixmap;
     QRect imageRect;
-
     void set_newImageRect();
     bool m_newImageRect = false;
 
