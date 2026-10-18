@@ -15,7 +15,8 @@ public:
     explicit QvkConvertDialog_wl(QWidget *parent = nullptr);
     ~QvkConvertDialog_wl();
     Ui::QvkConvertDialog_wl *ui;
-int asd;
+
+
 private:
 
 };
