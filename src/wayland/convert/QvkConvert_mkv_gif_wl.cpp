@@ -173,13 +173,13 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         break;
     }
     case GST_MESSAGE_EOS:{
-        // ---------------- Begin pipeline auf null setzen -----------------------------
+        // ---------------- Begin: Pipeline auf null setzen -----------------------------
         QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
         GstElement *pipeline = self->pipelineGIF;
         g_idle_add(set_pipeline_null_idle, pipeline);
-        // ---------------- End pipeline auf null setzen -----------------------------
+        // ---------------- End: Pipeline auf null setzen -----------------------------
 
-        // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
+        // ---------------- Begin: Zeit für das Remuxen ermitteln -----------------------------
         qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] GST_MESSAGE_EOS";
         QTime timeEnd = QTime::currentTime();
         qreal timeDiv = timeStart.msecsTo(timeEnd);
@@ -191,17 +191,17 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
         QMetaObject::invokeMethod(self, [self, msg](){
             emit self->signal_gst_eos(msg);
         }, Qt::QueuedConnection);
-        // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
+        // ---------------- Ende: Zeit für das Remuxen ermitteln -----------------------------
 
         break;
     }
     case GST_MESSAGE_STREAM_START:{
-        // ---------------- Begin Zeit für das Remuxen ermitteln -----------------------------
+        // ---------------- Begin: Zeit für das Remuxen ermitteln -----------------------------
         qDebug().noquote() << global::nameOutput << "[Convert] [mkv to gif] GST_MESSAGE_STREAM_START";
         timeStart = QTime::currentTime();
-        // ---------------- Ende Zeit für das Remuxen ermitteln -----------------------------
+        // ---------------- Ende: Zeit für das Remuxen ermitteln -----------------------------
 
-        // ---------------- Begin emit für Progressbar ----------------------------------
+        // ---------------- Begin: emit für Progressbar ----------------------------------
         QvkConvert_mkv_gif_wl *self = static_cast<QvkConvert_mkv_gif_wl*>(data);
         QMetaObject::invokeMethod(self, [self](){
             emit self->signal_gst_stream_start();
@@ -209,7 +209,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif(GstBus *bus,
             // Zum ermitteln der zu verbleibenden Zeit
             emit self->signal_gst_stream_start_time(timeStart);
         }, Qt::QueuedConnection);
-        // ---------------- End emit für Progressbar ----------------------------------
+        // ---------------- End: emit für Progressbar ----------------------------------
 
         break;
     }
@@ -293,7 +293,6 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(QString filePath)
             " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600"
             " ! h264parse"
             " ! openh264dec"
-            " ! progressreport update-freq=1 silent=true" // progressreport wird nicht benutzt
             " ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=104857600"
             " ! videoconvert"
             " ! gifenc speed=30 repeat=-1"
@@ -305,14 +304,6 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(QString filePath)
     const gchar *line = byteArray.constData();
     GError *error = nullptr;
     this->pipelineGIF  = gst_parse_launch(line, &error);
-
-
-    // progressreport anweisen, ELEMENT-Nachrichten auf den Bus zu werfen
-    GstElement *progressreport = gst_bin_get_by_name(GST_BIN(pipelineGIF), "prog_report");
-    if (progressreport) {
-        g_object_set(progressreport, "do-query", FALSE, nullptr);
-        gst_object_unref(progressreport);
-    }
 
     GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipelineGIF));
     gst_bus_set_sync_handler(bus, (GstBusSyncHandler)call_bus_message_convert_gif, this, nullptr);
