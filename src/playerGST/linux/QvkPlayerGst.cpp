@@ -353,14 +353,14 @@ void QvkPlayerGst::slot_timer()
         emit signal_currentTime( currentTime / 1000 / 1000 );
     }
 
-    // Get mute from external e.g. Pulseaudio-Volumecontrol or Systray-mutecontrol
+    // Get mute from external e.g. System-Volumecontrol or Systray-mutecontrol
     if ( have_stream_audio == true ) {
         bool bol;
         g_object_get( G_OBJECT( audiosink ), "mute", &bol, nullptr );
         emit signal_mute( bol );
     }
 
-    // Get volume from external e.g. Pulseaudio-Volumecontrol or Systray-volumecontrol
+    // Get volume from external e.g. System-Volumecontrol or Systray-volumecontrol
     if ( have_stream_audio == true ) {
         qreal volume;
         g_object_get( G_OBJECT( audiosink ), "volume", &volume, nullptr );

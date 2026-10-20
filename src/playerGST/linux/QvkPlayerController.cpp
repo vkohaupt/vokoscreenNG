@@ -82,8 +82,8 @@ void QvkPlayerController::init()
     connect( vkPlayerGst, SIGNAL( signal_EOS(QString) ),        this, SLOT( slot_EOS(QString) ) );
     connect( vkPlayerGst, SIGNAL( signal_duration(qint64) ),    this, SLOT( slot_duration(qint64) ) );
     connect( vkPlayerGst, SIGNAL( signal_currentTime(qint64) ), this, SLOT( slot_currentTime(qint64) ) );
-    connect( vkPlayerGst, SIGNAL( signal_mute(bool) ),          this, SLOT( slot_mute_from_Pulse(bool) ) );
-    connect( vkPlayerGst, SIGNAL( signal_volume(qreal) ),       this, SLOT( slot_volume_from_pulse(qreal) ) );
+    connect( vkPlayerGst, SIGNAL( signal_mute(bool) ),          this, SLOT( slot_mute_from_system(bool) ) );
+    connect( vkPlayerGst, SIGNAL( signal_volume(qreal) ),       this, SLOT( slot_volume_from_system(qreal) ) );
 
     connect( ui->pushButtonPlay, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonPlay() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonStop() ) );
@@ -454,7 +454,7 @@ void QvkPlayerController::slot_hideMouse()
 }
 
 
-void QvkPlayerController::slot_volume_from_pulse( qreal volume )
+void QvkPlayerController::slot_volume_from_system( qreal volume )
 {
     sliderVolume->setValue( qRound( volume*100 ) );
 }
@@ -475,7 +475,7 @@ void QvkPlayerController::slot_volume( int volume )
 }
 
 
-void QvkPlayerController::slot_mute_from_Pulse( bool muted )
+void QvkPlayerController::slot_mute_from_system( bool muted )
 {
     if ( ( muted == true ) and ( ui->pushButtonMute->isChecked() == false ) ) {
         ui->pushButtonMute->setChecked( true );
