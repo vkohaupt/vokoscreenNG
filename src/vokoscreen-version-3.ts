@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>QvkAudioController</name>
+    <name>QvkAudioPipewireSingle</name>
     <message>
         <source>Select one or more devices</source>
         <translation type="unfinished"></translation>
@@ -10,6 +10,13 @@
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QvkAudioWindowsSingle</name>
     <message>
         <source>Select one or more devices</source>
         <translation type="unfinished"></translation>
@@ -163,13 +170,6 @@
     </message>
 </context>
 <context>
-    <name>QvkPulseAudioWatcher</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
@@ -248,13 +248,6 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkWASAPIController</name>
-    <message>
-        <source>Select one or more devices</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
