@@ -1753,7 +1753,6 @@ void QvkMainWindow::VK_gst_Elements_available()
 #ifdef Q_OS_UNIX
     list << "ximagesrc";
     list << "pipewiresrc";
-//    list << "pulsesrc";
 #endif
     list << "queue";
     list << "capsfilter";

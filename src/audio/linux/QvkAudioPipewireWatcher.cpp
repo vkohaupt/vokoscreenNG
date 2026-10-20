@@ -51,7 +51,7 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func(GstBus *bus, GstM
         // Accept real hardware nodes (Audio/Source, Audio/Sink) and PipeWire virtual
         // nodes, but skip internal Stream/* followers (e.g. capture.* filter-chain
         // nodes) that would otherwise duplicate their parent source. Before 4.10.0
-        // the PulseAudio path listed every source; the GstDeviceMonitor migration
+        // the PulsAudio path listed every source; the GstDeviceMonitor migration
         // narrowed this to device.api == "alsa" and dropped virtual microphones.
         if ( mediaClass == "Audio/Source" or mediaClass == "Audio/Sink" ) {
             QString deviceID = QString( gst_structure_get_string( structure, "object.serial" ) );
