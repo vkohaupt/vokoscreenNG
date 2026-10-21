@@ -55,7 +55,7 @@ private slots:
     void slot_pushButtonStop();
     void slot_pushButtonPause();
     void slot_openFile();
-    void slot_EOS( QString m_file );
+    void slot_eos();
     void slot_duration( qint64 durationMSecs );
     void slot_currentTime( qint64 currentTimeMSecs );
     void slot_frameForward();

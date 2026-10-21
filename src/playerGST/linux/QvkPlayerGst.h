@@ -86,11 +86,9 @@ public slots:
     void slot_play();
     void slot_stop();
     void slot_pause();
-    void slot_EOS(QString value);
 
 
 signals:
-    void signal_EOS( QString value );
     void signal_eos();
     void signal_duration( qint64 duration_second );
     void signal_currentTime( qint64 currentTime );

@@ -109,13 +109,6 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
 
 void QvkPlayerGst::init()
 {
-    connect(this,
-            &QvkPlayerGst::signal_eos,
-            this,
-            [=](){
-        this->slot_EOS("");
-    });
-
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
@@ -225,7 +218,7 @@ void QvkPlayerGst::play_pre()
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
         gst_bus_add_signal_watch( bus );
-        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
+        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, this );
         gst_object_unref( bus );
         return;
     }
@@ -249,7 +242,7 @@ void QvkPlayerGst::play_pre()
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
         gst_bus_add_signal_watch( bus );
-        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
+        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, this );
         gst_object_unref( bus );
         return;
     }
@@ -288,17 +281,6 @@ void QvkPlayerGst::slot_pause()
 {
     timer->stop();
     gst_element_set_state( pipeline, GST_STATE_PAUSED );
-}
-
-
-void QvkPlayerGst::slot_EOS( QString value )
-{
-    Q_UNUSED(value)
-
-    //    if ( frameSkip == false )
-    {
-        emit signal_EOS( get_mediaFile() );
-    }
 }
 
 
