@@ -171,36 +171,35 @@ void QvkPlayerGst::volume( qreal m_volume )
 static GstBus *bus;
 void QvkPlayerGst::play_pre()
 {
-    if( ( have_stream_video == true ) and ( have_stream_audio == true ) )
+    if((have_stream_video == true) and (have_stream_audio == true))
     {
-        pipeline  = gst_pipeline_new( "pipeline" );
-        filesrc   = gst_element_factory_make( "filesrc", nullptr );
-        decodebin = gst_element_factory_make( "decodebin", nullptr );
-        videoconvert = gst_element_factory_make( "videoconvert", nullptr );
-        audioconvert = gst_element_factory_make( "audioconvert", nullptr );
-        videosink = gst_element_factory_make( "xvimagesink", nullptr );
-        audiosink = gst_element_factory_make( "pulsesink", nullptr );
+        pipeline  = gst_pipeline_new("pipeline");
+        filesrc   = gst_element_factory_make("filesrc", nullptr);
+        decodebin = gst_element_factory_make("decodebin", nullptr);
+        videoconvert = gst_element_factory_make("videoconvert", nullptr);
+        audioconvert = gst_element_factory_make("audioconvert", nullptr);
+        videosink = gst_element_factory_make("xvimagesink", nullptr);
+        audiosink = gst_element_factory_make("pulsesink", nullptr);
 
-        gst_bin_add_many( GST_BIN( pipeline ), filesrc, decodebin, audioconvert, audiosink, videoconvert, videosink, nullptr );
-        gst_element_link( filesrc, decodebin  );
+        gst_bin_add_many(GST_BIN(pipeline), filesrc, decodebin, audioconvert, audiosink, videoconvert, videosink, nullptr);
+        gst_element_link(filesrc, decodebin);
 
-        gst_element_link( decodebin, videoconvert );
-        gst_element_link( videoconvert, videosink );
-        g_signal_connect( decodebin, "pad-added", G_CALLBACK( on_pad_added ), videoconvert );
+        gst_element_link(decodebin, videoconvert);
+        gst_element_link(videoconvert, videosink);
+        g_signal_connect(decodebin, "pad-added", G_CALLBACK(on_pad_added), videoconvert);
 
-        gst_element_link( decodebin, audioconvert );
-        gst_element_link( audioconvert, audiosink );
-        g_signal_connect( decodebin, "pad-added", G_CALLBACK( on_pad_added ), audioconvert );
+        gst_element_link(decodebin, audioconvert);
+        gst_element_link(audioconvert, audiosink);
+        g_signal_connect(decodebin, "pad-added", G_CALLBACK(on_pad_added), audioconvert);
 
-        gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( videosink ), get_winId() );
+        gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(videosink), get_winId());
 
-        g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), nullptr );
+        g_object_set(G_OBJECT(filesrc), "location", get_mediaFile().toUtf8().constData(), nullptr);
 
-        bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_add_signal_watch( bus );
-        //        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
-        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, this );
-        gst_object_unref( bus );
+        bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
+        gst_bus_add_signal_watch(bus);
+        g_signal_connect(bus, "message", (GCallback) call_bus_message, this);
+        gst_object_unref(bus);
         return;
     }
 
