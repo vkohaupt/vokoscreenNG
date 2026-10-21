@@ -30,7 +30,6 @@
 #include <QObject>
 #include <QWidget>
 #include <QTimer>
-#include <QLineEdit>
 
 #include "QvkPlayerGstDiscover.h"
 
@@ -57,7 +56,7 @@ public:
     void set_volume( qreal volume );
 
     static void on_pad_added( GstElement *element, GstPad *pad, gpointer data );
-    static GstBusSyncReply call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
+    static GstBusSyncReply call_bus_message(GstBus *bus, GstMessage *message, gpointer data );
 
     // Go to the time e.g. from slider
     void goToTime( qint64 value );
@@ -94,6 +93,7 @@ public slots:
 
 signals:
     void signal_EOS( QString value );
+    void signal_eos();
     void signal_duration( qint64 duration_second );
     void signal_currentTime( qint64 currentTime );
     void signal_mute( bool bol );

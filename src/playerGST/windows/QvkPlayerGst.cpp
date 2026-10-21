@@ -26,8 +26,6 @@
 #include <QDebug>
 #include <QAudio>
 
-QLineEdit *lineEdit_EOS;
-
 QvkPlayerGst::QvkPlayerGst()
 {
     vkPlayerGstDiscover = new QvkPlayerGstDiscover;
@@ -50,39 +48,37 @@ void QvkPlayerGst::on_pad_added( GstElement *element, GstPad *pad, gpointer data
     gst_object_unref( sinkpad );
 }
 
-// https://stackoverflow.com/questions/57556590/how-to-emit-signal-from-static-function-in-qt
 
-// https://gstreamer.freedesktop.org/documentation/application-development/advanced/pipeline-manipulation.html?gi-language=c
-/* called when a new message is posted on the bus */
-int counter = 0;
-//void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
-GstBusSyncReply QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
+GstBusSyncReply QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer data )
 {
     Q_UNUSED(bus);
-    Q_UNUSED(user_data)
     switch (GST_MESSAGE_TYPE (message)) {
-        case GST_MESSAGE_ERROR:
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
-            break;
-        case GST_MESSAGE_EOS:
-            lineEdit_EOS->setText( QString::number( counter++ ) );
-            break;
-        case GST_MESSAGE_DURATION_CHANGED:
-            break;
-        case GST_MESSAGE_STEP_DONE:
-            qDebug().noquote() << global::nameOutput << "MESSAGE_STEP_DONE";
-            break;
-        case GST_MESSAGE_TAG:
-            break;
-        case GST_MESSAGE_STATE_CHANGED:
-            {
-/*                GstState old_state, new_state;
+    case GST_MESSAGE_ERROR:
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
+        break;
+    case GST_MESSAGE_EOS:{
+        QvkPlayerGst *self = static_cast<QvkPlayerGst*>(data);
+        QMetaObject::invokeMethod(self, [self](){
+            emit self->signal_eos();
+        }, Qt::QueuedConnection);
+        break;
+    }
+    case GST_MESSAGE_DURATION_CHANGED:
+        break;
+    case GST_MESSAGE_STEP_DONE:
+        qDebug().noquote() << global::nameOutput << "MESSAGE_STEP_DONE";
+        break;
+    case GST_MESSAGE_TAG:
+        break;
+    case GST_MESSAGE_STATE_CHANGED:
+    {
+        /*                GstState old_state, new_state;
                 gst_message_parse_state_changed ( message, &old_state, &new_state, nullptr);
                 QString message1 = GST_OBJECT_NAME ( message->src );
                 QString oldState = gst_element_state_get_name( old_state );
                 QString newState = gst_element_state_get_name( new_state );
 */
-/*
+        /*
                 if( ( message1 == "pipeline" ) and ( oldState == "PAUSED" ) and ( newState == "READY" ) ) {
                     qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PAUSED to READY";
                 }
@@ -96,16 +92,16 @@ GstBusSyncReply QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message
                      gst_element_state_get_name (old_state),
                      gst_element_state_get_name (new_state));
 */
-            }
-            break;
-        case GST_MESSAGE_STREAM_START:
-            break;
-        case GST_MESSAGE_APPLICATION:
-            {
-                break;
-            }
-        default:
-            break;
+    }
+    break;
+    case GST_MESSAGE_STREAM_START:
+        break;
+    case GST_MESSAGE_APPLICATION:
+    {
+        break;
+    }
+    default:
+        break;
     }
 
     return GST_BUS_PASS;
@@ -114,8 +110,12 @@ GstBusSyncReply QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message
 
 void QvkPlayerGst::init()
 {
-    lineEdit_EOS = new QLineEdit;
-    connect( lineEdit_EOS, SIGNAL( textChanged(QString) ), this, SLOT( slot_EOS(QString) ) );
+    connect(this,
+            &QvkPlayerGst::signal_eos,
+            this,
+            [=](){
+                this->slot_EOS("");
+            });
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -199,7 +199,6 @@ void QvkPlayerGst::slot_timer()
         qreal m_volume = QAudio::convertVolume( volume, QAudio::LinearVolumeScale, QAudio::CubicVolumeScale );
         emit signal_volume( m_volume );
     }
-
 }
 
 
@@ -329,7 +328,7 @@ void QvkPlayerGst::slot_EOS( QString value )
 {
     Q_UNUSED(value)
 
-//    if ( frameSkip == false )
+    //    if ( frameSkip == false )
     {
         emit signal_EOS( get_mediaFile() );
     }
@@ -385,11 +384,11 @@ void QvkPlayerGst::frameForward( qint64 slidervalue )
     gint64 stop  = sliderValue * GST_SECOND / 1000 + timeInterval;
 
     gst_element_seek( pipeline,
-                      1.0,
-                      GST_FORMAT_TIME,
-                      GST_SEEK_FLAG_FLUSH,
-                      GST_SEEK_TYPE_SET, start,
-                      GST_SEEK_TYPE_SET, stop );
+                     1.0,
+                     GST_FORMAT_TIME,
+                     GST_SEEK_FLAG_FLUSH,
+                     GST_SEEK_TYPE_SET, start,
+                     GST_SEEK_TYPE_SET, stop );
 
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
 }
@@ -406,11 +405,11 @@ void QvkPlayerGst::frameBackward( qint64 slidervalue )
     gint64 stop   = sliderValue * GST_SECOND / 1000 - timeInterval;
 
     gst_element_seek( pipeline,
-                      1.0,
-                      GST_FORMAT_TIME,
-                      GST_SEEK_FLAG_FLUSH,
-                      GST_SEEK_TYPE_SET, start,
-                      GST_SEEK_TYPE_SET, stop );
+                     1.0,
+                     GST_FORMAT_TIME,
+                     GST_SEEK_FLAG_FLUSH,
+                     GST_SEEK_TYPE_SET, start,
+                     GST_SEEK_TYPE_SET, stop );
 
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
 }
@@ -418,14 +417,14 @@ void QvkPlayerGst::frameBackward( qint64 slidervalue )
 
 void QvkPlayerGst::playAfterFrameSkip( qint64 slidervalue )
 {
-//    timer->start();
-//    frameSkip = false;
+    //    timer->start();
+    //    frameSkip = false;
     gint64 sliderValue = slidervalue;
     gint64 start  = sliderValue * GST_SECOND / 1000;
 
     gst_element_seek_simple( pipeline,
-                             GST_FORMAT_TIME,
-                             GST_SEEK_FLAG_FLUSH, start );
+                            GST_FORMAT_TIME,
+                            GST_SEEK_FLAG_FLUSH, start );
 
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
 }
@@ -438,6 +437,6 @@ void QvkPlayerGst::goToTime( qint64 value )
     timer->start();
     gint64 seekPos = value * GST_SECOND / 1000;
     gst_element_seek_simple( pipeline,
-                             GST_FORMAT_TIME,
-                             GST_SEEK_FLAG_FLUSH, seekPos );
+                            GST_FORMAT_TIME,
+                            GST_SEEK_FLAG_FLUSH, seekPos );
 }
