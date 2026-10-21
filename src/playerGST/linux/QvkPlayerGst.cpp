@@ -27,8 +27,6 @@
 #include <QDebug>
 #include <QAudio>
 
-QLineEdit *lineEdit_EOS;
-
 QvkPlayerGst::QvkPlayerGst()
 {
     vkPlayerGstDiscover = new QvkPlayerGstDiscover;
@@ -51,21 +49,21 @@ void QvkPlayerGst::on_pad_added( GstElement *element, GstPad *pad, gpointer data
     gst_object_unref( sinkpad );
 }
 
-// https://stackoverflow.com/questions/57556590/how-to-emit-signal-from-static-function-in-qt
-// https://gstreamer.freedesktop.org/documentation/application-development/advanced/pipeline-manipulation.html?gi-language=c
-/* called when a new message is posted on the bus */
-int counter = 0;
-void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
+
+void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer data )
 {
     Q_UNUSED(bus);
-    Q_UNUSED(user_data)
     switch (GST_MESSAGE_TYPE (message)) {
         case GST_MESSAGE_ERROR:
             qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
             break;
-        case GST_MESSAGE_EOS:
-            lineEdit_EOS->setText( QString::number( counter++ ) );
-            break;
+        case GST_MESSAGE_EOS:{
+                QvkPlayerGst *self = static_cast<QvkPlayerGst*>(data);
+                QMetaObject::invokeMethod(self, [self](){
+                    emit self->signal_eos();
+                }, Qt::QueuedConnection);
+                break;
+            }
         case GST_MESSAGE_DURATION_CHANGED:
             break;
         case GST_MESSAGE_STEP_DONE:
@@ -111,8 +109,12 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
 
 void QvkPlayerGst::init()
 {
-    lineEdit_EOS = new QLineEdit;
-    connect( lineEdit_EOS, SIGNAL( textChanged(QString) ), this, SLOT( slot_EOS(QString) ) );
+    connect(this,
+            &QvkPlayerGst::signal_eos,
+            this,
+            [=](){
+        this->slot_EOS("");
+    });
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -196,7 +198,8 @@ void QvkPlayerGst::play_pre()
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
         gst_bus_add_signal_watch( bus );
-        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
+        //        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
+        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, this );
         gst_object_unref( bus );
         return;
     }

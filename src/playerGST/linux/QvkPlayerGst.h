@@ -31,7 +31,6 @@
 #include <QObject>
 #include <QWidget>
 #include <QTimer>
-#include <QLineEdit>
 
 class QvkPlayerGst : public QObject
 {
@@ -92,6 +91,7 @@ public slots:
 
 signals:
     void signal_EOS( QString value );
+    void signal_eos();
     void signal_duration( qint64 duration_second );
     void signal_currentTime( qint64 currentTime );
     void signal_mute( bool bol );
