@@ -79,7 +79,7 @@ void QvkPlayerController::init()
     vkPlayerGst = new QvkPlayerGst();
     vkPlayerGst->init();
 
-    connect( vkPlayerGst, SIGNAL( signal_EOS(QString) ),        this, SLOT( slot_EOS(QString) ) );
+    connect( vkPlayerGst, SIGNAL( signal_eos() ),        this, SLOT( slot_eos() ) );
     connect( vkPlayerGst, SIGNAL( signal_duration(qint64) ),    this, SLOT( slot_duration(qint64) ) );
     connect( vkPlayerGst, SIGNAL( signal_currentTime(qint64) ), this, SLOT( slot_currentTime(qint64) ) );
     connect( vkPlayerGst, SIGNAL( signal_mute(bool) ),          this, SLOT( slot_mute_from_system(bool) ) );
@@ -253,11 +253,9 @@ void QvkPlayerController::slot_pushButtonStop()
 }
 
 
-void QvkPlayerController::slot_EOS( QString m_file )
+void QvkPlayerController::slot_eos()
 {
-    QFile file( m_file );
-    qDebug().noquote().nospace() << global::nameOutput << "[Player][Controller] End of stream " << file.fileName();
-
+    qDebug().noquote().nospace() << global::nameOutput << "[Player][Controller] End of stream " << vkPlayerGst->get_mediaFile();
     ui->pushButtonStop->click();
 }
 

@@ -110,13 +110,6 @@ GstBusSyncReply QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message
 
 void QvkPlayerGst::init()
 {
-    connect(this,
-            &QvkPlayerGst::signal_eos,
-            this,
-            [=](){
-                this->slot_EOS("");
-            });
-
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
@@ -321,17 +314,6 @@ void QvkPlayerGst::slot_pause()
 {
     timer->stop();
     gst_element_set_state( pipeline, GST_STATE_PAUSED );
-}
-
-
-void QvkPlayerGst::slot_EOS( QString value )
-{
-    Q_UNUSED(value)
-
-    //    if ( frameSkip == false )
-    {
-        emit signal_EOS( get_mediaFile() );
-    }
 }
 
 
