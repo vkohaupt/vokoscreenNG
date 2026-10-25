@@ -2,11 +2,9 @@ INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
 
 SOURCES   += $$PWD/QvkPlayerController.cpp \
-             $$PWD/QvkPlayerGst.cpp \
-             $$PWD/QvkPlayerGstDiscover.cpp
+             $$PWD/QvkPlayerGst.cpp
 
 HEADERS   += $$PWD/QvkPlayerController.h \
-             $$PWD/QvkPlayerGst.h \
-             $$PWD/QvkPlayerGstDiscover.h
+             $$PWD/QvkPlayerGst.h
 
 FORMS     += $$PWD/playerGST.ui
