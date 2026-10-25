@@ -20,21 +20,36 @@ finish-args:
   - --filesystem=xdg-run/pipewire-0
   - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
 
+# Beispiel für ein aktuelles Manifest (ab SDK 25.08)
+add-extensions:
+  org.freedesktop.Platform.codecs-extra:
+    version: '25.08' # Passe dies an deine SDK-Version an
+    directory: lib/codecs
+    no-autodownload: false
+
 modules:
- - name: gstreamer-plugins-base
+
+  - name: gstreamer
     buildsystem: meson
     sources:
       - type: archive
-        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-base-1.26.10.tar.xz
-        sha256: 1c1531dd8f2d480c89c57b08a930545a3375077391789762e40e490cdbbf03fd
+        url: https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.26.11.tar.xz
+        sha256: 2e0bd192d0438ea606a6f76a95c8e16542167656ffec2c2bc3aaf6ee0837fbf6
+
+  - name: gstreamer-plugins-base
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.26.11.tar.xz
+        sha256: fc50f885d41f5d0407ce0876ec7235d9e7b82d48db2f4bc72c5f244a4ac79263
 
 #   gstreamer-plugins-good wird benötigt da in GStreamer 1.26.10 ximagesrc nicht vorhanden ist
   - name: gstreamer-plugins-good
     buildsystem: meson
     sources:
       - type: archive
-        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.10.tar.xz
-        sha256: 7beacb5daba3c6751ebc1c85017d9b1d6de64e24798125932c73c8b1dbeb3bc9
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.11.tar.xz
+        sha256: 001deb0876d5d743cd3448abf74a27adec3fd850012fcb1b00994861bd6c1145
 
 #   Für das kompilieren von gstreamer-plugins-bad wird als runtime der openh264 codec benötigt
   - name: openh264
@@ -54,8 +69,15 @@ modules:
     buildsystem: meson
     sources:
       - type: archive
-        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.10.tar.xz
-        sha256: fec973dff512b507d9dcb5a828e04e061e52188f4d5989e953aed6a41beda437
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.11.tar.xz
+        sha256: 110fb82795f0e569b1e27b12ab9699d35c7762e1ff4db95335d6ac8d1442af3d
+
+  - name: gstreamer-libav
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.26.11.tar.xz
+        sha256: 9bb3d2681ef0de92d1b1a9d955186236ee22e64f372db9bfc0d22e2d0df19865
 
   - name: vokoscreenNG
     buildsystem: qmake
@@ -73,12 +95,26 @@ modules:
       - install -Dm644 applications/vokoscreenNG.desktop ${FLATPAK_DEST}/share/applications/vokoscreenNG.desktop
       - install -Dm644 ../vokoscreenNG.appdata.xml ${FLATPAK_DEST}/share/metainfo/vokoscreenNG.appdata.xml
     sources:
+#      - type: git
+#        url: https://github.com/vkohaupt/vokoscreenNG.git
+#        tag: 4.11.0
+#        commit: 2f1c860425f1c92e2f2a358cfc9517240808f96a
+#        x-checker-data:
+#          type: git
+#          tag-pattern: ^([\d.]+)$
+#      - type: file
+#        path: vokoscreenNG.appdata.xml
+
+#modules:
+#  - name: mein-programm
+#    buildsystem: simple
+#    build-commands:
+#      - make
+#      - make install
+#    sources:
       - type: git
         url: https://github.com/vkohaupt/vokoscreenNG.git
-        tag: 4.11.0
-        commit: 2f1c860425f1c92e2f2a358cfc9517240808f96a
-        x-checker-data:
-          type: git
-          tag-pattern: ^([\d.]+)$
+        branch: 3.0
       - type: file
         path: vokoscreenNG.appdata.xml
+

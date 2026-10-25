@@ -52,6 +52,7 @@ void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_
     GValue val = G_VALUE_INIT;
 
     gst_tag_list_copy_value( &val, tags, tag );
+    qDebug() << "111111111" << tag;
 
     if ( QString( tag ) == "audio-codec" ) {
         isAudio = true;
@@ -71,7 +72,7 @@ void on_discovered_cb( GstDiscoverer *discoverer, GstDiscovererInfo *info, GErro
 {
     Q_UNUSED(discoverer)
     Q_UNUSED(data)
-
+qDebug() << "2222222222222222222222222222222222222222222";
     GstDiscovererResult result;
     const gchar *uri;
     const GstTagList *tags;

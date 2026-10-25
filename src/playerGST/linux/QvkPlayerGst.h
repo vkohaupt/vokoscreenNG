@@ -23,8 +23,6 @@
 #ifndef QVKPLAYERGST_H
 #define QVKPLAYERGST_H
 
-#include "QvkPlayerGstDiscover.h"
-
 #include "glib.h"
 #include "gst/gstelement.h"
 
@@ -48,9 +46,6 @@ public:
     void frameBackward( qint64 slidervalue );
     void playAfterFrameSkip( qint64 slidervalue );
     bool is_pause();
-    QvkPlayerGstDiscover *vkPlayerGstDiscover;
-    bool have_stream_video = false;
-    bool have_stream_audio = false;
     void mute( bool bol );
     void volume( qreal volume );
 
@@ -69,6 +64,8 @@ private:
     GstElement *videosink = nullptr;
     GstElement *audiosink = nullptr;
 
+    GstElement *playbin = nullptr;
+
     WId get_winId();
     WId m_winID;
     QString mediaFile;
@@ -79,7 +76,6 @@ private:
 
 private slots:
     void slot_timer();
-    void slot_discover_quit( bool video, bool audio );
 
 
 public slots:
