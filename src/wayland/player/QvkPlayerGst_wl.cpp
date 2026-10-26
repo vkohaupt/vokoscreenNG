@@ -23,9 +23,14 @@
 #include "global.h"
 #include "QvkPlayerGst_wl.h"
 #include "gst/video/videooverlay.h"
+#include <gst/wayland/wayland.h>
 
 #include <QDebug>
 #include <QAudio>
+#include <QGuiApplication>
+#include <QWindow>
+#include <QPlatformSurfaceEvent>
+#include <QtGui/qpa/qplatformnativeinterface.h>
 
 QvkPlayerGst_wl::QvkPlayerGst_wl()
 {
@@ -70,28 +75,6 @@ void QvkPlayerGst_wl::call_bus_message( GstBus *bus, GstMessage *message, gpoint
         case GST_MESSAGE_TAG:
             break;
         case GST_MESSAGE_STATE_CHANGED:
-            {
-                /*                GstState old_state, new_state;
-                gst_message_parse_state_changed ( message, &old_state, &new_state, nullptr);
-                QString message1 = GST_OBJECT_NAME ( message->src );
-                QString oldState = gst_element_state_get_name( old_state );
-                QString newState = gst_element_state_get_name( new_state );
-*/
-                /*
-                if( ( message1 == "pipeline" ) and ( oldState == "PAUSED" ) and ( newState == "READY" ) ) {
-                    qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PAUSED to READY";
-                }
-
-                if( ( message1 == "pipeline" ) and ( oldState == "PLAYING" ) and ( newState == "PAUSED" ) ) {
-                    qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PLAYING to PAUSED";
-                }
-
-                g_print ("Element %s changed state from %s to %s.\n",
-                     GST_OBJECT_NAME (message->src),
-                     gst_element_state_get_name (old_state),
-                     gst_element_state_get_name (new_state));
-*/
-            }
             break;
         case GST_MESSAGE_STREAM_START:
             break;
@@ -104,6 +87,11 @@ void QvkPlayerGst_wl::call_bus_message( GstBus *bus, GstMessage *message, gpoint
     }
 }
 
+
+void QvkPlayerGst_wl::set_video_widget(QWidget *widget)
+{
+    m_parent = widget;
+}
 
 void QvkPlayerGst_wl::init()
 {
@@ -151,14 +139,43 @@ void QvkPlayerGst_wl::volume( qreal m_volume )
 }
 
 
-static GstBus *bus;
+static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpointer user_data)
+{
+    if (gst_is_video_overlay_prepare_window_handle_message(message)) {
+        QvkPlayerGst_wl *player = static_cast<QvkPlayerGst_wl*>(user_data);
+
+        QPlatformNativeInterface *native = QGuiApplication::platformNativeInterface();
+        if (!native || !player->m_parent) return GST_BUS_PASS;
+
+        struct wl_surface *surface = static_cast<struct wl_surface*>(
+                    native->nativeResourceForWindow("surface", player->m_parent->windowHandle())
+                    );
+
+        if (surface) {
+            GstVideoOverlay *overlay = GST_VIDEO_OVERLAY(GST_MESSAGE_SRC(message));
+
+            // 1. Handle wie gehabt setzen
+            gst_video_overlay_set_window_handle(overlay, (guintptr)surface);
+
+            // === NEU: Größe an das Qt-Widget anpassen ===
+            int width = player->m_parent->width();
+            int height = player->m_parent->height();
+            gst_video_overlay_set_render_rectangle(overlay, 0, 0, width, height);
+
+            qDebug() << "[Player] Window handle and geometry (" << width << "x" << height << ") set.";
+            return GST_BUS_DROP;
+        }
+    }
+    return GST_BUS_PASS;
+}
+
 void QvkPlayerGst_wl::play_pre()
 {
     QString uri = "file://" + mediaFile;
     pipeline = gst_pipeline_new("pipeline");
     if (!pipeline){
         qDebug().noquote().nospace() << "[Player] Failed to create pipeline.";
-    return;
+        return;
     }
 
     playbin = gst_element_factory_make("playbin3", nullptr);
@@ -168,7 +185,67 @@ void QvkPlayerGst_wl::play_pre()
     }
     g_object_set(G_OBJECT(playbin), "uri", uri.toUtf8().constData(), nullptr);
     gst_bin_add_many(GST_BIN(pipeline), playbin, nullptr);
-    gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(playbin), get_winId());
+
+    // Bus-Sync-Handler registrieren, damit das Handle zum perfekten Zeitpunkt gesetzt wird
+    GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
+    if (bus) {
+        gst_bus_set_sync_handler(bus, bus_sync_handler, this, nullptr);
+        gst_object_unref(bus);
+    }
+
+    // Wayland Video-Sink erzwingen, um X11-Fallbacks (BadWindow Fehler) zu verhindern
+    GstElement *vsink = gst_element_factory_make("waylandsink", "wayland-video-sink");
+    if (!vsink) {
+        qDebug() << "[Player] Failed to create 'waylandsink' element. Check your plugins (gst-plugins-bad).";
+        return;
+    }
+    g_object_set(G_OBJECT(vsink), "use-subsurface", TRUE, nullptr);
+    g_object_set(G_OBJECT(playbin), "video-sink", vsink, nullptr);
+
+    // 1. Erzwingen, dass das QWidget ein natives Fenster inkl. Wayland-Surface besitzt
+    m_parent->setAttribute(Qt::WA_NativeWindow, true);
+    m_parent->setAttribute(Qt::WA_DontCreateNativeAncestors, true); // Verhindert Artefakte im Widget-Baum
+//    m_parent->setAttribute(Qt::WA_OpaquePaintEvent, false);
+//    m_parent->setAttribute(Qt::WA_NoSystemBackground, true);
+//    m_parent->setStyleSheet("background: transparent;");
+
+    // Sicherstellen, dass das native Fenster erstellt wurde
+    m_parent->winId();
+
+    // 2. Extraktion des wl_display und wl_surface über das Qt Platform Native Interface
+    QPlatformNativeInterface *native = QGuiApplication::platformNativeInterface();
+    if (!native) {
+        qDebug() << "[Player] Failed to get QPlatformNativeInterface.";
+        return;
+    }
+
+    // Den globalen Wayland-Display-Kontext von Qt extrahieren
+    struct wl_display *display = static_cast<struct wl_display*>(
+                native->nativeResourceForIntegration("display")
+                );
+
+    // Das Display an das GStreamer Wayland-Sink koppeln, damit beide den gleichen Kontext nutzen
+    if (display) {
+        GstContext *context = gst_wl_display_handle_context_new(display);
+        gst_element_set_context(GST_ELEMENT(vsink), context);
+        gst_context_unref(context);
+    } else {
+        qDebug() << "[Player] Could not retrieve native Wayland display context from Qt.";
+    }
+
+    // Testweiser Abruf der Surface zur Validierung im Log
+    struct wl_surface *surface = static_cast<struct wl_surface*>(
+                native->nativeResourceForWindow("surface", m_parent->windowHandle())
+                );
+    if (!surface) {
+        qDebug() << "[Player] Warning: Wayland surface not ready yet (will be retried in bus handler).";
+    }
+
+    m_parent->update();
+    // Alternativ: Dem Window-System signalisieren, dass das Widget expose-Events braucht
+    if (m_parent->windowHandle()) {
+        m_parent->windowHandle()->requestUpdate();
+    }
 }
 
 
@@ -257,7 +334,7 @@ void QvkPlayerGst_wl::slot_timer()
     if ( gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime ) ) {
         emit signal_currentTime( currentTime / 1000 / 1000 );
     }
-/*
+    /*
     // Get mute from external e.g. System-Volumecontrol or Systray-mutecontrol
     if ( have_stream_audio == true ) {
         bool bol;

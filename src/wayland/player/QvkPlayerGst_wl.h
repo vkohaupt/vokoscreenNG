@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QVKPLAYERGST_H
-#define QVKPLAYERGST_H
+#ifndef QVKPLAYERGST_WL_H
+#define QVKPLAYERGST_WL_H
 
 #include "glib.h"
 #include "gst/gstelement.h"
@@ -54,6 +54,10 @@ public:
 
     // Go to the time e.g. from slider
     void goToTime( qint64 value );
+
+    QWidget *m_parent;
+    void set_video_widget(QWidget *widget);
+
 
 private:
     GstElement *pipeline = nullptr;
@@ -94,7 +98,14 @@ signals:
 
 
 protected:
-
+/*
+    void IhrWidget::resizeEvent(QResizeEvent *event) {
+        QWidget::resizeEvent(event);
+        if (pipeline) { // pipeline/playbin auflösen
+            gst_video_overlay_set_render_rectangle(GST_VIDEO_OVERLAY(playbin), 0, 0, this->width(), this->height());
+        }
+    }
+*/
 
 };
 

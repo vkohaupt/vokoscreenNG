@@ -145,6 +145,9 @@ void QvkPlayerController_wl::slot_pushButtonPlay()
         // Create a new widget_video
         ui->label_logo->setVisible( false );
         widget_Video = new QWidget;
+
+        vkPlayerGst->set_video_widget(widget_Video);
+
         vkPlayerGst->set_winId( widget_Video->winId() );
         ui->verticalLayout->insertWidget( 0, widget_Video );
         ui->verticalLayout->setStretch( 0, 1 );

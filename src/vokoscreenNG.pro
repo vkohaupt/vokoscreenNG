@@ -15,7 +15,7 @@ equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 9) {
 
 unix: QT += dbus
 unix: QT += webchannel websockets webenginewidgets
-QT += core gui widgets multimedia network
+QT += core gui widgets multimedia network gui-private
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
 
 TARGET = vokoscreenNG
@@ -74,6 +74,7 @@ unix:LIBS += -lX11
 
 # Player Linux
 unix:PKGCONFIG += gstreamer-video-1.0
+unix:PKGCONFIG += gstreamer-wayland-1.0
 unix:PKGCONFIG += gstreamer-pbutils-1.0
 unix:PKGCONFIG += glib-2.0
 
