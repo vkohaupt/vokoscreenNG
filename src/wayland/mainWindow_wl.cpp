@@ -2,6 +2,7 @@
 #include "QvkShowMessage_wl.h"
 #include "QvkConvert_mkv_gif_wl.h"
 #include "QvkAudioPipewireController_wl.h"
+#include "QvkPlayerController_wl.h"
 
 #include "global.h"
 #include "QvkDirDialog.h"
@@ -289,6 +290,15 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     }
 
     vkCameraController_wl->init();
+
+
+    QvkPlayerController_wl *vkPlayerController_wl = new QvkPlayerController_wl(ui);
+    connect(ui->pushButtonPlay,
+            &QPushButton::clicked,
+            this, [=](){
+        vkPlayerController_wl->init();
+        vkPlayerController_wl->show();
+    });
 
 
     // Sprachen in ComboBox einlesen
