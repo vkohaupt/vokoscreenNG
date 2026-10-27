@@ -352,7 +352,11 @@ void QvkPlayerController_wl::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
     if ( vkPlayerGst->pipeline){
-        gst_video_overlay_set_render_rectangle(GST_VIDEO_OVERLAY(vkPlayerGst->playbin), 0, 0, widget_Video->width(), widget_Video->height());
+        gst_video_overlay_set_render_rectangle(GST_VIDEO_OVERLAY(vkPlayerGst->playbin),
+                                               0,
+                                               0,
+                                               widget_Video->width(),
+                                               widget_Video->height());
     }
 }
 
