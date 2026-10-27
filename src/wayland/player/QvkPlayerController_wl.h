@@ -81,6 +81,10 @@ private:
     QTimer *timerHideMouse;
 
 
+signals:
+    void signal_resizeEvent();
+
+
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
     void keyPressEvent( QKeyEvent *event );
@@ -88,7 +92,7 @@ protected:
     void mousePressEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
     void closeEvent( QCloseEvent *event );
-
+    void resizeEvent(QResizeEvent *event);
 };
 
 #endif

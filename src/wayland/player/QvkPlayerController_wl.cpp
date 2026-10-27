@@ -100,6 +100,15 @@ void QvkPlayerController_wl::init()
 
     connect( sliderVolume, SIGNAL( sliderMoved(int) ), this, SLOT( slot_volume(int) ) );
 
+    connect(this,
+            &QvkPlayerController_wl::signal_resizeEvent,
+            vkPlayerGst,
+            [=](){
+        if (widget_Video != nullptr){
+            vkPlayerGst->slot_video_widget_resize(widget_Video->width(), widget_Video->height());
+        }
+    });
+
     timerHideMouse = new QTimer( this );
     timerHideMouse->setTimerType( Qt::PreciseTimer );
     connect( timerHideMouse, SIGNAL( timeout() ), this, SLOT( slot_hideMouse() ) );
@@ -344,6 +353,13 @@ void QvkPlayerController_wl::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
     pressed = false;
+}
+
+
+void QvkPlayerController_wl::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event);
+    emit signal_resizeEvent();
 }
 
 

@@ -58,6 +58,8 @@ public:
     QWidget *m_parent;
     void set_video_widget(QWidget *widget);
 
+    GstElement *playbin = nullptr;
+
 
 private:
     GstElement *pipeline = nullptr;
@@ -68,7 +70,6 @@ private:
     GstElement *videosink = nullptr;
     GstElement *audiosink = nullptr;
 
-    GstElement *playbin = nullptr;
 
     WId get_winId();
     WId m_winID;
@@ -86,6 +87,7 @@ public slots:
     void slot_play();
     void slot_stop();
     void slot_pause();
+    void slot_video_widget_resize(int width, int height);
 
 
 signals:
@@ -98,14 +100,7 @@ signals:
 
 
 protected:
-/*
-    void IhrWidget::resizeEvent(QResizeEvent *event) {
-        QWidget::resizeEvent(event);
-        if (pipeline) { // pipeline/playbin auflösen
-            gst_video_overlay_set_render_rectangle(GST_VIDEO_OVERLAY(playbin), 0, 0, this->width(), this->height());
-        }
-    }
-*/
+
 
 };
 
