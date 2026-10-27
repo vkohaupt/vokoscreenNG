@@ -151,18 +151,16 @@ static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpoint
                     native->nativeResourceForWindow("surface", player->m_parent->windowHandle())
                     );
 
-        if (surface) {
+        if (surface){
             GstVideoOverlay *overlay = GST_VIDEO_OVERLAY(GST_MESSAGE_SRC(message));
 
-            // Handle wie gehabt setzen
             gst_video_overlay_set_window_handle(overlay, (guintptr)surface);
 
-            // Größe an das Qt-Widget anpassen ===
+            // Größe an das Qt-Widget anpassen
             int width = player->m_parent->width();
             int height = player->m_parent->height();
             gst_video_overlay_set_render_rectangle(overlay, 0, 0, width, height);
 
-            qDebug() << "[Player] Window handle and geometry (" << width << "x" << height << ") set.";
             return GST_BUS_DROP;
         }
     }
@@ -199,7 +197,6 @@ void QvkPlayerGst_wl::play_pre()
         qDebug() << "[Player] Failed to create 'waylandsink' element. Check your plugins (gst-plugins-bad).";
         return;
     }
-    g_object_set(G_OBJECT(vsink), "use-subsurface", TRUE, nullptr);
     g_object_set(G_OBJECT(playbin), "video-sink", vsink, nullptr);
 
     // Erzwingen, dass das QWidget ein natives Fenster inkl. Wayland-Surface besitzt
