@@ -25,6 +25,8 @@
 #include "QvkFileDialog.h"
 #include "global.h"
 
+#include "gst/video/videooverlay.h"
+
 #include <QTime>
 #include <QStandardPaths>
 #include <QDebug>
@@ -99,15 +101,6 @@ void QvkPlayerController_wl::init()
     connect( ui->pushButtonMute, SIGNAL( clicked(bool) ), this, SLOT( slot_mute(bool) ) );
 
     connect( sliderVolume, SIGNAL( sliderMoved(int) ), this, SLOT( slot_volume(int) ) );
-
-    connect(this,
-            &QvkPlayerController_wl::signal_resizeEvent,
-            vkPlayerGst,
-            [=](){
-        if (widget_Video != nullptr){
-            vkPlayerGst->slot_video_widget_resize(widget_Video->width(), widget_Video->height());
-        }
-    });
 
     timerHideMouse = new QTimer( this );
     timerHideMouse->setTimerType( Qt::PreciseTimer );
@@ -355,11 +348,12 @@ void QvkPlayerController_wl::mouseReleaseEvent( QMouseEvent *event )
     pressed = false;
 }
 
-
 void QvkPlayerController_wl::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    emit signal_resizeEvent();
+    if ( vkPlayerGst->pipeline){
+        gst_video_overlay_set_render_rectangle(GST_VIDEO_OVERLAY(vkPlayerGst->playbin), 0, 0, widget_Video->width(), widget_Video->height());
+    }
 }
 
 

@@ -418,10 +418,3 @@ void QvkPlayerGst_wl::goToTime( qint64 value )
                              GST_FORMAT_TIME,
                              GST_SEEK_FLAG_FLUSH, seekPos );
 }
-
-void QvkPlayerGst_wl::slot_video_widget_resize(int width, int height)
-{
-    if (pipeline){
-        gst_video_overlay_set_render_rectangle(GST_VIDEO_OVERLAY(playbin), 0, 0, width, height);
-    }
-}

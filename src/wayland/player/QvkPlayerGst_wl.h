@@ -59,18 +59,16 @@ public:
     void set_video_widget(QWidget *widget);
 
     GstElement *playbin = nullptr;
+    GstElement *pipeline = nullptr;
 
 
 private:
-    GstElement *pipeline = nullptr;
     GstElement *filesrc = nullptr;
     GstElement *decodebin = nullptr;
     GstElement *videoconvert = nullptr;
     GstElement *audioconvert = nullptr;
     GstElement *videosink = nullptr;
     GstElement *audiosink = nullptr;
-
-
     WId get_winId();
     WId m_winID;
     QString mediaFile;
@@ -87,7 +85,6 @@ public slots:
     void slot_play();
     void slot_stop();
     void slot_pause();
-    void slot_video_widget_resize(int width, int height);
 
 
 signals:
