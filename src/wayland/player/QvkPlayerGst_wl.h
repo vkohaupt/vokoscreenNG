@@ -36,7 +36,6 @@ class QvkPlayerGst_wl : public QObject
 public:
     explicit QvkPlayerGst_wl();
     void init();
-    void set_winId( WId value );
     void set_mediaFile( QString string );
     QString get_mediaFile();
     bool is_running();
@@ -69,8 +68,6 @@ private:
     GstElement *audioconvert = nullptr;
     GstElement *videosink = nullptr;
     GstElement *audiosink = nullptr;
-    WId get_winId();
-    WId m_winID;
     QString mediaFile;
     int timerID;
     bool have_duration = false;

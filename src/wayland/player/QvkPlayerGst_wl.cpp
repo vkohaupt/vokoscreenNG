@@ -102,18 +102,6 @@ void QvkPlayerGst_wl::init()
 }
 
 
-void QvkPlayerGst_wl::set_winId( WId value )
-{
-    m_winID = value;
-}
-
-
-WId QvkPlayerGst_wl::get_winId()
-{
-    return m_winID;
-}
-
-
 void QvkPlayerGst_wl::set_mediaFile( QString string )
 {
     mediaFile = string;
