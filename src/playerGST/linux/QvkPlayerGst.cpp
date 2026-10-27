@@ -169,6 +169,11 @@ void QvkPlayerGst::play_pre()
     g_object_set(G_OBJECT(playbin), "uri", uri.toUtf8().constData(), nullptr);
     gst_bin_add_many(GST_BIN(pipeline), playbin, nullptr);
     gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(playbin), get_winId());
+
+    bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
+    gst_bus_add_signal_watch(bus);
+    g_signal_connect(bus, "message", ( GCallback ) call_bus_message, this);
+    gst_object_unref(bus);
 }
 
 
