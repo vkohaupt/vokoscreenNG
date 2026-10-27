@@ -139,10 +139,11 @@ void QvkPlayerGst_wl::volume( qreal m_volume )
 }
 
 
-static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpointer user_data)
+static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpointer data)
 {
+    Q_UNUSED(bus)
     if (gst_is_video_overlay_prepare_window_handle_message(message)) {
-        QvkPlayerGst_wl *player = static_cast<QvkPlayerGst_wl*>(user_data);
+        QvkPlayerGst_wl *player = static_cast<QvkPlayerGst_wl*>(data);
 
         QPlatformNativeInterface *native = QGuiApplication::platformNativeInterface();
         if (!native || !player->m_parent) return GST_BUS_PASS;
@@ -243,6 +244,11 @@ void QvkPlayerGst_wl::play_pre()
     if (m_parent->windowHandle()) {
         m_parent->windowHandle()->requestUpdate();
     }
+
+    bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
+    gst_bus_add_signal_watch(bus);
+    g_signal_connect(bus, "message", (GCallback)call_bus_message, this);
+    gst_object_unref(bus);
 }
 
 

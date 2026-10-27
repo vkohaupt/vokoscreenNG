@@ -172,7 +172,7 @@ void QvkPlayerGst::play_pre()
 
     bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
     gst_bus_add_signal_watch(bus);
-    g_signal_connect(bus, "message", ( GCallback ) call_bus_message, this);
+    g_signal_connect(bus, "message", (GCallback)call_bus_message, this);
     gst_object_unref(bus);
 }
 
