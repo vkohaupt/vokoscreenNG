@@ -154,10 +154,10 @@ static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpoint
         if (surface) {
             GstVideoOverlay *overlay = GST_VIDEO_OVERLAY(GST_MESSAGE_SRC(message));
 
-            // 1. Handle wie gehabt setzen
+            // Handle wie gehabt setzen
             gst_video_overlay_set_window_handle(overlay, (guintptr)surface);
 
-            // === NEU: Größe an das Qt-Widget anpassen ===
+            // Größe an das Qt-Widget anpassen ===
             int width = player->m_parent->width();
             int height = player->m_parent->height();
             gst_video_overlay_set_render_rectangle(overlay, 0, 0, width, height);
@@ -202,7 +202,7 @@ void QvkPlayerGst_wl::play_pre()
     g_object_set(G_OBJECT(vsink), "use-subsurface", TRUE, nullptr);
     g_object_set(G_OBJECT(playbin), "video-sink", vsink, nullptr);
 
-    // 1. Erzwingen, dass das QWidget ein natives Fenster inkl. Wayland-Surface besitzt
+    // Erzwingen, dass das QWidget ein natives Fenster inkl. Wayland-Surface besitzt
     m_parent->setAttribute(Qt::WA_NativeWindow, true);
     m_parent->setAttribute(Qt::WA_DontCreateNativeAncestors, true); // Verhindert Artefakte im Widget-Baum
 //    m_parent->setAttribute(Qt::WA_OpaquePaintEvent, false);
@@ -212,7 +212,7 @@ void QvkPlayerGst_wl::play_pre()
     // Sicherstellen, dass das native Fenster erstellt wurde
     m_parent->winId();
 
-    // 2. Extraktion des wl_display und wl_surface über das Qt Platform Native Interface
+    // Extraktion des wl_display und wl_surface über das Qt Platform Native Interface
     QPlatformNativeInterface *native = QGuiApplication::platformNativeInterface();
     if (!native) {
         qDebug() << "[Player] Failed to get QPlatformNativeInterface.";
