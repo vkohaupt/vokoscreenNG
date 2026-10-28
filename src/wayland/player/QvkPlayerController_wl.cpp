@@ -81,7 +81,8 @@ void QvkPlayerController_wl::init()
     vkPlayerGst = new QvkPlayerGst_wl();
     vkPlayerGst->init();
 
-    connect( vkPlayerGst, SIGNAL( signal_eos() ),               this, SLOT( slot_eos() ) );
+    connect(vkPlayerGst, &QvkPlayerGst_wl::signal_eos, this, [this](){this->slot_eos();});
+
     connect( vkPlayerGst, SIGNAL( signal_duration(qint64) ),    this, SLOT( slot_duration(qint64) ) );
     connect( vkPlayerGst, SIGNAL( signal_currentTime(qint64) ), this, SLOT( slot_currentTime(qint64) ) );
     connect( vkPlayerGst, SIGNAL( signal_mute(bool) ),          this, SLOT( slot_mute_from_system(bool) ) );

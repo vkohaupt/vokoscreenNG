@@ -292,7 +292,7 @@ void QvkPlayerGst_wl::init()
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+    connect(timer, &QTimer::timeout, this, &QvkPlayerGst_wl::slot_timer);
 }
 
 
