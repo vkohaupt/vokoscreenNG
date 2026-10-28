@@ -473,20 +473,16 @@ void QvkPlayerController_wl::slot_volume_from_system( qreal volume )
 }
 
 
-void QvkPlayerController_wl::slot_volume( int volume )
+void QvkPlayerController_wl::slot_volume(int volume)
 {
-/*
-    if ( vkPlayerGst->have_stream_audio == true ) {
-        if ( ( volume >= 0 ) and ( volume <= 100 ) ) {
-            vkPlayerGst->volume( volume );
-            if ( volume == 0 ) {
-                ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
-            } else {
-                ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
-            }
+    if ((volume >= 0) and (volume <= 100)){
+        vkPlayerGst->volume(volume);
+        if (volume == 0){
+            ui->pushButtonMute->setIcon(QIcon(":/pictures/player/audio-volume-muted.png"));
+        }else{
+            ui->pushButtonMute->setIcon(QIcon(":/pictures/player/audio-volume-high.png"));
         }
     }
-*/
 }
 
 
@@ -506,17 +502,17 @@ void QvkPlayerController_wl::slot_mute_from_system( bool muted )
 }
 
 
-void QvkPlayerController_wl::slot_mute( bool muted )
+void QvkPlayerController_wl::slot_mute(bool muted)
 {
-    vkPlayerGst->mute( muted );
+    vkPlayerGst->mute(muted);
 
-    if ( muted == true ) {
-        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
+    if (muted == true){
+        ui->pushButtonMute->setIcon(QIcon(":/pictures/player/audio-volume-muted.png"));
         return;
     }
 
-    if ( muted == false ) {
-        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
+    if (muted == false){
+        ui->pushButtonMute->setIcon(QIcon(":/pictures/player/audio-volume-high.png"));
         return;
     }
 }
