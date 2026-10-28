@@ -345,6 +345,7 @@ void QvkPlayerController_wl::mouseReleaseEvent( QMouseEvent *event )
     pressed = false;
 }
 
+
 void QvkPlayerController_wl::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);

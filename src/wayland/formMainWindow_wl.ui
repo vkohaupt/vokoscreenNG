@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>871</width>
+    <width>916</width>
     <height>541</height>
    </rect>
   </property>
@@ -226,7 +226,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidgetScreencast">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <property name="iconSize">
              <size>
@@ -426,7 +426,7 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>422</width>
+                          <width>467</width>
                           <height>90</height>
                          </rect>
                         </property>
@@ -1405,7 +1405,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>467</width>
+                     <width>512</width>
                      <height>395</height>
                     </rect>
                    </property>

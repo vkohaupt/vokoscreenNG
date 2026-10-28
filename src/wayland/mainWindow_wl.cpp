@@ -296,10 +296,21 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect(ui->pushButtonPlay,
             &QPushButton::clicked,
             this, [=](){
-        vkPlayerController_wl->init();
-        vkPlayerController_wl->show();
-    });
+        QDir dir(ui->lineEditVideoPath->text());
+        QStringList filters;
+        filters << global::name + "*";
+        QStringList videoFileList = dir.entryList(filters, QDir::Files, QDir::Time);
 
+        QString string;
+        string.append(ui->lineEditVideoPath->text());
+        string.append("/");
+        string.append(videoFileList.at(0));
+        vkPlayerController_wl->init();
+        vkPlayerController_wl->setMediaFile(string);
+        vkPlayerController_wl->show();
+        vkPlayerController_wl->ui->pushButtonStop->click();
+        vkPlayerController_wl->ui->pushButtonPlay->click();
+    });
 
     // Sprachen in ComboBox einlesen
     QDir dirLanguage( ":/language", "*.qm" );
