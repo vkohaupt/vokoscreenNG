@@ -73,7 +73,6 @@ private:
     bool have_duration = false;
     void play_pre();
 
-
 private slots:
     void slot_timer();
 

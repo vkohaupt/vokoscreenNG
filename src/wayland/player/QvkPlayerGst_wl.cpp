@@ -114,16 +114,20 @@ QString QvkPlayerGst_wl::get_mediaFile()
 }
 
 
-void QvkPlayerGst_wl::mute( bool bol )
+void QvkPlayerGst_wl::mute(bool bol)
 {
-    g_object_set( G_OBJECT( audiosink ), "mute", bol, nullptr );
+    g_object_set(G_OBJECT(playbin), "mute", static_cast<gboolean>(bol), nullptr);
+    qDebug().noquote().nospace() << global::nameOutput << "[Player][Mute]" << bol;
 }
 
 
-void QvkPlayerGst_wl::volume( qreal m_volume )
+void QvkPlayerGst_wl::volume(qreal m_volume)
 {
-    qreal volume = QAudio::convertVolume( m_volume / qreal(100.0), QAudio::CubicVolumeScale, QAudio::LinearVolumeScale );
-    g_object_set( G_OBJECT( audiosink ), "volume", volume, nullptr );
+    qreal volume = QAudio::convertVolume(m_volume / qreal(100.0),
+                                         QAudio::CubicVolumeScale,
+                                         QAudio::LinearVolumeScale);
+    g_object_set(G_OBJECT(playbin), "volume", volume, nullptr);
+    qDebug().noquote().nospace() << global::nameOutput << "[Player][Volume]" << volume;
 }
 
 
@@ -171,6 +175,7 @@ void QvkPlayerGst_wl::play_pre()
         return;
     }
     g_object_set(G_OBJECT(playbin), "uri", uri.toUtf8().constData(), nullptr);
+
     gst_bin_add_many(GST_BIN(pipeline), playbin, nullptr);
 
     // Bus-Sync-Handler registrieren, damit das Handle zum perfekten Zeitpunkt gesetzt wird
