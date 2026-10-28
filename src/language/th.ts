@@ -1,6 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="th">
 <context>
-    <name>QvkAudioController</name>
+    <name>QvkAudioPipewireSingle</name>
     <message>
         <source>Select one or more devices</source>
         <translation>เลือกอุปกรณ์หนึ่งรายการหรือมากกว่า</translation>
@@ -8,6 +8,13 @@
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>เลือกอุปกรณ์หนึ่งรายการหรือมากกว่า</translation>
+    </message>
+</context>
+<context>
+    <name>QvkAudioWindowsSingle</name>
     <message>
         <source>Select one or more devices</source>
         <translation>เลือกอุปกรณ์หนึ่งรายการหรือมากกว่า</translation>
@@ -161,13 +168,6 @@
     </message>
 </context>
 <context>
-    <name>QvkPulseAudioWatcher</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>เลือกอุปกรณ์หนึ่งรายการหรือมากกว่า</translation>
-    </message>
-</context>
-<context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
@@ -247,13 +247,6 @@
     <message>
         <source>Exit</source>
         <translation>ออก</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWASAPIController</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>เลือกอุปกรณ์หนึ่งรายการหรือมากกว่า</translation>
     </message>
 </context>
 <context>

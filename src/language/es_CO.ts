@@ -1,6 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es_CO">
 <context>
-    <name>QvkAudioController</name>
+    <name>QvkAudioPipewireSingle</name>
     <message>
         <source>Select one or more devices</source>
         <translation>Elige uno o más dispositivos</translation>
@@ -8,6 +8,13 @@
 </context>
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Elige uno o más dispositivos</translation>
+    </message>
+</context>
+<context>
+    <name>QvkAudioWindowsSingle</name>
     <message>
         <source>Select one or more devices</source>
         <translation>Elige uno o más dispositivos</translation>
@@ -163,13 +170,6 @@ El límite de espacio en disco se ha alcanzado.</translation>
     </message>
 </context>
 <context>
-    <name>QvkPulseAudioWatcher</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Elige uno o más dispositivos</translation>
-    </message>
-</context>
-<context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
@@ -249,13 +249,6 @@ El límite de espacio en disco se ha alcanzado.</translation>
     <message>
         <source>Exit</source>
         <translation>Salir</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWASAPIController</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Elige uno o más dispositivos</translation>
     </message>
 </context>
 <context>
