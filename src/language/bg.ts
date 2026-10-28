@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Минимизирано при започване на записа</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Пусни</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Пусни</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Пауза</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Стоп</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Пусни</translation>

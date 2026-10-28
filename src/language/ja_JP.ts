@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>録画開始時に最小化</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>再生</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>再生</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>一時停止</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>再生</translation>

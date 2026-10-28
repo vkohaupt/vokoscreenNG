@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimiziraj kada snimanje počne</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Reprodukuj</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Reprodukuj</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauza</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Zaustavi</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Reprodukuj</translation>

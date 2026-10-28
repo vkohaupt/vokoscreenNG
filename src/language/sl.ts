@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Pomanjšaj, ko se snemanje začne</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Predvajaj</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Predvajaj</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Premor</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Zaustavi</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Predvajaj</translation>

@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>ຫຍໍ້ໜ້າຕ່າງລົງເມື່ອເລີ່ມການບັນທຶກ</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>ຫຼິ້ນ</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>ຫຼິ້ນ</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>ຢຸດຊົ່ວຄາວ</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>ຢຸດ</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>ຫຼິ້ນ</translation>

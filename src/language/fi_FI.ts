@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Pienennä kun tallennus alkaa</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Toista</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Toista</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Tauko</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Lopeta</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Toista</translation>

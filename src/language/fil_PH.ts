@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Paliitin kapag nagsimula ang pagtatala</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Simulan</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Simulan</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Ihinto</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Itigil</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Simulan</translation>

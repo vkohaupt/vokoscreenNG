@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimizatu grabazioa hastean</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Erreproduzitu</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Erreproduzitu</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausatu</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Gelditu</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Erreproduzitu</translation>

@@ -652,6 +652,10 @@ El límite de espacio en disco se ha alcanzado.</translation>
         <source>Minimized when recording starts</source>
         <translation>Minimizar cuando inicie la grabación</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Reproducir</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -662,6 +666,21 @@ El límite de espacio en disco se ha alcanzado.</translation>
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Reproducir</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausar</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Detener</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Reproducir</translation>

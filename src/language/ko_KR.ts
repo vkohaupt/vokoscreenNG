@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>녹화 시작할 때 창 최소화</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>재생</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>재생</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>일시정지</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>중지</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>재생</translation>

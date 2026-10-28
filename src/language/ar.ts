@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation> تصغير البرنامج عند بدأ التسجيل </translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>شغّل</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>شغّل</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>إيقاف مؤقت</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>أوقِف</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>شغّل</translation>

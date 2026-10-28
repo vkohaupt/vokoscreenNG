@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Kecilkan ketika rekaman dimulai</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Putar</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Putar</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Jeda</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Hentikan</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Putar</translation>

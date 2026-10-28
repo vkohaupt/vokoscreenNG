@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Жазу басталған кезде кішірейтіледі</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Ойнату</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Ойнату</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Кідірту</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Тоқтату</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Ойнату</translation>

@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimert når opptak startar</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Spel av</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -663,6 +667,21 @@
     <message>
         <source>Play</source>
         <translation>Spel</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stopp</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
+    <message>
+        <source>Play</source>
+        <translation>Spel av</translation>
     </message>
     <message>
         <source>Pause</source>

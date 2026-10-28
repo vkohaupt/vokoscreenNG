@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>ย่อขนาดเมื่อเริ่มบันทึก</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>เล่น</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>เล่น</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>หยุดชั่วคราว</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>หยุด</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>เล่น</translation>

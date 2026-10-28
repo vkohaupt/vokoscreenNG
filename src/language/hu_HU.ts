@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimalizálás a rögzítés indításakor</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Lejátszás</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Lejátszás</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Szüneteltetés</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Megállítás</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Lejátszás</translation>

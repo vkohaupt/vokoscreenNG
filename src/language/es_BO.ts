@@ -652,6 +652,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimizar cuando empiece la grabación</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Reproducir</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -662,6 +666,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Reproducir</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausa</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Detener</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Reproducir</translation>

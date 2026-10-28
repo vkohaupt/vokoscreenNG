@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimizar o programa cando a gravación comece</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Visualizar</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Visualizar</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Parar</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Rematar</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Visualizar</translation>

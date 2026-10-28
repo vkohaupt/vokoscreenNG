@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimalizovat začátkem záznamu</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Přehrát</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Přehrát</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauza</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Přehrát</translation>

@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Minimizat la pornirea înregistrării</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Redă</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Redă</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauză</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Oprește</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Redă</translation>

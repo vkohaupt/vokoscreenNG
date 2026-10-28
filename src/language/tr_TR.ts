@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Kayıt başladığında simge durumuna küçült</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Oynat</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Oynat</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Duraklat</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Durdur</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Oynat</translation>

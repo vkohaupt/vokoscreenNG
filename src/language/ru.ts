@@ -650,6 +650,10 @@
         <source>Minimized when recording starts</source>
         <translation>Сворачивать окно перед началом записи</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>Воспроизвести</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -660,6 +664,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Воспроизвести</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Приостановить</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Остановить</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>Воспроизвести</translation>

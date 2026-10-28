@@ -652,6 +652,10 @@
         <source>Minimized when recording starts</source>
         <translation>کوچک سازی هنگام شروع ضبط</translation>
     </message>
+    <message>
+        <source>Play</source>
+        <translation>پخش</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
@@ -662,6 +666,21 @@
 </context>
 <context>
     <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>پخش</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>وقفه</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>پایان</translation>
+    </message>
+</context>
+<context>
+    <name>playerGst_wl</name>
     <message>
         <source>Play</source>
         <translation>پخش</translation>
