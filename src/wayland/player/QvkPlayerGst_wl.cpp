@@ -188,7 +188,9 @@ void QvkPlayerGst_wl::play_pre()
     // Wayland Video-Sink erzwingen, um X11-Fallbacks (BadWindow Fehler) zu verhindern
     GstElement *vsink = gst_element_factory_make("waylandsink", "wayland-video-sink");
     if (!vsink) {
-        qDebug() << "[Player] Failed to create 'waylandsink' element. Check your plugins (gst-plugins-bad).";
+        qDebug().noquote().nospace()
+                << global::nameOutput
+                << "[Player] Failed to create 'waylandsink' element. Check your plugins (gst-plugins-bad).";
         return;
     }
     g_object_set(G_OBJECT(playbin), "video-sink", vsink, nullptr);
@@ -206,7 +208,9 @@ void QvkPlayerGst_wl::play_pre()
     // Extraktion des wl_display und wl_surface über das Qt Platform Native Interface
     QPlatformNativeInterface *native = QGuiApplication::platformNativeInterface();
     if (!native) {
-        qDebug() << "[Player] Failed to get QPlatformNativeInterface.";
+        qDebug().noquote().nospace()
+                << global::nameOutput
+                << "[Player] Failed to get QPlatformNativeInterface.";
         return;
     }
 
@@ -221,7 +225,9 @@ void QvkPlayerGst_wl::play_pre()
         gst_element_set_context(GST_ELEMENT(vsink), context);
         gst_context_unref(context);
     } else {
-        qDebug() << "[Player] Could not retrieve native Wayland display context from Qt.";
+        qDebug().noquote().nospace()
+                << global::nameOutput
+                << "[Player] Could not retrieve native Wayland display context from Qt.";
     }
 
     // Testweiser Abruf der Surface zur Validierung im Log
@@ -229,7 +235,9 @@ void QvkPlayerGst_wl::play_pre()
                 native->nativeResourceForWindow("surface", m_parent->windowHandle())
                 );
     if (!surface) {
-        qDebug() << "[Player] Warning: Wayland surface not ready yet (will be retried in bus handler).";
+        qDebug().noquote().nospace()
+                << global::nameOutput
+                << "[Player] Warning: Wayland surface not ready yet (will be retried in bus handler).";
     }
 
     m_parent->update();
