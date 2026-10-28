@@ -88,49 +88,6 @@ void QvkPlayerGst_wl::call_bus_message( GstBus *bus, GstMessage *message, gpoint
 }
 
 
-void QvkPlayerGst_wl::set_video_widget(QWidget *widget)
-{
-    m_parent = widget;
-}
-
-void QvkPlayerGst_wl::init()
-{
-    timer = new QTimer;
-    timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 200 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
-}
-
-
-void QvkPlayerGst_wl::set_mediaFile( QString string )
-{
-    mediaFile = string;
-}
-
-
-QString QvkPlayerGst_wl::get_mediaFile()
-{
-    return mediaFile;
-}
-
-
-void QvkPlayerGst_wl::mute(bool bol)
-{
-    g_object_set(G_OBJECT(playbin), "mute", static_cast<gboolean>(bol), nullptr);
-    qDebug().noquote().nospace() << global::nameOutput << "[Player][Mute]" << bol;
-}
-
-
-void QvkPlayerGst_wl::volume(qreal m_volume)
-{
-    qreal volume = QAudio::convertVolume(m_volume / qreal(100.0),
-                                         QAudio::CubicVolumeScale,
-                                         QAudio::LinearVolumeScale);
-    g_object_set(G_OBJECT(playbin), "volume", volume, nullptr);
-    qDebug().noquote().nospace() << global::nameOutput << "[Player][Volume]" << volume;
-}
-
-
 static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus)
@@ -159,6 +116,7 @@ static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpoint
     }
     return GST_BUS_PASS;
 }
+
 
 void QvkPlayerGst_wl::play_pre()
 {
@@ -198,9 +156,9 @@ void QvkPlayerGst_wl::play_pre()
     // Erzwingen, dass das QWidget ein natives Fenster inkl. Wayland-Surface besitzt
     m_parent->setAttribute(Qt::WA_NativeWindow, true);
     m_parent->setAttribute(Qt::WA_DontCreateNativeAncestors, true); // Verhindert Artefakte im Widget-Baum
-//    m_parent->setAttribute(Qt::WA_OpaquePaintEvent, false);
-//    m_parent->setAttribute(Qt::WA_NoSystemBackground, true);
-//    m_parent->setStyleSheet("background: transparent;");
+    //    m_parent->setAttribute(Qt::WA_OpaquePaintEvent, false);
+    //    m_parent->setAttribute(Qt::WA_NoSystemBackground, true);
+    //    m_parent->setStyleSheet("background: transparent;");
 
     // Sicherstellen, dass das native Fenster erstellt wurde
     m_parent->winId();
@@ -320,6 +278,50 @@ bool QvkPlayerGst_wl::is_pause()
     } else {
         return false;
     }
+}
+
+
+void QvkPlayerGst_wl::set_video_widget(QWidget *widget)
+{
+    m_parent = widget;
+}
+
+
+void QvkPlayerGst_wl::init()
+{
+    timer = new QTimer;
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 200 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+}
+
+
+void QvkPlayerGst_wl::set_mediaFile( QString string )
+{
+    mediaFile = string;
+}
+
+
+QString QvkPlayerGst_wl::get_mediaFile()
+{
+    return mediaFile;
+}
+
+
+void QvkPlayerGst_wl::mute(bool bol)
+{
+    g_object_set(G_OBJECT(playbin), "mute", static_cast<gboolean>(bol), nullptr);
+    qDebug().noquote().nospace() << global::nameOutput << "[Player][Mute]" << bol;
+}
+
+
+void QvkPlayerGst_wl::volume(qreal m_volume)
+{
+    qreal volume = QAudio::convertVolume(m_volume / qreal(100.0),
+                                         QAudio::CubicVolumeScale,
+                                         QAudio::LinearVolumeScale);
+    g_object_set(G_OBJECT(playbin), "volume", volume, nullptr);
+    qDebug().noquote().nospace() << global::nameOutput << "[Player][Volume]" << volume;
 }
 
 
