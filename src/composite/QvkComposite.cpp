@@ -48,9 +48,9 @@ void QvkComposite::slot_shot()
 {
     qDebug().noquote() << global::nameOutput << "[Composite] waiting for an answer";
 
-    QImage image = screen()->grabWindow(0).toImage();
+    QImage image = screen()->grabWindow(0, 0, 0, width(), height()).toImage();
 
-    QColor colorBlack = image.pixelColor(3, 3);
+    QColor colorBlack = image.pixelColor(2, 2);
     if (colorBlack == Qt::black){
         compositeEnabled = false;
     }else{
