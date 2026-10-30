@@ -52,6 +52,7 @@
 
 #ifdef Q_OS_UNIX
   #include "QvkScreenManager.h"
+  #include "QvkComposite.h"
 #endif
 
 #ifdef Q_OS_WIN
@@ -83,6 +84,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->frameVideoCodecGIF->setVisible( false );
 
     oldPaletteDarkMode = qApp->palette();
+
+#ifdef Q_OS_UNIX
+    // Composite
+    new QvkComposite( this );
+#endif
 
     QFile fileCSS( ":/pictures/css/css.qss" );
     bo = fileCSS.open( QFile::ReadOnly | QFile::Text );

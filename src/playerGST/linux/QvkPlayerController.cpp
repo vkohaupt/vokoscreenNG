@@ -460,6 +460,7 @@ void QvkPlayerController::slot_volume_from_system( qreal volume )
 
 void QvkPlayerController::slot_volume( int volume )
 {
+    Q_UNUSED(volume)
 /*
     if ( vkPlayerGst->have_stream_audio == true ) {
         if ( ( volume >= 0 ) and ( volume <= 100 ) ) {

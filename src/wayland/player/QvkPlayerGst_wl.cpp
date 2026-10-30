@@ -29,7 +29,6 @@
 #include <QAudio>
 #include <QGuiApplication>
 #include <QWindow>
-#include <QPlatformSurfaceEvent>
 #include <QtGui/qpa/qplatformnativeinterface.h>
 
 QvkPlayerGst_wl::QvkPlayerGst_wl()
