@@ -86,8 +86,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     oldPaletteDarkMode = qApp->palette();
 
 #ifdef Q_OS_UNIX
-    // Composite
-    new QvkComposite( this );
+    QvkComposite *vkComposite = new QvkComposite(this);
+    Q_UNUSED(vkComposite)
 #endif
 
     QFile fileCSS( ":/pictures/css/css.qss" );
