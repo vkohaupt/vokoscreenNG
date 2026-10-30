@@ -27,6 +27,13 @@
 
 #include <QWidget>
 #include <QScreen>
+#include <QPaintEvent>
+#include <QMouseEvent>
+#include <QEvent>
+#include <QKeyEvent>
+#include <QColor>
+#include <QScreen>
+#include <QPainter>
 
 class QvkRegionChoise : public QWidget
 { 
@@ -37,7 +44,6 @@ public:
   int getX();
   int getY();
   int getHeight();
-//  qreal getWidth();
   int getWidth();
   qreal getXRecordArea();
   qreal getYRecordArea();

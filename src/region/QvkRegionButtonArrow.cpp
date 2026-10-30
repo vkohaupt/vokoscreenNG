@@ -23,6 +23,11 @@
 #include "QvkRegionButtonArrow.h"
 
 #include <QPainterPath>
+#include <QPixmap>
+#include <QPainter>
+#include <QBrush>
+#include <QPen>
+#include <QColor>
 
 QvkRegionButtonArrow::QvkRegionButtonArrow()
 {

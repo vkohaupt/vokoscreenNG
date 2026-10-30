@@ -25,6 +25,8 @@
 
 #include <QObject>
 #include <QPainter>
+#include <QPixmap>
+#include <QColor>
 
 class QvkRegionButtonArrow : public QObject
 { 

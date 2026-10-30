@@ -30,6 +30,18 @@
 #include <QBitmap>
 #include <QPaintEvent>
 #include <QIcon>
+#include <QPixmap>
+#include <QPen>
+#include <QPoint>
+#include <QPaintEvent>
+#include <QMouseEvent>
+#include <QEvent>
+#include <QKeyEvent>
+#include <QBrush>
+#include <QFont>
+#include <QFontMetrics>
+#include <QRect>
+#include <QPen>
 
 QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
