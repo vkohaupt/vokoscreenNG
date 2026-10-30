@@ -86,7 +86,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     oldPaletteDarkMode = qApp->palette();
 
 #ifdef Q_OS_UNIX
-    QvkComposite *vkComposite = new QvkComposite(this);
+    vkComposite = new QvkComposite(this);
     Q_UNUSED(vkComposite)
 #endif
 

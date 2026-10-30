@@ -39,6 +39,7 @@
 #include "QvkLogController.h"
 #include "QvkContainerController.h"
 #include "QvkLicenses.h"
+#include "QvkComposite.h"
 
 #ifdef Q_OS_UNIX
   #include "QvkAudioPipewireController.h"
@@ -172,6 +173,7 @@ private:
     void set_ToolButtonEnableDisable();
 
     bool is_systemTrayAvailable = false;
+    QvkComposite *vkComposite = nullptr;
 
 private slots:
     void slot_preStart();
