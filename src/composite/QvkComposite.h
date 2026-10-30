@@ -9,14 +9,15 @@ class QvkComposite: public QWidget
 {
     Q_OBJECT
 public:
-    QvkComposite( QMainWindow *parent );
-    bool is_CompositeEnabled = true;
+    QvkComposite(QMainWindow *parent);
 
 
 public slots:
+    bool get_cmpositeEnabled();
 
 
 private:
+    bool compositeEnabled = false;
 
 
 private slots:
@@ -24,11 +25,11 @@ private slots:
 
 
 protected:
-    void paintEvent( QPaintEvent *event );
+    void paintEvent(QPaintEvent *event);
 
     
 signals:
-    void signal_compositeEnabled( bool );
+    void signal_compositeEnabled(bool);
 
 };
 

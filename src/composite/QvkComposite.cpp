@@ -52,10 +52,18 @@ void QvkComposite::slot_shot()
 
     QColor colorBlack = image.pixelColor(3, 3);
     if (colorBlack == Qt::black){
-        is_CompositeEnabled = false;
+        compositeEnabled = false;
+    }else{
+        compositeEnabled = true;
     }
 
-    emit signal_compositeEnabled(is_CompositeEnabled);
-    qDebug().noquote() << global::nameOutput << "[Composite]" << is_CompositeEnabled;
+    emit signal_compositeEnabled(compositeEnabled);
+    qDebug().noquote() << global::nameOutput << "[Composite]" << compositeEnabled;
     close();
+}
+
+
+bool QvkComposite::get_cmpositeEnabled()
+{
+    return compositeEnabled;
 }
