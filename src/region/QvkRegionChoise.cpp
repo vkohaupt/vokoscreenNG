@@ -114,6 +114,18 @@ QvkRegionChoise::~QvkRegionChoise()
 }
 
 
+void QvkRegionChoise::set_compositeEnabled(bool bo)
+{
+    compositeEnabled = bo;
+}
+
+
+bool QvkRegionChoise::is_compositeEnabled()
+{
+    return compositeEnabled;
+}
+
+
 void QvkRegionChoise::setHandleColorBackground( QColor color )
 {
     HandleColorBackground = color;

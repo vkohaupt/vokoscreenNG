@@ -10,6 +10,7 @@ class QvkComposite: public QWidget
     Q_OBJECT
 public:
     QvkComposite(QMainWindow *parent);
+    void start_detect_compositeEnabled();
 
 
 public slots:

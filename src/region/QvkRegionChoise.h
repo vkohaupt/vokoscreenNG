@@ -56,6 +56,9 @@ public:
 
   bool recordemode = false;
   int zaehler = 0;
+  bool compositeEnabled = false;
+  void set_compositeEnabled(bool bo);
+  bool is_compositeEnabled();
 
 public slots:
   void slot_areaReset();

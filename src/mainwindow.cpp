@@ -85,11 +85,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     oldPaletteDarkMode = qApp->palette();
 
-#ifdef Q_OS_UNIX
-    vkComposite = new QvkComposite(this);
-    Q_UNUSED(vkComposite)
-#endif
-
     QFile fileCSS( ":/pictures/css/css.qss" );
     bo = fileCSS.open( QFile::ReadOnly | QFile::Text );
     if ( bo == false ) {
@@ -243,7 +238,18 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkLicenses = new QvkLicenses( ui->pushButtonLicense );
 
-    vkRegionChoise = new QvkRegionChoise( ui );
+    vkRegionChoise = new QvkRegionChoise(ui);
+
+#ifdef Q_OS_UNIX
+    vkComposite = new QvkComposite(this);
+    connect(vkComposite,
+            &QvkComposite::signal_compositeEnabled,
+            this,
+            [this](bool bo){
+        vkRegionChoise->set_compositeEnabled(bo);
+    });
+#endif
+    vkComposite->start_detect_compositeEnabled();
 
     vkCountdown = new QvkCountdown();
     vkCountdown->init();

@@ -16,9 +16,13 @@ QvkComposite::QvkComposite(QMainWindow *parent)
     Q_UNUSED(parent);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip);
     setAttribute(Qt::WA_TranslucentBackground, true);
-
     resize(5, 5);
     move(0, 0);
+}
+
+
+void QvkComposite::start_detect_compositeEnabled()
+{
     show();
 
     QTimer::singleShot(1000,
