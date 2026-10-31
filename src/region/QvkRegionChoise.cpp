@@ -171,7 +171,7 @@ void QvkRegionChoise::vk_setGeometry( int x, int y, int with, int height  )
 
 void QvkRegionChoise::paintEvent( QPaintEvent *event )
 {
-    (void)event;
+    Q_UNUSED(event)
     QPixmap pixmap( screenWidth, screenHeight );
     pixmap.fill( Qt::transparent );
 
@@ -268,12 +268,19 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 
-    setMask( pixmap.mask() );
+    m_pixmap = pixmap;
+    if (is_compositeEnabled() == false){
+        setMask(m_pixmap.mask());
+    }
 }
 
 
 void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
 {
+    if (is_compositeEnabled() == true){
+        clearMask();
+    }
+
     if( event->button() != Qt::LeftButton) {
         return;
     }
@@ -304,22 +311,25 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
     old_Frame_Y2 = frame_Y + frame_height;
 
     repaint();
-    update();
 }
 
 
 void QvkRegionChoise::mouseReleaseEvent( QMouseEvent * event )
 {
-  if( event->button() != Qt::LeftButton) {
-      return;
-  }
+    if (is_compositeEnabled() == true){
+        setMask(m_pixmap.mask());
+    }
 
-  handlePressed = NoHandle;
+    if( event->button() != Qt::LeftButton) {
+        return;
+    }
 
-  // QTooltip have no keyboard input focus, we must set the window aktiv.
-  activateWindow();
+    handlePressed = NoHandle;
 
-  update();
+    // QTooltip have no keyboard input focus, we must set the window aktiv.
+    activateWindow();
+
+    update();
 }
 
 
@@ -1622,12 +1632,17 @@ int QvkRegionChoise::getWidth()
 
 void QvkRegionChoise::slot_areaReset()
 {
+    if (is_compositeEnabled() == true){
+        clearMask();
+    }
     frame_X = 200 - framePenHalf;
     frame_Y = 200 - framePenHalf;
     frame_Width = frame_min_width;
     frame_height = frame_min_height;
     repaint();
-    update();
+    if (is_compositeEnabled() == true){
+        setMask(m_pixmap.mask());
+    }
 }
 
 void QvkRegionChoise::setX( int x )

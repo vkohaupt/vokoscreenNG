@@ -85,6 +85,7 @@ protected:
 
 private:
   Ui_formMainWindow *ui;
+  QPixmap m_pixmap;
 
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
   Handle handlePressed;
