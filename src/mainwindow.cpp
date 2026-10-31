@@ -239,8 +239,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkLicenses = new QvkLicenses( ui->pushButtonLicense );
 
     vkRegionChoise = new QvkRegionChoise(ui);
-
-#ifdef Q_OS_UNIX
     vkComposite = new QvkComposite(this);
     connect(vkComposite,
             &QvkComposite::signal_compositeEnabled,
@@ -248,7 +246,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
             [this](bool bo){
         vkRegionChoise->set_compositeEnabled(bo);
     });
-#endif
     vkComposite->start_detect_compositeEnabled();
 
     vkCountdown = new QvkCountdown();
