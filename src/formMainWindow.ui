@@ -63,7 +63,7 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset resource="screencast.qrc">
+          <iconset>
            <normaloff>:/pictures/screencast/monitor.png</normaloff>:/pictures/screencast/monitor.png</iconset>
          </property>
          <property name="iconSize">
@@ -95,7 +95,7 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset resource="screencast.qrc">
+          <iconset>
            <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
          </property>
          <property name="iconSize">
@@ -133,7 +133,7 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset resource="screencast.qrc">
+          <iconset>
            <normaloff>:/pictures/showClick/vokoShowClick-sidebar.png</normaloff>:/pictures/showClick/vokoShowClick-sidebar.png</iconset>
          </property>
          <property name="iconSize">
@@ -168,7 +168,7 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset resource="screencast.qrc">
+          <iconset>
            <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
          </property>
          <property name="iconSize">
@@ -200,7 +200,7 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset resource="screencast.qrc">
+          <iconset>
            <normaloff>:/pictures/screencast/shortcut.png</normaloff>:/pictures/screencast/shortcut.png</iconset>
          </property>
          <property name="iconSize">
@@ -235,7 +235,7 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset resource="screencast.qrc">
+          <iconset>
            <normaloff>:/pictures/player/player.png</normaloff>:/pictures/player/player.png</iconset>
          </property>
          <property name="iconSize">
@@ -270,7 +270,7 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset resource="screencast.qrc">
+          <iconset>
            <normaloff>:/pictures/log/log.png</normaloff>:/pictures/log/log.png</iconset>
          </property>
          <property name="iconSize">
@@ -334,7 +334,7 @@
       </property>
       <widget class="QWidget" name="tabSidebarScreencast">
        <attribute name="icon">
-        <iconset resource="screencast.qrc">
+        <iconset>
          <normaloff>:/pictures/screencast/monitor-sidebar.png</normaloff>:/pictures/screencast/monitor-sidebar.png</iconset>
        </attribute>
        <attribute name="title">
@@ -384,7 +384,7 @@
           </property>
           <widget class="QWidget" name="tabScreen">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/screencast/monitor.png</normaloff>:/pictures/screencast/monitor.png</iconset>
            </attribute>
            <attribute name="title">
@@ -426,7 +426,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="icon">
-                   <iconset resource="screencast.qrc">
+                   <iconset>
                     <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                   </property>
                   <property name="iconSize">
@@ -513,7 +513,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="icon">
-                   <iconset resource="screencast.qrc">
+                   <iconset>
                     <normaloff>:/pictures/screencast/screen-name.png</normaloff>:/pictures/screencast/screen-name.png</iconset>
                   </property>
                   <property name="iconSize">
@@ -582,7 +582,7 @@
                        <x>0</x>
                        <y>0</y>
                        <width>404</width>
-                       <height>111</height>
+                       <height>137</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -1049,7 +1049,7 @@
               <item row="5" column="0">
                <widget class="QPushButton" name="pushButtonDonate">
                 <property name="styleSheet">
-                 <string notr="true">background-color: #E2E8E1; color: black;</string>
+                 <string notr="true">background-color: #eef6fa; color: black;</string>
                 </property>
                 <property name="text">
                  <string>Donate</string>
@@ -1072,7 +1072,7 @@
               <item row="4" column="0">
                <widget class="QLabel" name="label_62">
                 <property name="styleSheet">
-                 <string notr="true">background-color: #E2E8E1; color: black;</string>
+                 <string notr="true">background-color: #eef6fa; color: black;</string>
                 </property>
                 <property name="text">
                  <string notr="true">Support the project</string>
@@ -1088,7 +1088,7 @@
           </widget>
           <widget class="QWidget" name="tabVideo">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/screencast/format-codec.png</normaloff>:/pictures/screencast/format-codec.png</iconset>
            </attribute>
            <attribute name="title">
@@ -1283,7 +1283,7 @@
                             <string notr="true"/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="screencast.qrc">:/pictures/screencast/compress.png</pixmap>
+                            <pixmap>:/pictures/screencast/compress.png</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -1303,7 +1303,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="icon">
-                        <iconset resource="screencast.qrc">
+                        <iconset>
                          <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                        </property>
                       </widget>
@@ -1375,7 +1375,7 @@
                             <string notr="true"/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="screencast.qrc">:/pictures/screencast/compress.png</pixmap>
+                            <pixmap>:/pictures/screencast/compress.png</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -1395,7 +1395,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="icon">
-                        <iconset resource="screencast.qrc">
+                        <iconset>
                          <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                        </property>
                       </widget>
@@ -1430,7 +1430,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="icon">
-                        <iconset resource="screencast.qrc">
+                        <iconset>
                          <normaloff>:/pictures/screencast/loop.png</normaloff>:/pictures/screencast/loop.png</iconset>
                        </property>
                        <property name="iconSize">
@@ -1537,7 +1537,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="icon">
-                     <iconset resource="screencast.qrc">
+                     <iconset>
                       <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                     </property>
                    </widget>
@@ -1579,7 +1579,7 @@
           </widget>
           <widget class="QWidget" name="tabMisc">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/screencast/preferences-system.png</normaloff>:/pictures/screencast/preferences-system.png</iconset>
            </attribute>
            <attribute name="title">
@@ -1843,7 +1843,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/screencast/day.png</pixmap>
+                   <pixmap>:/pictures/screencast/day.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -1862,7 +1862,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/screencast/night.png</pixmap>
+                   <pixmap>:/pictures/screencast/night.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -1915,7 +1915,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="screencast.qrc">:/pictures/screencast/profile.png</pixmap>
+                      <pixmap>:/pictures/screencast/profile.png</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -1953,7 +1953,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="icon">
-                      <iconset resource="screencast.qrc">
+                      <iconset>
                        <normaloff>:/pictures/screencast/profile-save.png</normaloff>:/pictures/screencast/profile-save.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1973,7 +1973,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="icon">
-                      <iconset resource="screencast.qrc">
+                      <iconset>
                        <normaloff>:/pictures/screencast/profile-new.png</normaloff>:/pictures/screencast/profile-new.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -1996,7 +1996,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="icon">
-                      <iconset resource="screencast.qrc">
+                      <iconset>
                        <normaloff>:/pictures/screencast/profile-delete.png</normaloff>:/pictures/screencast/profile-delete.png</iconset>
                      </property>
                      <property name="iconSize">
@@ -2073,7 +2073,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/screencast/information.png</pixmap>
+                   <pixmap>:/pictures/screencast/information.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -2120,7 +2120,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/screencast/world.png</pixmap>
+                   <pixmap>:/pictures/screencast/world.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -2246,7 +2246,7 @@
           </widget>
           <widget class="QWidget" name="tabTimer">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/screencast/timer.png</normaloff>:/pictures/screencast/timer.png</iconset>
            </attribute>
            <attribute name="title">
@@ -2482,7 +2482,7 @@
           </widget>
           <widget class="QWidget" name="tabAvailable">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/screencast/supported-formats.png</normaloff>:/pictures/screencast/supported-formats.png</iconset>
            </attribute>
            <attribute name="title">
@@ -2551,7 +2551,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>411</width>
-                   <height>422</height>
+                   <height>448</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2691,7 +2691,7 @@
           </widget>
           <widget class="QWidget" name="tabAbout">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/screencast/help-about.png</normaloff>:/pictures/screencast/help-about.png</iconset>
            </attribute>
            <attribute name="title">
@@ -2725,7 +2725,7 @@
                  <string notr="true"/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="screencast.qrc">:/pictures/screencast/author.png</pixmap>
+                 <pixmap>:/pictures/screencast/author.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
@@ -3230,7 +3230,7 @@
           </property>
           <widget class="QWidget" name="tab_4">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
            </attribute>
            <attribute name="title">
@@ -3329,7 +3329,7 @@
       </widget>
       <widget class="QWidget" name="tabSidebarShowClick">
        <attribute name="icon">
-        <iconset resource="screencast.qrc">
+        <iconset>
          <normaloff>:/pictures/showClick/vokoShowClick-sidebar.png</normaloff>:/pictures/showClick/vokoShowClick-sidebar.png</iconset>
        </attribute>
        <attribute name="title">
@@ -3367,7 +3367,7 @@
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/showClick/vokoShowClick.png</normaloff>:/pictures/showClick/vokoShowClick.png</iconset>
            </attribute>
            <attribute name="title">
@@ -3415,7 +3415,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/cursor.png</pixmap>
+                   <pixmap>:/pictures/showClick/cursor.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3436,7 +3436,7 @@
                  <string notr="true"/>
                 </property>
                 <property name="icon">
-                 <iconset resource="screencast.qrc">
+                 <iconset>
                   <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
@@ -3450,7 +3450,7 @@
                  <string notr="true"/>
                 </property>
                 <property name="icon">
-                 <iconset resource="screencast.qrc">
+                 <iconset>
                   <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
@@ -3478,7 +3478,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="icon">
-                   <iconset resource="screencast.qrc">
+                   <iconset>
                     <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                   </property>
                  </widget>
@@ -3541,7 +3541,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/transparenz.png</pixmap>
+                   <pixmap>:/pictures/showClick/transparenz.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3573,7 +3573,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/transparenz.png</pixmap>
+                   <pixmap>:/pictures/showClick/transparenz.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3594,7 +3594,7 @@
                  <string notr="true"/>
                 </property>
                 <property name="icon">
-                 <iconset resource="screencast.qrc">
+                 <iconset>
                   <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
@@ -3644,7 +3644,7 @@
                  <string notr="true"/>
                 </property>
                 <property name="icon">
-                 <iconset resource="screencast.qrc">
+                 <iconset>
                   <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
@@ -3708,7 +3708,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="icon">
-                   <iconset resource="screencast.qrc">
+                   <iconset>
                     <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                   </property>
                  </widget>
@@ -3754,7 +3754,7 @@
                  <string notr="true"/>
                 </property>
                 <property name="icon">
-                 <iconset resource="screencast.qrc">
+                 <iconset>
                   <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
@@ -3791,7 +3791,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/sandglass.png</pixmap>
+                   <pixmap>:/pictures/showClick/sandglass.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3817,7 +3817,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/halo.png</pixmap>
+                   <pixmap>:/pictures/showClick/halo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3949,7 +3949,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/cursor.png</pixmap>
+                   <pixmap>:/pictures/showClick/cursor.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3973,7 +3973,7 @@
                  <string notr="true"/>
                 </property>
                 <property name="icon">
-                 <iconset resource="screencast.qrc">
+                 <iconset>
                   <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
@@ -4050,7 +4050,7 @@
             </property>
             <widget class="QWidget" name="tabSnapshot">
              <attribute name="icon">
-              <iconset resource="screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
              </attribute>
              <attribute name="title">
@@ -4260,7 +4260,7 @@
           </property>
           <widget class="QWidget" name="tabShortcut">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/screencast/shortcut.png</normaloff>:/pictures/screencast/shortcut.png</iconset>
            </attribute>
            <attribute name="title">
@@ -4527,7 +4527,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="icon">
-                    <iconset resource="screencast.qrc">
+                    <iconset>
                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
@@ -4800,7 +4800,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="icon">
-                    <iconset resource="screencast.qrc">
+                    <iconset>
                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
@@ -5052,7 +5052,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="icon">
-                    <iconset resource="screencast.qrc">
+                    <iconset>
                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
@@ -5300,7 +5300,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="icon">
-                    <iconset resource="screencast.qrc">
+                    <iconset>
                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
@@ -5328,7 +5328,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="icon">
-                    <iconset resource="screencast.qrc">
+                    <iconset>
                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
@@ -5646,7 +5646,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="icon">
-                    <iconset resource="screencast.qrc">
+                    <iconset>
                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
@@ -6352,7 +6352,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="icon">
-                    <iconset resource="screencast.qrc">
+                    <iconset>
                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
@@ -6386,7 +6386,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="screencast.qrc">:/pictures/screencast/accept.png</pixmap>
+                    <pixmap>:/pictures/screencast/accept.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -6422,7 +6422,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="screencast.qrc">:/pictures/screencast/missing.png</pixmap>
+                    <pixmap>:/pictures/screencast/missing.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -6503,7 +6503,7 @@
       </widget>
       <widget class="QWidget" name="tabSidebarPlayer">
        <attribute name="icon">
-        <iconset resource="screencast.qrc">
+        <iconset>
          <normaloff>:/pictures/player/player-sidebar.png</normaloff>:/pictures/player/player-sidebar.png</iconset>
        </attribute>
        <attribute name="title">
@@ -6541,7 +6541,7 @@
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/player/player.png</normaloff>:/pictures/player/player.png</iconset>
            </attribute>
            <attribute name="title">
@@ -6596,7 +6596,7 @@
       </widget>
       <widget class="QWidget" name="tabSidebarLog">
        <attribute name="icon">
-        <iconset resource="screencast.qrc">
+        <iconset>
          <normaloff>:/pictures/log/log-sidebar.png</normaloff>:/pictures/log/log-sidebar.png</iconset>
        </attribute>
        <attribute name="title">
@@ -6631,7 +6631,7 @@
           </property>
           <widget class="QWidget" name="tabLog">
            <attribute name="icon">
-            <iconset resource="screencast.qrc">
+            <iconset>
              <normaloff>:/pictures/log/log.png</normaloff>:/pictures/log/log.png</iconset>
            </attribute>
            <attribute name="title">
@@ -6753,9 +6753,7 @@
   <tabstop>help_screencast_avalaible</tabstop>
   <tabstop>tabWidgetLog</tabstop>
  </tabstops>
- <resources>
-  <include location="screencast.qrc"/>
- </resources>
+ <resources/>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup_2"/>
