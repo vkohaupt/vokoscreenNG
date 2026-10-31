@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>전체화면</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>후원하기</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>재생</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>후원하기</translation>
     </message>
 </context>
 <context>

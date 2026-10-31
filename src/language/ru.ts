@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Во весь экран</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Пожертвовать</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Воспроизвести</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Пожертвовать</translation>
     </message>
 </context>
 <context>

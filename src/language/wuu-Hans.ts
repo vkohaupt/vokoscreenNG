@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>全屏</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>捐助</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>播放</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>捐助</translation>
     </message>
 </context>
 <context>

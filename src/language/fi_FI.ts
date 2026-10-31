@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Koko näyttö</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Lahjoita</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Toista</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Lahjoita</translation>
     </message>
 </context>
 <context>

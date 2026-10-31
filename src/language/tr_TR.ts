@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Tam Ekran</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Bağış</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Oynat</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Bağış</translation>
     </message>
 </context>
 <context>

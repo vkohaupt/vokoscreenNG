@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Helskärm</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donera</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Spela upp</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donera</translation>
     </message>
 </context>
 <context>

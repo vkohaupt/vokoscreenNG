@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Pantaila osoa</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Eman dirua</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Erreproduzitu</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Eman dirua</translation>
     </message>
 </context>
 <context>

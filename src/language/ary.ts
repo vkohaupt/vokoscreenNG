@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>شاشة كاملة</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>تبرع</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>بدا</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>تبرع</translation>
     </message>
 </context>
 <context>

@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Tela cheia</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doações</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Reproduzir</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doações</translation>
     </message>
 </context>
 <context>

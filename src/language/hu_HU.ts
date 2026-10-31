@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Teljes képernyő</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Adományozás</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Lejátszás</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Adományozás</translation>
     </message>
 </context>
 <context>

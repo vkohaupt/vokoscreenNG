@@ -501,6 +501,10 @@
         <source>Fullscreen</source>
         <translation>تمام صفحه</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>حمایت</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -655,6 +659,10 @@
     <message>
         <source>Play</source>
         <translation>پخش</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>حمایت</translation>
     </message>
 </context>
 <context>

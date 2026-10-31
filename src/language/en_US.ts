@@ -502,6 +502,10 @@
         <source>Fullscreen</source>
         <translation>Fullscreen</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donate</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -656,6 +660,10 @@
     <message>
         <source>Play</source>
         <translation>Play</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donate</translation>
     </message>
 </context>
 <context>

@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Layar penuh</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donasi</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Mainkan</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donasi</translation>
     </message>
 </context>
 <context>

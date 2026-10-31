@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Heler Billschirm</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Spenden</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Spölen</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Spenden</translation>
     </message>
 </context>
 <context>

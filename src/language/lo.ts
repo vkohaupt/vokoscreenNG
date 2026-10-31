@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>ເຕັມຈໍ</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>ບໍລິຈາກ</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>ຫຼິ້ນ</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>ບໍລິຈາກ</translation>
     </message>
 </context>
 <context>

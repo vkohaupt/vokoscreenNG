@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Celozaslonski način</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doniraj</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Predvajaj</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doniraj</translation>
     </message>
 </context>
 <context>

@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>เต็มจอ</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>บริจาค</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>เล่น</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>บริจาค</translation>
     </message>
 </context>
 <context>

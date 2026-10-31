@@ -501,6 +501,10 @@ El límite de espacio en disco se ha alcanzado.</translation>
         <source>Fullscreen</source>
         <translation>Pantalla completa</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donar</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -655,6 +659,10 @@ El límite de espacio en disco se ha alcanzado.</translation>
     <message>
         <source>Play</source>
         <translation>Reproducir</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donar</translation>
     </message>
 </context>
 <context>

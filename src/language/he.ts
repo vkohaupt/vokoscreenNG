@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>מסך מלא</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>תרומה</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>נגינה</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>תרומה</translation>
     </message>
 </context>
 <context>

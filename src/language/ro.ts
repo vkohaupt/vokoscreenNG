@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Pe tot ecranul</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donează</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Redă</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donează</translation>
     </message>
 </context>
 <context>

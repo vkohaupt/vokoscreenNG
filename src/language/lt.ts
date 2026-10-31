@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Visas ekranas</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Paaukoti</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Groti</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Paaukoti</translation>
     </message>
 </context>
 <context>

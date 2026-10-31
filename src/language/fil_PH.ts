@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Buong tabing</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Magkaloob ng donasyon</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Simulan</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Magkaloob ng donasyon</translation>
     </message>
 </context>
 <context>

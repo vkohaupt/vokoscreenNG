@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Πλήρης οθόνη</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Δωρεά</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Αναπαραγωγή</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Δωρεά</translation>
     </message>
 </context>
 <context>

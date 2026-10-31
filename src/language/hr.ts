@@ -504,6 +504,10 @@
         <source>Fullscreen</source>
         <translation>Puni zaslon </translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donirajte</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -658,6 +662,10 @@
     <message>
         <source>Play</source>
         <translation>Pokreni</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donirajte</translation>
     </message>
 </context>
 <context>

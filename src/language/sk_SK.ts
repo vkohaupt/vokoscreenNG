@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Celá obrazovka</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Podporiť</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Prehrať</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Podporiť</translation>
     </message>
 </context>
 <context>

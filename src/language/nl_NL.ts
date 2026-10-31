@@ -499,6 +499,10 @@
         <source>Fullscreen</source>
         <translation>Schermvullend</translation>
     </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doneren</translation>
+    </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
@@ -653,6 +657,10 @@
     <message>
         <source>Play</source>
         <translation>Afspelen</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doneren</translation>
     </message>
 </context>
 <context>
