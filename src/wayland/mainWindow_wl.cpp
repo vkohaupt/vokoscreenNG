@@ -719,6 +719,10 @@ void QvkMainWindow_wl::set_Connects()
             vkConvert_mkv_gif_wl->slot_convert_mkv_to_gif(newConvertVideoFileName);
         }
     });
+
+    connect(ui->pushButtonDonate, &QPushButton::clicked, this, [this](){
+        QDesktopServices::openUrl(QUrl("https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html"));
+    });
 }
 
 

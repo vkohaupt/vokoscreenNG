@@ -449,6 +449,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_logFolder() ) );
 
+    connect(ui->pushButtonDonate, &QPushButton::clicked, this, [this](){
+        QDesktopServices::openUrl(QUrl("https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html"));
+    });
+
     // Tab 1 Screen
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled(bool) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled(bool) ) );
