@@ -79,7 +79,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     {
         QWebEnginePage *webEnginePage = vkWebEngineView_wl->page();
         QString m_url = webEnginePage->url().toString();
-        if (m_url.contains("Wayland") == true){
+        if (m_url.toLower().contains("wayland") == true){
             qDebug().noquote() << global::nameOutput << "[Help] Load begin " << m_url;
         }
     });
@@ -109,7 +109,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
 
         QWebEnginePage *webEnginePage = vkWebEngineView_wl->page();
         QString m_url = webEnginePage->url().toString();
-        if (m_url.contains("Wayland") == true){
+        if (m_url.toLower().contains("wayland") == true){
             if (value == true){
                 qDebug().noquote() << global::nameOutput << "[Help] Load finish" << m_url;
                 if (m_url.contains("getWaylandDirs") == true ){
