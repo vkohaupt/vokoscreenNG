@@ -268,10 +268,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << gst_version_string();
     qDebug().noquote() << global::nameOutput << "Virtual Maschine:" << vkVirtual->isVirtualMaschine();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
-    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
-        isFlatpak = true;
-    }
-
     qDebug().noquote() << global::nameOutput << "KernelVersion:"  << QSysInfo::kernelVersion();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
@@ -626,7 +622,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     VK_gst_Elements_available();
     vkContainerController = new QvkContainerController( ui );
-    vkContainerController->init( isFlatpak );
+    vkContainerController->init(QSysInfo::prettyProductName().contains("Flatpak"));
 
 #ifdef Q_OS_UNIX
     QvkScreenManager *screenManager = new QvkScreenManager( this );
@@ -1540,7 +1536,7 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     QString cornerPicture;
 
 #ifdef Q_OS_UNIX
-    if ( isFlatpak == true ) {
+    if (QSysInfo::prettyProductName().contains("Flatpak") == true ) {
        cornerPicture = ":/pictures/cornerWidget/linux-flatpak.png";
     } else {
        cornerPicture = ":/pictures/cornerWidget/linux.png";

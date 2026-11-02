@@ -88,7 +88,6 @@ public:
     QvkLicenses *vkLicenses;
     QvkHelp *vkHelp;
     bool wantRecording = true;
-    bool isFlatpak = false;
 
 
 private:
