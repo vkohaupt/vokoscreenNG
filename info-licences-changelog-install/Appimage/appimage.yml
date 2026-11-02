@@ -1,0 +1,87 @@
+name: Build vokoscreenNG AppImage (openSUSE Leap 16.0)
+
+on:
+  push:
+    branches: [ "3.0" ]
+  pull_request:
+    branches: [ "3.0" ]
+
+jobs:
+  build-appimage:
+    runs-on: ubuntu-latest
+
+    container:
+      image: opensuse/leap:16.0
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 1. Erweiterte vokoscreenNG & Qt6 (WebEngine, WebSockets, Multimedia) Abhängigkeiten installieren
+      - name: Install Build Dependencies
+        run: |
+          zypper --non-interactive refresh
+          zypper --non-interactive install \
+            wget \
+            file \
+            make \
+            gcc-c++ \
+            pkgconfig \
+            alsa-devel \
+            libpulse-devel \
+            pipewire-devel \
+            gstreamer-devel \
+            gstreamer-plugins-base-devel \
+            qt6-base-devel \
+            qt6-multimedia-devel \
+            qt6-websockets-devel \
+            qt6-webchannel-devel \
+            qt6-webenginecore-devel \
+            qt6-webenginewidgets-devel \
+            qt6-tools-linguist \
+            mozilla-nss-devel     # Wichtig für die Sandbox/Krypto von QtWebEngine
+
+      # 2. Kompilieren mit qmake6 und Installation ins AppDir
+      - name: Build with qmake6
+        run: |
+          cd src
+          qmake6
+          make -j$(nproc)
+          make INSTALL_ROOT=$(pwd)/AppDir install
+
+      - name: Download and Run linuxdeploy
+        run: |
+          # 1. Herunterladen der echten Binärdatei über den direkten Release-Link
+          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+          chmod +x linuxdeploy-x86_64.AppImage
+
+          wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
+          chmod +x linuxdeploy-plugin-qt-x86_64.AppImage
+          mv linuxdeploy-plugin-qt-x86_64.AppImage /usr/bin/linuxdeploy-plugin-qt
+
+      # 4. AppImage generieren
+      - name: Generate AppImage
+        shell: bash # Zwingt GitHub Actions, bash anstelle von sh zu nutzen
+        env:
+          NO_APPIMAGE_ASYNC_EXEC: 1
+          ARCH: x86_64
+          APPIMAGE_EXTRACT_AND_RUN: 1
+          QMAKE: /usr/bin/qmake6
+          # Da QtWebEngine eigene Hilfsprozesse (QtWebEngineProcess) nutzt,
+          # sagen wir dem Plugin, dass es diese tiefenabhängigen Ressourcen erzwingen soll.
+          EXTRA_QT_PLUGINS: "webengine"
+        run: |
+          ./linuxdeploy-x86_64.AppImage --appimage-extract-and-run \
+            --appdir src/AppDir \
+            --plugin qt \
+            --desktop-file src/applications/vokoscreenNG.desktop \
+            --icon-file src/applications/vokoscreenNG.png \
+            --executable src/vokoscreenNG \
+            --output appimage
+
+      # 5. Artefakt sichern
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vokoscreenNG-openSUSE-Leap16-AppImage
+          path: "*.AppImage"
