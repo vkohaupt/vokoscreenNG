@@ -52,3 +52,6 @@ include(log/log_wl.pri)
 
 #Player
 include(player/player_wl.pri)
+
+# Magnifier
+include(magnifier/magnifier_wl.pri)

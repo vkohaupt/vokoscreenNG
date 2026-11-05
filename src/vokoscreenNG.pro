@@ -70,6 +70,7 @@ unix:contains(INSTALLER, "IFW" ){
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
 unix:PKGCONFIG += wayland-client
+unix:PKGCONFIG += gstreamer-app-1.0
 unix:LIBS += -lX11
 
 # Player Linux
