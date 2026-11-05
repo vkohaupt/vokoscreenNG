@@ -14,7 +14,7 @@ class QvkMagnifier_wl : public QWidget
 public:
     QvkMagnifier_wl(QWidget *parent = nullptr);
     ~QvkMagnifier_wl();
-    QvkMagnifierPipeWire_wl *streamer = nullptr;
+    QvkMagnifierPipeWire_wl *vkMagnifierPipeWire_wl = nullptr;
 
 private:
     int m_x;

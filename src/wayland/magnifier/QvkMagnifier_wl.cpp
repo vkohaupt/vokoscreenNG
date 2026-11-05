@@ -28,14 +28,14 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     showMaximized();
     setMouseTracking(true);
 
-    streamer = new QvkMagnifierPipeWire_wl(this);
-    connect(streamer, &QvkMagnifierPipeWire_wl::frameReceived, this, [this](const QImage &frame) {
+    vkMagnifierPipeWire_wl = new QvkMagnifierPipeWire_wl(this);
+    connect(vkMagnifierPipeWire_wl, &QvkMagnifierPipeWire_wl::frameReceived, this, [this](const QImage &frame) {
         currentPicture = frame.scaled(QSize(160, 120));
         update();
     });
 
     // Option B: Irgendwo im Code einfach den letzten Zustand aus der Variable holen
-    QImage aktuellesBild = streamer->getLatestFrame();
+    QImage aktuellesBild = vkMagnifierPipeWire_wl->getLatestFrame();
 }
 
 QvkMagnifier_wl::~QvkMagnifier_wl()

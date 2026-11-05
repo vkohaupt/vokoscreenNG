@@ -358,11 +358,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             // Startet die Initialisierung in einem Hintergrund-Thread.
             // GUI bleibt in der Zeit benutzbar.
              auto a = QtConcurrent::run(QThreadPool::globalInstance(), [vkMagnifier_wl](){
-                 vkMagnifier_wl->streamer->startStream();
+                 vkMagnifier_wl->vkMagnifierPipeWire_wl->startStream();
              });
              Q_UNUSED(a)
         }else{
-            vkMagnifier_wl->streamer->stopStream();
+            vkMagnifier_wl->vkMagnifierPipeWire_wl->stopStream();
         }
     });
 
