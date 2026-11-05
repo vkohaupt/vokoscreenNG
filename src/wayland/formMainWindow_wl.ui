@@ -585,15 +585,35 @@
                    </property>
                    <item>
                     <layout class="QGridLayout" name="gridLayoutFormatCodecs">
-                     <item row="2" column="1">
-                      <layout class="QHBoxLayout" name="horizontalLayout_28">
-                       <property name="leftMargin">
-                        <number>6</number>
+                     <item row="3" column="3">
+                      <widget class="QToolButton" name="help_screencast_videocodec">
+                       <property name="toolTip">
+                        <string>Help</string>
                        </property>
-                       <item>
-                        <widget class="QComboBox" name="comboBoxFormat"/>
-                       </item>
-                      </layout>
+                       <property name="text">
+                        <string notr="true">Help</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+                      <widget class="QLabel" name="labelFrames">
+                       <property name="text">
+                        <string>Frames</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="3" alignment="Qt::AlignmentFlag::AlignRight">
+                      <widget class="QToolButton" name="help_screencast_format">
+                       <property name="toolTip">
+                        <string>Help</string>
+                       </property>
+                       <property name="text">
+                        <string notr="true">Help</string>
+                       </property>
+                      </widget>
                      </item>
                      <item row="1" column="1">
                       <widget class="QFrame" name="frameFrames">
@@ -646,16 +666,6 @@
                        </layout>
                       </widget>
                      </item>
-                     <item row="3" column="3">
-                      <widget class="QToolButton" name="help_screencast_videocodec">
-                       <property name="toolTip">
-                        <string>Help</string>
-                       </property>
-                       <property name="text">
-                        <string notr="true">Help</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="1" column="3" alignment="Qt::AlignmentFlag::AlignRight">
                       <widget class="QToolButton" name="help_screencast_nomousecursor">
                        <property name="toolTip">
@@ -665,6 +675,16 @@
                         <string notr="true">Help</string>
                        </property>
                       </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <layout class="QHBoxLayout" name="horizontalLayout_28">
+                       <property name="leftMargin">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="QComboBox" name="comboBoxFormat"/>
+                       </item>
+                      </layout>
                      </item>
                      <item row="3" column="1" colspan="2">
                       <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -723,16 +743,6 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
-                      <widget class="QLabel" name="labelFormat">
-                       <property name="text">
-                        <string>Format</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="2" column="2">
                       <spacer name="horizontalSpacer_5">
                        <property name="orientation">
@@ -749,23 +759,10 @@
                        </property>
                       </spacer>
                      </item>
-                     <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
-                      <widget class="QLabel" name="labelFrames">
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="labelVideoCodec">
                        <property name="text">
-                        <string>Frames</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="3" alignment="Qt::AlignmentFlag::AlignRight">
-                      <widget class="QToolButton" name="help_screencast_format">
-                       <property name="toolTip">
-                        <string>Help</string>
-                       </property>
-                       <property name="text">
-                        <string notr="true">Help</string>
+                        <string>Videocodec</string>
                        </property>
                       </widget>
                      </item>
@@ -788,10 +785,13 @@
                        </layout>
                       </widget>
                      </item>
-                     <item row="3" column="0">
-                      <widget class="QLabel" name="labelVideoCodec">
+                     <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+                      <widget class="QLabel" name="labelFormat">
                        <property name="text">
-                        <string>Videocodec</string>
+                        <string>Format</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                        </property>
                       </widget>
                      </item>
@@ -829,6 +829,29 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_10">
                   <item>
+                   <widget class="QCheckBox" name="checkBoxMagnifier">
+                    <property name="text">
+                     <string>Magnifier</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_19">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Minimum</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
                    <widget class="QLabel" name="labelScreencastCountdownText">
                     <property name="text">
                      <string>Countdown</string>
@@ -839,6 +862,9 @@
                    <spacer name="horizontalSpacer_3">
                     <property name="orientation">
                      <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>

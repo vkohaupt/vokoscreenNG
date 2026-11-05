@@ -1,6 +1,8 @@
 #ifndef QVKMAGNIFIER_WL_H
 #define QVKMAGNIFIER_WL_H
 
+#include "QvkMagnifierPipeWire_wl.h"
+
 #include <QWidget>
 #include <QMouseEvent>
 #include <QPaintEvent>
@@ -12,6 +14,7 @@ class QvkMagnifier_wl : public QWidget
 public:
     QvkMagnifier_wl(QWidget *parent = nullptr);
     ~QvkMagnifier_wl();
+    QvkMagnifierPipeWire_wl *streamer = nullptr;
 
 private:
     int m_x;

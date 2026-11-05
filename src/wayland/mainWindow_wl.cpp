@@ -3,6 +3,7 @@
 #include "QvkConvert_mkv_gif_wl.h"
 #include "QvkAudioPipewireController_wl.h"
 #include "QvkPlayerController_wl.h"
+#include "QvkMagnifier_wl.h"
 
 #include "global.h"
 #include "QvkDirDialog.h"
@@ -344,6 +345,18 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             this,
             [=](int index){
         slot_languageChanged(index);
+    });
+
+    QvkMagnifier_wl *vkMagnifier_wl = new QvkMagnifier_wl(this);
+    connect(ui->checkBoxMagnifier,
+            &QCheckBox::clicked,
+            this,
+            [this, vkMagnifier_wl](bool bo){
+        if (bo == true){
+            vkMagnifier_wl->streamer->startStream();
+        }else{
+            vkMagnifier_wl->streamer->stopStream();
+        }
     });
 
     vkSettings_wl.readAll( ui, this );
@@ -1428,7 +1441,7 @@ void QvkMainWindow_wl::slot_portal_dialog_aborted()
 void QvkMainWindow_wl::set_SpezialSliders()
 {
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_10->insertWidget( 1, sliderScreencastCountDown );
+    ui->horizontalLayout_10->insertWidget( 3, sliderScreencastCountDown );
     sliderScreencastCountDown->setObjectName( "sliderScreencastCountDown" );
     sliderScreencastCountDown->setTracking( true );
     sliderScreencastCountDown->setMinimum( 0 );
