@@ -1,14 +1,9 @@
 #ifndef QVKCAMERAONEWINDOW_H
 #define QVKCAMERAONEWINDOW_H
 
-#include <QString>
+// Qt include checked
 #include <QWidget>
 #include <QToolButton>
-#include <QImage>
-#include <QShowEvent>
-#include <QCloseEvent>
-#include <QPaintEvent>
-#include <QMouseEvent>
 
 namespace Ui {
 class QvkCameraOneWindow;

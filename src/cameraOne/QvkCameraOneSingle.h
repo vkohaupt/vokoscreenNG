@@ -1,15 +1,9 @@
 #ifndef QVKCAMERAONESINGLE_H
 #define QVKCAMERAONESINGLE_H
 
-#include <QString>
-#include <QWidget>
-#include <QCheckBox>
-#include <QResizeEvent>
+// Qt include checked
 #include <QCamera>
 #include <QVideoSink>
-#include <QMediaCaptureSession>
-#include <QVideoFrame>
-
 
 #include "QvkCameraOneWindow.h"
 #include "QvkCameraOneOptions.h"

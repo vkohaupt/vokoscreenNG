@@ -23,8 +23,8 @@
 #ifndef QVKCAMERAONEWATCHER_H
 #define QVKCAMERAONEWATCHER_H
 
+// Qt include checked
 #include <QObject>
-#include <QStringList>
 
 class QvkCameraOneWatcher : public QObject
 {

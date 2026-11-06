@@ -1,9 +1,7 @@
 #ifndef QVKCAMERAONECONTROLLER_H
 #define QVKCAMERAONECONTROLLER_H
 
-#include <QWidget>
-#include <QButtonGroup>
-#include <QCheckBox>
+// Qt include checked
 
 #include "QvkCameraOneSingle.h"
 
