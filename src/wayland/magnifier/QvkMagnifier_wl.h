@@ -4,6 +4,7 @@
 #include "QvkMagnifierPipeWire_wl.h"
 
 #include <QWidget>
+#include <QImage>
 #include <QMouseEvent>
 #include <QPaintEvent>
 

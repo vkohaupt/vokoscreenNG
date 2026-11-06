@@ -1,5 +1,7 @@
 #include "QvkMagnifierPipeWire_wl.h"
 #include <QDebug>
+#include <QImage>
+#include <QMutexLocker>
 
 QvkMagnifierPipeWire_wl::QvkMagnifierPipeWire_wl(QObject *parent) : QObject(parent) {
     gst_init(nullptr, nullptr);
