@@ -1,16 +1,15 @@
 #include "QvkMagnifier_wl.h"
 #include "QvkMagnifierPipeWire_wl.h"
 
-#include <QWidget>
 #include <QPainter>
 #include <QPixmap>
 #include <QPen>
-#include <QBrush>
 #include <QPointF>
 #include <QPoint>
 #include <QImage>
+#include <QColor>
+#include <QSize>
 #include <QMouseEvent>
-#include <QPaintEvent>
 
 QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
 {
