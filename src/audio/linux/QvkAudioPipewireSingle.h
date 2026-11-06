@@ -1,9 +1,7 @@
 #ifndef QVKAUDIOPIPEWIRESINGLE_H
 #define QVKAUDIOPIPEWIRESINGLE_H
 
-#include <QWidget>
-#include <QFrame>
-#include <QMouseEvent>
+// Qt include checked
 
 #include "QvkAudioPipewireLevelMeter.h"
 

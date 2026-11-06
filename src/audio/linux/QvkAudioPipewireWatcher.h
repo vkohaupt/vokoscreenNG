@@ -23,11 +23,10 @@
 #ifndef QVKAUDIOPIPEWIREWATCHER_H
 #define QVKAUDIOPIPEWIREWATCHER_H
 
+// Qt include checked
+
 #include <gst/gst.h>
 #include "ui_formMainWindow.h"
-
-#include <QObject>
-#include <QString>
 
 class QvkAudioPipewireWatcher: public QObject
 {

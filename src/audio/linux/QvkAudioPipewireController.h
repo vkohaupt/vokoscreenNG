@@ -26,8 +26,7 @@
 #include "ui_formMainWindow.h"
 #include "QvkAudioPipewireWatcher.h"
 
-#include <QObject>
-#include <QString>
+// Qt include checked
 
 class QvkAudioPipewireController: public QObject
 {

@@ -23,8 +23,8 @@
 #ifndef QVKAUDIOPIPEWIRELEVELMETER_H
 #define QVKAUDIOPIPEWIRELEVELMETER_H
 
+// Qt include checked
 #include <QObject>
-#include <QString>
 
 #include <gst/gst.h>
 
