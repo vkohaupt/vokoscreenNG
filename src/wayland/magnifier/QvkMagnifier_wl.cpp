@@ -23,7 +23,6 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     flags |= Qt::FramelessWindowHint;
     setWindowFlags(flags);
 
-    showMaximized();
     setMouseTracking(true);
 
     vkMagnifierPipeWire_wl = new QvkMagnifierPipeWire_wl(this);

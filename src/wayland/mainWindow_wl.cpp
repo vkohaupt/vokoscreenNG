@@ -361,7 +361,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             // GUI bleibt in der Zeit benutzbar.
              auto a = QtConcurrent::run(QThreadPool::globalInstance(), [vkMagnifier_wl](){
                  vkMagnifier_wl->vkMagnifierPipeWire_wl->startStream();
-                 vkMagnifier_wl->show();
+                 vkMagnifier_wl->showMaximized();
              });
              Q_UNUSED(a)
         }else{
