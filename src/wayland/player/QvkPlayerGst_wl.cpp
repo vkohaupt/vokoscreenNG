@@ -25,10 +25,12 @@
 #include "gst/video/videooverlay.h"
 #include <gst/wayland/wayland.h>
 
+#include <QWidget>
 #include <QDebug>
 #include <QAudio>
 #include <QGuiApplication>
 #include <QWindow>
+#include <QTimer>
 #include <QtGui/qpa/qplatformnativeinterface.h>
 
 QvkPlayerGst_wl::QvkPlayerGst_wl()

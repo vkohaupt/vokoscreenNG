@@ -27,8 +27,8 @@
 #include "gst/gstelement.h"
 
 #include <QObject>
-#include <QWidget>
-#include <QTimer>
+
+class QTimer;
 
 class QvkPlayerGst_wl : public QObject
 {

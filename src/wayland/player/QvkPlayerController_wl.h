@@ -29,10 +29,6 @@
 #include "QvkSpezialSlider.h"
 
 #include <QWidget>
-#include <QMouseEvent>
-#include <QKeyEvent>
-#include <QResizeEvent>
-#include <QCloseEvent>
 
 class QvkPlayerController_wl : public QWidget
 {
