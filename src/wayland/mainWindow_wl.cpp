@@ -45,6 +45,8 @@
 #include <QFileInfo>
 // Snapshot
 
+#include "QvkMagnifierPipeWire_wl.h"
+
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
     , ui(new Ui::formMainWindow_wl)

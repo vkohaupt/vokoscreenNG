@@ -1,4 +1,5 @@
 #include "QvkMagnifierPipeWire_wl.h"
+
 #include <QDebug>
 #include <QImage>
 #include <QMutexLocker>

@@ -1,12 +1,13 @@
 #ifndef QVKMAGNIFIER_WL_H
 #define QVKMAGNIFIER_WL_H
 
-#include "QvkMagnifierPipeWire_wl.h"
-
 #include <QWidget>
 #include <QImage>
-#include <QMouseEvent>
-#include <QPaintEvent>
+
+class QvkMagnifierPipeWire_wl;
+class QMouseEvent;
+class QPaintEvent;
+
 
 class QvkMagnifier_wl : public QWidget
 {
