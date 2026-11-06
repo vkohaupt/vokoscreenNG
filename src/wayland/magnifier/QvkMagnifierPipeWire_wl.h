@@ -1,9 +1,11 @@
 #ifndef QVKMAGNIFIERPIPEWIRE_WL_H
 #define QVKMAGNIFIERPIPEWIRE_WL_H
 
+// include checked
 #include <QObject>
 #include <QImage>
 #include <QMutex>
+
 #include <gst/gst.h>
 #include <gst/app/gstappsink.h>
 

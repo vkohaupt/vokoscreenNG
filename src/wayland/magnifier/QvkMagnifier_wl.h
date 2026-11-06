@@ -1,6 +1,7 @@
 #ifndef QVKMAGNIFIER_WL_H
 #define QVKMAGNIFIER_WL_H
 
+// include checked
 #include <QWidget>
 #include <QImage>
 
