@@ -389,29 +389,37 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
           vkMagnifierPipeWire_wl->startStream(fd, path);
     });
 
+    QvkMagnifier_wl *vkMagnifier_wl = new QvkMagnifier_wl;
+    vkMagnifier_wl->close();
+
     // Lupe wird durch Checkbox ausgeschaltet
     connect(ui->checkBoxMagnifier,
             &QCheckBox::clicked,
             this,
-            [vkMagnifierPipeWire_wl](bool bo){
+            [vkMagnifierPipeWire_wl, vkMagnifier_wl](bool bo){
         if (bo == false){
             vkMagnifierPipeWire_wl->stopStream();
+            vkMagnifier_wl->close();
         }
     });
 
-    QvkMagnifier_wl *vkMagnifier_wl = new QvkMagnifier_wl;
+    //
     connect(vkMagnifierPipeWire_wl,
             &QvkMagnifierPipeWire_wl::frameReceived,
             vkMagnifier_wl,
             [vkMagnifier_wl](QImage image){
-        qDebug() << "222222222222222222222222222";
           vkMagnifier_wl->slot_setCurrentPicture(image);
     });
 
     // -----------------------------------------------------------------------------------
 
+    ui->checkBoxMagnifier->setEnabled(false);
+
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
+
+    ui->checkBoxMagnifier->setEnabled(true);
+
 
     // Hint: Settings X und Y für die Camera werden eingelesen in
     // QvkCameraSurface_wl::QvkCameraSurface_wl()
