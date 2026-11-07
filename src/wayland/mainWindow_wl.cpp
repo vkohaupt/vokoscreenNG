@@ -399,6 +399,15 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         }
     });
 
+    QvkMagnifier_wl *vkMagnifier_wl = new QvkMagnifier_wl;
+    connect(vkMagnifierPipeWire_wl,
+            &QvkMagnifierPipeWire_wl::frameReceived,
+            vkMagnifier_wl,
+            [vkMagnifier_wl](QImage image){
+        qDebug() << "222222222222222222222222222";
+          vkMagnifier_wl->slot_setCurrentPicture(image);
+    });
+
     // -----------------------------------------------------------------------------------
 
     vkSettings_wl.readAll( ui, this );

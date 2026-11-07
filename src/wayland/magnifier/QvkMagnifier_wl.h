@@ -18,11 +18,14 @@ public:
     QvkMagnifier_wl(QWidget *parent = nullptr);
     ~QvkMagnifier_wl();
     QvkMagnifierPipeWire_wl *vkMagnifierPipeWire_wl = nullptr;
+    QImage currentPicture;
 
 private:
     int m_x;
     int m_y;
-    QImage currentPicture;
+
+public slots:
+    void slot_setCurrentPicture(QImage image);
 
 protected:
     void mouseMoveEvent(QMouseEvent *event);

@@ -26,23 +26,19 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
 
     setMouseTracking(true);
 
-    vkMagnifierPipeWire_wl = new QvkMagnifierPipeWire_wl(this);
-    connect(vkMagnifierPipeWire_wl, &QvkMagnifierPipeWire_wl::frameReceived, this, [this](const QImage &frame) {
-        currentPicture = frame.scaled(QSize(160, 120));
-        update();
-    });
-
-    QvkMagnifierPortal_wl *vkMagnifierPortal_wl = new QvkMagnifierPortal_wl();
-    connect(vkMagnifierPortal_wl,
-            &QvkMagnifierPortal_wl::signal_portal_fd_path,
-            this,
-            [=](QString vk_fd, QString vk_path){
-        vkMagnifierPipeWire_wl->startStream(vk_fd, vk_path);
-    });
+    showMaximized();
 }
 
 QvkMagnifier_wl::~QvkMagnifier_wl()
 {
+}
+
+
+void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
+{
+    currentPicture = image.scaled(QSize(240, 135));
+    update();
+    show();
 }
 
 
