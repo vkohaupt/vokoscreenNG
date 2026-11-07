@@ -191,7 +191,7 @@ void QvkMagnifierPortal_wl::slot_handleStartResponse( uint response, const QVari
     Q_UNUSED(results);
 
     if ( response != 0 ) {
-        qDebug().noquote() << global::nameOutput << "Failed to start or cancel dialog: " << response;
+        qDebug().noquote() << global::nameOutput << "[Magnifier]Failed to start or cancel dialog: " << response;
         emit signal_portal_aborted();
         return;
     }

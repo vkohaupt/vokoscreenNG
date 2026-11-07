@@ -39,13 +39,6 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
             [=](QString vk_fd, QString vk_path){
         vkMagnifierPipeWire_wl->startStream(vk_fd, vk_path);
     });
-//    connect(vkMagnifierPortal_wl, &QvkMagnifierPortal_wl::signal_portal_aborted, this, [=](){slot_portal_dialog_aborted();});
-
-
-
-
-    // Option B: Irgendwo im Code einfach den letzten Zustand aus der Variable holen
-    QImage aktuellesBild = vkMagnifierPipeWire_wl->getLatestFrame();
 }
 
 QvkMagnifier_wl::~QvkMagnifier_wl()
