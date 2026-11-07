@@ -16,7 +16,8 @@ public:
     explicit QvkMagnifierPipeWire_wl(QObject *parent = nullptr);
     ~QvkMagnifierPipeWire_wl();
 
-    bool startStream();
+    bool startStream(QString vk_fd, QString vk_path);
+    //bool startStream();
     void stopStream();
 
     // Direktzugriff auf das aktuellste Bild (Thread-sicher)

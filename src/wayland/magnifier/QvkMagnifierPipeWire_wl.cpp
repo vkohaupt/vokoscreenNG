@@ -12,16 +12,26 @@ QvkMagnifierPipeWire_wl::~QvkMagnifierPipeWire_wl() {
     stopStream();
 }
 
-bool QvkMagnifierPipeWire_wl::startStream() {
+//bool QvkMagnifierPipeWire_wl::startStream() {
+bool QvkMagnifierPipeWire_wl::startStream(QString vk_fd, QString vk_path)
+{
+/*
     // Pipeline-String für Wayland/PipeWire -> RGBA Format für QImage
     const char* pipelineStr = 
         "pipewiresrc ! "
         "videoconvert ! "
         "video/x-raw,format=RGBA ! "
         "appsink name=sink emit-signals=true max-buffers=1 drop=true";
+*/
+
+    QString pipelineStr =
+            "pipewiresrc fd=" + vk_fd + " path=" + vk_path + " ! " +
+            "videoconvert ! "
+            "video/x-raw,format=RGBA ! "
+            "appsink name=sink emit-signals=true max-buffers=1 drop=true";
 
     GError *error = nullptr;
-    pipeline = gst_parse_launch(pipelineStr, &error);
+    pipeline = gst_parse_launch(pipelineStr.toLatin1(), &error);
 
     if (error) {
         qCritical() << "GStreamer Pipeline-Fehler:" << error->message;

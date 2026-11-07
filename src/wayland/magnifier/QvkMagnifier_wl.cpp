@@ -1,5 +1,6 @@
 #include "QvkMagnifier_wl.h"
 #include "QvkMagnifierPipeWire_wl.h"
+#include "QvkMagnifierPortal_wl.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -30,6 +31,18 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
         currentPicture = frame.scaled(QSize(160, 120));
         update();
     });
+
+    QvkMagnifierPortal_wl *vkMagnifierPortal_wl = new QvkMagnifierPortal_wl();
+    connect(vkMagnifierPortal_wl,
+            &QvkMagnifierPortal_wl::signal_portal_fd_path,
+            this,
+            [=](QString vk_fd, QString vk_path){
+        vkMagnifierPipeWire_wl->startStream(vk_fd, vk_path);
+    });
+//    connect(vkMagnifierPortal_wl, &QvkMagnifierPortal_wl::signal_portal_aborted, this, [=](){slot_portal_dialog_aborted();});
+
+
+
 
     // Option B: Irgendwo im Code einfach den letzten Zustand aus der Variable holen
     QImage aktuellesBild = vkMagnifierPipeWire_wl->getLatestFrame();

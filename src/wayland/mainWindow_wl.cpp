@@ -46,6 +46,7 @@
 // Snapshot
 
 #include "QvkMagnifierPipeWire_wl.h"
+#include "QvkMagnifierPortal_wl.h"
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -351,24 +352,31 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         slot_languageChanged(index);
     });
 
-    QvkMagnifier_wl *vkMagnifier_wl = new QvkMagnifier_wl(this);
+    QvkMagnifierPortal_wl *vkMagnifierPortal_wl = new QvkMagnifierPortal_wl(this);
     connect(ui->checkBoxMagnifier,
             &QCheckBox::clicked,
             this,
-            [this, vkMagnifier_wl](bool bo){
+            [this, vkMagnifierPortal_wl](bool bo){
         if (bo == true){
-            // Startet die Initialisierung in einem Hintergrund-Thread.
-            // GUI bleibt in der Zeit benutzbar.
-             auto a = QtConcurrent::run(QThreadPool::globalInstance(), [vkMagnifier_wl](){
-                 vkMagnifier_wl->vkMagnifierPipeWire_wl->startStream();
-                 vkMagnifier_wl->showMaximized();
-             });
-             Q_UNUSED(a)
-        }else{
-            vkMagnifier_wl->vkMagnifierPipeWire_wl->stopStream();
-            vkMagnifier_wl->close();
+            // Value 1 = MONITOR
+            // Value 2 = WINDOW
+            uint sourceType = 1;
+
+            // Value 1 = HIDDEN;
+            // Value 2 = EMBEDDED;
+            uint mousecursorONOff = 1;
+
+            vkMagnifierPortal_wl->slot_startScreenCast(sourceType, mousecursorONOff);
         }
     });
+
+    connect(vkMagnifierPortal_wl,
+            &QvkMagnifierPortal_wl::signal_portal_aborted,
+            this,
+            [=](){
+        ui->checkBoxMagnifier->setChecked(false);
+    });
+
 
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );

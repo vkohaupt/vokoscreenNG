@@ -1,7 +1,6 @@
 #ifndef QVKCAMERAONEOPTIONS_H
 #define QVKCAMERAONEOPTIONS_H
 
-
 // Qt include checked
 
 #include "QvkSpezialSlider.h"
