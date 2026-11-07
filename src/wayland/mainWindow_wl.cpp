@@ -377,6 +377,14 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         ui->checkBoxMagnifier->setChecked(false);
     });
 
+    QvkMagnifierPipeWire_wl *vkMagnifierPipeWire_wl = new QvkMagnifierPipeWire_wl;
+    connect(vkMagnifierPortal_wl,
+            &QvkMagnifierPortal_wl::signal_portal_fd_path,
+            this,
+            [=](QString fd, QString path){
+          vkMagnifierPipeWire_wl->startStream(fd, path);
+    });
+
 
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );

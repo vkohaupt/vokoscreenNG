@@ -30,6 +30,8 @@ bool QvkMagnifierPipeWire_wl::startStream(QString vk_fd, QString vk_path)
             "video/x-raw,format=RGBA ! "
             "appsink name=sink emit-signals=true max-buffers=1 drop=true";
 
+qDebug() << "111111111111111111111111111111" << pipelineStr;
+
     GError *error = nullptr;
     pipeline = gst_parse_launch(pipelineStr.toLatin1(), &error);
 
@@ -102,6 +104,8 @@ GstFlowReturn QvkMagnifierPipeWire_wl::onNewSample(GstAppSink *sink, gpointer us
 
         // Signal an den Qt-Main-Thread senden
         emit streamer->frameReceived(clonedImg);
+        qDebug() << "22222222222222222222222222222223333333333333333333333";
+
     }
 
     gst_sample_unref(sample);
