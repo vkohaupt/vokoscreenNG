@@ -352,6 +352,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         slot_languageChanged(index);
     });
 
+    // ------------------------- Magnifier --------------------------------------------
+    // Checkbox wurde checked gesetzt und der Portaldialog öffnet sich.
     QvkMagnifierPortal_wl *vkMagnifierPortal_wl = new QvkMagnifierPortal_wl(this);
     connect(ui->checkBoxMagnifier,
             &QCheckBox::clicked,
@@ -370,6 +372,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         }
     });
 
+    // Portaldialog wurde abgebrochen und Checkbox wird unchecked gesetzt.
     connect(vkMagnifierPortal_wl,
             &QvkMagnifierPortal_wl::signal_portal_aborted,
             this,
@@ -377,6 +380,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         ui->checkBoxMagnifier->setChecked(false);
     });
 
+    // Im Portaldialog wurde Fullscreen ausgewählt und fd und path wird an pipewire gesendet
     QvkMagnifierPipeWire_wl *vkMagnifierPipeWire_wl = new QvkMagnifierPipeWire_wl;
     connect(vkMagnifierPortal_wl,
             &QvkMagnifierPortal_wl::signal_portal_fd_path,
@@ -385,6 +389,17 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
           vkMagnifierPipeWire_wl->startStream(fd, path);
     });
 
+    // Lupe wird durch Checkbox ausgeschaltet
+    connect(ui->checkBoxMagnifier,
+            &QCheckBox::clicked,
+            this,
+            [vkMagnifierPipeWire_wl](bool bo){
+        if (bo == false){
+            vkMagnifierPipeWire_wl->stopStream();
+        }
+    });
+
+    // -----------------------------------------------------------------------------------
 
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
@@ -1468,7 +1483,7 @@ void QvkMainWindow_wl::slot_portal_dialog_aborted()
 void QvkMainWindow_wl::set_SpezialSliders()
 {
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_10->insertWidget( 3, sliderScreencastCountDown );
+    ui->horizontalLayout_10->insertWidget( 5, sliderScreencastCountDown );
     sliderScreencastCountDown->setObjectName( "sliderScreencastCountDown" );
     sliderScreencastCountDown->setTracking( true );
     sliderScreencastCountDown->setMinimum( 0 );

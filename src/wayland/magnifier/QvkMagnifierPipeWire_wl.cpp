@@ -1,4 +1,5 @@
 #include "QvkMagnifierPipeWire_wl.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QImage>
@@ -30,8 +31,6 @@ bool QvkMagnifierPipeWire_wl::startStream(QString vk_fd, QString vk_path)
             "video/x-raw,format=RGBA ! "
             "appsink name=sink emit-signals=true max-buffers=1 drop=true";
 
-qDebug() << "111111111111111111111111111111" << pipelineStr;
-
     GError *error = nullptr;
     pipeline = gst_parse_launch(pipelineStr.toLatin1(), &error);
 
@@ -47,12 +46,13 @@ qDebug() << "111111111111111111111111111111" << pipelineStr;
     GstAppSinkCallbacks callbacks = { nullptr, nullptr, onNewSample, nullptr, nullptr, nullptr };
     gst_app_sink_set_callbacks(GST_APP_SINK(appsink), &callbacks, this, nullptr);
 
-    // Stream starten (Unter Wayland öffnet sich hier der Portal-Auswahldialog)
     GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
     if (ret == GST_STATE_CHANGE_FAILURE) {
         qCritical() << "Fehler beim Starten der GStreamer-Pipeline.";
         return false;
     }
+
+    qDebug().noquote() << global::nameOutput << "[Magnifier] Stream started";
 
     return true;
 }
@@ -64,6 +64,7 @@ void QvkMagnifierPipeWire_wl::stopStream() {
         gst_object_unref(pipeline);
         pipeline = nullptr;
         appsink = nullptr;
+        qDebug().noquote() << global::nameOutput << "[Magnifier] Stream stoped";
     }
 }
 
@@ -104,8 +105,6 @@ GstFlowReturn QvkMagnifierPipeWire_wl::onNewSample(GstAppSink *sink, gpointer us
 
         // Signal an den Qt-Main-Thread senden
         emit streamer->frameReceived(clonedImg);
-        qDebug() << "22222222222222222222222222222223333333333333333333333";
-
     }
 
     gst_sample_unref(sample);
