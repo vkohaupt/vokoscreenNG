@@ -45,7 +45,6 @@ void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
                                 Qt::SmoothTransformation);
 
     update();
-    show();
 }
 
 
