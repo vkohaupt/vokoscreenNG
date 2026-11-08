@@ -13,7 +13,7 @@ QvkMagnifierPipeWire_wl::~QvkMagnifierPipeWire_wl() {
     stopStream();
 }
 
-//bool QvkMagnifierPipeWire_wl::startStream() {
+
 bool QvkMagnifierPipeWire_wl::startStream(QString vk_fd, QString vk_path)
 {
     QString pipelineStr =
@@ -98,7 +98,7 @@ GstFlowReturn QvkMagnifierPipeWire_wl::onNewSample(GstAppSink *sink, gpointer us
         }
 
         // Signal an den Qt-Main-Thread senden
-        emit streamer->frameReceived(clonedImg);
+        emit streamer->signal_frameReceived(clonedImg);
     }
 
     gst_sample_unref(sample);

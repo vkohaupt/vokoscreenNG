@@ -405,7 +405,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     //
     connect(vkMagnifierPipeWire_wl,
-            &QvkMagnifierPipeWire_wl::frameReceived,
+            &QvkMagnifierPipeWire_wl::signal_frameReceived,
             vkMagnifier_wl,
             [vkMagnifier_wl](QImage image){
           vkMagnifier_wl->slot_setCurrentPicture(image);

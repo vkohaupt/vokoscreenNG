@@ -25,7 +25,7 @@ public:
 
 signals:
     // Signal wird gefeuert, sobald ein neuer Frame bereitsteht
-    void frameReceived(const QImage &frame);
+    void signal_frameReceived(const QImage &frame);
 
 private:
     GstElement *pipeline = nullptr;
