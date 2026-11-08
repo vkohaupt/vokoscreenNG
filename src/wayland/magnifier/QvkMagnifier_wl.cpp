@@ -34,14 +34,8 @@ QvkMagnifier_wl::~QvkMagnifier_wl()
 
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
-//    currentPicture = image.scaled(QSize(240, 135));
-
-
-    QImage img = image.copy(m_x - 50, m_y - 50, 100, 100);
-    currentPicture = img.scaled(QSize(200, 200));
-
-
-
+    QImage img = image.copy(m_x - 100, m_y - 50, 200, 100);
+    currentPicture = img.scaled(QSize(400, 200));
 
     update();
     show();
@@ -63,7 +57,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
         int circle = 100;
 
         QPen pen;
-        pen.setColor(QColor(0, 0, 255, 10));
+        pen.setColor(QColor(0, 0, 255, 1));
         pen.setWidth(circle - 5);
 
         painterPixmap.setPen(pen);
@@ -73,6 +67,14 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
         painterPixmap.drawImage(m_x - currentPicture.width()/2,
                                 m_y + circle,
                                 currentPicture);
+
+        pen.setColor(QColor(Qt::lightGray));
+        pen.setWidth(2);
+        painterPixmap.setPen(pen);
+        painterPixmap.drawRect(m_x - currentPicture.width()/2,
+                               m_y + circle,
+                               currentPicture.width(),
+                               currentPicture.height());
     }
     painterPixmap.end();
 
