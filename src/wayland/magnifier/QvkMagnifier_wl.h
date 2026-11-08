@@ -34,6 +34,10 @@ public slots:
 protected:
     void mouseMoveEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *event);
+    void closeEvent(QCloseEvent *event);
+
+signals:
+    void signal_MagnifierClose();
 
 
 };

@@ -37,6 +37,12 @@ QvkMagnifier_wl::~QvkMagnifier_wl()
 }
 
 
+void QvkMagnifier_wl::closeEvent(QCloseEvent *event)
+{
+    emit signal_MagnifierClose();
+}
+
+
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
     QImage img = image.copy(m_x - 100, m_y - 50, 200, 100);

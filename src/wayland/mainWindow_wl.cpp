@@ -386,7 +386,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             &QvkMagnifierPortal_wl::signal_portal_fd_path,
             this,
             [=](QString fd, QString path){
-          vkMagnifierPipeWire_wl->startStream(fd, path); //---------------------------------------
+          vkMagnifierPipeWire_wl->startStream(fd, path);
     });
 
     QvkMagnifier_wl *vkMagnifier_wl = new QvkMagnifier_wl;
@@ -401,9 +401,13 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             vkMagnifierPipeWire_wl->stopStream();
             vkMagnifier_wl->close();
         } else {
-            //---------------------------------------------------
             vkMagnifier_wl->show();
         }
+    });
+
+    // Lupe wurde über die Fensterleiste geschloßen
+    connect(vkMagnifier_wl, &QvkMagnifier_wl::signal_MagnifierClose, this, [this](){
+        ui->checkBoxMagnifier->setChecked(false);
     });
 
     //
