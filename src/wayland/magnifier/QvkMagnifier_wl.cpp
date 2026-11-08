@@ -17,6 +17,11 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     Q_UNUSED(parent)
     m_x = 300;
     m_y = 300;
+    circle = 100;
+    m_bluePen.setColor(QColor(0, 0, 255, 1));
+    m_bluePen.setWidth(circle - 5);
+    m_grayPen.setColor(Qt::lightGray);
+    m_grayPen.setWidth(2);
 
     setAttribute(Qt::WA_TranslucentBackground, true);
     Qt::WindowFlags flags;
@@ -35,7 +40,9 @@ QvkMagnifier_wl::~QvkMagnifier_wl()
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
     QImage img = image.copy(m_x - 100, m_y - 50, 200, 100);
-    currentPicture = img.scaled(QSize(400, 200));
+    currentPicture = img.scaled(QSize(400, 200),
+                                Qt::KeepAspectRatio,
+                                Qt::SmoothTransformation);
 
     update();
     show();
@@ -54,13 +61,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
         painterPixmap.setRenderHint(QPainter::Antialiasing, true);
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
 
-        int circle = 100;
-
-        QPen pen;
-        pen.setColor(QColor(0, 0, 255, 1));
-        pen.setWidth(circle - 5);
-
-        painterPixmap.setPen(pen);
+        painterPixmap.setPen(m_bluePen);
         painterPixmap.setBrush(Qt::NoBrush);
         painterPixmap.drawEllipse(QPoint(m_x, m_y), circle/2, circle/2);
 
@@ -68,9 +69,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
                                 m_y + circle,
                                 currentPicture);
 
-        pen.setColor(QColor(Qt::lightGray));
-        pen.setWidth(2);
-        painterPixmap.setPen(pen);
+        painterPixmap.setPen(m_grayPen);
         painterPixmap.drawRect(m_x - currentPicture.width()/2,
                                m_y + circle,
                                currentPicture.width(),

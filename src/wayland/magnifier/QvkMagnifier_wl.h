@@ -4,6 +4,7 @@
 // include checked
 #include <QWidget>
 #include <QImage>
+#include <QPen>
 
 class QvkMagnifierPipeWire_wl;
 class QMouseEvent;
@@ -23,6 +24,9 @@ public:
 private:
     int m_x;
     int m_y;
+    QPen m_bluePen;
+    QPen m_grayPen;
+    int circle;
 
 public slots:
     void slot_setCurrentPicture(QImage image);
