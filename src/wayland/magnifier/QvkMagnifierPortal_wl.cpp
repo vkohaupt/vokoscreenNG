@@ -249,7 +249,7 @@ QString QvkMagnifierPortal_wl::createSessionToken() const
     static int sessionTokenCounter = 0;
 
     sessionTokenCounter += 1;
-    return QString( "vokosess%1" ).arg( sessionTokenCounter );
+    return QString( "vokoMagniSes%1" ).arg( sessionTokenCounter );
 }
 
 QString QvkMagnifierPortal_wl::createRequestToken() const
@@ -257,5 +257,5 @@ QString QvkMagnifierPortal_wl::createRequestToken() const
     static int requestTokenCounter = 0;
 
     requestTokenCounter += 1;
-    return QString( "vokoreq%1" ).arg( requestTokenCounter );
+    return QString( "vokoMagniReq%1" ).arg( requestTokenCounter );
 }
