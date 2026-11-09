@@ -111,6 +111,14 @@ void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, con
 
     mSession = results.value( "session_handle" ).toString();
 
+    // Auf dem Desktop wurde z.b im KDE auf den roten Knopf gelickt so das die Aufnahme gestoppt wird
+    QDBusConnection::sessionBus().connect("org.freedesktop.portal.Desktop",
+                                          mSession,
+                                          "org.freedesktop.portal.Session",
+                                          "Closed",
+                                          this,
+                                          SLOT(slot_handleSessionClosed()));
+
     QDBusInterface* portal = screencastPortal();
     if ( !portal ) {
         qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_handleCreateSessionResponse";
@@ -147,6 +155,20 @@ void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, con
         return;
     }
 }
+
+
+void QvkMagnifierPortal_wl::slot_handleSessionClosed()
+{
+    qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Die Screencast-Sitzung wurde vom Desaktop aus geschlossen";
+
+    // Bereite das Objekt für eine mögliche neue Aufnahme vor
+    mSession.clear();
+
+    // Reagiere hier: z. B. deine PipeWire-Wiedergabe stoppen
+    // emit signal_portal_aborted(); // Oder ein eigenes Signal wie signal_portal_stopped()
+    emit signal_portal_stopped();
+}
+
 
 void QvkMagnifierPortal_wl::slot_handleSelectSourcesResponse( uint response, const QVariantMap& results )
 {

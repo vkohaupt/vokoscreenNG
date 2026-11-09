@@ -416,12 +416,21 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         ui->checkBoxMagnifier->setChecked(false);
     });
 
-    //
+    // Bild wurde von der pipewiresrc empfangen und wird an die Lupe weitergeleitet
     connect(vkMagnifierPipeWire_wl,
             &QvkMagnifierPipeWire_wl::signal_frameReceived,
             vkMagnifier_wl,
             [vkMagnifier_wl](QImage image){
           vkMagnifier_wl->slot_setCurrentPicture(image);
+    });
+
+    // Lupe wurde über den Desktop z.b KDE roter Punkt beendet
+    connect(vkMagnifierPortal_wl,
+            &QvkMagnifierPortal_wl::signal_portal_stopped,
+            this,
+            [vkMagnifier_wl, this](){
+        vkMagnifier_wl->close();
+        ui->checkBoxMagnifier->setChecked(false);
     });
 
     // -----------------------------------------------------------------------------------

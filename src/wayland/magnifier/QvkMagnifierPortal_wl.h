@@ -25,11 +25,13 @@ public slots:
 signals:
     void signal_portal_fd_path(QString,QString);
     void signal_portal_aborted();
+    void signal_portal_stopped();
 
 private slots:
     void slot_handleCreateSessionResponse(uint response, const QVariantMap& results);
     void slot_handleSelectSourcesResponse(uint response, const QVariantMap& results);
     void slot_handleStartResponse(uint response, const QVariantMap& results);
+    void slot_handleSessionClosed();
 
 private:
     QDBusInterface* screencastPortal();
