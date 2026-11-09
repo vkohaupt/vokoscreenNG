@@ -396,9 +396,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect(ui->checkBoxMagnifier,
             &QCheckBox::clicked,
             this,
-            [vkMagnifierPipeWire_wl, vkMagnifier_wl](bool bo){
+            [vkMagnifierPipeWire_wl, vkMagnifier_wl, vkMagnifierPortal_wl](bool bo){
         if (bo == false){
             vkMagnifierPipeWire_wl->stopStream();
+            vkMagnifierPortal_wl->slot_stopScreenCast();
             vkMagnifier_wl->close();
         } else {
             vkMagnifier_wl->show();

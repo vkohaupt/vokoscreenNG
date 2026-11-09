@@ -51,6 +51,7 @@ bool QvkMagnifierPipeWire_wl::startStream(QString vk_fd, QString vk_path)
     return true;
 }
 
+
 void QvkMagnifierPipeWire_wl::stopStream() {
     if (pipeline) {
         gst_element_set_state(pipeline, GST_STATE_NULL);
@@ -61,6 +62,7 @@ void QvkMagnifierPipeWire_wl::stopStream() {
         qDebug().noquote() << global::nameOutput << "[Magnifier] Stream stoped";
     }
 }
+
 
 QImage QvkMagnifierPipeWire_wl::getLatestFrame() {
     QMutexLocker locker(&frameMutex);
