@@ -406,8 +406,13 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         }
     });
 
-    // Lupe wurde über die Fensterleiste geschloßen
-    connect(vkMagnifier_wl, &QvkMagnifier_wl::signal_MagnifierClose, this, [this](){
+    // Lupe wird über die Fensterleiste geschloßen
+    connect(vkMagnifier_wl,
+            &QvkMagnifier_wl::signal_MagnifierClose,
+            this,
+            [vkMagnifierPipeWire_wl,vkMagnifierPortal_wl, this](){
+        vkMagnifierPipeWire_wl->stopStream();
+        vkMagnifierPortal_wl->slot_stopScreenCast();
         ui->checkBoxMagnifier->setChecked(false);
     });
 
