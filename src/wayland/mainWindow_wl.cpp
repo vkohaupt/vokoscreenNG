@@ -1666,7 +1666,7 @@ void QvkMainWindow_wl::set_check_WEBM_convert_elements_available()
 
 void QvkMainWindow_wl::set_RegionChoice()
 {
-    vkRegionChoise_wl = new QvkRegionChoise_wl( ui );
+    vkRegionChoise_wl = new QvkRegionChoise_wl();
     connect(ui->radioButtonScreencastArea, &QRadioButton::toggled, this, [=](bool value){vkRegionChoise_wl->setVisible(value);});
     vkRegionChoise_wl->slot_init();
 }

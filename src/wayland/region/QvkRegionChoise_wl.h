@@ -23,8 +23,6 @@
 #ifndef REGIONCHOISE_WL_H
 #define REGIONCHOISE_WL_H
 
-#include "ui_formMainWindow_wl.h"
-
 #include <QWidget>
 #include <QScreen>
 #include <QCloseEvent>
@@ -38,7 +36,7 @@ class QvkRegionChoise_wl : public QWidget
 {
     Q_OBJECT
 public:
-    QvkRegionChoise_wl( Ui_formMainWindow_wl *ui );
+    QvkRegionChoise_wl();
     virtual ~QvkRegionChoise_wl();
     int get_width_from_window();
     int get_height_from_window();
@@ -72,7 +70,6 @@ private slots:
 
 
 private:
-    Ui_formMainWindow_wl *ui;
     enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
     Handle handlePressed;
     Handle handleUnderMouse;

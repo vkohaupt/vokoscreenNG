@@ -31,7 +31,7 @@
 #include <QPaintEvent>
 #include <QIcon>
 
-QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow ):handlePressed(NoHandle),
+QvkRegionChoise_wl::QvkRegionChoise_wl():handlePressed(NoHandle),
     handleUnderMouse(NoHandle),
     HandleColorBackground( Qt::lightGray ),
     HandleColorBackgroundSize( Qt::lightGray ),
@@ -51,8 +51,6 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
     frame_min_height(200 + framePenWidth),
     frameColor(Qt::lightGray)
 {
-
-    ui = ui_formMainWindow;
 
     setWindowTitle( QString( tr( "Area") ) );
 
