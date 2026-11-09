@@ -9,6 +9,7 @@
 class QvkMagnifierPipeWire_wl;
 class QMouseEvent;
 class QPaintEvent;
+class QCloseEvent;
 
 
 class QvkMagnifier_wl : public QWidget
@@ -32,9 +33,9 @@ public slots:
     void slot_setCurrentPicture(QImage image);
 
 protected:
-    void mouseMoveEvent(QMouseEvent *event);
-    void paintEvent(QPaintEvent *event);
-    void closeEvent(QCloseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
+    void closeEvent(QCloseEvent *event) override;
 
 signals:
     void signal_MagnifierClose();

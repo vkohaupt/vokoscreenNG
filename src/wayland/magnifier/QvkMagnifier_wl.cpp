@@ -24,6 +24,7 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     m_grayPen.setWidth(2);
 
     setAttribute(Qt::WA_TranslucentBackground, true);
+    setAttribute(Qt::WA_QuitOnClose, false);
     Qt::WindowFlags flags;
     flags  = Qt::Window;
     flags |= Qt::FramelessWindowHint;
@@ -39,6 +40,7 @@ QvkMagnifier_wl::~QvkMagnifier_wl()
 
 void QvkMagnifier_wl::closeEvent(QCloseEvent *event)
 {
+    Q_UNUSED(event)
     emit signal_MagnifierClose();
 }
 
