@@ -56,7 +56,7 @@ void QvkMagnifierPortal_wl::slot_startScreenCast(uint m_sourceType, uint m_curso
 
     QDBusInterface* portal = screencastPortal();
     if ( !portal ) {
-        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_startScreenCast";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Aborted in function: Portal_wl::slot_startScreenCast";
         return;
     }
 
@@ -76,8 +76,8 @@ void QvkMagnifierPortal_wl::slot_startScreenCast(uint m_sourceType, uint m_curso
 
     const QDBusReply<QDBusObjectPath> reply = portal->call("CreateSession", options);
     if ( !reply.isValid() ) {
-        qDebug().noquote() << global::nameOutput << "Couldn't get reply to ScreenCast/CreateSession";
-        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Couldn't get reply to ScreenCast/CreateSession";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
@@ -93,8 +93,8 @@ void QvkMagnifierPortal_wl::slot_stopScreenCast()
     if ( portal.isValid() ) {
         const QDBusReply<void> reply = portal.call( "Close" );
         if ( !reply.isValid() ) {
-            qDebug().noquote() << global::nameOutput << "Couldn't get reply to ScreenCast/Close";
-            qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
+            qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Couldn't get reply to ScreenCast/Close";
+            qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Error: " << reply.error().message();
             mSession.clear();
             return;
         }
@@ -104,7 +104,7 @@ void QvkMagnifierPortal_wl::slot_stopScreenCast()
 void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, const QVariantMap& results )
 {
     if ( response != 0 ) {
-        qDebug().noquote() << global::nameOutput << "Failed to create session: " << response << results;
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Failed to create session: " << response << results;
         emit signal_portal_aborted();
         return;
     }
@@ -121,7 +121,7 @@ void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, con
 
     QDBusInterface* portal = screencastPortal();
     if ( !portal ) {
-        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_handleCreateSessionResponse";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Aborted in function: Portal_wl::slot_handleCreateSessionResponse";
         return;
     }
 
@@ -149,8 +149,8 @@ void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, con
 
     const QDBusReply<QDBusObjectPath> reply = portal->call( "SelectSources", QDBusObjectPath(mSession), options );
     if ( !reply.isValid() ) {
-        qDebug().noquote() << global::nameOutput << "Couldn't get reply in Portal_wl::slot_handleCreateSessionResponse";
-        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Couldn't get reply in Portal_wl::slot_handleCreateSessionResponse";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
@@ -170,14 +170,14 @@ void QvkMagnifierPortal_wl::slot_handleSelectSourcesResponse( uint response, con
     Q_UNUSED(results);
 
     if ( response != 0 ) {
-        qDebug().noquote() << global::nameOutput << "Failed to select sources: " << response;
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Failed to select sources: " << response;
         emit signal_portal_aborted();
         return;
     }
 
     QDBusInterface* portal = screencastPortal();
     if ( !portal ) {
-        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_handleSelectSourcesResponse";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Aborted in function: Portal_wl::slot_handleSelectSourcesResponse";
         return;
     }
 
@@ -196,8 +196,8 @@ void QvkMagnifierPortal_wl::slot_handleSelectSourcesResponse( uint response, con
 
     const QDBusReply<QDBusObjectPath> reply = portal->call( "Start", QDBusObjectPath(mSession), "", options );
     if ( !reply.isValid() ) {
-        qDebug().noquote() << global::nameOutput << "Couldn't get reply in Portal_wl::slot_handleSelectSourcesResponse";
-        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Couldn't get reply in Portal_wl::slot_handleSelectSourcesResponse";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
@@ -208,7 +208,7 @@ void QvkMagnifierPortal_wl::slot_handleStartResponse( uint response, const QVari
     Q_UNUSED(results);
 
     if ( response != 0 ) {
-        qDebug().noquote() << global::nameOutput << "[Magnifier]Failed to start or cancel dialog: " << response;
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Failed to start or cancel dialog: " << response;
         emit signal_portal_aborted();
         return;
     }
@@ -221,7 +221,7 @@ void QvkMagnifierPortal_wl::slot_handleStartResponse( uint response, const QVari
 
     QDBusInterface* portal = screencastPortal();
     if ( !portal ) {
-        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_handleStartResponse";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Aborted in function: Portal_wl::slot_handleStartResponse";
         return;
     }
 
@@ -229,8 +229,8 @@ void QvkMagnifierPortal_wl::slot_handleStartResponse( uint response, const QVari
     QMap<QString, QVariant> options;
     const QDBusReply<QDBusUnixFileDescriptor> reply = portal->call( "OpenPipeWireRemote", QDBusObjectPath(mSession), options );
     if ( !reply.isValid() ) {
-        qDebug().noquote() << global::nameOutput << "Couldn't get reply in Portal_wl::slot_handleStartResponse";
-        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Couldn't get reply in Portal_wl::slot_handleStartResponse";
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
@@ -250,7 +250,7 @@ QDBusInterface* QvkMagnifierPortal_wl::screencastPortal()
         mScreencastPortal->setParent(this);
 
         mRequestPath = "/org/freedesktop/portal/desktop/request/" + mScreencastPortal->connection().baseService().remove(0, 1).replace('.', '_') + "/";
-        qDebug().noquote() << global::nameOutput << "request path" << mRequestPath;
+        qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Request path" << mRequestPath;
     }
 
     if ( mScreencastPortal->isValid() ) {
