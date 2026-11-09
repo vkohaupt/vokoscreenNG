@@ -124,7 +124,7 @@ void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, con
     options["types"] = mSourcType;
     options["cursor_mode"] = mCursorModes;
     options["handle_token"] = requestToken;
-    options["persist_mode"] = TRANSIENT;
+    options["persist_mode"] = PERSISTENT;
 
     if ( !mRestoreToken.isEmpty() ) {
         options["restore_token"] = mRestoreToken;
@@ -259,3 +259,65 @@ QString QvkMagnifierPortal_wl::createRequestToken() const
     requestTokenCounter += 1;
     return QString( "vokoMagniReq%1" ).arg( requestTokenCounter );
 }
+
+
+/*
+void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, const QVariantMap& results )
+{
+    // ... [Dein bestehender Code bis zur Instanziierung der Optionen] ...
+
+    // Select sources
+    QString requestToken = createRequestToken();
+    QMap<QString, QVariant> options;
+    options["multiple"] = false;
+    options["types"] = mSourcType;
+    options["cursor_mode"] = mCursorModes;
+    options["handle_token"] = requestToken;
+
+    // WICHTIG: Ändere 'TRANSIENT' auf den Wert 2 (Persistent)
+    // Wenn 'PERSISTENT' eine Enum-Konstante bei dir ist, stelle sicher, dass sie den Wert 2 hat.
+    options["persist_mode"] = 2;
+
+    // Wenn bereits ein Token existiert (aus QSettings geladen), übergeben wir es hier
+    if ( !mRestoreToken.isEmpty() ) {
+        options["restore_token"] = mRestoreToken;
+    }
+
+    // ... [Rest der Funktion bleibt absolut identisch] ...
+}
+
+void QvkMagnifierPortal_wl::slot_handleStartResponse( uint response, const QVariantMap& results )
+{
+    Q_UNUSED(results);
+
+    if ( response != 0 ) {
+        qDebug().noquote() << global::nameOutput << "[Magnifier]Failed to start or cancel dialog: " << response;
+        emit signal_portal_aborted();
+        return;
+    }
+
+    // Das Portal liefert uns hier das NEUE oder ERNEUERTE Token zurück
+    if ( results.contains( "restore_token" ) ) {
+        mRestoreToken = results.value( "restore_token" ).toString();
+
+        // WICHTIG: Das Token muss hier sofort dauerhaft gespeichert werden!
+        #include <QSettings>
+        QSettings settings;
+        settings.setValue( "Wayland/ScreenCastRestoreToken", mRestoreToken );
+        qDebug().noquote() << global::nameOutput << "Neues Restore-Token gespeichert:" << mRestoreToken;
+    }
+
+    // ... [Rest der Funktion für PipeWire-Remote bleibt identisch] ...
+}
+
+#include <QSettings>
+
+QvkMagnifierPortal_wl::QvkMagnifierPortal_wl( QObject* parent )
+    : QObject{ parent }
+{
+    // Lade das gespeicherte Token beim Instanziieren der Klasse
+    QSettings settings;
+    mRestoreToken = settings.value( "Wayland/ScreenCastRestoreToken", "" ).toString();
+}
+
+ */
