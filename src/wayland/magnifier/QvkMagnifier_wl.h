@@ -20,9 +20,9 @@ public:
     QvkMagnifier_wl(QWidget *parent = nullptr);
     ~QvkMagnifier_wl();
     QvkMagnifierPipeWire_wl *vkMagnifierPipeWire_wl = nullptr;
-    QImage currentPicture;
 
 private:
+    QImage currentPicture;
     int m_x;
     int m_y;
     QPen m_bluePen;
