@@ -159,7 +159,7 @@ void QvkMagnifierPortal_wl::slot_handleCreateSessionResponse( uint response, con
 
 void QvkMagnifierPortal_wl::slot_handleSessionClosed()
 {
-    qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Die Screencast-Sitzung wurde vom Desktop aus geschlossen";
+    qDebug().noquote() << global::nameOutput << "[Magnifier][Portal] Die Screencast-Sitzung wurde vom Desktop aus gestoppt";
     mSession.clear();
     emit signal_portal_stopped();
 }
