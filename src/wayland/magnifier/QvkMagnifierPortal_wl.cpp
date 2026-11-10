@@ -214,7 +214,10 @@ void QvkMagnifierPortal_wl::slot_handleStartResponse( uint response, const QVari
     }
 
     // save restore token
-    mRestoreToken = results.value( "restore_token" ).toString();
+    if (results.contains("restore_token")){
+        mRestoreToken = results.value("restore_token").toString();
+        emit signal_portal_restoretoken(mRestoreToken);
+    }
 
     const Streams streams = qdbus_cast<Streams>( results.value( "streams" ) );
     const Stream stream = streams.last();

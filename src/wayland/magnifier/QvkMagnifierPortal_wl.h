@@ -26,6 +26,8 @@ signals:
     void signal_portal_fd_path(QString,QString);
     void signal_portal_aborted();
     void signal_portal_stopped();
+    void signal_portal_restoretoken(QString mRestoreToken);
+
 
 private slots:
     void slot_handleCreateSessionResponse(uint response, const QVariantMap& results);

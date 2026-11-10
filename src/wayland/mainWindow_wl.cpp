@@ -433,6 +433,16 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         ui->checkBoxMagnifier->setChecked(false);
     });
 
+    // Restore Token in den Settings speichern
+    connect(vkMagnifierPortal_wl,
+            &QvkMagnifierPortal_wl::signal_portal_restoretoken,
+            this,
+            [vkMagnifierPortal_wl](QString token){
+        QvkSettings_wl vkSettings_wl;
+        vkSettings_wl.saveMagnifierRestoreToken(token);
+    });
+
+
     // -----------------------------------------------------------------------------------
 
     ui->checkBoxMagnifier->setEnabled(false);

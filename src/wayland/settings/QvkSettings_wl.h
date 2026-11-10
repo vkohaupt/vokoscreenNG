@@ -51,6 +51,7 @@ public:
     QString folderName_wl = global::name;
     QString fileName_wl = global::name + "_wl";
     QString groupName_wl = global::name + "_wl";
+    void saveMagnifierRestoreToken(QString token);
 
 
 public slots:
