@@ -18,7 +18,7 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     m_x = 300;
     m_y = 300;
     circle = 100;
-    m_bluePen.setColor(QColor(0, 0, 255, 1));
+    m_bluePen.setColor(QColor(0, 0, 255, 10));
     m_bluePen.setWidth(circle - 5);
     m_grayPen.setColor(Qt::gray);
     m_grayPen.setWidth(2);
@@ -72,15 +72,32 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
         painterPixmap.setBrush(Qt::NoBrush);
         painterPixmap.drawEllipse(QPoint(m_x, m_y), circle/2, circle/2);
 
-        painterPixmap.drawImage(m_x - currentPicture.width()/2,
-                                m_y + 50,
-                                currentPicture);
+        if (m_y < (screen()->size().height() - 250)){
+            painterPixmap.drawImage(m_x - currentPicture.width()/2,
+                                    m_y + 50,
+                                    currentPicture);
 
-        painterPixmap.setPen(m_grayPen);
-        painterPixmap.drawRect(m_x - currentPicture.width()/2,
-                               m_y + 50,
-                               currentPicture.width(),
-                               currentPicture.height());
+            painterPixmap.setPen(m_grayPen);
+            painterPixmap.drawRect(m_x - currentPicture.width()/2,
+                                   m_y + 50,
+                                   currentPicture.width(),
+                                   currentPicture.height());
+        }
+
+        // Bottom
+        if (m_y > (screen()->size().height() - 250)){
+            painterPixmap.drawImage(m_x - currentPicture.width()/2,
+                                    m_y - 250,
+                                    currentPicture);
+            painterPixmap.setPen(m_grayPen);
+            painterPixmap.drawRect(m_x - currentPicture.width()/2,
+                                   m_y - 250,
+                                   currentPicture.width(),
+                                   currentPicture.height());
+
+        }
+
+
     }
     painterPixmap.end();
 
