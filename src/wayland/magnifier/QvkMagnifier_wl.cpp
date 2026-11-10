@@ -19,7 +19,7 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     m_y = 300;
     circle = 100;
     m_bluePen.setColor(QColor(0, 0, 255, 10));
-    m_bluePen.setWidth(circle - 5);
+    m_bluePen.setWidth(circle - 3);
     m_grayPen.setColor(Qt::gray);
     m_grayPen.setWidth(2);
 
