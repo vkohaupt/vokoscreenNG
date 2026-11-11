@@ -1,10 +1,15 @@
 #ifndef QVKCONTAINERCONTROLLER_H
 #define QVKCONTAINERCONTROLLER_H
 
+// Qt include checked
 #include <QObject>
 
-#include "ui_formMainWindow.h"
-#include "QvkContainer.h"
+namespace Ui {
+class formMainWindow;
+}
+
+class QvkContainer;
+
 
 class QvkContainerController : public QObject
 {

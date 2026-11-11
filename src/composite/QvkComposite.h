@@ -1,9 +1,12 @@
 #ifndef COMPOSITE_H
 #define COMPOSITE_H
 
+// Qt include checked
 #include <QWidget>
-#include <QMainWindow>
-#include <QPaintEvent>
+
+class QMainWindow;
+class QPaintEvent;
+
 
 class QvkComposite: public QWidget
 {
@@ -26,7 +29,7 @@ private slots:
 
 
 protected:
-    void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event) override;
 
     
 signals:

@@ -1,3 +1,5 @@
+#include "ui_formMainWindow.h"
+#include "QvkContainer.h"
 #include "QvkContainerController.h"
 #include "global.h"
 
