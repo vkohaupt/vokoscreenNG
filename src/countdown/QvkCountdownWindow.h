@@ -24,14 +24,17 @@
 #define QVKCOUNTDOWNWINDOW_H
 
 #include <QWidget>
-#include <QPainter>
-#include <QMouseEvent>
+#include <QString>
+#include <QRectF>
+
+class QMouseEvent;
+class QPaintEvent;
 
 class QvkCountdownWindow: public QWidget
 {
     Q_OBJECT
 public:
-    QvkCountdownWindow(  QWidget *parent );
+    QvkCountdownWindow(QWidget *parent);
     virtual ~QvkCountdownWindow();
     int x;
     int y;
@@ -54,7 +57,7 @@ private slots:
 
 
 protected:
-    void paintEvent( QPaintEvent *event );
+    void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
 
 

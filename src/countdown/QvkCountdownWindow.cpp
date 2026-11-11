@@ -25,6 +25,17 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QBitmap>
+#include <QMouseEvent>
+#include <QPaintEvent>
+#include <QList>
+#include <QPixmap>
+#include <QPainter>
+#include <QPen>
+#include <QBrush>
+#include <QFont>
+#include <QFontMetrics>
+#include <QColor>
+#include <QPointF>
 
 QvkCountdownWindow::QvkCountdownWindow( QWidget *parent )
 {
@@ -32,11 +43,12 @@ QvkCountdownWindow::QvkCountdownWindow( QWidget *parent )
     setAttribute( Qt::WA_TranslucentBackground, true );
 
     // Is needed only for the translated text
-    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
-    buttonBox->hide();
-    QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
-    QPushButton *pushButton = list.at(0);
-    cancelText = pushButton->text();
+    QDialogButtonBox buttonBox(QDialogButtonBox::Abort);
+    QList<QPushButton *> list = buttonBox.findChildren<QPushButton *>();
+    if (!list.isEmpty()){
+        QPushButton *pushButton = list.at(0);
+        cancelText = pushButton->text();
+    }
     show();
 }
 
@@ -84,9 +96,7 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
     font.setPointSize( fontSize );
     painterPixmap.setFont( font );
     painterPixmap.setPen( QColor( 61,174,233 ) );
-    QFontMetrics fontMetrics( font );
-    int fontWidth = fontMetrics.horizontalAdvance( QString::number( countValue ) );
-    painterPixmap.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );
+    painterPixmap.drawText(QRect(0, 0, width(), height()), Qt::AlignCenter, QString::number(countValue));
 
     //--------------------- Cancel button -------------------------------
 
@@ -94,7 +104,7 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
     font.setPointSize( fontSize );
     font.setBold( false );
     QFontMetrics fontMetrics_1( font );
-    fontWidth = fontMetrics_1.horizontalAdvance( cancelText );
+    int fontWidth = fontMetrics_1.horizontalAdvance( cancelText );
 
     qreal x = width()/2 - (fontWidth+30)/2;
     qreal y = 230;
@@ -129,9 +139,9 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
 
 void QvkCountdownWindow::mousePressEvent( QMouseEvent *event )
 {
-    if ( rectCancel.contains( event->pos() ) ) {
+    if (rectCancel.contains(event->position())){
         hide();
-        emit signal_countDownCancel( true );
+        emit signal_countDownCancel(true);
     }
 }
 

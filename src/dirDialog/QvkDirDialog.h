@@ -1,12 +1,14 @@
 #ifndef QVKDIRDIALOG_H
 #define QVKDIRDIALOG_H
 
+// Qt include checked
 #include <QFileDialog>
-#include <QWidget>
-#include <QDialog>
-#include <QStringList>
-#include <QFileSystemModel>
 #include <QModelIndex>
+
+class QWidget;
+class QDialog;
+class QFileSystemModel;
+
 
 #ifdef Q_OS_WIN
 namespace Ui {

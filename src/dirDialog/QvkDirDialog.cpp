@@ -1,8 +1,6 @@
 #include "QvkDirDialog.h"
 #include "ui_QvkDirDialog.h"
 
-#include <QDebug>
-#include <QWidget>
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QDialog>
@@ -11,7 +9,7 @@
 #include <QList>
 #include <QAbstractButton>
 #include <QModelIndex>
-#include <QStandardPaths>
+#include <QIcon>
 
 #ifdef Q_OS_WIN
 QvkDirDialog::QvkDirDialog( QWidget *parent )
