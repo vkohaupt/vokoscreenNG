@@ -75,10 +75,10 @@ private slots:
 
 
 protected:
-    void paintEvent( QPaintEvent *event );
-    void leaveEvent( QEvent *event );
-    void mouseMoveEvent( QMouseEvent *event );
-    void mouseReleaseEvent( QMouseEvent *event );
+    void paintEvent(QPaintEvent *event) override;
+    void leaveEvent(QEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
 
 signals:

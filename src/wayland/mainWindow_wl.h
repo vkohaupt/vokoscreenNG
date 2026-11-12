@@ -134,8 +134,8 @@ private slots:
 
 
 protected:
-    void closeEvent(QCloseEvent *event);
-    void changeEvent(QEvent *event);
+    void closeEvent(QCloseEvent *event) override;
+    void changeEvent(QEvent *event) override;
 
 
 signals:

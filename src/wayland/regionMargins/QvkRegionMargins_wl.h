@@ -62,8 +62,8 @@ signals:
 
 
 protected:  
-    void paintEvent( QPaintEvent *event );
-    void resizeEvent( QResizeEvent *event );
+    void paintEvent(QPaintEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
 
 
 private:

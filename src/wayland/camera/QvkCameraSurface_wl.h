@@ -56,7 +56,6 @@ private:
     bool mouseHover = false;
 
 
-
 private slots:
 //    void slot_workaroundForGnome_1();
 //    void slot_workaroundForGnome_2();
@@ -70,12 +69,12 @@ signals:
 
 
 protected:
-    void paintEvent(QPaintEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void enterEvent(QEnterEvent *event);
-    void leaveEvent(QEvent *event );
+    void paintEvent(QPaintEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 };
 
