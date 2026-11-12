@@ -23,6 +23,8 @@
 #ifndef QVKCOUNTDOWN_H
 #define QVKCOUNTDOWN_H
 
+// Qt include checked
+// In einer .h zuerst Qt dann die eigenen
 #include <QWidget>
 
 #include "QvkCountdownWindow.h"

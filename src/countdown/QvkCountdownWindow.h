@@ -23,32 +23,29 @@
 #ifndef QVKCOUNTDOWNWINDOW_H
 #define QVKCOUNTDOWNWINDOW_H
 
+// Qt include checked
+// In einer .h zuerst Qt dann die eigenen
 #include <QWidget>
-#include <QString>
-#include <QRectF>
-
-class QMouseEvent;
-class QPaintEvent;
 
 class QvkCountdownWindow: public QWidget
 {
     Q_OBJECT
 public:
-    QvkCountdownWindow(QWidget *parent);
+    explicit QvkCountdownWindow(QWidget *parent = nullptr);
     virtual ~QvkCountdownWindow();
-    int x;
-    int y;
-    int Width;
-    int Height;
-    int countValue;
-    int gradValue;
+    int x = 0;
+    int y = 0;
+    int Width = 0;
+    int Height = 0;
+    int countValue = 0;
+    int gradValue = 0;
 
     
 public slots:
 
 
 private:
-    int oldCountValue;
+    int oldCountValue = 0;
     QString cancelText = "Cancel";
     QRectF rectCancel;
 
@@ -57,8 +54,8 @@ private slots:
 
 
 protected:
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 
 signals:

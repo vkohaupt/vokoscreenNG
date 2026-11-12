@@ -37,7 +37,7 @@
 #include <QColor>
 #include <QPointF>
 
-QvkCountdownWindow::QvkCountdownWindow( QWidget *parent )
+QvkCountdownWindow::QvkCountdownWindow(QWidget *parent)
 {
     setParent( parent );
     setAttribute( Qt::WA_TranslucentBackground, true );
