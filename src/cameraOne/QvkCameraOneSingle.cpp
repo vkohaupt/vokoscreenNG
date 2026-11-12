@@ -158,8 +158,8 @@ QvkCameraOneSingle::QvkCameraOneSingle(QWidget *parent, QString device, Ui_formM
         if (vkCameraOneWindow != nullptr){
             int x = vkCameraOneWindow->x();
             int y = vkCameraOneWindow->y();
-            int width = vkCameraOneWindow->image.width();
-            int height = vkCameraOneWindow->image.height();
+            int width = vkCameraOneWindow->get_camera_window_x();
+            int height = vkCameraOneWindow->get_camera_window_y();
             if (vkCameraOneWindow->width() != vkCameraOneWindow->image.width()){
                 vkCameraOneWindow->move(x - (width-height)/2, y);
             }
