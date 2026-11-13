@@ -110,7 +110,6 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
     }
     painter.end();
 
-    clearMask();
     setMask(pixmap.mask());
 }
 
