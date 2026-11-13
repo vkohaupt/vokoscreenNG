@@ -57,7 +57,7 @@ private slots:
 
 
 protected:
-    void paintEvent( QPaintEvent *event );
+    void paintEvent(QPaintEvent *event) override;
 
 
 signals:

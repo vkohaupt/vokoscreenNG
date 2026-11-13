@@ -239,9 +239,9 @@ signals:
 
 
 protected:
-    void closeEvent( QCloseEvent *event );
-    void resizeEvent( QResizeEvent *event );
-    void changeEvent( QEvent *event );
+    void closeEvent(QCloseEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
+    void changeEvent(QEvent *event) override;
 
 
 };

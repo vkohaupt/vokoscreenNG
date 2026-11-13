@@ -55,8 +55,6 @@ private slots:
 
 protected:
 
-    
-
 
 };
 #endif
