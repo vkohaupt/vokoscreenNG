@@ -30,6 +30,10 @@ private:
     int circle;
     int b_c_m;
     QPixmap pixmap;
+    int magnifierWidth;
+    int magnifierHeight;
+    int sourceWidth;
+    int sourceHeight;
 
 public slots:
     void slot_setCurrentPicture(QImage image);

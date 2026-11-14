@@ -23,6 +23,10 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     circlePen.setWidth(circle - 3);
     magnifierPen.setColor(Qt::gray);
     magnifierPen.setWidth(2);
+    magnifierWidth = 400;  // Breite der Lupe
+    magnifierHeight = 200; // Höhe der Lupe
+    sourceWidth = magnifierWidth/2;
+    sourceHeight = magnifierHeight/2;
 
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_QuitOnClose, false);
@@ -49,16 +53,19 @@ void QvkMagnifier_wl::closeEvent(QCloseEvent *event)
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
     if (mouse_y < 50){
-        QImage img = image.copy(mouse_x - 100, 0, 200, 100);
-        currentPicture = img.scaled(QSize(400, 200),
+        QImage img = image.copy(mouse_x - sourceWidth/2, 0, sourceWidth, sourceHeight);
+        currentPicture = img.scaled(QSize(magnifierWidth, magnifierHeight),
                                     Qt::KeepAspectRatio,
                                     Qt::SmoothTransformation);
         update();
         return;
     }
 
-    QImage img = image.copy(mouse_x - 100, mouse_y - 50, 200, 100);
-    currentPicture = img.scaled(QSize(400, 200),
+    QImage img = image.copy(mouse_x - sourceWidth/2,
+                            mouse_y - sourceHeight/2,
+                            sourceWidth,
+                            sourceHeight);
+    currentPicture = img.scaled(QSize(magnifierWidth, magnifierHeight),
                                 Qt::KeepAspectRatio,
                                 Qt::SmoothTransformation);
     update();
@@ -94,7 +101,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
         }
 
         // Middle
-        if ((mouse_y < (screen()->size().height() - 250 - b_c_m)) and (mouse_y > 50)){
+        if ((mouse_y <= (screen()->size().height() - 250 - b_c_m)) and (mouse_y >= 50)){
             painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
                                     mouse_y + 50 + b_c_m,
                                     currentPicture);
