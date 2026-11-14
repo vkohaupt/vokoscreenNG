@@ -23,11 +23,13 @@ public:
 
 private:
     QImage currentPicture;
-    int m_x;
-    int m_y;
+    int mouse_x;
+    int mouse_y;
     QPen m_bluePen;
     QPen m_grayPen;
     int circle;
+    int b_c_m;
+    QPixmap pixmap;
 
 public slots:
     void slot_setCurrentPicture(QImage image);

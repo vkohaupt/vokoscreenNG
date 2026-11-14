@@ -15,9 +15,10 @@
 QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
 {
     Q_UNUSED(parent)
-    m_x = 300;
-    m_y = 300;
+    mouse_x = 300;
+    mouse_y = 300;
     circle = 100;
+    b_c_m = 10;// b_c_m = between_circle_margin Abstand zwischen circle und Lupe
     m_bluePen.setColor(QColor(0, 0, 255, 10));
     m_bluePen.setWidth(circle - 3);
     m_grayPen.setColor(Qt::gray);
@@ -47,8 +48,8 @@ void QvkMagnifier_wl::closeEvent(QCloseEvent *event)
 
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
-    if (m_y < 50){
-        QImage img = image.copy(m_x - 100, 0, 200, 100);
+    if (mouse_y < 50){
+        QImage img = image.copy(mouse_x - 100, 0, 200, 100);
         currentPicture = img.scaled(QSize(400, 200),
                                     Qt::KeepAspectRatio,
                                     Qt::SmoothTransformation);
@@ -56,7 +57,7 @@ void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
         return;
     }
 
-    QImage img = image.copy(m_x - 100, m_y - 50, 200, 100);
+    QImage img = image.copy(mouse_x - 100, mouse_y - 50, 200, 100);
     currentPicture = img.scaled(QSize(400, 200),
                                 Qt::KeepAspectRatio,
                                 Qt::SmoothTransformation);
@@ -67,7 +68,7 @@ void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
-    QPixmap pixmap(width(), height());
+    pixmap = QPixmap(width(), height());
     pixmap.fill(Qt::transparent);
 
     QPainter painterPixmap;
@@ -78,41 +79,41 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
 
         painterPixmap.setPen(m_bluePen);
         painterPixmap.setBrush(Qt::NoBrush);
-        painterPixmap.drawEllipse(QPoint(m_x, m_y), circle/2, circle/2);
+        painterPixmap.drawEllipse(QPoint(mouse_x, mouse_y), circle/2, circle/2);
 
         // Top
-        if (m_y < 50){
-            painterPixmap.drawImage(m_x - currentPicture.width()/2,
-                                    100,
+        if (mouse_y < 50){
+            painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
+                                    100 + b_c_m,
                                     currentPicture);
             painterPixmap.setPen(m_grayPen);
-            painterPixmap.drawRect(m_x - currentPicture.width()/2,
-                                   100,
+            painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
+                                   100 + b_c_m,
                                    currentPicture.width(),
                                    currentPicture.height());
         }
 
         // Middle
-        if ((m_y < (screen()->size().height() - 250)) and (m_y > 50)){
-            painterPixmap.drawImage(m_x - currentPicture.width()/2,
-                                    m_y + 50,
+        if ((mouse_y < (screen()->size().height() - 250 - b_c_m)) and (mouse_y > 50)){
+            painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
+                                    mouse_y + 50 + b_c_m,
                                     currentPicture);
 
             painterPixmap.setPen(m_grayPen);
-            painterPixmap.drawRect(m_x - currentPicture.width()/2,
-                                   m_y + 50,
+            painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
+                                   mouse_y + 50 + b_c_m,
                                    currentPicture.width(),
                                    currentPicture.height());
         }
 
         // Bottom
-        if (m_y > (screen()->size().height() - 250)){
-            painterPixmap.drawImage(m_x - currentPicture.width()/2,
-                                    m_y - 250,
+        if (mouse_y > (screen()->size().height() - 250 - b_c_m)){
+            painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
+                                    mouse_y - 250 - b_c_m,
                                     currentPicture);
             painterPixmap.setPen(m_grayPen);
-            painterPixmap.drawRect(m_x - currentPicture.width()/2,
-                                   m_y - 250,
+            painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
+                                   mouse_y - 250 - b_c_m,
                                    currentPicture.width(),
                                    currentPicture.height());
         }
@@ -135,7 +136,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
 
 void QvkMagnifier_wl::mouseMoveEvent(QMouseEvent *event)
 {
-    m_x = event->position().x();
-    m_y = event->position().y();
+    mouse_x = event->position().x();
+    mouse_y = event->position().y();
     update();
 }
