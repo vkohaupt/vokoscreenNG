@@ -47,11 +47,19 @@ void QvkMagnifier_wl::closeEvent(QCloseEvent *event)
 
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
+    if (m_y < 50){
+        QImage img = image.copy(m_x - 100, 0, 200, 100);
+        currentPicture = img.scaled(QSize(400, 200),
+                                    Qt::KeepAspectRatio,
+                                    Qt::SmoothTransformation);
+        update();
+        return;
+    }
+
     QImage img = image.copy(m_x - 100, m_y - 50, 200, 100);
     currentPicture = img.scaled(QSize(400, 200),
                                 Qt::KeepAspectRatio,
                                 Qt::SmoothTransformation);
-
     update();
 }
 
@@ -72,7 +80,20 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
         painterPixmap.setBrush(Qt::NoBrush);
         painterPixmap.drawEllipse(QPoint(m_x, m_y), circle/2, circle/2);
 
-        if (m_y < (screen()->size().height() - 250)){
+        // Top
+        if (m_y < 50){
+            painterPixmap.drawImage(m_x - currentPicture.width()/2,
+                                    100,
+                                    currentPicture);
+            painterPixmap.setPen(m_grayPen);
+            painterPixmap.drawRect(m_x - currentPicture.width()/2,
+                                   100,
+                                   currentPicture.width(),
+                                   currentPicture.height());
+        }
+
+        // Middle
+        if ((m_y < (screen()->size().height() - 250)) and (m_y > 50)){
             painterPixmap.drawImage(m_x - currentPicture.width()/2,
                                     m_y + 50,
                                     currentPicture);
@@ -94,10 +115,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
                                    m_y - 250,
                                    currentPicture.width(),
                                    currentPicture.height());
-
         }
-
-
     }
     painterPixmap.end();
 
