@@ -25,8 +25,8 @@ private:
     QImage currentPicture;
     int mouse_x;
     int mouse_y;
-    QPen m_bluePen;
-    QPen m_grayPen;
+    QPen circlePen;
+    QPen magnifierPen;
     int circle;
     int b_c_m;
     QPixmap pixmap;

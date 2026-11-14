@@ -19,10 +19,10 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     mouse_y = 300;
     circle = 100;
     b_c_m = 10;// b_c_m = between_circle_margin Abstand zwischen circle und Lupe
-    m_bluePen.setColor(QColor(0, 0, 255, 10));
-    m_bluePen.setWidth(circle - 3);
-    m_grayPen.setColor(Qt::gray);
-    m_grayPen.setWidth(2);
+    circlePen.setColor(QColor(0, 0, 255, 10));
+    circlePen.setWidth(circle - 3);
+    magnifierPen.setColor(Qt::gray);
+    magnifierPen.setWidth(2);
 
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_QuitOnClose, false);
@@ -77,7 +77,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
         painterPixmap.setRenderHint(QPainter::Antialiasing, true);
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
 
-        painterPixmap.setPen(m_bluePen);
+        painterPixmap.setPen(circlePen);
         painterPixmap.setBrush(Qt::NoBrush);
         painterPixmap.drawEllipse(QPoint(mouse_x, mouse_y), circle/2, circle/2);
 
@@ -86,7 +86,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
             painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
                                     100 + b_c_m,
                                     currentPicture);
-            painterPixmap.setPen(m_grayPen);
+            painterPixmap.setPen(magnifierPen);
             painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
                                    100 + b_c_m,
                                    currentPicture.width(),
@@ -99,7 +99,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
                                     mouse_y + 50 + b_c_m,
                                     currentPicture);
 
-            painterPixmap.setPen(m_grayPen);
+            painterPixmap.setPen(magnifierPen);
             painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
                                    mouse_y + 50 + b_c_m,
                                    currentPicture.width(),
@@ -111,7 +111,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
             painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
                                     mouse_y - 250 - b_c_m,
                                     currentPicture);
-            painterPixmap.setPen(m_grayPen);
+            painterPixmap.setPen(magnifierPen);
             painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
                                    mouse_y - 250 - b_c_m,
                                    currentPicture.width(),
