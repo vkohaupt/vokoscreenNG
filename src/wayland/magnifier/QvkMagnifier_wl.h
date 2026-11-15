@@ -35,6 +35,8 @@ private:
     int sourceWidth;
     int sourceHeight;
 
+    int a = 0;
+
 public slots:
     void slot_setCurrentPicture(QImage image);
 
