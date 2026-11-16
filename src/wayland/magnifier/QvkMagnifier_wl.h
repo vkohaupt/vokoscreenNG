@@ -6,12 +6,6 @@
 #include <QImage>
 #include <QPen>
 
-class QvkMagnifierPipeWire_wl;
-class QMouseEvent;
-class QPaintEvent;
-class QCloseEvent;
-
-
 class QvkMagnifier_wl : public QWidget
 {
     Q_OBJECT
@@ -19,7 +13,6 @@ class QvkMagnifier_wl : public QWidget
 public:
     QvkMagnifier_wl(QWidget *parent = nullptr);
     ~QvkMagnifier_wl();
-    QvkMagnifierPipeWire_wl *vkMagnifierPipeWire_wl = nullptr;
 
 private:
     QImage currentPicture;
@@ -35,18 +28,16 @@ private:
     int sourceWidth;
     int sourceHeight;
 
-    int a = 0;
 
 public slots:
     void slot_setCurrentPicture(QImage image);
 
+
 protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
-    void closeEvent(QCloseEvent *event) override;
 
 signals:
-    void signal_MagnifierClose();
 
 
 };

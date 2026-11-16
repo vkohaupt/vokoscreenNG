@@ -89,7 +89,7 @@ GstFlowReturn QvkMagnifierPipeWire_wl::onNewSample(GstAppSink *sink, gpointer us
     if (gst_buffer_map(buffer, &map, GST_MAP_READ)) {
         // Daten in ein QImage konvertieren (Deep Copy, da GStreamer-Buffer gleich freigegeben wird)
         QImage img(map.data, width, height, QImage::Format_RGBA8888);
-        QImage clonedImg = img.copy(); 
+        QImage clonedImg = img.copy();
 
         gst_buffer_unmap(buffer, &map);
 

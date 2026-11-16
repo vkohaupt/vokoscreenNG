@@ -351,7 +351,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             [=](int index){
         slot_languageChanged(index);
     });
-
+/*
     // ------------------------- Magnifier --------------------------------------------
     // Checkbox wurde checked gesetzt und der Portaldialog öffnet sich.
     QvkMagnifierPortal_wl *vkMagnifierPortal_wl = new QvkMagnifierPortal_wl(this);
@@ -441,9 +441,64 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         QvkSettings_wl vkSettings_wl;
         vkSettings_wl.saveMagnifierRestoreToken(token);
     });
-
-
     // -----------------------------------------------------------------------------------
+*/
+
+
+    // Neu
+    QvkMagnifier_wl *vkMagnifier_wl = new QvkMagnifier_wl;
+    QvkMagnifierPortal_wl *vkMagnifierPortal_wl = new QvkMagnifierPortal_wl;
+    QvkMagnifierPipeWire_wl *vkMagnifierPipeWire_wl = new QvkMagnifierPipeWire_wl;
+
+    connect(ui->checkBoxMagnifier,
+            &QCheckBox::clicked,
+            this,
+            [this, vkMagnifierPortal_wl, vkMagnifier_wl](bool bo){
+        if (bo == true){
+            // Value 1 = MONITOR
+            // Value 2 = WINDOW
+            uint sourceType = 1;
+
+            // Value 1 = HIDDEN;
+            // Value 2 = EMBEDDED;
+            uint mousecursorONOff = 1;
+
+            vkMagnifierPortal_wl->slot_startScreenCast(sourceType, mousecursorONOff);
+        }else{
+            vkMagnifierPortal_wl->slot_stopScreenCast();
+            vkMagnifier_wl->close();
+        }
+    });
+
+    // Im Portaldialog wurde Fullscreen ausgewählt und fd und path wird an pipewire gesendet
+    connect(vkMagnifierPortal_wl,
+            &QvkMagnifierPortal_wl::signal_portal_fd_path,
+            this,
+            [vkMagnifierPipeWire_wl, vkMagnifier_wl](QString vk_fd, QString vk_path){
+        vkMagnifierPipeWire_wl->startStream(vk_fd, vk_path);    //neu
+        vkMagnifier_wl->show();
+    });
+
+    // Lupe wurde über den Desktop z.b KDE roter Punkt beendet
+    connect(vkMagnifierPortal_wl,
+            &QvkMagnifierPortal_wl::signal_portal_stopped,
+            this,
+            [vkMagnifier_wl, this](){
+        vkMagnifier_wl->close();
+        ui->checkBoxMagnifier->setChecked(false);
+    });
+
+    // Bild wurde von der pipewiresrc empfangen und wird an die Lupe weitergeleitet
+    connect(vkMagnifierPipeWire_wl,
+            &QvkMagnifierPipeWire_wl::signal_frameReceived,
+            vkMagnifier_wl,
+            [vkMagnifier_wl](QImage image){
+          vkMagnifier_wl->slot_setCurrentPicture(image);
+    });
+
+    //---- End Neu
+
+
 
     ui->checkBoxMagnifier->setEnabled(false);
 

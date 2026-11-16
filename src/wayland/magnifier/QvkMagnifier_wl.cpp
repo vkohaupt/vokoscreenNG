@@ -1,6 +1,4 @@
 #include "QvkMagnifier_wl.h"
-#include "QvkMagnifierPipeWire_wl.h"
-#include "QvkMagnifierPortal_wl.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -12,9 +10,16 @@
 #include <QSize>
 #include <QMouseEvent>
 
+#include <LayerShellQt/Window>
+
 QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
 {
     Q_UNUSED(parent)
+    resize(350, 150);
+    setAttribute(Qt::WA_TranslucentBackground, true);
+    setAttribute(Qt::WA_QuitOnClose, false);
+    setMouseTracking(true);
+    winId(); // Erzwingt die Erstellung des QWindow-Handles vor dem Anzeigen
     mouse_x = 300;
     mouse_y = 300;
     circle = 100;
@@ -28,27 +33,20 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     sourceWidth = magnifierWidth/2;
     sourceHeight = magnifierHeight/2;
 
-    setAttribute(Qt::WA_TranslucentBackground, true);
-    setAttribute(Qt::WA_QuitOnClose, false);
-    Qt::WindowFlags flags;
-    flags  = Qt::Window;
-    flags |= Qt::FramelessWindowHint;
-    setWindowFlags(flags);
-    setMouseTracking(true);
-    showMaximized();
+
+
+    // LayerShellQt-Einstellungen anwenden
+    if (auto *layerWindow = LayerShellQt::Window::get(windowHandle())) {
+        // Legt das Fenster dauerhaft ÜBER alle normalen Anwendungsfenster
+        layerWindow->setLayer(LayerShellQt::Window::LayerTop);
+    } else {
+        qWarning("LayerShellQt konnte nicht initialisiert werden.");
+    }
 }
 
 QvkMagnifier_wl::~QvkMagnifier_wl()
 {
 }
-
-
-void QvkMagnifier_wl::closeEvent(QCloseEvent *event)
-{
-    Q_UNUSED(event)
-    emit signal_MagnifierClose();
-}
-
 
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
@@ -71,77 +69,72 @@ void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
     update();
 }
 
-
 void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
-    if (!currentPicture.isNull()){ // img.fill(0); Setzt alle Bytes / Pixelwerte auf 0
-        pixmap = QPixmap(width(), height());
-        pixmap.fill(Qt::transparent);
+    pixmap = QPixmap(width(), height());
+    pixmap.fill(Qt::transparent);
 
-        QPainter painterPixmap;
-        painterPixmap.begin(&pixmap);
-        {
-            painterPixmap.setRenderHint(QPainter::Antialiasing, true);
-            painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
+    QPainter painterPixmap;
+    painterPixmap.begin(&pixmap);
+    {
+        painterPixmap.setRenderHint(QPainter::Antialiasing, true);
+        painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
 
-            painterPixmap.setPen(circlePen);
-            painterPixmap.setBrush(Qt::NoBrush);
-            painterPixmap.drawEllipse(QPoint(mouse_x, mouse_y), circle/2, circle/2);
+        painterPixmap.setPen(circlePen);
+        painterPixmap.setBrush(Qt::NoBrush);
+        painterPixmap.drawEllipse(QPoint(mouse_x, mouse_y), circle/2, circle/2);
 
-            // Top
-            if (mouse_y < 50){
-                painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
-                                        100 + b_c_m,
-                                        currentPicture);
-                painterPixmap.setPen(magnifierPen);
-                painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
-                                       100 + b_c_m,
-                                       currentPicture.width(),
-                                       currentPicture.height());
-            }
-
-            // Middle
-            if ((mouse_y <= (screen()->size().height() - 250 - b_c_m)) and (mouse_y >= 50)){
-                painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
-                                        mouse_y + 50 + b_c_m,
-                                        currentPicture);
-
-                painterPixmap.setPen(magnifierPen);
-                painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
-                                       mouse_y + 50 + b_c_m,
-                                       currentPicture.width(),
-                                       currentPicture.height());
-            }
-
-            // Bottom
-            if (mouse_y > (screen()->size().height() - 250 - b_c_m)){
-                painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
-                                        mouse_y - 250 - b_c_m,
-                                        currentPicture);
-                painterPixmap.setPen(magnifierPen);
-                painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
-                                       mouse_y - 250 - b_c_m,
-                                       currentPicture.width(),
-                                       currentPicture.height());
-            }
+        // Top
+        if (mouse_y < 50){
+            painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
+                                    100 + b_c_m,
+                                    currentPicture);
+            painterPixmap.setPen(magnifierPen);
+            painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
+                                   100 + b_c_m,
+                                   currentPicture.width(),
+                                   currentPicture.height());
         }
-        painterPixmap.end();
 
-        QPainter painter;
-        painter.begin(this);
-        {
-            painter.setRenderHint(QPainter::Antialiasing, true);
-            painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-            painter.drawPixmap(QPointF(0, 0), pixmap);
+        // Middle
+        if ((mouse_y <= (screen()->size().height() - 250 - b_c_m)) and (mouse_y >= 50)){
+            painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
+                                    mouse_y + 50 + b_c_m,
+                                    currentPicture);
+
+            painterPixmap.setPen(magnifierPen);
+            painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
+                                   mouse_y + 50 + b_c_m,
+                                   currentPicture.width(),
+                                   currentPicture.height());
         }
-        painter.end();
 
-        setMask(pixmap.mask());
+        // Bottom
+        if (mouse_y > (screen()->size().height() - 250 - b_c_m)){
+            painterPixmap.drawImage(mouse_x - currentPicture.width()/2,
+                                    mouse_y - 250 - b_c_m,
+                                    currentPicture);
+            painterPixmap.setPen(magnifierPen);
+            painterPixmap.drawRect(mouse_x - currentPicture.width()/2,
+                                   mouse_y - 250 - b_c_m,
+                                   currentPicture.width(),
+                                   currentPicture.height());
+        }
     }
+    painterPixmap.end();
+
+    QPainter painter;
+    painter.begin(this);
+    {
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.drawPixmap(QPointF(0, 0), pixmap);
+    }
+    painter.end();
+
+    setMask(pixmap.mask());
 }
-
-
 
 void QvkMagnifier_wl::mouseMoveEvent(QMouseEvent *event)
 {

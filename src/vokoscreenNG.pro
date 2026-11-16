@@ -66,6 +66,10 @@ unix:contains(INSTALLER, "IFW" ){
   message($$INSTALLER)
 }
 
+# Wayland
+unix:INCLUDEPATH += /usr/include/LayerShellQt
+unix:LIBS += -L/usr/lib64 -lLayerShellQtInterface
+
 # GStreamer Linux
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
