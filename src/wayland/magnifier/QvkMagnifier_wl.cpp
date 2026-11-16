@@ -1,4 +1,5 @@
 #include "QvkMagnifier_wl.h"
+#include "global.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -33,14 +34,13 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     sourceWidth = magnifierWidth/2;
     sourceHeight = magnifierHeight/2;
 
-
-
     // LayerShellQt-Einstellungen anwenden
-    if (auto *layerWindow = LayerShellQt::Window::get(windowHandle())) {
-        // Legt das Fenster dauerhaft ÜBER alle normalen Anwendungsfenster
+    if (auto *layerWindow = LayerShellQt::Window::get(windowHandle())){
+        qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt was successfully initialized.";
         layerWindow->setLayer(LayerShellQt::Window::LayerTop);
-    } else {
-        qWarning("LayerShellQt konnte nicht initialisiert werden.");
+    }else{
+        qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt could not be initialized.";
+        showMaximized();
     }
 }
 
