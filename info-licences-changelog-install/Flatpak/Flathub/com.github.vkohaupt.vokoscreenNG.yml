@@ -1,14 +1,13 @@
-id: com.github.vkohaupt.vokoscreenNG
+app-id: com.github.vkohaupt.vokoscreenNG
 runtime: org.kde.Platform
-runtime-version: 6.10
+runtime-version: 6.11
 sdk: org.kde.Sdk
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.10'
+base-version: '6.11'
 command: vokoscreenNG
 rename-desktop-file: vokoscreenNG.desktop
 rename-appdata-file: vokoscreenNG.appdata.xml
 rename-icon: vokoscreenNG
-
 finish-args:
   - --device=all
   - --share=ipc
@@ -18,39 +17,44 @@ finish-args:
   - --socket=pulseaudio
   - --filesystem=home
   - --talk-name=org.kde.StatusNotifierWatcher
-  - --talk-name=org.freedesktop.Flatpak
   - --filesystem=xdg-run/pipewire-0
   - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
+  - --env=GST_PLUGIN_FEATURE_RANK=openh264dec:MAX
 
 modules:
 #   gstreamer-plugins-good wird benötigt da in GStreamer 1.26.10 ximagesrc nicht vorhanden ist
-#  - name: gstreamer-plugins-good
-#    buildsystem: meson
-#    sources:
-#      - type: archive
-#        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.10.tar.xz
-#        sha256: 7beacb5daba3c6751ebc1c85017d9b1d6de64e24798125932c73c8b1dbeb3bc9
+#   Aktuell am 26.10.2026 mit org.kde.platform 6.11 ist Gstreamer 1.16.11
+#   Geändert am 26.10.2026 von 1.26.10 zu 1.26.11
+  - name: gstreamer-plugins-good
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.11.tar.xz
+        sha256: 001deb0876d5d743cd3448abf74a27adec3fd850012fcb1b00994861bd6c1145
 
 #   Für das kompilieren von gstreamer-plugins-bad wird als runtime der openh264 codec benötigt
-#  - name: openh264
-#    buildsystem: meson
-#    sources:
-#      - type: git
-#        url: https://github.com/cisco/openh264.git
-#        tag: v2.6.0
-#        commit: 652bdb7719f30b52b08e506645a7322ff1b2cc6f
-#        x-checker-data:
+#   Geändert am 26.10.2026 von 2.5.1 zu v2.7.0
+  - name: openh264
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/cisco/openh264.git
+        tag: v2.7.0
+        commit: 1bca62311e447fd9c39fc93de2c4b96cd5ce971c
+        x-checker-data:
+#  Eingefügt am 01.11.2026
+          type: passthrough # Sagt dem Bot: "Nur durchreichen, nicht automatisch updaten!"
 #          type: git
 #          tag-pattern: ^([\d.]+)$
-#        branch: v2.6.0
 
 #   gstreamer-plugins-bad beinhaltet openh264enc
-#  - name: gstreamer-plugins-bad
-#    buildsystem: meson
-#    sources:
-#      - type: archive
-#        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.10.tar.xz
-#        sha256: fec973dff512b507d9dcb5a828e04e061e52188f4d5989e953aed6a41beda437
+#   Geändert am 26.10.2026 von 1.26.10 zu 1.26.11
+  - name: gstreamer-plugins-bad
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.11.tar.xz
+        sha256: 110fb82795f0e569b1e27b12ab9699d35c7762e1ff4db95335d6ac8d1442af3d
 
   - name: vokoscreenNG
     buildsystem: qmake
@@ -67,14 +71,13 @@ modules:
       - install -Dm644 applications/vokoscreenNG.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/vokoscreenNG.png
       - install -Dm644 applications/vokoscreenNG.desktop ${FLATPAK_DEST}/share/applications/vokoscreenNG.desktop
       - install -Dm644 ../vokoscreenNG.appdata.xml ${FLATPAK_DEST}/share/metainfo/vokoscreenNG.appdata.xml
-#    sources:
-#      - type: git
-#        url: https://github.com/vkohaupt/vokoscreenNG.git
-#        branch: 3.0
-#      - type: file
-#        path: vokoscreenNG.appdata.xml
     sources:
-       - type: dir
-         path: "/home/vk/Programmieren/vokoscreenNG/"
-       - type: file
-         path: vokoscreenNG.appdata.xml
+      - type: git
+        url: https://github.com/vkohaupt/vokoscreenNG.git
+        tag: 4.11.1
+        commit: cdfd754eaa706251219032c674832362c2504188
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
+      - type: file
+        path: vokoscreenNG.appdata.xml
