@@ -29,17 +29,14 @@ private:
     int sourceWidth;
     int sourceHeight;
 
-
 public slots:
     void slot_setCurrentPicture(QImage image);
-    void slot_searchCursor();
 
 protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
 
 signals:
-
 
 };
 #endif

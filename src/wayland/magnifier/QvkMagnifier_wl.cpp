@@ -1,5 +1,6 @@
 #include "QvkMagnifier_wl.h"
 #include "global.h"
+#include "WaylandCheck.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -10,7 +11,6 @@
 #include <QColor>
 #include <QSize>
 #include <QMouseEvent>
-
 #include <LayerShellQt/Window>
 
 QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
@@ -34,24 +34,26 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     sourceWidth = magnifierWidth/2;
     sourceHeight = magnifierHeight/2;
 
-    // LayerShellQt-Einstellungen anwenden
-    if (auto *layerWindow = LayerShellQt::Window::get(windowHandle())){
-        qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt was successfully initialized.";
-        layerWindow->setLayer(LayerShellQt::Window::LayerTop);
-    }else{
-        qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt could not be initialized.";
-        showMaximized();
+    // LayerShellQt und wlr-layer-shell wird benötigt damit die Lupe im Vordergrund bleibt
+    if (isWlrLayerShellSupported()) {
+        qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell is supported";
+
+        // Jetzt LayerShellQt abfagen ob diese unterstützt wird
+        if (auto *layerWindow = LayerShellQt::Window::get(windowHandle())){
+            qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt was successfully initialized";
+            layerWindow->setLayer(LayerShellQt::Window::LayerTop);
+        }else{
+            qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt could not be initialized";
+            showMaximized();
+        }
+    } else {
+        qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell not supported";
+        showMaximized(); // Wichtig: Fallback für GNOME
     }
 }
 
 QvkMagnifier_wl::~QvkMagnifier_wl()
 {
-}
-
-
-void QvkMagnifier_wl::slot_searchCursor()
-{
-
 }
 
 
@@ -75,6 +77,7 @@ void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
                                 Qt::SmoothTransformation);
     update();
 }
+
 
 void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
 {
@@ -144,6 +147,7 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
        setMask(pixmap.mask());
     }
 }
+
 
 void QvkMagnifier_wl::mouseMoveEvent(QMouseEvent *event)
 {
