@@ -466,6 +466,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             vkMagnifierPortal_wl->slot_startScreenCast(sourceType, mousecursorONOff);
         }else{
             vkMagnifierPortal_wl->slot_stopScreenCast();
+            vkMagnifier_wl->clearMask();
+            vkMagnifier_wl->mouseUnderMagnifier = false;
             vkMagnifier_wl->close();
         }
     });

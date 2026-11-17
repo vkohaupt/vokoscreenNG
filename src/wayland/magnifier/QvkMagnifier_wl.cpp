@@ -48,6 +48,13 @@ QvkMagnifier_wl::~QvkMagnifier_wl()
 {
 }
 
+
+void QvkMagnifier_wl::slot_searchCursor()
+{
+
+}
+
+
 void QvkMagnifier_wl::slot_setCurrentPicture(QImage image)
 {
     if (mouse_y < 50){
@@ -133,12 +140,15 @@ void QvkMagnifier_wl::paintEvent(QPaintEvent *event)
     }
     painter.end();
 
-    setMask(pixmap.mask());
+    if (mouseUnderMagnifier == true){
+       setMask(pixmap.mask());
+    }
 }
 
 void QvkMagnifier_wl::mouseMoveEvent(QMouseEvent *event)
 {
     mouse_x = event->position().x();
     mouse_y = event->position().y();
+    mouseUnderMagnifier = true;
     update();
 }

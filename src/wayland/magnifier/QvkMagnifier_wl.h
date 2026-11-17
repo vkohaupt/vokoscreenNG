@@ -13,6 +13,7 @@ class QvkMagnifier_wl : public QWidget
 public:
     QvkMagnifier_wl(QWidget *parent = nullptr);
     ~QvkMagnifier_wl();
+    bool mouseUnderMagnifier = false;
 
 private:
     QImage currentPicture;
@@ -31,7 +32,7 @@ private:
 
 public slots:
     void slot_setCurrentPicture(QImage image);
-
+    void slot_searchCursor();
 
 protected:
     void mouseMoveEvent(QMouseEvent *event) override;
