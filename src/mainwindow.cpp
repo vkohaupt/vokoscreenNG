@@ -310,6 +310,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
     qDebug();
 
+#ifdef Q_OS_UNIX
+    get_distributions_info();
+#endif
+
 #ifdef Q_OS_WIN
     QByteArray GST_PLUGIN_PATH_1_0 = qgetenv( "GST_PLUGIN_PATH_1_0" );
     qDebug().noquote() << global::nameOutput << "GST_PLUGIN_PATH_1_0:"<< GST_PLUGIN_PATH_1_0;
@@ -788,6 +792,29 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+void QvkMainWindow::get_distributions_info()
+{
+    QStringList list;
+    list.append("/run/host/os-release");
+    list.append("/run/host/etc/os-release");
+    list.append("/etc/os-release");
+
+    for (int x = 0; x < list.count(); x++){
+        QFile file(list.at(x));
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug().noquote() << global::nameOutput << "Read:" << list.at(x);
+            QTextStream in(&file);
+            in.setEncoding(QStringConverter::Utf8);
+            while (!in.atEnd()) {
+                QString line = in.readLine();
+                qDebug().noquote() << global::nameOutput << line;
+            }
+            file.close();
+        }
+    }
+    qDebug();
 }
 
 

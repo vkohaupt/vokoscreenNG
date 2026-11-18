@@ -174,6 +174,9 @@ private:
     bool is_systemTrayAvailable = false;
     QvkComposite *vkComposite = nullptr;
 
+    void get_distributions_info();
+
+
 private slots:
     void slot_preStart();
     void slot_Start();

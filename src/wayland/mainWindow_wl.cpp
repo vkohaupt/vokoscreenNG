@@ -88,6 +88,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
     get_system_info();
+    get_distributions_info();
     set_CornerWidget();
     set_SpezialSliders();
     vkInformation = new QvkInformation_wl( ui );
@@ -663,6 +664,30 @@ QString QvkMainWindow_wl::get_pipewire_version()
         }
         return version;
     }
+}
+
+
+void QvkMainWindow_wl::get_distributions_info()
+{
+    QStringList list;
+    list.append("/run/host/os-release");
+    list.append("/run/host/etc/os-release");
+    list.append("/etc/os-release");
+
+    for (int x = 0; x < list.count(); x++){
+        QFile file(list.at(x));
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug().noquote() << global::nameOutput << "Read:" << list.at(x);
+            QTextStream in(&file);
+            in.setEncoding(QStringConverter::Utf8);
+            while (!in.atEnd()) {
+                QString line = in.readLine();
+                qDebug().noquote() << global::nameOutput << line;
+            }
+            file.close();
+        }
+    }
+    qDebug();
 }
 
 
