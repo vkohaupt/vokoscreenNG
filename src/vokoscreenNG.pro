@@ -67,8 +67,11 @@ unix:contains(INSTALLER, "IFW" ){
 }
 
 # Wayland
-unix:INCLUDEPATH += /usr/include/LayerShellQt
-unix:LIBS += -L/usr/lib64 -lLayerShellQtInterface
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+unix:INCLUDEPATH += $$PREFIX/include $$PREFIX/include/LayerShellQt
+unix:LIBS += -L$$PREFIX/lib -L$$PREFIX/lib64 -lLayerShellQtInterface
 
 # GStreamer Linux
 unix:CONFIG += link_pkgconfig
