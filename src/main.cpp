@@ -51,6 +51,9 @@ int main(int argc, char *argv[])
     // Unterdrückt Warnungen von Mesa
     qputenv("MESA_LOG_LEVEL", "error");
 
+    // Unterdrückt die Ausgabe das ffmpeg version xyz benutzt wird
+    QLoggingCategory::setFilterRules("qt.multimedia.ffmpeg.info=false");
+
     QApplication app(argc, argv);
 
     QString help;
