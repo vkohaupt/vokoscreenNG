@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
 {
     QLoggingCategory::defaultCategory()->setEnabled( QtDebugMsg, true );
     QApplication::setStyle( QStyleFactory::create( "Fusion" ) );
+    qputenv("QSG_RHI_BACKEND", "opengl"); // Unter flatpak Mesa Vulkan Meldungen unterdrücken
     QApplication app(argc, argv);
 
     QString help;
