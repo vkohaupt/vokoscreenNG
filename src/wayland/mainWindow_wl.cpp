@@ -528,6 +528,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
 
+
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent Begin close";
 
@@ -551,6 +552,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     }
 
     vkSystray->deleteLater();
+    vkHelpBrowser_wl->deleteLater();
 
     // Audio Levelmeter ausschalten da das Programm zum Schluß hin sonst abstürtzt.
     QList<QToolButton *> list = ui->scrollAreaAudioDevice->findChildren<QToolButton *>();
