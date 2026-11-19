@@ -16,6 +16,9 @@ finish-args:
   - --socket=fallback-x11
   - --socket=pulseaudio
   - --filesystem=home
+  - --filesystem=/media
+  - --filesystem=/run/media
+  - --filesystem=/mnt
   - --talk-name=org.kde.StatusNotifierWatcher
   - --filesystem=xdg-run/pipewire-0
   - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
@@ -55,13 +58,6 @@ modules:
       - type: archive
         url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.11.tar.xz
         sha256: 110fb82795f0e569b1e27b12ab9699d35c7762e1ff4db95335d6ac8d1442af3d
-
-  - name: layer-shell-qt
-    buildsystem: cmake
-    sources:
-      - type: archive
-        url: https://download.kde.org/stable/plasma/6.6.4/layer-shell-qt-6.6.4.tar.xz
-        sha256: 731af7a222bc1a1e87fd993060ed8fa515b4b38cbc294063b700ec87451e013f
 
   - name: vokoscreenNG
     buildsystem: qmake
