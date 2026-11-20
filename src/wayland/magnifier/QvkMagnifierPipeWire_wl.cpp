@@ -22,7 +22,7 @@ bool QvkMagnifierPipeWire_wl::startStream(QString vk_fd, QString vk_path)
             "video/x-raw,format=RGBA,framerate=10/1 ! "
             "appsink name=sink emit-signals=true max-buffers=1 drop=true";
 
-    qDebug().noquote() << global::nameOutput << "[Magnifier:]" << pipelineStr;
+    qDebug().noquote() << global::nameOutput << "[Magnifier] Start with:" << pipelineStr;
 
     GError *error = nullptr;
     pipeline = gst_parse_launch(pipelineStr.toLatin1(), &error);
