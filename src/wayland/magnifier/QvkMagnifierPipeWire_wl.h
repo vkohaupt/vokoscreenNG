@@ -6,7 +6,6 @@
 #include <QImage>
 #include <QMutex>
 
-#include <gst/gst.h>
 #include <gst/app/gstappsink.h>
 
 class QvkMagnifierPipeWire_wl : public QObject {

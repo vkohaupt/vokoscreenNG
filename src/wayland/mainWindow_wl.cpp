@@ -503,12 +503,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
 
 
-//    ui->checkBoxMagnifier->setEnabled(false);
+    ui->checkBoxMagnifier->setEnabled(false);
 
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
 
-//    ui->checkBoxMagnifier->setEnabled(true);
+    ui->checkBoxMagnifier->setEnabled(true);
 
 
     // Hint: Settings X und Y für die Camera werden eingelesen in

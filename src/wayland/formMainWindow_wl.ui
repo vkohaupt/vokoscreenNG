@@ -830,9 +830,6 @@
                  <layout class="QHBoxLayout" name="horizontalLayout_10">
                   <item>
                    <widget class="QCheckBox" name="checkBoxMagnifier">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
                     <property name="text">
                      <string>Magnifier</string>
                     </property>
@@ -3106,7 +3103,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
