@@ -135,7 +135,8 @@ void QvkAudioPipewireWatcher_wl::startAudioPipewireMonitoring()
     GstBus *bus = gst_device_monitor_get_bus( monitor );
     GstCaps *caps = gst_caps_new_empty_simple( "audio/x-raw" );
     // Wenn das Source weggelassen wird, werden alle Audiogeräte angezeigt
-    gst_device_monitor_add_filter( monitor, "Audio", caps );
+    //gst_device_monitor_add_filter( monitor, "Audio", caps );
+    gst_device_monitor_add_filter(monitor, "Audio/Source", NULL);
     gst_caps_unref( caps );
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_AudioPipewire_func, this, nullptr );
     gst_object_unref( bus );

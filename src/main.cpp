@@ -43,6 +43,21 @@
 
 #include <gst/gst.h>
 
+// GStreamer Melungen beim überstreichen der Fensterleiste unterdrücken
+static void custom_gst_log_handler(const gchar *log_domain,
+                                   GLogLevelFlags log_level,
+                                   const gchar *message,
+                                   gpointer user_data)
+{
+    if (message != NULL &&
+        (g_strstr_len(message, -1, "GstIntRange") != NULL ||
+         g_strstr_len(message, -1, "gst_value_collect_int_range") != NULL)) {
+        return;
+    }
+    g_log_default_handler(log_domain, log_level, message, user_data);
+}
+
+
 int main(int argc, char *argv[])
 {
     QLoggingCategory::defaultCategory()->setEnabled( QtDebugMsg, true );
@@ -233,6 +248,11 @@ int main(int argc, char *argv[])
 #endif
 
     gst_init (&argc, &argv);
+    // GStreamer Melungen beim überstreichen der Fensterleiste unterdrücken
+    g_log_set_handler("GStreamer",
+                      (GLogLevelFlags)(G_LOG_LEVEL_CRITICAL | G_LOG_FLAG_FATAL | G_LOG_FLAG_RECURSION),
+                      custom_gst_log_handler,
+                      NULL);
 
 #ifdef Q_OS_UNIX
     if ( QvkWaylandRoutines::is_Wayland_Display_Available(true) == false ) {
