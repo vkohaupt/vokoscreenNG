@@ -105,12 +105,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_WEBM_convert_elements_available();
 
     QvkAudioPipewireController_wl *vkAudioPipewireController_wl = new QvkAudioPipewireController_wl(ui);
-/*    connect(vkAudioPipewireController_wl,
-            &QvkAudioPipewireController_wl::signal_haveAudioDeviceSelected,
-            this, [=](bool bo){
-                slot_haveAudioDeviceSelected(bo);
-            });
-*/
     Q_UNUSED(vkAudioPipewireController_wl)
 
     connect(ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=](){

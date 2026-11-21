@@ -68,7 +68,6 @@ private:
     QString Pipeline_structured_output( QString pipeline );
     QvkRegionMargins_wl *vkRegionMargins_wl;
     QvkInformation_wl *vkInformation;
-//    QvkAudioPipewireController_wl *vkAudioController;
     QvkLicenses *vkLicenses;
     QvkImageFromTabs_wl *vkImageFromTabs_wl;
 
