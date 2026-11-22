@@ -59,12 +59,12 @@ modules:
         url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.11.tar.xz
         sha256: 110fb82795f0e569b1e27b12ab9699d35c7762e1ff4db95335d6ac8d1442af3d
 
-  - name: layer-shell-qt
-    buildsystem: cmake
-    sources:
-      - type: archive
-        url: https://download.kde.org/stable/plasma/6.6.4/layer-shell-qt-6.6.4.tar.xz
-        sha256: 731af7a222bc1a1e87fd993060ed8fa515b4b38cbc294063b700ec87451e013f
+#  - name: layer-shell-qt
+#    buildsystem: cmake
+#    sources:
+#      - type: archive
+#        url: https://download.kde.org/stable/plasma/6.8.3/layer-shell-qt-6.8.3.tar.xz
+#        sha256: af3e56be10eb95a5993600449d6c811a08d491f7905c40a1203040b5baf98f9e
 
   - name: vokoscreenNG
     buildsystem: qmake
@@ -81,13 +81,22 @@ modules:
       - install -Dm644 applications/vokoscreenNG.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/vokoscreenNG.png
       - install -Dm644 applications/vokoscreenNG.desktop ${FLATPAK_DEST}/share/applications/vokoscreenNG.desktop
       - install -Dm644 ../vokoscreenNG.appdata.xml ${FLATPAK_DEST}/share/metainfo/vokoscreenNG.appdata.xml
+#    sources:
+#      - type: git
+#        url: https://github.com/vkohaupt/vokoscreenNG.git
+#        #tag: 4.11.0
+#        commit: 313d8315f11ef7de7b10cac0e97468acc896cb6c
+#        x-checker-data:
+#          type: git
+#          tag-pattern: ^([\d.]+)$
+#      - type: file
+#        path: vokoscreenNG.appdata.xml
+
     sources:
-      - type: git
-        url: https://github.com/vkohaupt/vokoscreenNG.git
-        tag: 4.11.1
-        commit: cdfd754eaa706251219032c674832362c2504188
-        x-checker-data:
-          type: git
-          tag-pattern: ^([\d.]+)$
+      - type: dir
+        path: "/home/alf/Programmieren/vokoscreenNG/"
       - type: file
         path: vokoscreenNG.appdata.xml
+
+
+
