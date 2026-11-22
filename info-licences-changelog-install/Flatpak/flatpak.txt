@@ -1,0 +1,4 @@
+
+Script zum Localen bauen siehe /src/flatPak
+
+Localen Pfad in com.github.vkohaupt.vokoscreenNG.yml anpassen

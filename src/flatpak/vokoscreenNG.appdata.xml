@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.github.vkohaupt.vokoscreenNG</id>
+    <name>vokoscreenNG</name>
+    <summary>vokoscreenNG is the most popular and powerful screen recorder for Wayland, Linux-X11, and Windows</summary>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-2.0-only</project_license>
+    <description>
+        <p>
+            vokoscreenNG is a powerful screencast creator to record the screen, an area or a window. Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal.
+        </p>
+        <p>X11:</p>
+        <ul>
+            <li>Tools: Multiscreen, Systray, Camera, Audio, Magnifying glass, Countdown, Timer, Showclick, Halo, Snapshot, Build-in Videoplayer, Global keyboard shortcuts, Darkmode, 100% translated into over 80 languages</li>
+            <li>Format: mkv, mp4, gif</li>
+            <li>Video: H.264, gif</li>
+            <li>Audio: mp3, opus, flac, vorbis</li>
+        </ul>
+        <p>Wayland:</p>
+        <ul>
+            <li>Tools: Multiscreen, Systray, Audio, Countdown, Camera, Snapshot, Separated-audio-tracks, 100% translated into over 80 languages</li>
+            <li>Format: mkv, mp4, gif</li>
+            <li>Video: H.264, gif</li>
+            <li>Audio: mp3, opus</li>
+        </ul>
+    </description>
+    <developer id="com.github.vkohaupt.vokoscreenng">
+        <name>Volker Kohaupt</name>
+    </developer>
+    <branding>
+        <color type="primary" scheme_preference="light">#faa298</color>
+        <color type="primary" scheme_preference="dark">#7f2c22</color>
+    </branding>
+    <url type="bugtracker">https://github.com/vkohaupt/vokoscreenNG/issues</url>
+    <url type="homepage">https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html</url>
+    <url type="donation">https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html</url>
+    <url type="contact">https://github.com/vkohaupt/vokoscreenNG/issues</url>
+    <url type="faq">https://github.com/vkohaupt/vokoscreenNG/issues</url>
+    <url type="translate">https://explore.transifex.com/vkohaupt/vokoscreen/</url>
+    <url type="contribute">https://github.com/vkohaupt/vokoscreenNG</url>
+    <url type="vcs-browser">https://github.com/vkohaupt/vokoscreenNG</url>
+    <launchable type="desktop-id">vokoscreenNG.desktop</launchable>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-0.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-1.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-2.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-3.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-4.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-5.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-6.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-8.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-9.png</image>
+            <caption>Picture</caption>
+        </screenshot>
+    </screenshots>
+    <content_rating type="oars-1.0" />
+    <releases>
+        <release version="4.11.0" date="2026-10-01"/>
+    </releases>
+</component>

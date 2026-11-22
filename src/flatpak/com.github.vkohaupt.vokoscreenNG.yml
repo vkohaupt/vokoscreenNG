@@ -59,12 +59,12 @@ modules:
         url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.11.tar.xz
         sha256: 110fb82795f0e569b1e27b12ab9699d35c7762e1ff4db95335d6ac8d1442af3d
 
-#  - name: layer-shell-qt
-#    buildsystem: cmake
-#    sources:
-#      - type: archive
-#        url: https://download.kde.org/stable/plasma/6.8.3/layer-shell-qt-6.8.3.tar.xz
-#        sha256: af3e56be10eb95a5993600449d6c811a08d491f7905c40a1203040b5baf98f9e
+  - name: layer-shell-qt
+    buildsystem: cmake
+    sources:
+      - type: archive
+        url: https://download.kde.org/stable/plasma/6.8.3/layer-shell-qt-6.8.3.tar.xz
+        sha256: af3e56be10eb95a5993600449d6c811a08d491f7905c40a1203040b5baf98f9e
 
   - name: vokoscreenNG
     buildsystem: qmake
@@ -94,7 +94,7 @@ modules:
 
     sources:
       - type: dir
-        path: "/home/alf/Programmieren/vokoscreenNG/"
+        path: "/home/alf/Programmieren/vokoscreenNG"
       - type: file
         path: vokoscreenNG.appdata.xml
 
