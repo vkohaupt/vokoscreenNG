@@ -69,6 +69,14 @@ int main(int argc, char *argv[])
     // Unterdrückt die Ausgabe das ffmpeg version xyz benutzt wird
     QLoggingCategory::setFilterRules("qt.multimedia.ffmpeg.info=false");
 
+    // Unterdrückt die Ausgabe von ffmpeg: Failed to open VDPAU backend libvdpau_nvidia.so:
+    if (qEnvironmentVariableIsEmpty("QT_FFMPEG_DECODING_HW_DEVICE_TYPES")) {
+        qputenv("QT_FFMPEG_DECODING_HW_DEVICE_TYPES", "vaapi");
+    }
+    if (qEnvironmentVariableIsEmpty("QT_FFMPEG_ENCODING_HW_DEVICE_TYPES")) {
+        qputenv("QT_FFMPEG_ENCODING_HW_DEVICE_TYPES", "vaapi");
+    }
+
     QApplication app(argc, argv);
 
     QString help;
