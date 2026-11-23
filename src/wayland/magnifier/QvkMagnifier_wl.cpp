@@ -1,6 +1,6 @@
 #include "QvkMagnifier_wl.h"
 #include "global.h"
-#include "WaylandCheck.h"
+#include "QvkWaylandCheck.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -35,7 +35,7 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     sourceHeight = magnifierHeight/2;
 
     // LayerShellQt und wlr-layer-shell wird benötigt damit die Lupe im Vordergrund bleibt
-    if (isWlrLayerShellSupported()) {
+    if (QvkWaylandCheck::isWlrLayerShellSupported()) {
         qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell is supported";
 
         // Jetzt LayerShellQt abfagen ob diese unterstützt wird

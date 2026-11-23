@@ -1,3 +1,6 @@
+#ifndef QVKMAGNIFIERPORTAL_WL_H
+#define QVKMAGNIFIERPORTAL_WL_H
+
 // include checked
 #include <QObject>
 #include <QVariantMap>
@@ -52,3 +55,4 @@ private:
     enum : uint { HIDDEN = 1, EMBEDDED = 2, METADATA = 4 } CursorMode;
     enum : uint { TRANSIENT = 0, APPLICATION = 1, PERSISTENT = 2 } PersistMode;
 };
+#endif

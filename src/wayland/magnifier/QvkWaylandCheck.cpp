@@ -1,9 +1,9 @@
-#include "WaylandCheck.h"
+#include "QvkWaylandCheck.h"
 
 #include <wayland-client.h>
 #include <cstring>
 
-bool isWlrLayerShellSupported()
+bool QvkWaylandCheck::isWlrLayerShellSupported()
 {
     struct wl_display *display = wl_display_connect(nullptr);
     if (!display) {

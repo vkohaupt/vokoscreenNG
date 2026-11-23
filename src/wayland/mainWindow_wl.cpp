@@ -1280,8 +1280,8 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
                   .append(" path=")
                   .append("\"" + vk_path + "\"")
                   .append(" do-timestamp=true")
-                  .append(" resend-last=true")
-                  .append(" keepalive-time=" + QString::number(1000 / sliderFrames->value()));
+                  .append(" resend-last=true");
+//                  .append(" keepalive-time=" + QString::number(1000 / sliderFrames->value()));
     stringList << "videoconvert";
     stringList << "videorate";
     stringList << "queue max-size-buffers=0 max-size-time=2000000000 max-size-bytes=0";
