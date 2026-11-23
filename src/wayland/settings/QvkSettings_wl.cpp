@@ -369,7 +369,7 @@ bool QvkSettings_wl::readAudioDevice(QString device)
 void QvkSettings_wl::saveMagnifierRestoreToken(QString token)
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, nullptr );
-    settings.beginGroup("Magnifier");
+    settings.beginGroup("Magnifier_wl");
     {
         settings.setValue("MagnifierRestoreToken", token);
     }
