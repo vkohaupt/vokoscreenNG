@@ -15,7 +15,8 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+      # gändert am 24.11.2026 von v4 zu v6
+        uses: actions/checkout@v6
 
       # 1. Erweiterte vokoscreenNG & Qt6 (WebEngine, WebSockets, Multimedia) Abhängigkeiten installieren
       - name: Install Build Dependencies
