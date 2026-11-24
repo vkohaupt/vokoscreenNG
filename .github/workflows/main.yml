@@ -44,7 +44,7 @@ jobs:
             qt6-webenginewidgets-devel \
             qt6-tools-linguist \
             layer-shell-qt6-devel \
-            mozilla-nss-devel \   # Wichtig für die Sandbox/Krypto von QtWebEngine
+            mozilla-nss-devel \
             gstreamer \
             gstreamer-devtools \
             gstreamer-editing-services \
