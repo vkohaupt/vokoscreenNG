@@ -80,7 +80,7 @@ jobs:
             --icon-file src/applications/vokoscreenNG.png \
             --executable src/vokoscreenNG
 
-      # 4b. AppImage mit Live-Fortschritt packen
+      # 4b. AppImage ohne AppStream-Hänger und ohne Output-Pufferung packen
       - name: Pack AppImage (Verbose)
         shell: bash
         env:
@@ -89,12 +89,20 @@ jobs:
         run: |
           ulimit -n 4096
 
-          # linuxdeploy einmalig entpacken, um direkt auf das interne appimagetool zuzugreifen
-          ./linuxdeploy-x86_64.AppImage --appimage-extract
+          echo "=== Prüfe AppDir Größe ==="
+          du -sh src/AppDir
 
-          # Das eingebaute appimagetool direkt mit Live-Fortschritt starten
-          ./squashfs-root/plugins/linuxdeploy-plugin-appimage/appimagetool-prefix/usr/bin/appimagetool \
-            --comp gzip --verbose src/AppDir 2>&1 | tr '\r' '\n'
+          echo "=== Entpacke linuxdeploy ==="
+          ./linuxdeploy-x86_64.AppImage --appimage-extract > /dev/null
+
+          echo "=== Starte appimagetool (ohne AppStream-Check) ==="
+          stdbuf -oL -eL ./squashfs-root/plugins/linuxdeploy-plugin-appimage/appimagetool-prefix/usr/bin/appimagetool \
+            --no-appstream \
+            --comp gzip \
+            --verbose \
+            src/AppDir 2>&1 | stdbuf -oL tr '\r' '\n'
+
+
 
       # 5. Artefakt sichern
       - name: Upload Artifact
