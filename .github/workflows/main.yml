@@ -44,7 +44,25 @@ jobs:
             qt6-webenginewidgets-devel \
             qt6-tools-linguist \
             layer-shell-qt6-devel \
-            mozilla-nss-devel     # Wichtig für die Sandbox/Krypto von QtWebEngine
+            mozilla-nss-devel \   # Wichtig für die Sandbox/Krypto von QtWebEngine
+            gstreamer \
+            gstreamer-devtools \
+            gstreamer-editing-services \
+            gstreamer-lang \
+            gstreamer-plugin-pipewire \
+            gstreamer-plugins-bad \
+            gstreamer-plugins-bad-devel \
+            gstreamer-plugins-bad-lang \
+            gstreamer-plugins-base \
+            gstreamer-plugins-base-lang \
+            gstreamer-plugins-good \
+            gstreamer-plugins-good-gtk \
+            gstreamer-plugins-good-lang \
+            gstreamer-plugins-libav \
+            gstreamer-plugins-rs \
+            gstreamer-transcoder-devel \
+            gstreamer-utils \
+            libgstreamer-1_0-0
 
       # 2. Kompilieren mit qmake6 und Installation ins AppDir
       - name: Build with qmake6
