@@ -86,10 +86,13 @@ jobs:
           APPIMAGE_EXTRACT_AND_RUN: 1
         run: |
           ulimit -n 4096
-          curl -fSL -o appimagetool-x86_64.AppImage https://github.com
-          chmod +x appimagetool-x86_64.AppImage
 
-          ./appimagetool-x86_64.AppImage --comp gzip --verbose src/AppDir 2>&1 | tr '\r' '\n'
+          # linuxdeploy einmalig entpacken, um direkt auf das interne appimagetool zuzugreifen
+          ./linuxdeploy-x86_64.AppImage --appimage-extract
+
+          # Das eingebaute appimagetool direkt mit Live-Fortschritt starten
+          ./squashfs-root/plugins/linuxdeploy-plugin-appimage/appimagetool-prefix/usr/bin/appimagetool \
+            --comp gzip --verbose src/AppDir 2>&1 | tr '\r' '\n'
 
       # 5. Artefakt sichern
       - name: Upload Artifact
