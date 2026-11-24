@@ -35,6 +35,7 @@ jobs:
             gstreamer-plugins-bad-devel \
             qt6-base-devel \
             qt6-multimedia-devel \
+            qt6-base-private-devel \
             qt6-websockets-devel \
             qt6-webchannel-devel \
             qt6-webenginecore-devel \
