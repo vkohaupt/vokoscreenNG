@@ -44,7 +44,7 @@ jobs:
             layer-shell-qt6-devel \
             mozilla-nss-devel     # Wichtig für die Sandbox/Krypto von QtWebEngine
 
-      # 2. Kompilieren mit qmake6 und Installation ins AppDir
+      # 2. Kompilieren mit qmake6 und Installation ins AppDir 
       - name: Build with qmake6
         run: |
           cd src
