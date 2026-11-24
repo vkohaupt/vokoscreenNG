@@ -89,20 +89,22 @@ jobs:
         run: |
           ulimit -n 4096
 
+          echo "=== Lade AppImage Runtime vorab per wget ==="
+          wget -q https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
+
           echo "=== Prüfe AppDir Größe ==="
           du -sh src/AppDir
 
           echo "=== Entpacke linuxdeploy ==="
           ./linuxdeploy-x86_64.AppImage --appimage-extract > /dev/null
 
-          echo "=== Starte appimagetool (ohne AppStream-Check) ==="
+          echo "=== Starte appimagetool (ohne AppStream-Check & mit lokaler Runtime) ==="
           stdbuf -oL -eL ./squashfs-root/plugins/linuxdeploy-plugin-appimage/appimagetool-prefix/usr/bin/appimagetool \
             --no-appstream \
+            --runtime-file runtime-x86_64 \
             --comp gzip \
             --verbose \
             src/AppDir 2>&1 | stdbuf -oL tr '\r' '\n'
-
-
 
       # 5. Artefakt sichern
       - name: Upload Artifact
