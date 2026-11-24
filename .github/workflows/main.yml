@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: opensuse/leap:16.0
+      image: opensuse/leap:16.1
 
     steps:
       - name: Checkout Repository
