@@ -640,7 +640,7 @@ void QvkMainWindow_wl::get_system_info()
     if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
         isFlatpak = true;
     }
-    qDebug().noquote() << global::nameOutput << "Pipewire version:" << get_pipewire_version();
+//    qDebug().noquote() << global::nameOutput << "Pipewire version:" << get_pipewire_version();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
