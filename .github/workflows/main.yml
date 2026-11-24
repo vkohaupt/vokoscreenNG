@@ -62,7 +62,23 @@ jobs:
             gstreamer-plugins-rs \
             gstreamer-transcoder-devel \
             gstreamer-utils \
-            libgstreamer-1_0-0
+            libgstreamer-1_0-0 \
+            audaspace-plugin-pipewire \
+            gstreamer-plugin-pipewire \
+            kpipewire6-devel \
+            kpipewire6-imports \
+            libpipewire-0_3-0 \
+            pipewire \
+            pipewire-alsa \
+            pipewire-devel \
+            pipewire-jack \
+            pipewire-lang \
+            pipewire-libjack-0_3 \
+            pipewire-modules-0_3 \
+            pipewire-pulseaudio \
+            pipewire-spa-plugins-0_2 \
+            pipewire-spa-tools \
+            pipewire-tools
 
       # 2. Kompilieren mit qmake6 und Installation ins AppDir
       - name: Build with qmake6
