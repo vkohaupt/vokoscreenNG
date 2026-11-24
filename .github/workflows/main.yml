@@ -22,6 +22,7 @@ jobs:
         run: |
           zypper --non-interactive refresh
           zypper --non-interactive install \
+            desktop-file-utils \
             squashfs \
             wget \
             file \
