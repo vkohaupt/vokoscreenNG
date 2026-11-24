@@ -62,26 +62,35 @@ jobs:
           chmod +x linuxdeploy-plugin-qt-x86_64.AppImage
           mv linuxdeploy-plugin-qt-x86_64.AppImage /usr/bin/linuxdeploy-plugin-qt
 
-      # 4. AppImage generieren
-      - name: Generate AppImage
+      # 4a. Nur AppDir vorbereiten (ohne zu packen)
+      - name: Prepare AppDir
         shell: bash
         env:
           ARCH: x86_64
           APPIMAGE_EXTRACT_AND_RUN: 1
           QMAKE: /usr/bin/qmake6
           EXTRA_QT_PLUGINS: "webengine;multimedia"
-          LDAI_COMP: gzip
         run: |
-          # WICHTIG: Behebt den bekannten mksquashfs-Freeze in Docker-Containern
-          ulimit -n 4096
-
           ./linuxdeploy-x86_64.AppImage --verbosity 0 \
             --appdir src/AppDir \
             --plugin qt \
             --desktop-file src/applications/vokoscreenNG.desktop \
             --icon-file src/applications/vokoscreenNG.png \
-            --executable src/vokoscreenNG \
-            --output appimage
+            --executable src/vokoscreenNG
+
+      # 4b. AppImage mit Live-Fortschritt packen
+      - name: Pack AppImage (Verbose)
+        shell: bash
+        env:
+          ARCH: x86_64
+          APPIMAGE_EXTRACT_AND_RUN: 1
+        run: |
+          ulimit -n 4096
+          wget -q https://github.com
+          chmod +x appimagetool-x86_64.AppImage
+
+          # --comp gzip packt schnell; tr '\r' '\n' macht jede Fortschrittszeile sofort sichtbar
+          ./appimagetool-x86_64.AppImage --comp gzip --verbose src/AppDir 2>&1 | tr '\r' '\n'
 
       # 5. Artefakt sichern
       - name: Upload Artifact
