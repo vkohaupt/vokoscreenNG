@@ -64,17 +64,18 @@ jobs:
 
       # 4. AppImage generieren
       - name: Generate AppImage
-        shell: bash # Zwingt GitHub Actions, bash anstelle von sh zu nutzen
+        shell: bash
         env:
-          NO_APPIMAGE_ASYNC_EXEC: 1
           ARCH: x86_64
           APPIMAGE_EXTRACT_AND_RUN: 1
           QMAKE: /usr/bin/qmake6
-          # Da QtWebEngine eigene Hilfsprozesse (QtWebEngineProcess) nutzt,
-          # sagen wir dem Plugin, dass es diese tiefenabhängigen Ressourcen erzwingen soll.
-          EXTRA_QT_PLUGINS: "webengine"
+          EXTRA_QT_PLUGINS: "webengine;multimedia"
+          LDAI_COMP: gzip
         run: |
-          ./linuxdeploy-x86_64.AppImage --appimage-extract-and-run \
+          # WICHTIG: Behebt den bekannten mksquashfs-Freeze in Docker-Containern
+          ulimit -n 4096
+
+          ./linuxdeploy-x86_64.AppImage --verbosity 0 \
             --appdir src/AppDir \
             --plugin qt \
             --desktop-file src/applications/vokoscreenNG.desktop \
