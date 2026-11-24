@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 1. Erweiterte vokoscreenNG & Qt6 (WebEngine, WebSockets, Multimedia) Abhängigkeiten installieren
       - name: Install Build Dependencies
@@ -81,7 +81,7 @@ jobs:
 
       # 5. Artefakt sichern
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vokoscreenNG-openSUSE-Leap16-AppImage
           path: "*.AppImage"
