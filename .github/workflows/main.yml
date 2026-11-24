@@ -32,6 +32,7 @@ jobs:
             pipewire-devel \
             gstreamer-devel \
             gstreamer-plugins-base-devel \
+            gstreamer-plugins-bad-devel \
             qt6-base-devel \
             qt6-multimedia-devel \
             qt6-websockets-devel \
