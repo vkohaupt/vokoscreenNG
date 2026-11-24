@@ -56,13 +56,12 @@ jobs:
 
       - name: Download and Run linuxdeploy
         run: |
-          # 1. Herunterladen der echten Binärdatei über den direkten Release-Link
-          wget -P /tmp https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
-          chmod +x linuxdeploy-x86_64.AppImage
+          wget -P /tmp https://github.com
+          chmod +x /tmp/linuxdeploy-x86_64.AppImage
 
-          wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
-          chmod +x linuxdeploy-plugin-qt-x86_64.AppImage
-          mv linuxdeploy-plugin-qt-x86_64.AppImage /usr/bin/linuxdeploy-plugin-qt
+          wget -P /tmp https://github.com
+          chmod +x /tmp/linuxdeploy-plugin-qt-x86_64.AppImage
+          mv /tmp/linuxdeploy-plugin-qt-x86_64.AppImage /usr/bin/linuxdeploy-plugin-qt
 
       # 4a. Nur AppDir vorbereiten (ohne zu packen)
       - name: Prepare AppDir
@@ -73,7 +72,7 @@ jobs:
           QMAKE: /usr/bin/qmake6
           EXTRA_QT_PLUGINS: "webengine;multimedia"
         run: |
-          ./linuxdeploy-x86_64.AppImage --verbosity 0 \
+          /tmp/linuxdeploy-x86_64.AppImage --verbosity 0 \
             --appdir src/AppDir \
             --plugin qt \
             --desktop-file src/applications/vokoscreenNG.desktop \
@@ -90,18 +89,18 @@ jobs:
           ulimit -n 4096
 
           echo "=== Lade AppImage Runtime vorab per wget ==="
-          wget -q https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
+          wget -q -P /tmp https://github.com
 
           echo "=== Prüfe AppDir Größe ==="
           du -sh src/AppDir
 
           echo "=== Entpacke linuxdeploy ==="
-          ./linuxdeploy-x86_64.AppImage --appimage-extract > /dev/null
+          /tmp/linuxdeploy-x86_64.AppImage --appimage-extract > /dev/null
 
           echo "=== Starte appimagetool (ohne AppStream-Check & mit lokaler Runtime) ==="
           stdbuf -oL -eL ./squashfs-root/plugins/linuxdeploy-plugin-appimage/appimagetool-prefix/usr/bin/appimagetool \
             --no-appstream \
-            --runtime-file runtime-x86_64 \
+            --runtime-file /tmp/runtime-x86_64 \
             --comp gzip \
             --verbose \
             src/AppDir 2>&1 | stdbuf -oL tr '\r' '\n'
