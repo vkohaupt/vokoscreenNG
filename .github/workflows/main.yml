@@ -117,6 +117,56 @@ jobs:
             --icon-file src/applications/vokoscreenNG.png \
             --executable src/vokoscreenNG
 
+
+      - name: Bundle GStreamer Plugins & Custom AppRun
+        shell: bash
+        env:
+          ARCH: x86_64
+          APPIMAGE_EXTRACT_AND_RUN: 1
+        run: |
+          APPDIR="src/AppDir"
+          GST_LIB_DIR="/usr/lib64/gstreamer-1.0"
+          GST_BIN_DIR="/usr/libexec/gstreamer-1.0"
+
+          # 1. Zielordner im AppDir erstellen
+          mkdir -p "$APPDIR/usr/lib/gstreamer-1.0"
+          mkdir -p "$APPDIR/usr/libexec/gstreamer-1.0"
+
+          # 2. Alle GStreamer-Plugins und den Plugin-Scanner kopieren
+          cp -v "$GST_LIB_DIR"/*.so "$APPDIR/usr/lib/gstreamer-1.0/"
+          if [ -f "$GST_BIN_DIR/gst-plugin-scanner" ]; then
+            cp -v "$GST_BIN_DIR/gst-plugin-scanner" "$APPDIR/usr/libexec/gstreamer-1.0/"
+          fi
+
+          # 3. Abhängigkeiten (Shared Libraries) der kopierten GStreamer-Plugins auflösen
+          for plugin in "$APPDIR/usr/lib/gstreamer-1.0"/*.so; do
+            ./linuxdeploy-x86_64.AppImage --appdir "$APPDIR" --library "$plugin" --verbosity 0 || true
+          done
+
+          # 4. Vorhandenen AppRun-Symlink durch ein Wrapper-Skript ersetzen
+          rm -f "$APPDIR/AppRun"
+          cat << 'EOF' > "$APPDIR/AppRun"
+          #!/bin/bash
+          HERE="$(dirname "$(readlink -f "${0}")")"
+
+          export LD_LIBRARY_PATH="${HERE}/usr/lib:${HERE}/usr/lib64:${LD_LIBRARY_PATH}"
+          export QT_PLUGIN_PATH="${HERE}/usr/plugins"
+          export QML2_IMPORT_PATH="${HERE}/usr/qml"
+
+          # GStreamer Pfade auf das AppImage umbiegen
+          export GST_PLUGIN_SYSTEM_PATH_1_0="${HERE}/usr/lib/gstreamer-1.0"
+          export GST_PLUGIN_SCANNER_1_0="${HERE}/usr/libexec/gstreamer-1.0/gst-plugin-scanner"
+          # Verhindert, dass defekte/inkompatible Host-Plugins geladen werden
+          export GST_PLUGIN_SYSTEM_PATH=""
+
+          exec "${HERE}/usr/bin/vokoscreenNG" "$@"
+          EOF
+          chmod +x "$APPDIR/AppRun"
+
+
+
+
+
       # 4b. AppImage ohne AppStream-Hänger und ohne Output-Pufferung packen
       - name: Pack AppImage (Verbose)
         shell: bash
