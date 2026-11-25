@@ -78,7 +78,10 @@ jobs:
             pipewire-pulseaudio \
             pipewire-spa-plugins-0_2 \
             pipewire-spa-tools \
-            pipewire-tools
+            pipewire-tools \
+            gstreamer-plugins-ugly \
+            libva2 \
+            libva-drm2
 
       # 2. Kompilieren mit qmake6 und Installation ins AppDir
       - name: Build with qmake6
