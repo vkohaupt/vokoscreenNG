@@ -99,9 +99,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     set_RegionChoice();
     set_Connects();
-    set_check_screencast_elements_available();
+//    set_check_screencast_elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
-    set_check_GIF_convert_elements_available();
+//    set_check_GIF_convert_elements_available();
     set_check_WEBM_convert_elements_available();
 
     QvkAudioPipewireController_wl *vkAudioPipewireController_wl = new QvkAudioPipewireController_wl(ui);
