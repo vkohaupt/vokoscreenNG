@@ -11,13 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: opensuse/leap:15.6
-      #image: opensuse/leap:16.1
+      image: opensuse/leap:16.1
 
     steps:
-      - name: Install tar & git for checkout
-        run: zypper --non-interactive install --no-recommends tar git
-
       - name: Checkout Repository
         uses: actions/checkout@v7
 
@@ -47,6 +43,7 @@ jobs:
             qt6-webenginecore-devel \
             qt6-webenginewidgets-devel \
             qt6-tools-linguist \
+            layer-shell-qt6-devel \
             mozilla-nss-devel \
             gstreamer \
             gstreamer-devtools \
@@ -62,6 +59,8 @@ jobs:
             gstreamer-utils \
             libgstreamer-1_0-0 \
             gstreamer-plugin-pipewire \
+            kpipewire6-devel \
+            kpipewire6-imports \
             libpipewire-0_3-0 \
             pipewire \
             pipewire-alsa \
@@ -75,7 +74,6 @@ jobs:
             pipewire-tools \
             libva2 \
             libva-drm2
-
       # 2. Kompilieren mit qmake6 und Installation ins AppDir
       - name: Build with qmake6
         run: |
@@ -83,17 +81,14 @@ jobs:
           qmake6
           make -j$(nproc)
           make INSTALL_ROOT=$(pwd)/AppDir install
-
       - name: Download and Run linuxdeploy
         run: |
           # 1. Herunterladen der echten Binärdatei über den direkten Release-Link
           wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
           chmod +x linuxdeploy-x86_64.AppImage
-
           wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
           chmod +x linuxdeploy-plugin-qt-x86_64.AppImage
           mv linuxdeploy-plugin-qt-x86_64.AppImage /usr/bin/linuxdeploy-plugin-qt
-
       # 4a. Nur AppDir vorbereiten (ohne zu packen)
       - name: Prepare AppDir
         shell: bash
@@ -109,7 +104,6 @@ jobs:
             --desktop-file src/applications/vokoscreenNG.desktop \
             --icon-file src/applications/vokoscreenNG.png \
             --executable src/vokoscreenNG
-
       - name: Bundle GStreamer Plugins & Custom AppRun
         shell: bash
         env:
@@ -119,44 +113,35 @@ jobs:
           APPDIR="src/AppDir"
           GST_LIB_DIR="/usr/lib64/gstreamer-1.0"
           GST_BIN_DIR="/usr/libexec/gstreamer-1.0"
-
           mkdir -p "$APPDIR/usr/lib/gstreamer-1.0"
           mkdir -p "$APPDIR/usr/libexec/gstreamer-1.0"
-
           cp "$GST_LIB_DIR"/*.so "$APPDIR/usr/lib/gstreamer-1.0/"
           if [ -f "$GST_BIN_DIR/gst-plugin-scanner" ]; then
             cp "$GST_BIN_DIR/gst-plugin-scanner" "$APPDIR/usr/libexec/gstreamer-1.0/"
           fi
-
           # linuxdeploy EINMALIG entpacken
           ./linuxdeploy-x86_64.AppImage --appimage-extract > /dev/null
-
           # Alle --library Argumente in einem Array sammeln
           LIB_ARGS=()
           for plugin in "$APPDIR/usr/lib/gstreamer-1.0"/*.so; do
             LIB_ARGS+=(--library "$plugin")
           done
-
           # linuxdeploy nur EINMAL für alle Plugins zusammen ausführen
           ./squashfs-root/AppRun --appdir "$APPDIR" "${LIB_ARGS[@]}" --verbosity 0
-
           # AppRun Wrapper schreiben
           rm -f "$APPDIR/AppRun"
           cat << 'EOF' > "$APPDIR/AppRun"
           #!/bin/bash
           HERE="$(dirname "$(readlink -f "${0}")")"
-
           export LD_LIBRARY_PATH="${HERE}/usr/lib:${HERE}/usr/lib64:${LD_LIBRARY_PATH}"
           export QT_PLUGIN_PATH="${HERE}/usr/plugins"
           export QML2_IMPORT_PATH="${HERE}/usr/qml"
           export GST_PLUGIN_SYSTEM_PATH_1_0="${HERE}/usr/lib/gstreamer-1.0"
           export GST_PLUGIN_SCANNER_1_0="${HERE}/usr/libexec/gstreamer-1.0/gst-plugin-scanner"
           export GST_PLUGIN_SYSTEM_PATH=""
-
           exec "${HERE}/usr/bin/vokoscreenNG" "$@"
           EOF
           chmod +x "$APPDIR/AppRun"
-
       # 4b. AppImage ohne AppStream-Hänger und ohne Output-Pufferung packen
       - name: Pack AppImage (Verbose)
         shell: bash
@@ -165,16 +150,12 @@ jobs:
           APPIMAGE_EXTRACT_AND_RUN: 1
         run: |
           ulimit -n 4096
-
           echo "=== Lade AppImage Runtime vorab per wget ==="
           wget -q https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-x86_64
-
           echo "=== Prüfe AppDir Größe ==="
           du -sh src/AppDir
-
           echo "=== Entpacke linuxdeploy ==="
           ./linuxdeploy-x86_64.AppImage --appimage-extract > /dev/null
-
           echo "=== Starte appimagetool (ohne AppStream-Check & mit lokaler Runtime) ==="
           stdbuf -oL -eL ./squashfs-root/plugins/linuxdeploy-plugin-appimage/appimagetool-prefix/usr/bin/appimagetool \
             --no-appstream \
@@ -182,10 +163,10 @@ jobs:
             --comp gzip \
             --verbose \
             src/AppDir 2>&1 | stdbuf -oL tr '\r' '\n'
-
       # 5. Artefakt sichern
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
           name: vokoscreenNG-openSUSE-Leap16-AppImage
           path: "*.AppImage"
+          
