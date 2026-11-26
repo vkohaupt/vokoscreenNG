@@ -118,6 +118,7 @@ jobs:
         shell: bash
         env:
           ARCH: x86_64
+          APPIMAGE_EXTRACT_AND_RUN: 1
         run: |
           APPDIR="src/AppDir"
           GST_LIB_DIR="/usr/lib64/gstreamer-1.0"
