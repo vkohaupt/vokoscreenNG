@@ -12,7 +12,7 @@ jobs:
 
     container:
       image: opensuse/leap:15.6
-#      image: opensuse/leap:16.1
+      #image: opensuse/leap:16.1
 
     steps:
       - name: Checkout Repository
