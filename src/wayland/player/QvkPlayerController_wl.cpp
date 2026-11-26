@@ -270,7 +270,7 @@ void QvkPlayerController_wl::slot_pushButtonStop()
 
 void QvkPlayerController_wl::slot_eos()
 {
-    qDebug().noquote() << global::nameOutput << "[Player][Controller][slot_eos]    " << vkPlayerGst->get_mediaFile();
+    qDebug().noquote() << global::nameOutput << "[Player][Controller][slot_eos]" << vkPlayerGst->get_mediaFile();
     ui->pushButtonStop->click();
 }
 

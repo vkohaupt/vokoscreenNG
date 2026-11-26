@@ -299,6 +299,7 @@ void QvkPlayerGst_wl::init()
 
 void QvkPlayerGst_wl::set_mediaFile( QString string )
 {
+    qDebug().noquote() << global::nameOutput << "[Player][GStreamer][set_mediafile]" << string;
     mediaFile = string;
 }
 
