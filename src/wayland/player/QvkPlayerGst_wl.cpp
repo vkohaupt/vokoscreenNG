@@ -179,6 +179,7 @@ qDebug().noquote() << global::nameOutput << "55555";
     struct wl_display *display = static_cast<struct wl_display*>(
                 native->nativeResourceForIntegration("display")
                 );
+qDebug().noquote() << global::nameOutput << "66666";
 
     // Das Display an das GStreamer Wayland-Sink koppeln, damit beide den gleichen Kontext nutzen
     if (display) {
@@ -190,7 +191,7 @@ qDebug().noquote() << global::nameOutput << "55555";
                 << global::nameOutput
                 << "[Player] Could not retrieve native Wayland display context from Qt.";
     }
-qDebug().noquote() << global::nameOutput << "666666";
+qDebug().noquote() << global::nameOutput << "77777";
     // Testweiser Abruf der Surface zur Validierung im Log
     struct wl_surface *surface = static_cast<struct wl_surface*>(
                 native->nativeResourceForWindow("surface", m_parent->windowHandle())
@@ -200,13 +201,13 @@ qDebug().noquote() << global::nameOutput << "666666";
                 << global::nameOutput
                 << "[Player] Warning: Wayland surface not ready yet (will be retried in bus handler).";
     }
-qDebug().noquote() << global::nameOutput << "77777";
+qDebug().noquote() << global::nameOutput << "88888";
     m_parent->update();
     // Alternativ: Dem Window-System signalisieren, dass das Widget expose-Events braucht
     if (m_parent->windowHandle()) {
         m_parent->windowHandle()->requestUpdate();
     }
-qDebug().noquote() << global::nameOutput << "88888";
+qDebug().noquote() << global::nameOutput << "99999";
     bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
     gst_bus_add_signal_watch(bus);
     g_signal_connect(bus, "message", (GCallback)call_bus_message, this);
