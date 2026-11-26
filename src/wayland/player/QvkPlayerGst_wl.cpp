@@ -136,16 +136,16 @@ void QvkPlayerGst_wl::play_pre()
         return;
     }
     g_object_set(G_OBJECT(playbin), "uri", uri.toUtf8().constData(), nullptr);
-
+qDebug().noquote() << global::nameOutput << "11111";
     gst_bin_add_many(GST_BIN(pipeline), playbin, nullptr);
-
+qDebug().noquote() << global::nameOutput << "22222";
     // Bus-Sync-Handler registrieren, damit das Handle zum perfekten Zeitpunkt gesetzt wird
     GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
     if (bus) {
         gst_bus_set_sync_handler(bus, bus_sync_handler, this, nullptr);
         gst_object_unref(bus);
     }
-
+qDebug().noquote() << global::nameOutput << "33333";
     // Wayland Video-Sink erzwingen, um X11-Fallbacks (BadWindow Fehler) zu verhindern
     GstElement *vsink = gst_element_factory_make("waylandsink", "wayland-video-sink");
     if (!vsink) {
@@ -155,7 +155,7 @@ void QvkPlayerGst_wl::play_pre()
         return;
     }
     g_object_set(G_OBJECT(playbin), "video-sink", vsink, nullptr);
-
+qDebug().noquote() << global::nameOutput << "44444";
     // Erzwingen, dass das QWidget ein natives Fenster inkl. Wayland-Surface besitzt
     m_parent->setAttribute(Qt::WA_NativeWindow, true);
     m_parent->setAttribute(Qt::WA_DontCreateNativeAncestors, true); // Verhindert Artefakte im Widget-Baum
@@ -174,7 +174,7 @@ void QvkPlayerGst_wl::play_pre()
                 << "[Player] Failed to get QPlatformNativeInterface.";
         return;
     }
-
+qDebug().noquote() << global::nameOutput << "55555";
     // Den globalen Wayland-Display-Kontext von Qt extrahieren
     struct wl_display *display = static_cast<struct wl_display*>(
                 native->nativeResourceForIntegration("display")
@@ -190,7 +190,7 @@ void QvkPlayerGst_wl::play_pre()
                 << global::nameOutput
                 << "[Player] Could not retrieve native Wayland display context from Qt.";
     }
-
+qDebug().noquote() << global::nameOutput << "666666";
     // Testweiser Abruf der Surface zur Validierung im Log
     struct wl_surface *surface = static_cast<struct wl_surface*>(
                 native->nativeResourceForWindow("surface", m_parent->windowHandle())
@@ -200,13 +200,13 @@ void QvkPlayerGst_wl::play_pre()
                 << global::nameOutput
                 << "[Player] Warning: Wayland surface not ready yet (will be retried in bus handler).";
     }
-
+qDebug().noquote() << global::nameOutput << "77777";
     m_parent->update();
     // Alternativ: Dem Window-System signalisieren, dass das Widget expose-Events braucht
     if (m_parent->windowHandle()) {
         m_parent->windowHandle()->requestUpdate();
     }
-
+qDebug().noquote() << global::nameOutput << "88888";
     bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
     gst_bus_add_signal_watch(bus);
     g_signal_connect(bus, "message", (GCallback)call_bus_message, this);
