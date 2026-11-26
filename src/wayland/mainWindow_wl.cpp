@@ -124,6 +124,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect(ui->toolButtonVideoPathReset, &QToolButton::clicked, this, [this](){
         ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
     });
+    connect(videoFileSystemWatcher, &QFileSystemWatcher::directoryChanged, this, [this](QString path){
+        checkVideoDirectory(path);
+    });
 
     // About
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
@@ -418,11 +421,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // -----------------------------------------------------------------
 
     ui->checkBoxMagnifier->setEnabled(false);
-
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
-
     ui->checkBoxMagnifier->setEnabled(true);
+    checkVideoDirectory(ui->lineEditVideoPath->text());
 
     // Hint: Settings X und Y für die Camera werden eingelesen in
     // QvkCameraSurface_wl::QvkCameraSurface_wl()
@@ -502,6 +504,25 @@ void QvkMainWindow_wl::changeEvent(QEvent *event)
     }
 }
 
+
+// Checkt den Videoordner.
+// Wenn dieser keine Datei beinhaltet die vokoscreeNG unterstützt
+// wird der Playbutton disabled ansonsten enabled
+void QvkMainWindow_wl::checkVideoDirectory(QString path)
+{
+    QDir dir(path);
+    QStringList filters;
+    for (int i = 0; i < ui->comboBoxFormat->count(); ++i) {
+        filters << "*." + ui->comboBoxFormat->itemText(i);
+    }
+    dir.setNameFilters(filters);
+    QStringList list = dir.entryList(filters, QDir::Files);
+    if (list.empty()){
+        ui->pushButtonPlay->setEnabled(false);
+    } else {
+        ui->pushButtonPlay->setEnabled(true);
+    }
+}
 
 // Language is changed from combobox
 void QvkMainWindow_wl::slot_languageChanged( int )

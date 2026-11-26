@@ -101,10 +101,9 @@ private:
     // Snapshot
 
     QString whatWasClicked;
-
     QString newConvertVideoFileName = "";
-
     QvkConvert_mkv_gif_wl *vkConvert_mkv_gif_wl;
+    void checkVideoDirectory(QString path);
 
 public slots:
 
