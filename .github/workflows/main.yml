@@ -51,7 +51,6 @@ jobs:
             gstreamer-lang \
             gstreamer-plugin-pipewire \
             gstreamer-plugins-bad \
-            gstreamer-plugins-bad-devel \
             gstreamer-plugins-bad-lang \
             gstreamer-plugins-base \
             gstreamer-plugins-base-lang \
@@ -63,7 +62,6 @@ jobs:
             gstreamer-transcoder-devel \
             gstreamer-utils \
             libgstreamer-1_0-0 \
-            audaspace-plugin-pipewire \
             gstreamer-plugin-pipewire \
             kpipewire6-devel \
             kpipewire6-imports \
@@ -79,7 +77,6 @@ jobs:
             pipewire-spa-plugins-0_2 \
             pipewire-spa-tools \
             pipewire-tools \
-            gstreamer-plugins-ugly \
             libva2 \
             libva-drm2
 
