@@ -309,7 +309,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         QStringList filters;
         filters << global::name + "*";
         QStringList videoFileList = dir.entryList(filters, QDir::Files, QDir::Time);
-
         QString string;
         string.append(ui->lineEditVideoPath->text());
         string.append("/");

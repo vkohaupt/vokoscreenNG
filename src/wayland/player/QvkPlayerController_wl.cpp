@@ -189,6 +189,7 @@ void QvkPlayerController_wl::slot_pushButtonPlay()
 
 void QvkPlayerController_wl::setMediaFile( QString string )
 {
+    qDebug().noquote() << global::nameOutput << "[Player][Controller][setMediaFile]" << string;
     mediaFile = string;
     QFileInfo file( mediaFile );
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
@@ -269,7 +270,7 @@ void QvkPlayerController_wl::slot_pushButtonStop()
 
 void QvkPlayerController_wl::slot_eos()
 {
-    qDebug().noquote().nospace() << global::nameOutput << "[Player][Controller] End of stream " << vkPlayerGst->get_mediaFile();
+    qDebug().noquote() << global::nameOutput << "[Player][Controller][slot_eos]    " << vkPlayerGst->get_mediaFile();
     ui->pushButtonStop->click();
 }
 
