@@ -128,6 +128,8 @@ void QvkPlayerGst_wl::play_pre()
         return;
     }
 
+    qDebug().noquote() << global::nameOutput << "[Player][Gstreamer][play_pre]" << uri;
+
     playbin = gst_element_factory_make("playbin3", nullptr);
     if (!playbin) {
         qDebug().noquote().nospace() << "[Player] Failed to create playbin3 element.";
