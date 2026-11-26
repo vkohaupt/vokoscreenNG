@@ -118,7 +118,9 @@ static GstBusSyncReply bus_sync_handler(GstBus *bus, GstMessage *message, gpoint
     return GST_BUS_PASS;
 }
 
-
+namespace WaylandContext {
+    struct wl_display *display = nullptr;
+}
 void QvkPlayerGst_wl::play_pre()
 {
     QString uri = "file://" + mediaFile;
@@ -175,15 +177,21 @@ qDebug().noquote() << global::nameOutput << "44444";
         return;
     }
 qDebug().noquote() << global::nameOutput << "55555";
-    // Den globalen Wayland-Display-Kontext von Qt extrahieren
+ /*   // Den globalen Wayland-Display-Kontext von Qt extrahieren
     struct wl_display *display = static_cast<struct wl_display*>(
                 native->nativeResourceForIntegration("display")
                 );
+*/
+    // Folgendes evtl. besser als obiges
+    if (auto *waylandApp = qGuiApp->nativeInterface<QNativeInterface::QWaylandApplication>()) {
+        WaylandContext::display = waylandApp->display();
+    }
+
 qDebug().noquote() << global::nameOutput << "66666";
 
     // Das Display an das GStreamer Wayland-Sink koppeln, damit beide den gleichen Kontext nutzen
-    if (display) {
-        GstContext *context = gst_wl_display_handle_context_new(display);
+    if (WaylandContext::display) {
+        GstContext *context = gst_wl_display_handle_context_new(WaylandContext::display);
         gst_element_set_context(GST_ELEMENT(vsink), context);
         gst_context_unref(context);
     } else {
