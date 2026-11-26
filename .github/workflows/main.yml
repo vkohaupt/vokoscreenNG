@@ -15,6 +15,9 @@ jobs:
       #image: opensuse/leap:16.1
 
     steps:
+      - name: Install tar & git for checkout
+        run: zypper --non-interactive install --no-recommends tar git
+
       - name: Checkout Repository
         uses: actions/checkout@v7
 
