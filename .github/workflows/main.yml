@@ -47,7 +47,6 @@ jobs:
             qt6-webenginecore-devel \
             qt6-webenginewidgets-devel \
             qt6-tools-linguist \
-            layer-shell-qt6-devel \
             mozilla-nss-devel \
             gstreamer \
             gstreamer-devtools \
@@ -63,8 +62,6 @@ jobs:
             gstreamer-utils \
             libgstreamer-1_0-0 \
             gstreamer-plugin-pipewire \
-            kpipewire6-devel \
-            kpipewire6-imports \
             libpipewire-0_3-0 \
             pipewire \
             pipewire-alsa \
