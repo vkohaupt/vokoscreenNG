@@ -33,24 +33,6 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     magnifierHeight = 200; // Höhe der Lupe
     sourceWidth = magnifierWidth/2;
     sourceHeight = magnifierHeight/2;
-/*
-    // LayerShellQt und wlr-layer-shell wird benötigt damit die Lupe im Vordergrund bleibt
-    if (QvkWaylandCheck::isWlrLayerShellSupported()) {
-        qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell is supported";
-
-        // Jetzt LayerShellQt abfagen ob diese unterstützt wird
-        if (auto *layerWindow = LayerShellQt::Window::get(windowHandle())){
-            qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt was successfully initialized";
-            layerWindow->setLayer(LayerShellQt::Window::LayerTop);
-        }else{
-            qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt could not be initialized";
-            showMaximized();
-        }
-    } else {
-        qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell not supported";
-        showMaximized(); // Wichtig: Fallback für GNOME
-    }
-*/
 
     // Wichtig: Erst WA_NativeWindow setzen, dann create() statt nur winId() aufrufen
     setAttribute(Qt::WA_NativeWindow, true);
