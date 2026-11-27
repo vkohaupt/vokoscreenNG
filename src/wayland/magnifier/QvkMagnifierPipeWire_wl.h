@@ -16,11 +16,7 @@ public:
     ~QvkMagnifierPipeWire_wl();
 
     bool startStream(QString vk_fd, QString vk_path);
-    //bool startStream();
     void stopStream();
-
-    // Direktzugriff auf das aktuellste Bild (Thread-sicher)
-    QImage getLatestFrame();
 
 signals:
     // Signal wird gefeuert, sobald ein neuer Frame bereitsteht

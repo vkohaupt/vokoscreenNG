@@ -63,11 +63,6 @@ void QvkMagnifierPipeWire_wl::stopStream() {
 }
 
 
-QImage QvkMagnifierPipeWire_wl::getLatestFrame() {
-    QMutexLocker locker(&frameMutex);
-    return currentFrame;
-}
-
 // Dieser Callback wird im GStreamer-Thread ausgeführt
 GstFlowReturn QvkMagnifierPipeWire_wl::onNewSample(GstAppSink *sink, gpointer userData) {
     auto *streamer = static_cast<QvkMagnifierPipeWire_wl*>(userData);
