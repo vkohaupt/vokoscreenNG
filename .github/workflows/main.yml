@@ -43,7 +43,6 @@ jobs:
             gstreamer-devel \
             gstreamer-plugins-base-devel \
             gstreamer-plugins-bad-devel \
-            gstreamer-editing-services \
             gstreamer-plugin-pipewire \
             gstreamer-plugins-bad \
             gstreamer-plugins-base \
