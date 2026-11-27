@@ -131,6 +131,8 @@ jobs:
           export GST_PLUGIN_SYSTEM_PATH_1_0="${HERE}/usr/lib/gstreamer-1.0"
           export GST_PLUGIN_SCANNER_1_0="${HERE}/usr/libexec/gstreamer-1.0/gst-plugin-scanner"
           export GST_PLUGIN_SYSTEM_PATH=""
+          export QT_LOGGING_RULES="qt.qpa.plugin=false"
+          export GST_REGISTRY_FORK=no          
           exec "${HERE}/usr/bin/vokoscreenNG" "$@"
           EOF
           chmod +x "$APPDIR/AppRun"
