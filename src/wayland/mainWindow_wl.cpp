@@ -388,7 +388,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             &QvkMagnifierPortal_wl::signal_portal_fd_path,
             this,
             [vkMagnifierPipeWire_wl, vkMagnifier_wl](QString vk_fd, QString vk_path){
-        vkMagnifierPipeWire_wl->startStream(vk_fd, vk_path);    //neu
+        vkMagnifierPipeWire_wl->startStream(vk_fd, vk_path);
         vkMagnifier_wl->show();
     });
 

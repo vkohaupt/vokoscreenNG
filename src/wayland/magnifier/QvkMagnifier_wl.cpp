@@ -67,7 +67,6 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
         qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell not supported";
         showMaximized(); // Wichtig: Fallback für GNOME
     }
-
 }
 
 QvkMagnifier_wl::~QvkMagnifier_wl()
