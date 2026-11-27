@@ -59,12 +59,8 @@ jobs:
             kpipewire6-imports \
             libpipewire-0_3-0 \
             pipewire \
-            pipewire-alsa \
             pipewire-devel \
-            pipewire-jack \
-            pipewire-libjack-0_3 \
             pipewire-modules-0_3 \
-            pipewire-pulseaudio \
             pipewire-spa-plugins-0_2 \
             pipewire-spa-tools \
             pipewire-tools \
