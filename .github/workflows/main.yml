@@ -31,10 +31,6 @@ jobs:
             pkgconfig \
             alsa-devel \
             libpulse-devel \
-            pipewire-devel \
-            gstreamer-devel \
-            gstreamer-plugins-base-devel \
-            gstreamer-plugins-bad-devel \
             qt6-base-devel \
             qt6-multimedia-devel \
             qt6-base-private-devel \
@@ -46,7 +42,9 @@ jobs:
             layer-shell-qt6-devel \
             mozilla-nss-devel \
             gstreamer \
-            gstreamer-devtools \
+            gstreamer-devel \
+            gstreamer-plugins-base-devel \
+            gstreamer-plugins-bad-devel \
             gstreamer-editing-services \
             gstreamer-plugin-pipewire \
             gstreamer-plugins-bad \
@@ -55,10 +53,11 @@ jobs:
             gstreamer-plugins-good-gtk \
             gstreamer-plugins-libav \
             gstreamer-plugins-rs \
+            gstreamer-plugin-pipewire \
             gstreamer-transcoder-devel \
+            gstreamer-devtools \
             gstreamer-utils \
             libgstreamer-1_0-0 \
-            gstreamer-plugin-pipewire \
             kpipewire6-devel \
             kpipewire6-imports \
             libpipewire-0_3-0 \
