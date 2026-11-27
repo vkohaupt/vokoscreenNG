@@ -33,7 +33,7 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
     magnifierHeight = 200; // Höhe der Lupe
     sourceWidth = magnifierWidth/2;
     sourceHeight = magnifierHeight/2;
-
+/*
     // LayerShellQt und wlr-layer-shell wird benötigt damit die Lupe im Vordergrund bleibt
     if (QvkWaylandCheck::isWlrLayerShellSupported()) {
         qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell is supported";
@@ -50,6 +50,42 @@ QvkMagnifier_wl::QvkMagnifier_wl(QWidget *parent)
         qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell not supported";
         showMaximized(); // Wichtig: Fallback für GNOME
     }
+*/
+
+    // Wichtig: Erst WA_NativeWindow setzen, dann create() statt nur winId() aufrufen
+    setAttribute(Qt::WA_NativeWindow, true);
+    create(); // Erzeugt das QWidgetWindow UND das dahinterliegende QWaylandWindow
+
+    // LayerShellQt und wlr-layer-shell wird benötigt damit die Lupe im Vordergrund bleibt
+    if (QvkWaylandCheck::isWlrLayerShellSupported()) {
+        qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell is supported";
+
+        if (QWindow *win = windowHandle()) {
+            // Sicherstellen, dass das Plattformfenster wirklich existiert
+            win->create();
+
+            if (auto *layerWindow = LayerShellQt::Window::get(win)) {
+                qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt was successfully initialized";
+                layerWindow->setLayer(LayerShellQt::Window::LayerOverlay);
+                layerWindow->setKeyboardInteractivity(LayerShellQt::Window::KeyboardInteractivityNone);
+                // Über den gesamten Bildschirm spannen (ersetzt showMaximized() für Layer-Surfaces)
+                layerWindow->setAnchors(LayerShellQt::Window::Anchors(
+                    LayerShellQt::Window::AnchorTop |
+                    LayerShellQt::Window::AnchorBottom |
+                    LayerShellQt::Window::AnchorLeft |
+                    LayerShellQt::Window::AnchorRight
+                ));
+                layerWindow->setExclusiveZone(-1); // Auch über Panels/Taskleisten zeichnen
+            } else {
+                qDebug().noquote() << global::nameOutput << "[Magnifier] LayerShellQt could not be initialized";
+                showMaximized();
+            }
+        }
+    } else {
+        qDebug().noquote() << global::nameOutput << "[Magnifier] wlr-layer-shell not supported";
+        showMaximized(); // Wichtig: Fallback für GNOME
+    }
+
 }
 
 QvkMagnifier_wl::~QvkMagnifier_wl()
