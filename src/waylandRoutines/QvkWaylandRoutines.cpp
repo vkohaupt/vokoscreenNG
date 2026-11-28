@@ -36,11 +36,12 @@ QvkWaylandRoutines::QvkWaylandRoutines( QWidget *parent )
 QvkWaylandRoutines::~QvkWaylandRoutines()
 {}
 
-
+// Der Parameter "bool output" true/false gibt an ob eine Ausgabe
+// im Terminal stattfinden soll oder nicht.
 bool QvkWaylandRoutines::is_Wayland_Display_Available(bool output)
 {
-    wl_display *display = wl_display_connect(Q_NULLPTR);
-    if(display == Q_NULLPTR){
+    wl_display *display = wl_display_connect(nullptr);
+    if(display == nullptr){
         if(output == true){
             qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
         }
