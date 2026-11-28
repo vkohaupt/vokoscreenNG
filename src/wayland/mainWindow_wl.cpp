@@ -574,7 +574,7 @@ void QvkMainWindow_wl::slot_log_refresh()
 
 QString QvkMainWindow_wl::get_pipewire_version()
 {
-    if ( isFlatpak == true ) {
+    if(get_enum_package_format() == PackageFormat::Flatpak){
         QString app = "flatpak-spawn";
         QString version = "";
         QProcess process;
@@ -639,6 +639,38 @@ QString QvkMainWindow_wl::get_KDE_Version()
 }
 
 
+QString QvkMainWindow_wl::get_string_package_format()
+{
+    if (get_enum_package_format() == PackageFormat::AppImage){
+        return "AppImage";
+    }
+    if (get_enum_package_format() == PackageFormat::Flatpak){
+        return "Flatpak";
+    }
+    return "Nativ";
+}
+
+
+QvkMainWindow_wl::PackageFormat QvkMainWindow_wl::get_enum_package_format()
+{
+        // 1. Prüfung auf AppImage
+        // AppImage setzt immer die Umgebungsvariable APPIMAGE (Pfad zur .AppImage-Datei)
+        if (qEnvironmentVariableIsSet("APPIMAGE")) {
+            return PackageFormat::AppImage;
+        }
+
+        // 2. Prüfung auf Flatpak
+        // Flatpak erstellt die Datei /.flatpak-info im Root-Verzeichnis der Sandbox
+        // und setzt oft FLATPAK_ID
+        if (QFile::exists("/.flatpak-info") || qEnvironmentVariableIsSet("FLATPAK_ID")) {
+            return PackageFormat::Flatpak;
+        }
+
+        // Standardmäßige / native Installation
+        return PackageFormat::Native;
+}
+
+
 void QvkMainWindow_wl::set_WindowTitle()
 {
     setWindowTitle( global::name + " " + global::version );
@@ -650,6 +682,7 @@ void QvkMainWindow_wl::set_WindowTitle()
 void QvkMainWindow_wl::get_system_info()
 {
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
+    qDebug().noquote() << global::nameOutput << "Packageformat:" << get_string_package_format();
     qDebug().noquote() << global::nameOutput << "Locale:" << QLocale::system().name();
     QDateTime dateTime = QDateTime::currentDateTime();
     qDebug().noquote() << global::nameOutput << "Log from:" << dateTime.toString( "yyyy-MM-dd hh:mm:ss" );
@@ -657,10 +690,7 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::territoryToString( locale.territory() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
-    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
-        isFlatpak = true;
-    }
-//    qDebug().noquote() << global::nameOutput << "Pipewire version:" << get_pipewire_version();
+    qDebug().noquote() << global::nameOutput << "Pipewire version:" << get_pipewire_version();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
@@ -732,7 +762,7 @@ void QvkMainWindow_wl::set_CornerWidget()
     list << ui->tabWidgetLog;
 
     QString cornerPicture;
-    if ( isFlatpak == true ) {
+    if(get_enum_package_format() == PackageFormat::Flatpak){
         cornerPicture = ":/pictures/cornerWidget/wayland-flatpak.png";
     } else {
         cornerPicture = ":/pictures/cornerWidget/wayland.png";

@@ -90,7 +90,9 @@ private:
     QString get_KDE_Version();
     QString get_pipewire_version();
 
-    bool isFlatpak = false;
+    enum class PackageFormat {Flatpak, AppImage, Native};
+    PackageFormat get_enum_package_format();
+    QString get_string_package_format();
 
     QString path_to_snapshot_folder;
 
